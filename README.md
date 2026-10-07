@@ -16,3 +16,5 @@ P: pause clock. [ / ]: clock speed. N: day/night on/off. K: next season. M: soun
 All toggles are also buttons in the top status bar.
 
 Demo links: `?season=winter&hour=11`, `?hour=22&demo=town`, `?demo=shop`, `?demo=crops&season=summer`.
+
+Multiplayer plan (design doc, not implemented yet): [docs/MULTIPLAYER_PLAN.md](docs/MULTIPLAYER_PLAN.md)
