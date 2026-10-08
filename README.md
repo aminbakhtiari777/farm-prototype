@@ -1,7 +1,13 @@
-# Farm Prototype (Web) - v5b
+# Farm Prototype (Web) - v5c
 
 A Godot 4.7 farming and small-town life prototype (Harvest Moon-style), exported for the web.
 Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game once to give it keyboard focus and enable sound). Press **F1** in game for all controls.
+
+## What's new in v5c
+- A living economy: prices follow supply and demand. Selling a lot lowers a price, shortages raise it, producers restock every morning. Townspeople earn wages, buy their food and pay the doctor (the city helps those who can't).
+- A market prices board by the market (E) and a prices panel (B) with trends, stock and the town's economy.
+- Workplaces produce goods: the carpenter makes planks and furniture, the blacksmith makes tools, the fruit shop sells farm produce. Sell your crops, eggs, milk and wool to shops and stalls.
+- Livestock: order a coop or a barn at the carpenter's livestock desk, buy chickens, cows and sheep, feed them daily and collect eggs, milk and wool. Unfed animals get unhappy and produce less; happy pairs have young that grow up.
 
 ## What's new in v5b
 - Talk to townspeople (E): a name card (job, hours, family, friendship hearts, health) and dialogue that depends on their job, family and the time of day. One talk a day builds friendship.
