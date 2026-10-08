@@ -1,7 +1,17 @@
-# Farm Prototype (Web) - v6b
+# Farm Prototype (Web) - v7a
 
 A Godot 4.7 farming and small-town life prototype (Harvest Moon-style), exported for the web.
 Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game once to give it keyboard focus and enable sound). Press **F1** in game for all controls.
+
+## What's new in v7a
+- Townspeople have life stories: spouse, job, talents, a current worry, a past hardship and a hope - on their name card and in what they say. They remember what you did (good and bad) and bring it up.
+- After school the kids come out: two bike around the square, the others play tag, chat, and sometimes ring a doorbell and run (the neighbour grumbles - and remembers).
+- Street arguments over debts, missing things or noise: heated red bubbles and gestures. Press **E** on them to calm things down (friendship up) - or the police come and settle it.
+- Play as a townsperson: stand next to someone and press **F2**. You keep their name, job, home and memories. **R** digs, **1** demolishes your own house with an axe, **2** starts a fire - both ask first (Persian confirmation) and have consequences: fines, police reports, people remember. **F2** again to return.
+- Fire station (125) with a fire truck and three firefighters: fires grow slowly, can spread to the house next door, damage roofs and walls; the carpenter and the mason rebuild over the next days; the culprit pays fines plus damages; the ambulance stands by.
+- Storms can cut the power and earthquakes shake the camera and knock things over; homes switch to candles and lanterns, and the electricity office crew drives out to fix the line.
+- City fund: fines (theft, speeding, fires) and shop taxes go to the municipality fund, shown on the City Hall notice board, the market prices board and the City Hall panel (**F4**). The fund pays for public works that appear in town over the following days (benches, streetlights, flower beds, a small park) and a doctor subsidy.
+- Still offline single-player by default.
 
 ## What's new in v6b
 - Make your own farmer: press **Y** (or use the farmhouse mirror) to choose a slim or regular body, face, hair, beard, skin, name and a job preset. The farmhouse wardrobe changes your clothes. Saved with the game. Townspeople have more distinct faces and hair.
@@ -64,6 +74,7 @@ Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game on
 - Saving in the browser now survives a page reload (F5 save, F9 load).
 
 ## Controls (short)
+- **F2** play as the townsperson next to you / return; **1** / **2** demolish own house / start a fire (while playing a resident, asks first); **F4** City Hall fund panel.
 WASD: walk. Shift: sprint. Space: jump. X: sit. E: interact (farm, doors, talk, TV, fish, refill can, power breaker, craft, cook, shop counters). J: town directory. F: pick up/place. Q: seed. I: bag. Tab: minimap. U: online panel (opt-in). T/Enter: chat (online).
 Right-drag / Z,C: orbit camera. Wheel: zoom. P, [, ]: clock. N: day/night. K: next season. V: push-to-talk. L: voice panel. Esc: menu. F1: controls. F5/F9: save/load.
 
