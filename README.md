@@ -1,7 +1,12 @@
-# Farm Prototype (Web) - v5c
+# Farm Prototype (Web) - v5d
 
 A Godot 4.7 farming and small-town life prototype (Harvest Moon-style), exported for the web.
 Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game once to give it keyboard focus and enable sound). Press **F1** in game for all controls.
+
+## What's new in v5d
+- Online beta (opt-in): the game stays offline single-player unless you press **U**, enter a name and a server address and press Connect. Online you see other players with name tags and can chat (T / Enter).
+- Live module updates: the server can push a new version of one module (for example wages); the game downloads only that module, swaps it in without a reinstall, keeps it for next time and can roll it back.
+- If you disconnect, your farmer stays in town, walks to the cafe or home and sits; neighbours greet you and bring tea. When you come back you get a welcome-back message and townspeople remember you were away. Without a server the game keeps running and syncs later.
 
 ## What's new in v5c
 - A living economy: prices follow supply and demand. Selling a lot lowers a price, shortages raise it, producers restock every morning. Townspeople earn wages, buy their food and pay the doctor (the city helps those who can't).
@@ -39,7 +44,7 @@ Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game on
 - Saving in the browser now survives a page reload (F5 save, F9 load).
 
 ## Controls (short)
-WASD: walk. Shift: sprint. Space: jump. X: sit. E: interact (farm, doors, talk, TV, fish, refill can, power breaker, craft, cook, shop counters). J: town directory. F: pick up/place. Q: seed. I: bag. Tab: minimap.
+WASD: walk. Shift: sprint. Space: jump. X: sit. E: interact (farm, doors, talk, TV, fish, refill can, power breaker, craft, cook, shop counters). J: town directory. F: pick up/place. Q: seed. I: bag. Tab: minimap. U: online panel (opt-in). T/Enter: chat (online).
 Right-drag / Z,C: orbit camera. Wheel: zoom. P, [, ]: clock. N: day/night. K: next season. V: push-to-talk. L: voice panel. Esc: menu. F1: controls. F5/F9: save/load.
 
-Multiplayer plan (design doc, not implemented yet): [docs/MULTIPLAYER_PLAN.md](docs/MULTIPLAYER_PLAN.md)
+Multiplayer plan: [docs/MULTIPLAYER_PLAN.md](docs/MULTIPLAYER_PLAN.md) (foundation implemented in v5d; server setup: [docs/SERVER_SETUP.md](docs/SERVER_SETUP.md)).
