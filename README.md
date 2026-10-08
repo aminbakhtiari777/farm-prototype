@@ -1,7 +1,15 @@
-# Farm Prototype (Web) - v5a
+# Farm Prototype (Web) - v5b
 
 A Godot 4.7 farming and small-town life prototype (Harvest Moon-style), exported for the web.
 Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game once to give it keyboard focus and enable sound). Press **F1** in game for all controls.
+
+## What's new in v5b
+- Talk to townspeople (E): a name card (job, hours, family, friendship hearts, health) and dialogue that depends on their job, family and the time of day. One talk a day builds friendship.
+- Persian speech bubbles and UI text (Vazirmatn font, right-to-left), e.g. «سلام، چطوری؟ خوبی؟»; switch to English in Settings -> Dialogue. Voice blips: higher for women and children, lower for men.
+- Shops and offices have working hours; the hospital is always open.
+- Hunger (eat at least one meal a day) and fatigue (sleep in your bed). A cold or flu makes you sneeze and walk slower; the hospital doctor treats it for gold. Townspeople eat, sleep, get ill and visit the doctor too.
+- Hands-on cooking: buy chicken, eggs and vegetables at the Supermarket, then at a stove prepare -> add salt -> add spices -> cook -> eat (counts as the day's meal).
+- A new onion dome with ribs on a drum with arched windows for the mosque.
 
 ## What's new in v5a
 - Workshop crafting on the farm (8 recipes) and a central market plaza with 6 stalls.
