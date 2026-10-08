@@ -1,7 +1,17 @@
-# Farm Prototype (Web) - v7a
+# Farm Prototype (Web) - v7b
 
 A Godot 4.7 farming and small-town life prototype (Harvest Moon-style), exported for the web.
 Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game once to give it keyboard focus and enable sound). Press **F1** in game for all controls.
+
+## What's new in v7b
+- A chattier town: small Persian bubbles - people comment on the weather, fires, power cuts, fines, public works, your driving and horn, and chat with each other (you can overhear). Press **5** for a chat log.
+- Terrace café next to the Café (afternoon to midnight): a bartender, a DJ with music you hear as you get closer, tea, coffee, juices, doogh, lemonade and two "strong" drinks that make you a little tipsy for a short while (wobbly walk, slight blur). The bartender stops after two; don't drive afterwards. Small scuffles happen - the bartender or the police break them up, with fines. If the bartender or DJ is away, another resident fills in.
+- Cars need care: fuel, wear, a mechanic on Main St (repairs, fuel, upgrades), gears (**3** manual/auto, **Shift/Ctrl** shift), headlights (**H**, needed at night), a dashboard.
+- Give rides: people waving at a stop (yellow beam) pay a fare when you drop them at the green beam; generous people tip.
+- Camping: drive to the pine forest or the lookout hill, press **6** for a tent and a campfire, sleep under the stars.
+- The daily paper at the newsstand by the square (**E** to buy, **4** to read) reports what really happened in town.
+- Personalities (calm, hot-tempered, generous, stingy, cheerful, shy) shape arguments and trades - press **7** next to someone to haggle. Every resident has their own voice.
+- Still offline single-player by default.
 
 ## What's new in v7a
 - Townspeople have life stories: spouse, job, talents, a current worry, a past hardship and a hope - on their name card and in what they say. They remember what you did (good and bad) and bring it up.
@@ -74,6 +84,7 @@ Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game on
 - Saving in the browser now survives a page reload (F5 save, F9 load).
 
 ## Controls (short)
+- **H** headlights, **3** gearbox auto/manual, **Shift/Ctrl** gear up/down (driving); **4** newspaper, **5** chat log, **6** camp, **7** haggle.
 - **F2** play as the townsperson next to you / return; **1** / **2** demolish own house / start a fire (while playing a resident, asks first); **F4** City Hall fund panel.
 WASD: walk. Shift: sprint. Space: jump. X: sit. E: interact (farm, doors, talk, TV, fish, refill can, power breaker, craft, cook, shop counters). J: town directory. F: pick up/place. Q: seed. I: bag. Tab: minimap. U: online panel (opt-in). T/Enter: chat (online).
 Right-drag / Z,C: orbit camera. Wheel: zoom. P, [, ]: clock. N: day/night. K: next season. V: push-to-talk. L: voice panel. Esc: menu. F1: controls. F5/F9: save/load.
