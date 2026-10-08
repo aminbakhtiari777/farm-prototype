@@ -1,7 +1,16 @@
-# Farm Prototype (Web) - v5d
+# Farm Prototype (Web) - v6a
 
 A Godot 4.7 farming and small-town life prototype (Harvest Moon-style), exported for the web.
 Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game once to give it keyboard focus and enable sound). Press **F1** in game for all controls.
+
+## What's new in v6a
+- A real night sky: small twinkling stars and a moon with phases that rises and sets; a clear blue sky by day. Settings -> Real clock follows your device time.
+- Dry trees at the forest edges: chop them with the axe for firewood, wood and boards.
+- The beach: buy a fishing rod from the carpenter; sell, eat or cook your fish. Light the beach campfire with firewood and sit by it.
+- Boats at the pier take you deep-sea fishing for rarer, pricier fish. A sunbathing beach with towels and umbrellas.
+- A gym (treadmill, weights, bench) for you and townspeople - better stamina and health. Music from the gym and houses is heard faintly outside.
+- Kitchenware at the new hypermarket (plates, pots, pans, cutlery, glasses, blender, microwave) unlocks and speeds up cooking.
+- More of the interface is in Persian (English in Settings).
 
 ## What's new in v5d
 - Online beta (opt-in): the game stays offline single-player unless you press **U**, enter a name and a server address and press Connect. Online you see other players with name tags and can chat (T / Enter).
