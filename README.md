@@ -1,7 +1,18 @@
-# Farm Prototype (Web) - v6a
+# Farm Prototype (Web) - v6b
 
 A Godot 4.7 farming and small-town life prototype (Harvest Moon-style), exported for the web.
 Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game once to give it keyboard focus and enable sound). Press **F1** in game for all controls.
+
+## What's new in v6b
+- Make your own farmer: press **Y** (or use the farmhouse mirror) to choose a slim or regular body, face, hair, beard, skin, name and a job preset. The farmhouse wardrobe changes your clothes. Saved with the game. Townspeople have more distinct faces and hair.
+- Cars: parked cars on the town roads. Walk to the driver door and press **E**; W/S drive, A/D steer, Space handbrake, **R** horn. A car dealership comes in a later version.
+- An ambulance takes sick townspeople to the hospital. A police car patrols the town. A red pickup hauls wood from the dry trees to the carpenter.
+- Richer homes: blue gas flames on the stove, a fridge that opens and shows what is inside, a bigger LCD TV, paintings, a blanket by the window, a sofa you can move, and each family's house in its own colour.
+- The town: a clock tower on the square, family fruit gardens (ask first - picking without permission is theft and gets reported), and new lots.
+- Farm life: push and stack boxes, herd sheep into the pen, dig holes (**R**), and a daily yard checklist.
+- The world remembers: moved things, holes, parked cars, picked fruit and what townspeople remember about you are saved.
+- Softer shadows and drifting cloud shadows; a fuller gym with a mirror wall; Persian signs, street names and controls screen; the sea now blends into the sky.
+- Still offline single-player by default.
 
 ## What's new in v6a
 - A real night sky: small twinkling stars and a moon with phases that rises and sets; a clear blue sky by day. Settings -> Real clock follows your device time.
