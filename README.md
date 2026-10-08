@@ -1,7 +1,17 @@
-# Farm Prototype (Web) - v4
+# Farm Prototype (Web) - v5a
 
 A Godot 4.7 farming and small-town life prototype (Harvest Moon-style), exported for the web.
 Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game once to give it keyboard focus and enable sound). Press **F1** in game for all controls.
+
+## What's new in v5a
+- Workshop crafting on the farm (8 recipes) and a central market plaza with 6 stalls.
+- 28 townspeople with names, ages, jobs and families who live together; press J for the town directory.
+- 8 workplaces (carpenter, blacksmith, mason, fruit, clothing, jewellery, tools, electrical) with their own shops.
+- Civic buildings: hospital, water office, electricity office (restores power after a cut), City Hall, police, school, university.
+- An ornate town square with a fountain, mosaic, flowers, lamps and a statue.
+- A mosque with a short, subtle hourly call (adhan) and a church with bells; volumes in Settings (0 = off).
+- A kitchen and stove in every home: cook meals for stamina.
+- Live house / yard style swaps (Settings -> Town styles) and townspeople who wave at you.
 
 ## What's new in v4
 - Lights at sunset: the farmhouse porch lamp, house lanterns, window glow and street lamps switch on at sunset (driven by the game clock).
@@ -15,7 +25,7 @@ Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game on
 - Saving in the browser now survives a page reload (F5 save, F9 load).
 
 ## Controls (short)
-WASD: walk. Shift: sprint. Space: jump. X: sit. E: interact (farm, doors, talk, TV, fish, refill can, power breaker). F: pick up/place. Q: seed. I: bag. Tab: minimap.
+WASD: walk. Shift: sprint. Space: jump. X: sit. E: interact (farm, doors, talk, TV, fish, refill can, power breaker, craft, cook, shop counters). J: town directory. F: pick up/place. Q: seed. I: bag. Tab: minimap.
 Right-drag / Z,C: orbit camera. Wheel: zoom. P, [, ]: clock. N: day/night. K: next season. V: push-to-talk. L: voice panel. Esc: menu. F1: controls. F5/F9: save/load.
 
 Multiplayer plan (design doc, not implemented yet): [docs/MULTIPLAYER_PLAN.md](docs/MULTIPLAYER_PLAN.md)
