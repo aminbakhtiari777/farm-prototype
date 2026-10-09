@@ -98,6 +98,7 @@ for dup in ("T_Hair_1_Normal_png.png", "T_Hair_1_BaseColor.png", "T_Hair_2_Norma
 WEB_EXCLUDE = ("README.md, *.md, tools/*, devtmp/*, docs/*, server/*, builds/*, scripts/tools/dev_tools.gd, scripts/tools/dev_shots.gd, "
                "scripts/tools/net_test_driver.gd, *_smoke.gd, *_shots.gd, scripts/v7b1_perf/perf_profiler.gd, assets/icons/ios/*, assets/icons/android_*, assets/icons/*.icns, assets/icons/*.ico")
 preset = open(os.path.join(SRC, "config/web_export_presets.cfg")).read()
+preset = preset.replace('custom_features=""', 'custom_features="farm_boot"')
 preset = preset.replace('export_path="../farm-prototype-web/index.html"', 'export_path="%s/index.html"' % OUT)
 preset = preset.replace('exclude_filter="README.md, *.md, tools/*"', 'exclude_filter="%s"' % WEB_EXCLUDE)
 assert WEB_EXCLUDE in preset

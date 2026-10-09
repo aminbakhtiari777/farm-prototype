@@ -201,6 +201,7 @@ func run_streaming() -> bool:
 	town.build_nearby_props()
 	t._check(jobs.size() == 1, "town: approaching builds pending furniture exactly once")
 	t._player.global_position = old_pos
+	await _exterior_regressions()
 	return true
 
 
@@ -367,3 +368,60 @@ func run_overlay() -> bool:
 	ov.toggle()
 	t._check(not ov.panel.visible, "F7 closes it")
 	return true
+
+
+func _exterior_regressions() -> void:
+	var old_lazy := Building.force_exterior_lazy
+	var old_interior := InteriorStreamer.force_lazy
+	Building.force_exterior_lazy = 1
+	InteriorStreamer.force_lazy = 1
+	var town: TownBuilder = t._town
+	var before: Dictionary = town.buildings
+	var position_before: Vector3 = t._player.global_position
+	var fixtures: Array[Building] = []
+	for offset in [Vector3(10, 0, 0), Vector3(20, 0, 0), Vector3(500, 0, 500)]:
+		var b := Building.new()
+		b.layout_id = "maple3"
+		_tree().current_scene.add_child(b)
+		b.global_position = position_before + offset
+		fixtures.append(b)
+	var near := fixtures[0]
+	var door_before := near.door
+	var interior_before := near.interior_root
+	var shapes := near._body.get_child_count()
+	var attachment := Node3D.new()
+	near.add_child(attachment)
+	t._check(fixtures.all(func(b: Building) -> bool: return not b.exterior_built and b.exterior_mesh == null), "exteriors: initial logical buildings contain no heavy exterior meshes")
+	t._check(door_before != null and interior_before != null and shapes >= 6, "exteriors: doors, interior anchors and collision exist before visual construction")
+	town.buildings = {"one": fixtures[0], "two": fixtures[1], "far": fixtures[2]}
+	town.stream_buildings(0.0)
+	t._check(fixtures[0].exterior_built and not fixtures[1].exterior_built and not fixtures[2].exterior_built, "exteriors: nearest first, at most one construction per frame, distant building stays pending")
+	town.stream_buildings(0.0)
+	t._check(fixtures[1].exterior_built and not fixtures[2].exterior_built, "exteriors: next nearby building loads on the next scheduler pass")
+	t._check(near._body.get_child_count() == shapes, "exteriors: visual construction does not duplicate structural collision")
+	near.ensure_interior()
+	near.release_exterior()
+	near.ensure_exterior()
+	t._check(near.door == door_before and near.interior_root == interior_before and attachment.get_parent() == near and near.interior_built, "exteriors: unloading/reloading preserves door, furniture and module-owned attachments")
+	BuildingDamage.apply(near, "burned", 0.8)
+	near.release_exterior()
+	near.ensure_exterior()
+	t._check(not near.get_node("RoofParts").visible, "exteriors: damage survives unloading and re-entry")
+	t._player.global_position = fixtures[2].global_position
+	town.stream_buildings(16.0)
+	t._check(fixtures[2].exterior_built and not fixtures[0].exterior_built and not fixtures[1].exterior_built, "exteriors: teleport loads the destination and releases distant visual geometry")
+	town.buildings = before
+	t._player.global_position = position_before
+	Building.force_exterior_lazy = old_lazy
+	InteriorStreamer.force_lazy = old_interior
+	for b in fixtures:
+		b.queue_free()
+	await _frames(2)
+	var map := _tree().get_first_node_in_group(&"minimap") as Minimap
+	t._check(map != null and map.size.x <= 150.0, "minimap: compact responsive widget")
+	if map:
+		t._check(map._labels.size() == TownLayout.BUILDINGS.size(), "minimap: every layout location has a label independent of rendered buildings")
+		var names_ok := true
+		for b in TownLayout.BUILDINGS:
+			names_ok = names_ok and not map.place_name(b).is_empty() and Lang.renders(map.place_name(b))
+		t._check(names_ok, "minimap: all place names render in the selected language")

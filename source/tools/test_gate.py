@@ -453,6 +453,12 @@ def step_web_export(web_build: Path, web_out: Path) -> bool:
     web_out.mkdir(parents=True, exist_ok=True)
     r = run([GODOT, "--headless", "--path", str(web_build), "--export-release", "Web",
              str(web_out / "index.html")], timeout=900)
+    if r.returncode == 0 and (web_out / "index.pck").exists():
+        split = run([sys.executable, "tools/split_web_packs.py", str(web_out)], timeout=60)
+        sys.stdout.write(split.stdout); sys.stderr.write(split.stderr)
+        if split.returncode != 0:
+            log("WEB PACKS: FAIL")
+            return False
     # Godot prints progress to stderr; success ends with "failed: 0" or exit 0 + index.pck.
     pck = web_out / "index.pck"
     ok = r.returncode == 0 and pck.exists() and pck.stat().st_size > 1_000_000
@@ -495,10 +501,14 @@ async def main():
         page.on("pageerror", lambda e: logs.append((round(time.time()-t0,1), "pageerror", str(e))))
         sockets = []
         foreign = []
+        pack_requests = []
+        page.on("request", lambda r: pack_requests.append(r.url) if "/asset-packs/" in r.url and ".pck" in r.url else None)
         page.on("websocket", lambda w: sockets.append(w.url))
         page.on("request", lambda r: foreign.append(r.url) if not r.url.startswith(URL.rstrip("/")) and not r.url.startswith("data:") and not r.url.startswith("blob:") else None)
         await page.goto(URL, wait_until="load")
         await page.wait_for_timeout(WAIT)
+        menu_packs = len(pack_requests)
+        print("asset pack downloads before Play (must be 0):", menu_packs)
         async def enter_game():
             # v7b.1 entry flow (splash -> menu -> Play -> Single-player -> loading):
             # Enter skips the splash / presses the default button until the game logs it is in.
@@ -514,8 +524,14 @@ async def main():
                 await page.wait_for_timeout(500)
             return any("ENTRY: in game" in l[2] for l in logs[mark[0]:])
         mark = [0]
+        async def wait_player_model():
+            deadline = time.time() + 90
+            while time.time() < deadline and not any("CHARACTER MODEL: player ready" in l[2] for l in logs[mark[0]:]):
+                await page.wait_for_timeout(500)
+            return any("CHARACTER MODEL: player ready" in l[2] for l in logs[mark[0]:])
         entered1 = await enter_game()
-        print("entry flow -> single-player:", entered1)
+        model1 = await wait_player_model()
+        print("entry flow -> single-player:", entered1, "player model ready:", model1)
         await page.wait_for_timeout(1500)
         await page.mouse.click(320, 180)
         await page.keyboard.down("KeyW"); await page.wait_for_timeout(1200); await page.keyboard.up("KeyW")
@@ -544,11 +560,13 @@ async def main():
         saved = await page.evaluate(probe)
         print("save in browser storage after F5:", saved, "bytes")
         n0 = len(logs)
+        packs_before_reload = len(pack_requests)
         await page.reload(wait_until="load")
         await page.wait_for_timeout(WAIT)
         mark[0] = n0
         entered2 = await enter_game()
-        print("entry flow after reload -> single-player:", entered2)
+        model2 = await wait_player_model()
+        print("entry flow after reload -> single-player:", entered2, "player model ready:", model2)
         await page.wait_for_timeout(1500)
         after = await page.evaluate(probe)
         print("save still there after reload:", after, "bytes")
@@ -565,12 +583,16 @@ async def main():
         await browser.close()
         print("websockets opened (must be 0, offline by default):", len(sockets), sockets[:3])
         print("requests to other hosts (must be 0):", len(foreign), foreign[:3])
-        ok = entered1 and entered2 and len(errs) == 0 and len(errs2) == 0 and saved > 100 and after == saved and loaded and not sockets and not foreign
+        pack_keys = {l[2].split("mounted ", 1)[1].strip() for l in logs if "ASSET PACK: mounted " in l[2]}
+        packs_ok = {"world", "male", "hair", "animations"}.issubset(pack_keys)
+        print("demand-loaded packs mounted:", sorted(pack_keys))
+        print("asset pack requests after reload:", len(pack_requests) - packs_before_reload)
+        ok = menu_packs == 0 and packs_ok and model1 and model2 and entered1 and entered2 and len(errs) == 0 and len(errs2) == 0 and saved > 100 and after == saved and loaded and not sockets and not foreign
         sys.exit(0 if ok else 1)
 asyncio.run(main())
 ''')
         r = run([str(PWVENV), "-u", str(test), f"http://127.0.0.1:{port}/", str(out_png), "22000"],
-                timeout=420)
+                timeout=600)
         sys.stdout.write(r.stdout); sys.stderr.write(r.stderr)
         ok = r.returncode == 0
         log("CHROME: " + ("PASS" if ok else "FAIL"))
@@ -626,6 +648,7 @@ def main() -> int:
         "module_hashes": module_hashes(),
         "web_out": str(web_out),
         "web_pck_sha256": sha_of(web_out / "index.pck") if (web_out / "index.pck").exists() else None,
+        "web_files": {str(p.relative_to(web_out)): sha_of(p) for p in sorted(web_out.rglob("*")) if p.is_file()} if web_out.exists() else {},
         "web_pck_bytes": (web_out / "index.pck").stat().st_size if (web_out / "index.pck").exists() else 0,
         "when": time.strftime("%Y-%m-%d %H:%M:%S"),
         "smoke": SMOKE_RESULT,

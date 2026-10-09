@@ -89,9 +89,10 @@ gate now rejects SCRIPT ERROR output even when all assertion checks pass.
 Physical Safari/iPad performance remains unmeasured. Automated Chromium checks
 do not establish frame rates or Safari compatibility on a physical device.
 
-The current streaming system sleeps distant processing/physics, uses distance
-LOD, builds street furniture on approach and creates/releases home interiors
-on demand. It **does not** split the
-initial PCK download or lazily construct every town exterior. Eliminating all
-initial town construction still requires a dependency-aware builder change;
-do not describe this patch as complete network/world asset streaming.
+The first release kept its download and exteriors eager. The subsequent streaming
+and map update separates a smaller core PCK from shared world and avatar packs,
+builds nearby exterior geometry at most once per town scheduler frame and releases
+it when far away. Doors, collision and module-owned attachments keep their identity.
+See [STREAMING_MAP_REPORT.md](STREAMING_MAP_REPORT.md) for the new release's scope
+and validation. Roads, terrain and nature scattering are not fully generated per
+cell; the WebAssembly engine is still required to start the game.

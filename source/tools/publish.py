@@ -61,6 +61,12 @@ def main() -> int:
         log("PUBLISH REFUSED: web index.pck does not match the gated build")
         return 1
 
+    for name, expected in state.get("web_files", {}).items():
+        artifact = web / name
+        if not artifact.is_file() or sha(artifact) != expected:
+            log("PUBLISH REFUSED: gated artifact changed or missing: " + name)
+            return 1
+
     # The repository now includes source/ and preview/. Replace only files
     # supplied by the export; never delete unrelated repository content.
     if not (pages / ".git").exists():

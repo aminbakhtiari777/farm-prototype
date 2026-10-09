@@ -590,7 +590,14 @@ func start_loading(m: String) -> void:
 	_menu.visible = false
 	settings.visible = false
 	about.visible = false
+	loading.waiting_for_assets = loading_path != "" and AssetPacks.enabled
 	loading.start(loading_path)
+	if loading.waiting_for_assets:
+		var assets_ready: bool = await AssetPacks.ensure_all(["world", "hair", "animations"])
+		while not assets_ready:
+			await get_tree().create_timer(10.0).timeout
+			assets_ready = await AssetPacks.ensure_all(["world", "hair", "animations"])
+		loading.waiting_for_assets = false
 
 
 func _on_loading_finished() -> void:
@@ -607,7 +614,8 @@ func _enter_game(m: String) -> void:
 	if _counter:
 		_counter.set_process(false)
 	GameEvents.close_modal("entry")
-	print("ENTRY: in game (%s)" % m)
+	if loading_path == "":
+		print("ENTRY: in game (%s)" % m)
 	entered_game.emit(m)
 
 

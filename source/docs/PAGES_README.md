@@ -7,7 +7,8 @@ Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game on
 - Touch controls are detected on iPadOS even when Safari presents a desktop identity, and stay visible with a mouse or trackpad.
 - Auto graphics starts on Low on touch devices. Distant processing sleeps, interiors load on approach, and distant benches, bins and planters are built gradually.
 - Focus changes and screen rotation release held controls. Mouse and right-stick camera look support yaw and pitch.
-- Initial download and building exterior construction still happen up front; this update does not split the asset download.
+- The initial PCK contains the core/menu. Shared world assets load after Play; avatar packs download when needed and use verified caches. Building exteriors construct one at a time near the player, and distant geometry is released.
+- The minimap is smaller (up to 150 px, responsive on small screens), with Persian/English place labels that work even when building graphics are unloaded.
 
 ## What's new in v7b.1 (controls)
 - GTA-style mouse look: click the game once to capture the mouse, then the mouse turns the camera (up / down / left / right) and **W A S D** walk where you are looking. **Esc** (or any panel) frees the cursor.
