@@ -215,3 +215,151 @@ python3 tools/net_test.py
 
 In a browser served over plain `http://localhost`, `ws://127.0.0.1:8910` works.
 The HTTPS GitHub Pages site needs `wss://`, so it needs the VPS and domain above.
+
+
+---
+
+## v7b.1 additions — placeholders, free hosts, rooms, keepalive
+
+> Short version for Amin: pick **one** of A/B/C below to start the server, put the
+> server's address in `config/server.cfg` (`host=`, `port=`, `tls=`), rebuild/export,
+> and friends press **Play → Online → Host / Join by code**.
+
+### 0. What Amin must fill in (everything else already works)
+
+| File / place | Key | Put here | Example |
+| --- | --- | --- | --- |
+| `config/server.cfg` `[server]` | `host` | the free host's public hostname or IP (replace `YOUR_SERVER_HOST`) | `farm.example.ir` or `185.12.34.56` |
+| same | `port` | the public game port players connect to | `9080` (direct VPS) · `443` (behind nginx/TLS or Render/Railway/Fly) |
+| same | `tls` | `true` when the address is `https`/`wss` (nginx+certificate, or Render/Railway/Fly), else `false` | `true` |
+| same | `health_port` | public port of `/health` for the live player counter | `9081` (VPS) · `443` with the nginx `location /health` below |
+| same `[brand]` | `linkedin_url` | Amin's LinkedIn profile URL (the QR stays hidden until filled) | `https://www.linkedin.com/in/…` |
+| same `[updates]` | `manifest_url`, `packs_base_url` | optional, only when update packs are hosted (`docs/UPDATES.md`) | `https://farm.example.ir/updates/manifest.json` |
+| `server/farm-server.service` | `FARM_SERVER_HOST` | same host (only if using systemd) | |
+| `.github/workflows/keepalive.yml.disabled` | secret `FARM_HEALTH_URL` | only for sleeping free tiers | `https://farm-town.onrender.com/` |
+
+Override order for clients (highest wins): address typed in the game (Settings →
+Server, or Online → Direct connect) → env `FARM_SERVER_HOST` / `FARM_SERVER_PORT` /
+`FARM_SERVER_TLS` / `FARM_SERVER_HEALTH_PORT` → `user://server.cfg` (written by the
+in-game Settings) → `res://config/server.cfg` (shipped in the build).
+While the host is still `YOUR_SERVER_HOST` nothing connects, the player counter shows
+grey "—", and the web build stays fully offline (0 websockets, 0 foreign requests).
+
+Defaults in `config/server.cfg`:
+
+```
+[server]
+host="YOUR_SERVER_HOST"   # ← Amin fills this
+port=9080
+tls=false
+health_port=9081
+max_per_room=6            # 4 friends now; 4–8 is fine on a free host
+heartbeat_sec=20.0        # client ping interval
+heartbeat_timeout_sec=60.0
+game_version="7.1.0"
+compat_prefix="7.1."
+```
+
+### A. One-line start (any free host or VPS with a shell)
+
+```bash
+# after copying the project folder and installing Godot 4.7.2 as `godot` or ~/godot/godot
+./tools/start_server.sh
+# → "SERVER READY port=9080" and "HEALTH READY port=9081"
+# custom: FARM_SERVER_PORT=9080 FARM_SERVER_HEALTH_PORT=9081 FARM_SERVER_BIND=0.0.0.0 ./tools/start_server.sh
+```
+
+The script finds Godot (`$GODOT`, `~/godot/godot` or `godot` in PATH), honours `$PORT`
+when a host injects one (Render/Railway/Fly), keeps saves in `server/data/` and live
+modules in `server/content/`. Server-only flags: `--max-per-room=N`,
+`--heartbeat-timeout=SEC`, `--health-port=N`, `--port=N`, `--bind=ADDR`.
+Leave it running with `nohup ./tools/start_server.sh > server.log 2>&1 &`, `tmux`, or B/C.
+
+### B. Docker (Render / Railway / Fly.io / any Docker host)
+
+```bash
+docker build -t farm-town-server -f server/Dockerfile .
+docker run -d --restart=always -p 9080:9080 -p 9081:9081 -v farm-data:/opt/farm/data farm-town-server
+```
+
+`.dockerignore` keeps `.godot/`, `builds/`, `devtmp/` out of the image. The image has a
+Docker `HEALTHCHECK` on `/health`. On single-port hosts (Render/Railway/Fly) the host's
+`$PORT` becomes the game port, TLS is done by the host: set `host=<app>.onrender.com`,
+`port=443`, `tls=true`. Their `/health` port is not public there, so the live counter
+shows "—" unless you use a VPS (or nginx below).
+
+### C. systemd (always-on VPS: ArvanCloud / ParsPack / Oracle Free)
+
+```bash
+sudo useradd -r -m -d /opt/farm farm
+sudo cp -r . /opt/farm/game && sudo cp ~/godot/godot /opt/farm/godot && sudo chown -R farm: /opt/farm
+sudo cp server/farm-server.service /etc/systemd/system/   # edit FARM_SERVER_HOST / BIND first
+sudo systemctl daemon-reload && sudo systemctl enable --now farm-server
+journalctl -u farm-server -f      # "SERVER READY"
+```
+
+`Restart=always` restarts it after crashes and reboots. `FARM_SERVER_BIND=127.0.0.1`
+expects nginx in front (§3, `wss://` on 443); set `0.0.0.0` and open 9080/9081 in the
+firewall for plain `ws://IP:9080` without a domain.
+
+nginx (one domain, TLS, counter on the same port):
+
+```nginx
+location /health { proxy_pass http://127.0.0.1:9081/health; }
+location /       { proxy_pass http://127.0.0.1:9080; proxy_http_version 1.1;
+                   proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection "upgrade";
+                   proxy_read_timeout 3600s; }
+```
+→ `host=farm.example.ir`, `port=443`, `tls=true`, `health_port=443`.
+
+### Keep-alive for sleeping free tiers
+
+Three layers, all lightweight:
+
+1. **In-game heartbeat**: every client pings every `heartbeat_sec` (20 s) and sends
+   movement at the tick rate; the server drops peers silent for `heartbeat_timeout_sec`
+   (60 s) so dead phones don't hold a room slot. Dropped clients reconnect by themselves.
+2. **`/health`** (also `/`, `/healthz`, `/ping`, `/stats`) on `health_port` returns
+   `{"ok":true,"players":N,"rooms":M,"version":"7.1.0"}` without touching game state.
+3. **External pinger** so nobody-online periods don't put the host to sleep:
+
+```bash
+FARM_HEALTH_URL=http://YOUR_SERVER_HOST:9081/health ./tools/keepalive.sh
+# cron: */10 * * * * FARM_HEALTH_URL=... /opt/farm/game/tools/keepalive.sh >> /tmp/keepalive.log 2>&1
+# single-port hosts (Render/Railway/Fly): any HTTP answer wakes the app
+FARM_HEALTH_URL=https://farm-town.onrender.com/ FARM_KEEPALIVE_ANY=1 ./tools/keepalive.sh
+```
+   Or rename `.github/workflows/keepalive.yml.disabled` → `keepalive.yml` and add the repo
+   secret `FARM_HEALTH_URL` (GitHub pings every 10 minutes; any HTTP answer counts).
+   Always-on VPS / systemd hosts don't need this.
+
+### Rooms, joining, limits
+
+* Players open **Play → Online**. **Host** creates a room with a 6-character code
+  (letters/digits without look-alikes) and shows it big on screen; friends type it under
+  **Join by code**, or tap it in the **Server list** (public rooms + `MAIN`).
+* **Direct connect** (LAN / testing): type `ws://192.168.1.20:9080`.
+* `max_per_room` (default 6) — a join beyond that gets "room full" and the player stays
+  connected in their current room; a wrong code gets "room code not found".
+* `max_players_total` (24) caps one server process.
+* Version check on hello: same version or `compat_prefix` → allowed; otherwise
+  "version mismatch" → that player keeps playing offline (update offered via
+  `docs/UPDATES.md`).
+* Positions, chat, saves (newest wins), away avatars and live module pushes work inside
+  each room exactly as in v5d.
+
+### Port note
+
+Older docs mentioned `8910`. v7b.1 defaults to **9080** (game) + **9081** (health).
+CLI `--port=` / `--health-port=` still override; nginx proxies `wss://` 443 → 9080 as above.
+
+### Tested locally
+
+`python3 tools/net_test.py` starts a headless server (`--max-per-room=3
+--heartbeat-timeout=20`) plus up to four headless clients and checks: connect, movement
+sync, server-side speed-hack correction, chat + rate limit, live module push / poisoned
+module rejection, disconnect → away avatar → reconnect with save restore, host room with
+code, join by code (2nd and 3rd player), positions inside the room, ping/pong, server list,
+`/health` player count, room full (4th player refused, stays online), unknown code,
+heartbeat timeout (frozen client dropped, then reconnects), version mismatch → offline,
+server killed → offline play → automatic resync.
