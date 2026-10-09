@@ -34,9 +34,11 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--run-gate", action="store_true", help="run tools/test_gate.py first")
     ap.add_argument("--web", default=str(DEFAULT_WEB))
+    ap.add_argument("--pages", default=str(PAGES), help="Git checkout that serves GitHub Pages")
     ap.add_argument("--message", default="Publish farm prototype v7b.1 (GTA-style controls patch)")
     ap.add_argument("--readme", default="", help="path to README.md to drop into the pages repo")
     args = ap.parse_args()
+    pages = Path(args.pages).resolve()
 
     if args.run_gate:
         r = subprocess.run([sys.executable, "tools/test_gate.py"], cwd=ROOT)
@@ -59,31 +61,27 @@ def main() -> int:
         log("PUBLISH REFUSED: web index.pck does not match the gated build")
         return 1
 
-    # Copy build into pages (keep .nojekyll + docs/).
-    keep = {".git", ".nojekyll", "docs"}
-    for name in list(PAGES.iterdir()):
-        if name.name in keep:
-            continue
-        if name.is_dir():
-            shutil.rmtree(name)
-        else:
-            name.unlink()
+    # The repository now includes source/ and preview/. Replace only files
+    # supplied by the export; never delete unrelated repository content.
+    if not (pages / ".git").exists():
+        log("PUBLISH REFUSED: --pages must be a Git checkout")
+        return 1
     for src in web.iterdir():
-        dst = PAGES / src.name
+        dst = pages / src.name
         if src.is_dir():
-            shutil.copytree(src, dst)
+            shutil.copytree(src, dst, dirs_exist_ok=True)
         else:
             shutil.copy2(src, dst)
-    (PAGES / ".nojekyll").touch()
+    (pages / ".nojekyll").touch()
     # Add (never remove) public design docs linked from the README.
-    (PAGES / "docs").mkdir(exist_ok=True)
+    (pages / "docs").mkdir(exist_ok=True)
     for doc in ("SERVER_SETUP.md", "MULTIPLAYER_PLAN.md", "MULTIPLAYER.md", "BUILDING.md", "UPDATES.md"):
         if (ROOT / "docs" / doc).exists():
-            shutil.copy2(ROOT / "docs" / doc, PAGES / "docs" / doc)
+            shutil.copy2(ROOT / "docs" / doc, pages / "docs" / doc)
     if args.readme:
-        shutil.copy2(args.readme, PAGES / "README.md")
+        shutil.copy2(args.readme, pages / "README.md")
     elif (ROOT / "docs" / "PAGES_README.md").exists():
-        shutil.copy2(ROOT / "docs" / "PAGES_README.md", PAGES / "README.md")
+        shutil.copy2(ROOT / "docs" / "PAGES_README.md", pages / "README.md")
 
     env = os.environ.copy()
     env["GIT_AUTHOR_NAME"] = AUTHOR_NAME
@@ -91,7 +89,7 @@ def main() -> int:
     env["GIT_COMMITTER_NAME"] = AUTHOR_NAME
     env["GIT_COMMITTER_EMAIL"] = AUTHOR_EMAIL
     def g(*a):
-        return subprocess.run(["git", *a], cwd=PAGES, env=env, capture_output=True, text=True)
+        return subprocess.run(["git", *a], cwd=pages, env=env, capture_output=True, text=True)
 
     g("add", "-A")
     st = g("status", "--porcelain")
@@ -112,7 +110,7 @@ def main() -> int:
     # Remember what was published (the gate diffs module hashes against it).
     Path("/workspace/farm-published-manifest.json").write_text(json.dumps(
         {"commit": h, "module_hashes": state.get("module_hashes", {}), "web_pck_sha256": sha(pck)}, indent=2))
-    log("live index.pck sha256=%s bytes=%d" % (sha(PAGES / "index.pck"), (PAGES / "index.pck").stat().st_size))
+    log("published index.pck sha256=%s bytes=%d" % (sha(pages / "index.pck"), (pages / "index.pck").stat().st_size))
     return 0
 
 

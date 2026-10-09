@@ -1,12 +1,18 @@
-# Farm Prototype (Web) - v7b
+# Farm Prototype (Web) - v7b.1
 
-A Godot 4.7 farming and small-town life prototype (Harvest Moon-style), exported for the web.
+A Godot 4 farming and small-town life prototype (Harvest Moon-style), exported for the web.
 Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game once to give it keyboard focus and enable sound). Press **F1** in game for all controls.
+
+## iPad controls and performance fixes
+- Touch controls are detected on iPadOS even when Safari presents a desktop identity, and stay visible with a mouse or trackpad.
+- Auto graphics starts on Low on touch devices. Distant processing sleeps, interiors load on approach, and distant benches, bins and planters are built gradually.
+- Focus changes and screen rotation release held controls. Mouse and right-stick camera look support yaw and pitch.
+- Initial download and building exterior construction still happen up front; this update does not split the asset download.
 
 ## What's new in v7b.1 (controls)
 - GTA-style mouse look: click the game once to capture the mouse, then the mouse turns the camera (up / down / left / right) and **W A S D** walk where you are looking. **Esc** (or any panel) frees the cursor.
 - Driving: the mouse steers left / right (A / D still work), **W** gas, **S** brake / reverse, **Space** handbrake. **V** or **C** switches to the cockpit view - the steering wheel turns with you, the mouse looks around inside the car and up through the roof. A gear readout shows A (automatic), 1-4, R or N.
-- iPhone / Android: two virtual joysticks appear where your thumbs land - left moves (gas / brake in a car), right looks / steers - plus buttons for E / get in / out, jump, run, horn, lights, camera, menu and help.
+- iPhone / iPad / Android: two virtual joysticks appear where your thumbs land - left moves (gas / brake in a car), right looks / steers - plus buttons for E / get in / out, jump, run, horn, lights, camera, menu and help.
 - Playing as a townsperson (**F2** or the touch "Play as" button) uses exactly the same mouse and joystick controls, also when they drive; the touch screen adds Dig / Demolish / Fire / Return buttons.
 - Space no longer locks the character's pose. Settings: mouse sensitivity, invert Y, touch controls (auto / on / off). **F1** has a new "Mouse & Touch" tab.
 
