@@ -576,6 +576,10 @@ func _smoke_npcs() -> bool:
 	# Night: everyone goes home.
 	TimeManager.reset_calendar(TimeManager.day, 23.5, "sunny")
 	for b: TownspersonBot in bots:
+		# Include a conversation still active when the resident arrives home.
+		var sc := b.controller as ScheduleController
+		if sc:
+			sc.chat_timer = 10.0
 		b.snap_to_schedule()
 	await _frames(30)
 	var home := 0

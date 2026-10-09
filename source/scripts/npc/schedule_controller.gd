@@ -66,6 +66,13 @@ func tick(bot: Node3D, delta: float) -> Dictionary:
 	var e := entry_for_hour(h)
 	if e != current:
 		_begin(bot, e)
+	# Once home for the night, a conversation started outdoors must not keep
+	# the resident visible in the house or carry over into the next morning.
+	if arrived and str(current.get("activity", "")) == "sleep":
+		_talk_timer = 0.0
+		chat_timer = 0.0
+		chat_partner = null
+		return {"move": Vector3.ZERO, "hidden": true}
 	# Talking to the player overrides everything briefly.
 	if _talk_timer > 0.0:
 		_talk_timer -= delta
