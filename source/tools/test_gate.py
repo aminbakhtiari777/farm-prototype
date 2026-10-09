@@ -479,7 +479,8 @@ def step_chrome(web_out: Path, port: int = 0) -> bool:
         time.sleep(0.8)
         out_png = Path("/workspace/farm-v7b1-web-local.png")
         test = Path("/tmp/webtest_v7b1_gate.py")
-        test.write_text('''import asyncio, time, sys, shutil
+        test.write_text('''import asyncio, base64, time, sys, shutil
+from pathlib import Path
 from playwright.async_api import async_playwright
 URL = sys.argv[1]; OUT = sys.argv[2]; WAIT = int(sys.argv[3]) if len(sys.argv) > 3 else 22000
 async def main():
@@ -519,7 +520,15 @@ async def main():
         await page.mouse.click(320, 180)
         await page.keyboard.down("KeyW"); await page.wait_for_timeout(1200); await page.keyboard.up("KeyW")
         await page.wait_for_timeout(5000)
-        await page.screenshot(path=OUT)
+        async def capture(path):
+            # Snapshot the current compositor surface without waiting for a new
+            # WebGL frame, which can starve on software-only rendering hosts.
+            session = await page.context.new_cdp_session(page)
+            result = await asyncio.wait_for(session.send("Page.captureScreenshot", {
+                "format": "png", "fromSurface": False, "captureBeyondViewport": False}), 45)
+            Path(path).write_bytes(base64.b64decode(result["data"]))
+            await session.detach()
+        await capture(OUT)
         errs = [l for l in logs if l[1] in ("error", "pageerror")
                 and "AudioWorklet" not in l[2] and "AudioContext" not in l[2]
                 and "ALSA" not in l[2]]
@@ -552,7 +561,7 @@ async def main():
         errs2 = [l for l in logs[n0:] if l[1] in ("error", "pageerror")]
         print("console errors after reload:", len(errs2))
         for l in errs2: print("   ", l)
-        await page.screenshot(path=OUT.replace(".png", "-reload-f9.png"))
+        await capture(OUT.replace(".png", "-reload-f9.png"))
         await browser.close()
         print("websockets opened (must be 0, offline by default):", len(sockets), sockets[:3])
         print("requests to other hosts (must be 0):", len(foreign), foreign[:3])

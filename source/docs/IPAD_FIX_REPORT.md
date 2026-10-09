@@ -1,7 +1,8 @@
 # iPad controls and streaming fixes
 
-The live root build is still v7b. This change prepares the newer source for
-testing; it does not replace the live game's HTML/PCK/WASM files.
+This release fixes iPad input detection, camera controls, deferred town work,
+and the failures that blocked the v7b.1 release. The exported build uses the
+Compatibility renderer and single-threaded WebAssembly.
 
 ## Changes
 
@@ -47,23 +48,46 @@ testing; it does not replace the live game's HTML/PCK/WASM files.
 - Chromium touch emulation reached the game with `touch=true` and `quality=low`.
   This is not physical iPad/Safari validation. A high-resolution software-rendered
   screenshot timed out; no iPad FPS claim is made.
-- Continued full smoke run: **2598 checks, 15 failures**. The real-clock,
-  wood-trip and gesture checks passed this time. Remaining failures cover night
-  schedules, controls-tab expectations, social-chat counting, an NPC controller
-  cast to Nil, town-lot count, police/conflict reporting, save timing, wheel
-  reset timing, farmhouse board expectations, tow truck departure, transit
-  boarding/alighting, and the high-speed accident scenario. Several are test
-  assumptions or timing interference; they are not all confirmed gameplay bugs.
-- Final network rerun: **60 checks, 0 failures**. Covers room limits,
-  reconnect/heartbeat, server validation, chat, live module updates (including
-  rejection of unsafe modules), save sync and offline progress. The offline
-  movement check now waits for its unchanged distance/frame thresholds instead
-  of assuming enough simulated ticks occur within a fixed three-second sleep.
+- Latest strict full smoke run: **2617 checks, 0 failures, no SCRIPT ERROR**.
+  The original 15 failing checks are resolved, including their dependent section
+  failures. Initial 2598/15 results are superseded by this run.
+- Compile validation: **764 files, 0 failures**; module manifest check passed.
+- Network suite: **60 checks, 0 failures**.
+- Web export: **10,572,928-byte PCK**.
+- Chromium release checks passed: entry into single-player, no console errors,
+  browser save persistence across reload, successful F9 load, no unexpected
+  WebSocket connections or external-host requests. Screenshots were captured
+  through CDP to avoid compositor waits on this software-rendered test host.
+
+## Resolution of the original failures
+
+| Failed checks | Cause and correction |
+| --- | --- |
+| Night schedules; population controller cast | City Hall owns a separate Staffing instance that kept three actors assigned. All staffing instances now honor smoke isolation and release actors between sections. Normal gameplay still runs staffing. |
+| Controls categories | Include the new MouseTouch tab in the expected tab list. |
+| Social chat count | Assert the explicit chat's increment before unrelated background chats occur. |
+| Extra lot count | Compare constructed lots with the active module's configured lots, rather than an old hardcoded minimum of two. |
+| Police settlement/report | Wait for process frames, where Conflicts runs, rather than only physics frames. |
+| Restored tipsy timer | Check the restored value immediately, before gameplay decrements it. |
+| Steering wheel | Isolate the car's physics input while checking visual steering, and wait for render/process updates. |
+| Home roof boards | Count only family signs; explicitly verify the farmhouse keeps its fallback sign. |
+| Tow truck departure | Move the test's farmer out of the safety-aware truck's path. |
+| Transit boarding | Allow the documented seven-second walk-to-door fallback to complete. |
+| Transit alighting | Add an alighting cooldown so the same resident is not immediately loaded again at that stop. |
+| High-speed hit; accident creation; police section | Use a fresh victim outside the light-hit cooldown and prepare the shared car's gearbox/fuel/condition. Physical car contacts also report speed before collision braking. |
+
+Two subsequently exposed fixture issues were corrected as well: directory
+family names follow the selected language, and NPC-card content is checked before
+the automatic proximity scanner selects a different resident.
+
+A genuine runtime error discovered during module swaps was also fixed:
+FootstepAudio validates cached actor references before casting them. The release
+gate now rejects SCRIPT ERROR output even when all assertion checks pass.
 
 ## Release limitation
 
-The full release gate is not green, so do not deploy this source snapshot over
-the live root build yet. Physical Safari/iPad performance remains unmeasured.
+Physical Safari/iPad performance remains unmeasured. Automated Chromium checks
+do not establish frame rates or Safari compatibility on a physical device.
 
 The current streaming system sleeps distant processing/physics, uses distance
 LOD, builds street furniture on approach and creates/releases home interiors
