@@ -66,7 +66,7 @@ body {
 	image-rendering: pixelated;
 }
 
-#status-progress, #status-notice {
+#status-progress, #status-notice, #status-detail {
 	display: none;
 }
 
@@ -74,6 +74,29 @@ body {
 	bottom: 10%;
 	width: 50%;
 	margin: 0 auto;
+}
+
+#status-detail {
+	bottom: 4%;
+	color: #f1f1f1;
+	font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
+	font-size: clamp(0.8rem, 2.6vw, 1rem);
+	line-height: 1.45;
+	padding: 0 1rem;
+	text-align: center;
+	text-shadow: 0 1px 4px #000;
+	z-index: 1;
+}
+
+#status-retry {
+	background: #fff;
+	border: 0;
+	border-radius: 0.4rem;
+	color: #222;
+	cursor: pointer;
+	font: inherit;
+	margin-inline-start: 0.5rem;
+	padding: 0.45rem 0.8rem;
 }
 
 #status-notice {
@@ -114,34 +137,64 @@ var r=Element.prototype.requestPointerLock;if(r){Element.prototype.requestPointe
 		<div id="status">
 			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="index.png" alt="">
 			<progress id="status-progress"></progress>
+			<div id="status-detail" role="status" aria-live="polite"></div>
 			<div id="status-notice"></div>
 		</div>
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":5510996,"index.wasm":37700666},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":5513604,"index.wasm":37700666},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
 (function () {
 	const statusOverlay = document.getElementById('status');
 	const statusProgress = document.getElementById('status-progress');
+	const statusDetail = document.getElementById('status-detail');
 	const statusNotice = document.getElementById('status-notice');
 
 	let initializing = true;
 	let statusMode = '';
+	const loadStartedAt = performance.now();
+	let lastProgressAt = loadStartedAt;
+	let lastProgressBytes = 0;
+	let retryShown = false;
+	let progressTimer = 0;
+
+	function formatBytes(bytes) {
+		return `${(bytes / 1048576).toFixed(1)} MB`;
+	}
+
+	function showRetryHint() {
+		if (retryShown || !initializing) return;
+		retryShown = true;
+		statusDetail.appendChild(document.createElement('br'));
+		statusDetail.appendChild(document.createTextNode('Download is slow. Check your connection or '));
+		const retry = document.createElement('button');
+		retry.id = 'status-retry';
+		retry.type = 'button';
+		retry.textContent = 'Retry';
+		retry.addEventListener('click', () => window.location.reload());
+		statusDetail.appendChild(retry);
+	}
+
+	function watchForStall() {
+		if (initializing && performance.now() - lastProgressAt > 15000) showRetryHint();
+	}
 
 	function setStatusMode(mode) {
 		if (statusMode === mode || !initializing) {
 			return;
 		}
 		if (mode === 'hidden') {
+			clearInterval(progressTimer);
 			statusOverlay.remove();
 			initializing = false;
 			return;
 		}
 		statusOverlay.style.visibility = 'visible';
 		statusProgress.style.display = mode === 'progress' ? 'block' : 'none';
+		statusDetail.style.display = mode === 'progress' ? 'block' : 'none';
 		statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
 		statusMode = mode;
 	}
@@ -207,14 +260,28 @@ const engine = new Engine(GODOT_CONFIG);
 		}
 	} else {
 		setStatusMode('progress');
+		statusDetail.textContent = 'Starting download…';
+		progressTimer = setInterval(watchForStall, 1000);
 		engine.startGame({
 			'onProgress': function (current, total) {
 				if (current > 0 && total > 0) {
+					const now = performance.now();
+					if (current !== lastProgressBytes) {
+						lastProgressAt = now;
+						lastProgressBytes = current;
+						retryShown = false;
+					}
 					statusProgress.value = current;
 					statusProgress.max = total;
+					const percent = Math.min(100, current / total * 100);
+					const seconds = Math.max(0.1, (now - loadStartedAt) / 1000);
+					const speed = current / seconds;
+					const eta = speed > 0 ? Math.max(0, Math.ceil((total - current) / speed)) : 0;
+					statusDetail.textContent = `${percent.toFixed(1)}% — ${formatBytes(current)} / ${formatBytes(total)} — ${formatBytes(speed)}/s${eta ? ` — about ${eta}s left` : ''}`;
 				} else {
 					statusProgress.removeAttribute('value');
 					statusProgress.removeAttribute('max');
+					statusDetail.textContent = 'Preparing game…';
 				}
 			},
 		}).then(() => {
@@ -225,4 +292,3 @@ const engine = new Engine(GODOT_CONFIG);
 		</script>
 	</body>
 </html>
-
