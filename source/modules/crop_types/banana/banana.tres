@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CropDef" format=3]
+
+[ext_resource type="Script" path="res://modules/crop_types/crop_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "banana"
+type = "crop_types"
+display_name = "Banana Plant"
+description = "Banana Plant - 1.0 m², summer/autumn, 9 days to harvest, fruits again every 4 days."
+seed_id = "banana_sucker"
+seed_name = "Banana Sucker"
+produce_id = "banana_fruit"
+produce_name = "Bananas"
+seasons = PackedStringArray("summer", "autumn")
+stage_days = PackedFloat32Array(2, 2, 3, 2)
+yield_amount = 3
+seed_price = 350
+sell_price = 60
+footprint_m2 = 1
+shape = "palm"
+leaf_color = Color(0.3, 0.58, 0.22, 1)
+flower_color = Color(0.55, 0.15, 0.32, 1)
+fruit_color = Color(0.95, 0.85, 0.25, 1)
+height = 2.4
+fruit_size = 0.03
+fruit_count = 9
+regrow_days = 4

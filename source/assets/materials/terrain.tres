@@ -1,0 +1,37 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/seasonal_terrain.gdshader" id="1_ter"]
+
+[sub_resource type="Gradient" id="Gradient_1"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.72, 0.72, 0.72, 1, 0.92, 0.92, 0.92, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="Noise_1"]
+frequency = 0.04
+fractal_octaves = 5
+
+[sub_resource type="NoiseTexture2D" id="Tex_1"]
+width = 1024
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_1")
+noise = SubResource("Noise_1")
+
+[sub_resource type="NoiseTexture2D" id="Tex_n"]
+width = 512
+height = 512
+seamless = true
+as_normal_map = true
+bump_strength = 5.0
+noise = SubResource("Noise_1")
+
+[resource]
+resource_name = "terrain"
+shader = ExtResource("1_ter")
+shader_parameter/detail_tex = SubResource("Tex_1")
+shader_parameter/normal_tex = SubResource("Tex_n")
+shader_parameter/uv_scale = Vector2(1.2, 1.2)
+shader_parameter/normal_strength = 0.7
+shader_parameter/grass_tint = Color(1, 1, 1, 1)
+shader_parameter/snow_amount = 0.0
+shader_parameter/snow_color = Color(0.9, 0.92, 0.96, 1)

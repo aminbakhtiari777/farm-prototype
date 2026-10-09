@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="KitchenwareDef" format=3]
+
+[ext_resource type="Script" path="res://modules/kitchenware/kitchenware_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "pan_cast_iron"
+type = "kitchenware"
+display_name = "Cast-iron Pan"
+description = "Kitchenware: Cast-iron Pan"
+name_fa = "تابه‌ی چدنی"
+item_id = "pan_cast_iron"
+price = 170
+slot = "pan"
+tier = 2
+requires = "pan_nonstick"
+speed = {"cook": 0.7}
+meal_bonus = 2
+unlocks = PackedStringArray()
+needs_power = false
+color = Color(0.1, 0.1, 0.1, 1)
+shape = "pan"
+sort_order = 4

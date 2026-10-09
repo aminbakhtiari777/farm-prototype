@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DealershipStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/car_dealership/dealership_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "budget_lot"
+type = "car_dealership"
+display_name = "Budget lot"
+description = "Cheaper used cars (60%), same rules."
+name_fa = "خودروهای کارکرده"
+name = {"en": "Used cars", "fa": "خودروی کارکرده"}
+cars = [{"id": "city_sedan", "model": "sedan", "en": "Used city sedan", "fa": "سواری شهری کارکرده", "price": 540, "color": Color(0.75, 0.1, 0.12, 1), "top_kmh": 55}, {"id": "family_van", "model": "van", "en": "Used family van", "fa": "ون خانوادگی کارکرده", "price": 780, "color": Color(0.15, 0.3, 0.6, 1), "top_kmh": 48}, {"id": "work_truck", "model": "delivery", "en": "Used small truck", "fa": "کامیونت کارکرده", "price": 960, "color": Color(0.9, 0.9, 0.88, 1), "top_kmh": 45}]

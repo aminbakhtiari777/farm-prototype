@@ -1,0 +1,11 @@
+.godot/
+devtmp/
+builds/
+server/content/
+server/data/
+.git/
+**/__pycache__/
+*.apk
+*.aab
+*.exe
+*.tpz

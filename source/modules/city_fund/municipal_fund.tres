@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CityFundStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/city_fund/city_fund_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "municipal_fund"
+type = "city_fund"
+display_name = "Municipal fund"
+description = "Fines + a small shop tax fund benches, streetlights, flower beds and a small park; 30% doctor subsidy."
+name_fa = "صندوق شهرداری"
+projects = [{"id": "benches", "en": "Park benches on Main St", "fa": "نیمکت‌های خیابان اصلی", "cost": 300, "days": 1, "kind": "bench", "pos": [Vector2(-20, -44.3), Vector2(-36, -44.3), Vector2(22, -44.3), Vector2(40, -55.7)]}, {"id": "streetlights", "en": "New streetlights on Maple St", "fa": "چراغ‌های تازه‌ی خیابان افرا", "cost": 450, "days": 1, "kind": "streetlight", "pos": [Vector2(-30, -84.9), Vector2(-10, -84.9), Vector2(10, -84.9), Vector2(30, -84.9)]}, {"id": "flowerbeds", "en": "Flower beds by City Hall", "fa": "باغچه‌های گل کنار شهرداری", "cost": 250, "days": 1, "kind": "flowerbed", "pos": [Vector2(7, -57.5), Vector2(22, -57.5), Vector2(-7.5, -57.8)]}, {"id": "small_park", "en": "A small park with trees and a slide", "fa": "یک پارک کوچک با درخت و سرسره", "cost": 900, "days": 2, "kind": "park", "pos": [Vector2(5.5, -36)]}]

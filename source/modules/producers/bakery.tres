@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ProducerDef" format=3]
+
+[ext_resource type="Script" path="res://modules/producers/producer_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "bakery"
+type = "producers"
+display_name = "Bakery"
+description = "Fresh bread every morning for the bakery stall."
+name_fa = "نانوایی"
+shop = "stall:bakery"
+worker_jobs = PackedStringArray()
+outputs = {"bread_loaf": 12}
+inputs = {}
+items = {}
+sort_order = 8

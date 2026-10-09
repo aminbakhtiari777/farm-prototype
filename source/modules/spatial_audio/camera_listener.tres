@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpatialAudioStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/spatial_audio/spatial_audio_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "camera_listener"
+type = "spatial_audio"
+display_name = "Camera listener (default)"
+description = "Listener on the camera (pulled 30% toward the player), strong stereo panning, muffled indoors, 10 voices."
+name_fa = "شنونده روی دوربین"

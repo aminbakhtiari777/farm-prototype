@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SunbathingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/sunbathing/sunbathing_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "sun_beach"
+type = "sunbathing"
+display_name = "Sunbathing beach"
+description = "Six towels under striped umbrellas on the north-east sand; townspeople come on fine days 10:00-17:00."
+name_fa = "ساحل آفتاب‌گیری"

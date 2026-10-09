@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SkyStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/sky/sky_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "glass_blue"
+type = "sky"
+display_name = "Glass-clear blue"
+description = "v6a: clear, bright, glassy blue day sky; fewer clouds on fine days."
+day_zenith = Color(0.1, 0.36, 0.86, 1)
+day_horizon = Color(0.6, 0.8, 0.98, 1)
+dusk_zenith = Color(0.2, 0.25, 0.52, 1)
+dusk_horizon = Color(0.98, 0.56, 0.3, 1)
+night_zenith = Color(0.006, 0.012, 0.045, 1)
+night_horizon = Color(0.035, 0.06, 0.13, 1)
+cloud_mult = 0.55
+clarity = 1

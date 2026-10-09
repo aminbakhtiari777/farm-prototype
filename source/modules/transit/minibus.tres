@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TransitStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/transit/transit_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "minibus"
+type = "transit"
+display_name = "Minibus line"
+description = "A smaller white minibus on the same loop, fare 3, every 20 min."
+name_fa = "خط مینی‌بوس"
+vehicles = {"city_bus": {"en": "City bus", "fa": "اتوبوس شهری", "length": 9.6, "width": 2.5, "height": 3, "color": Color(0.1, 0.45, 0.62, 1), "stripe": Color(0.96, 0.82, 0.25, 1), "engine": "bus", "seats": 22, "top_kmh": 45}, "minibus": {"en": "Minibus", "fa": "مینی‌بوس", "length": 7, "width": 2.3, "height": 2.7, "color": Color(0.92, 0.9, 0.85, 1), "stripe": Color(0.2, 0.5, 0.3, 1), "engine": "bus", "seats": 14, "top_kmh": 50}}
+line = {"id": "line1", "en": "Line 1", "fa": "خط ۱", "vehicle": "minibus", "route": [Vector2(-20, -50), Vector2(-45, -62), Vector2(-45, -86), Vector2(-23, -90), Vector2(44, -90), Vector2(60, -90), Vector2(20, -90), Vector2(0, -80), Vector2(0, -70), Vector2(0, -63), Vector2(14, -50), Vector2(40.5, -50), Vector2(55, -40), Vector2(55, -35), Vector2(48, -12), Vector2(55, -42), Vector2(22, -50), Vector2(-8, -50)], "stops": [{"id": "police", "pos": Vector2(-29, -50), "side": Vector2(-29, -56.2), "en": "Main St / Police", "fa": "خیابان اصلی / پلیس"}, {"id": "mosque", "pos": Vector2(-20, -90), "side": Vector2(-20, -84.2), "en": "Maple St / Mosque", "fa": "خیابان افرا / مسجد"}, {"id": "school", "pos": Vector2(44, -90), "side": Vector2(44, -84.2), "en": "School", "fa": "مدرسه"}, {"id": "oak", "pos": Vector2(0, -70), "side": Vector2(-5.6, -70), "en": "Oak Ave", "fa": "خیابان بلوط"}, {"id": "hospital", "pos": Vector2(40.5, -50), "side": Vector2(40.5, -44.2), "en": "Supermarket / Hospital", "fa": "سوپرمارکت / بیمارستان"}, {"id": "harbor", "pos": Vector2(55, -35), "side": Vector2(49.6, -35), "en": "Harbor Rd / Beach", "fa": "جاده‌ی بندر / ساحل"}], "dwell_s": 7, "speed": 8.5}
+fare = 3
+interval_min = 20
+terminal = {"pos": Vector2(-62, -54.1), "yaw": -90, "vehicle": "minibus", "en": "Minibus terminal", "fa": "پایانه‌ی مینی‌بوس"}

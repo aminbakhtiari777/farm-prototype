@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ToolDef" format=3]
+
+[ext_resource type="Script" path="res://modules/tool_types/tool_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "hoe"
+type = "tool_types"
+display_name = "Hoe"
+description = "Tills one garden cell (0.5 m²)."
+item_id = "hoe"
+kind = "hoe"
+tier = 1
+anim = "swing"
+sound = "hoe_dig"
+shape = "blade"
+head_color = Color(0.5, 0.5, 0.52, 1)
+handle_color = Color(0.5, 0.34, 0.2, 1)
+buy = 0
+starter = false
+unlock_day = 1
+requires = ""
+reach = 1
+anim_seconds = 0.8

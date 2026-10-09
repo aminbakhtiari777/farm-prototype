@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ConflictStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/conflicts/conflict_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "peaceful_town"
+type = "conflicts"
+display_name = "Peaceful town"
+description = "Arguments are rare and short."
+name_fa = "شهر آرام"
+reasons = {"debt": {"lines": [{"en": "You still owe me 200 gold!", "fa": "هنوز دویست سکه به من بدهکاری!"}, {"en": "A month! You promised a week!", "fa": "یک ماه! قول داده بودی یک هفته!"}], "replies": [{"en": "I'll pay, I said I'll pay!", "fa": "می‌دم، گفتم که می‌دم!"}, {"en": "Times are hard, be patient!", "fa": "اوضاع سخته، صبر کن!"}], "calm": {"en": "They agree on paying in three parts.", "fa": "قرار شد بدهی در سه قسط پرداخت شود."}}, "theft": {"lines": [{"en": "Someone took fruit from my garden - was it you?!", "fa": "یکی از باغم میوه چیده - تو بودی؟!"}, {"en": "I saw you near my fence!", "fa": "دیدمت کنار حصار من!"}], "replies": [{"en": "How dare you accuse me!", "fa": "چطور جرئت می‌کنی به من تهمت بزنی!"}, {"en": "I was at work all day!", "fa": "من تمام روز سر کار بودم!"}], "calm": {"en": "They agree to let the police check the report.", "fa": "قرار شد پلیس گزارش را بررسی کند."}}, "noise": {"lines": [{"en": "Your music kept us up all night!", "fa": "صدای موسیقیت تمام شب نگذاشت بخوابیم!"}, {"en": "Hammering at six in the morning?!", "fa": "ساعت شش صبح چکش‌کاری؟!"}], "replies": [{"en": "It's my house, I'll do what I like!", "fa": "خونه‌ی خودمه، هر کاری بخوام می‌کنم!"}, {"en": "It was only one evening!", "fa": "فقط یک شب بود!"}], "calm": {"en": "Quiet hours after 22:00 - they shake hands.", "fa": "بعد از ساعت ده شب سکوت - دست دادند."}}}
+tempers = {}
+chance_per_hour = 0.05
+duration = 25
+police_after = 12

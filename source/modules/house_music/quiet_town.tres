@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HouseMusicStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/house_music/house_music_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "quiet_town"
+type = "house_music"
+display_name = "Quiet town"
+description = "Only the gym plays music."
+name_fa = "شهر آرام"
+sources = {"gym": "res://assets/audio/music/gym_loop.ogg"}

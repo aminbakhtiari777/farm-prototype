@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDef" format=3]
+
+[ext_resource type="Script" path="res://modules/recipes/recipe_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "birdhouse"
+type = "recipes"
+display_name = "Birdhouse"
+description = "A cosy birdhouse. Sells well at the carpenter and the craft stall."
+station = "workbench"
+inputs = {"wood_plank": 3}
+output_id = "birdhouse"
+output_name = "Birdhouse"
+output_count = 1
+output_sell = 140
+output_category = "crafted"
+stamina = 0
+sort_order = 0

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FireStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/fire/fire_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "town_fire_service"
+type = "fire"
+display_name = "Town fire service"
+description = "Fire station on Main St, 3 firefighters, fire spreads slowly (11 m), rebuilt in 2 days."
+name_fa = "آتش‌نشانی شهر"

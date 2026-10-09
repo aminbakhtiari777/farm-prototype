@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CafeLoungeStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/cafe_lounge/cafe_lounge_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "classy_lounge"
+type = "cafe_lounge"
+display_name = "Classy lounge + disco"
+description = "Stone terrace, pergola lights, plants; indoor lounge with a disco 20-24, crowd of 12, modest stylish dress code."
+name_fa = "کافه لانژ و دیسکو"
+name = {"en": "Lounge Cafe", "fa": "کافه لانژ"}
+dance_colors = [Color(0.95, 0.3, 0.55, 1), Color(0.3, 0.55, 1, 1), Color(1, 0.75, 0.25, 1), Color(0.45, 0.95, 0.6, 1), Color(0.7, 0.35, 1, 1)]
+music = PackedStringArray("res://assets/audio/music/zarb_loop.ogg", "res://assets/audio/music/radio_loop.ogg")
+dress_tops = PackedStringArray("jacket", "long_sleeve", "work_shirt", "polo")

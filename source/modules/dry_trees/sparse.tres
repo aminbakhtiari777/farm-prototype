@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DryTreeStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/dry_trees/dry_tree_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "sparse"
+type = "dry_trees"
+display_name = "A few dry trees"
+description = "8 dead trees, tougher (4 hits), 2 regrow a day."
+name_fa = "چند درخت خشک"
+count = 8
+hits = 4
+regrow_per_day = 2
+items = {"firewood": {"name": "Firewood", "name_fa": "هیزم", "type": "produce", "category": "wood", "sell": 12, "description": "Split dry wood. Lights the beach campfire."}, "dry_wood": {"name": "Dry Wood", "name_fa": "چوب خشک", "type": "produce", "category": "wood", "sell": 18, "description": "Seasoned logs. The carpenter saws them into boards."}}

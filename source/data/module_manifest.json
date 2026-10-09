@@ -1,0 +1,2670 @@
+{
+ "build": "v7b1",
+ "format": 1,
+ "game": "farm-prototype",
+ "modules": {
+  "accounts": {
+   "active": "guest",
+   "collection": false,
+   "files": {
+    "guest": {
+     "bytes": 337,
+     "path": "res://modules/accounts/guest.tres",
+     "sha256": "c5df7409b899236278e3d9e8267ed7b31d508ac411b5200e3bdf14ee5faac338"
+    },
+    "guest_small": {
+     "bytes": 344,
+     "path": "res://modules/accounts/guest_small.tres",
+     "sha256": "75f42fb10b79106622b085e2ad5c0c0a821c6592c01adea6ddd22f2969c68ec3"
+    }
+   },
+   "version": 1
+  },
+  "ambient_sounds": {
+   "active": "lively",
+   "collection": false,
+   "files": {
+    "calm": {
+     "bytes": 1237,
+     "path": "res://modules/ambient_sounds/calm.tres",
+     "sha256": "d33c1fc24b23f4d9994638ba979dd5b8d4cc398df2786fee84e00c43575911f0"
+    },
+    "lively": {
+     "bytes": 1390,
+     "path": "res://modules/ambient_sounds/lively.tres",
+     "sha256": "c4abf413d3f0e2020987dac58c5519b2ac00bc1ac58fce471daee9eecbd933e4"
+    }
+   },
+   "version": 1
+  },
+  "ambulance": {
+   "active": "city_ambulance",
+   "collection": false,
+   "files": {
+    "city_ambulance": {
+     "bytes": 438,
+     "path": "res://modules/ambulance/city_ambulance.tres",
+     "sha256": "7d48efd5c35d38fdff76f124557f5ba22d68d6ae3a0723a89cdd9721b5c56e22"
+    },
+    "serious_only": {
+     "bytes": 420,
+     "path": "res://modules/ambulance/serious_only.tres",
+     "sha256": "69e4be539f1a4abb0a14acbb326ce28b9607b80e4460ec0695bc582e6c39384d"
+    }
+   },
+   "version": 1
+  },
+  "animal_housing": {
+   "active": "coop",
+   "collection": true,
+   "files": {
+    "barn": {
+     "bytes": 788,
+     "path": "res://modules/animal_housing/barn.tres",
+     "sha256": "1fa11fda12fb86ba47e9698c24309ad173c64c34d87410335a266483bd07c2de"
+    },
+    "coop": {
+     "bytes": 801,
+     "path": "res://modules/animal_housing/coop.tres",
+     "sha256": "67d67b1aa604b925d941972c5807baec8481ea928e92fddc087d3f5bff199e3d"
+    }
+   },
+   "version": 1
+  },
+  "animals": {
+   "active": "white_sheep",
+   "collection": false,
+   "files": {
+    "black_sheep": {
+     "bytes": 334,
+     "path": "res://modules/animals/black_sheep.tres",
+     "sha256": "f56520b387d6d5849d3dffb9db2584d9cf2b3c286ae2d3d38def8e2e9615d270"
+    },
+    "white_sheep": {
+     "bytes": 251,
+     "path": "res://modules/animals/white_sheep.tres",
+     "sha256": "4013b8dc97c29b51b27a7a255752e19d05686479dbaad57d6e9188e33b7137e2"
+    }
+   },
+   "version": 1
+  },
+  "audio_budget": {
+   "active": "capped",
+   "collection": false,
+   "files": {
+    "capped": {
+     "bytes": 396,
+     "path": "res://modules/audio_budget/capped.tres",
+     "sha256": "bb8dd81c335a0ddc6a0577da6da8308a8103a0d0b8f7029d9aaf39444cad0c27"
+    },
+    "generous": {
+     "bytes": 403,
+     "path": "res://modules/audio_budget/generous.tres",
+     "sha256": "5b0e998bb9e08b98ccca1a409fc162792079561b804d18551d6408bbdb822edb"
+    }
+   },
+   "version": 1
+  },
+  "away_avatar": {
+   "active": "cafe_or_home",
+   "collection": false,
+   "files": {
+    "always_home": {
+     "bytes": 362,
+     "path": "res://modules/away_avatar/always_home.tres",
+     "sha256": "9aef0cda3b18682066cfd765ba74c28ea76ae1a52e289d1002111668133bddba"
+    },
+    "cafe_or_home": {
+     "bytes": 411,
+     "path": "res://modules/away_avatar/cafe_or_home.tres",
+     "sha256": "dc95db5999131b7dd13aa641f45e111e545039fadc922184e8858e55edbb255b"
+    }
+   },
+   "version": 1
+  },
+  "backstories": {
+   "active": "town_stories",
+   "collection": false,
+   "files": {
+    "quiet_stories": {
+     "bytes": 24563,
+     "path": "res://modules/backstories/quiet_stories.tres",
+     "sha256": "988ad7acfbcb303ce1aea36c2051d1d989a67bdc7749e08f16f24b3a67df29a1"
+    },
+    "town_stories": {
+     "bytes": 24588,
+     "path": "res://modules/backstories/town_stories.tres",
+     "sha256": "014d59aa7d24d7befce85b4c0140ec9297edaae579ba13621490d2f891f80873"
+    }
+   },
+   "version": 2
+  },
+  "boats": {
+   "active": "fishing_boats",
+   "collection": false,
+   "files": {
+    "fishing_boats": {
+     "bytes": 397,
+     "path": "res://modules/boats/fishing_boats.tres",
+     "sha256": "aee457fdcb641d6b08394137ef29373bfe61c2e6344ecb118d659f43a33ad12b"
+    },
+    "rowboats": {
+     "bytes": 449,
+     "path": "res://modules/boats/rowboats.tres",
+     "sha256": "1097fa37fed00546b0bdc840df16f6334844b91f11c4b0b9c486eb88293f6dc8"
+    }
+   },
+   "version": 1
+  },
+  "buildings": {
+   "active": "village",
+   "collection": false,
+   "files": {
+    "coastal": {
+     "bytes": 410,
+     "path": "res://modules/buildings/coastal.tres",
+     "sha256": "d9d765c8969049283ac349c549bb66eaf97e4833a9b1b09e2dbb11e21c2afeec"
+    },
+    "village": {
+     "bytes": 268,
+     "path": "res://modules/buildings/village.tres",
+     "sha256": "01abd7abbfd1d8cab71ed37c100f640710a5704a6de578b567b241ba36e04030"
+    }
+   },
+   "version": 1
+  },
+  "cafe": {
+   "active": "night_terrace",
+   "collection": false,
+   "files": {
+    "night_terrace": {
+     "bytes": 3448,
+     "path": "res://modules/cafe/night_terrace.tres",
+     "sha256": "6e395edbfe48af1edb9ed8ffc838e5a38f2415b9e0b1a941c733cd9e5c654d52"
+    },
+    "tea_house": {
+     "bytes": 3112,
+     "path": "res://modules/cafe/tea_house.tres",
+     "sha256": "c6c28c42a85f35478cdf7a2ecb7a7c7df7263a10ff4f9f96430f27dc88a75fc3"
+    }
+   },
+   "version": 1
+  },
+  "cafe_lounge": {
+   "active": "classy_lounge",
+   "collection": false,
+   "files": {
+    "classy_lounge": {
+     "bytes": 841,
+     "path": "res://modules/cafe_lounge/classy_lounge.tres",
+     "sha256": "078a8ebd78b903ef075d4db988ec89c3a4309c5d00e866eb49cab1491e39c710"
+    },
+    "jazz_lounge": {
+     "bytes": 681,
+     "path": "res://modules/cafe_lounge/jazz_lounge.tres",
+     "sha256": "ce3f3f36993271f67a73f09a7a72bd601acaa159151bf060b229dd89ce0acfc2"
+    }
+   },
+   "version": 1
+  },
+  "campfire": {
+   "active": "beach_fire",
+   "collection": false,
+   "files": {
+    "beach_fire": {
+     "bytes": 387,
+     "path": "res://modules/campfire/beach_fire.tres",
+     "sha256": "a2fa582d08f4aeb00b4d902f5cdb1c96fa8bea695f80f6885d6a58776f873b9c"
+    },
+    "big_bonfire": {
+     "bytes": 415,
+     "path": "res://modules/campfire/big_bonfire.tres",
+     "sha256": "3bdfd1e67f926a73e44dae9c2658dc89e498ad4859d71f6c22b53199e3e16746"
+    }
+   },
+   "version": 1
+  },
+  "camping": {
+   "active": "forest_and_hill",
+   "collection": false,
+   "files": {
+    "family_camping": {
+     "bytes": 1317,
+     "path": "res://modules/camping/family_camping.tres",
+     "sha256": "7414cd2f7c4501051a7c1532b079d5a4ade3b5f8dd9ee900777d714b97f8f524"
+    },
+    "forest_and_hill": {
+     "bytes": 1304,
+     "path": "res://modules/camping/forest_and_hill.tres",
+     "sha256": "2b4f7bee5adeedc75268873a512852b38a09999aa87cf9f99004ee17dc848e6e"
+    }
+   },
+   "version": 1
+  },
+  "car_bodies": {
+   "active": "realistic_cars",
+   "collection": false,
+   "files": {
+    "realistic_cars": {
+     "bytes": 3831,
+     "path": "res://modules/car_bodies/realistic_cars.tres",
+     "sha256": "8b7414ef5a300f76d0227ee743d0ad44f166a63ecb56c2e2d4d0a555a28b460c"
+    },
+    "simple_cars": {
+     "bytes": 3835,
+     "path": "res://modules/car_bodies/simple_cars.tres",
+     "sha256": "bd2acb537584be168d9cf30a6d45e14a6457aa9a3b42288e03e34e852ec4c8ba"
+    }
+   },
+   "version": 1
+  },
+  "car_dealership": {
+   "active": "town_motors",
+   "collection": false,
+   "files": {
+    "budget_lot": {
+     "bytes": 959,
+     "path": "res://modules/car_dealership/budget_lot.tres",
+     "sha256": "eca109592392a915338b461134cff71add67b3fbfeca3386761e47eeabc0923d"
+    },
+    "town_motors": {
+     "bytes": 948,
+     "path": "res://modules/car_dealership/town_motors.tres",
+     "sha256": "42638187271fbb0f924ac9580eae09fea09ecdcbf68c2a73f5ddb306e70904bf"
+    }
+   },
+   "version": 1
+  },
+  "car_sounds": {
+   "active": "distinct_engines",
+   "collection": false,
+   "files": {
+    "distinct_engines": {
+     "bytes": 2329,
+     "path": "res://modules/car_sounds/distinct_engines.tres",
+     "sha256": "868c605fb202993a160b5e383627d8c4b53fcd308c37fa9592f233e0512dc14e"
+    },
+    "quiet_electric": {
+     "bytes": 2282,
+     "path": "res://modules/car_sounds/quiet_electric.tres",
+     "sha256": "344d086a87b828cf57a4deea92bee0c02b4d1751b3896f49e51b96446a65995a"
+    }
+   },
+   "version": 1
+  },
+  "character_creator": {
+   "active": "quaternius_parts",
+   "collection": false,
+   "files": {
+    "quaternius_parts": {
+     "bytes": 5315,
+     "path": "res://modules/character_creator/quaternius_parts.tres",
+     "sha256": "2f5544637a1009d894873587b5d558db2be03852a972ec80b36edc6e7b55197b"
+    },
+    "slim_start": {
+     "bytes": 5266,
+     "path": "res://modules/character_creator/slim_start.tres",
+     "sha256": "6c844048f1ef744893614723458449a38e2bd4cf569410dbc22aab297bfe703d"
+    }
+   },
+   "version": 1
+  },
+  "characters": {
+   "active": "quaternius_ubc",
+   "collection": false,
+   "files": {
+    "quaternius_ubc": {
+     "bytes": 1030,
+     "path": "res://modules/characters/quaternius_ubc.tres",
+     "sha256": "6be93e9d46678a593ce39c1962401fc7a923e86ab425e5b3f9630ca96eb6d5d5"
+    },
+    "quaternius_ubc_tall": {
+     "bytes": 1034,
+     "path": "res://modules/characters/quaternius_ubc_tall.tres",
+     "sha256": "8514dc68b579bdac59c059402dd9aa77a1204771b4cefa8d7194dc646b18e987"
+    }
+   },
+   "version": 1
+  },
+  "chat": {
+   "active": "friendly",
+   "collection": false,
+   "files": {
+    "family": {
+     "bytes": 404,
+     "path": "res://modules/chat/family.tres",
+     "sha256": "4b38ca956a84b1ce9a2d36a1d9ce94803bd362a02585bbfdb5bccfc16de3eefd"
+    },
+    "friendly": {
+     "bytes": 313,
+     "path": "res://modules/chat/friendly.tres",
+     "sha256": "9924c41bbee182c22f9e49a51aeea19c2dec5a96bc0c2d641811df2f13440335"
+    }
+   },
+   "version": 1
+  },
+  "chatter": {
+   "active": "lively_town",
+   "collection": false,
+   "files": {
+    "lively_town": {
+     "bytes": 8704,
+     "path": "res://modules/chatter/lively_town.tres",
+     "sha256": "a1bcf87861ab892d2383df2c4e8cd4d32e2e58b9f83d3c14763bec912a88c8b1"
+    },
+    "quiet_town": {
+     "bytes": 8760,
+     "path": "res://modules/chatter/quiet_town.tres",
+     "sha256": "10d0ca3553ffe79b9602efd33d3a04de27bb2aec72982dcc2992e61239ac26d9"
+    }
+   },
+   "version": 1
+  },
+  "church": {
+   "active": "stone_chapel",
+   "collection": false,
+   "files": {
+    "stone_chapel": {
+     "bytes": 733,
+     "path": "res://modules/church/stone_chapel.tres",
+     "sha256": "92c67f7026fc1e6e9f9c572b1df34b9ce4123bb870c9f6e53d816e8350f6c7bf"
+    },
+    "white_church": {
+     "bytes": 725,
+     "path": "res://modules/church/white_church.tres",
+     "sha256": "181c244351aeafe6b2e5a238d7ee4ea59a5e8ca77a7a8feb5cbfa947c25268ec"
+    }
+   },
+   "version": 1
+  },
+  "city_fund": {
+   "active": "municipal_fund",
+   "collection": false,
+   "files": {
+    "lean_budget": {
+     "bytes": 1359,
+     "path": "res://modules/city_fund/lean_budget.tres",
+     "sha256": "86940d9fa91fbb5161e69d7e8ba8ef00f9cc3f9bbd816da856500cbaaa0b7f66"
+    },
+    "municipal_fund": {
+     "bytes": 1357,
+     "path": "res://modules/city_fund/municipal_fund.tres",
+     "sha256": "36733a9cbcf541db0c76622e70ede4c946270bb7e05e0d7c9a27aa94c1ec6c93"
+    }
+   },
+   "version": 2
+  },
+  "city_hall_interior": {
+   "active": "municipal_office",
+   "collection": false,
+   "files": {
+    "municipal_office": {
+     "bytes": 497,
+     "path": "res://modules/city_hall_interior/municipal_office.tres",
+     "sha256": "fa996b0c391cc6adde810ecafe45103c6549c8b98b186910bc2444a5f952caea"
+    },
+    "simple_office": {
+     "bytes": 452,
+     "path": "res://modules/city_hall_interior/simple_office.tres",
+     "sha256": "b84ca0f5a0b4937a942fb8242c72f1c2a3e5e16ee1314719b36fc1503fb60185"
+    }
+   },
+   "version": 1
+  },
+  "civic": {
+   "active": "classical",
+   "collection": false,
+   "files": {
+    "classical": {
+     "bytes": 989,
+     "path": "res://modules/civic/classical.tres",
+     "sha256": "7f72a1af04198cff916bf091256fd23716de41155f25bf4d234dbb4a7f76643c"
+    },
+    "plain": {
+     "bytes": 935,
+     "path": "res://modules/civic/plain.tres",
+     "sha256": "374d0decf17d84089ff9c5ddb36f893df7e56d28a0c476ea66b7c5a7d96f6a43"
+    }
+   },
+   "version": 1
+  },
+  "cloud_shadows": {
+   "active": "drifting",
+   "collection": false,
+   "files": {
+    "drifting": {
+     "bytes": 502,
+     "path": "res://modules/cloud_shadows/drifting.tres",
+     "sha256": "391c388fbe7e7abb87d36e83c5fccbb7e41e8f289e420af6a5debbc2baa3c035"
+    },
+    "still_day": {
+     "bytes": 460,
+     "path": "res://modules/cloud_shadows/still_day.tres",
+     "sha256": "b6a1cc1fd2a7fab2d69e903780578fdbf3189b2dcb3930987c347e6679e09870"
+    }
+   },
+   "version": 1
+  },
+  "conflicts": {
+   "active": "street_arguments",
+   "collection": false,
+   "files": {
+    "peaceful_town": {
+     "bytes": 2093,
+     "path": "res://modules/conflicts/peaceful_town.tres",
+     "sha256": "99bde545975ee308bb2e0106e3af6aad1101c28caccd8a3037567d86e5f5a8a8"
+    },
+    "street_arguments": {
+     "bytes": 2358,
+     "path": "res://modules/conflicts/street_arguments.tres",
+     "sha256": "16864e53f217ce5c3727b558e79f7b632e2bf78e8c4ab2bf8ea85b601605b648"
+    }
+   },
+   "version": 1
+  },
+  "controls_keyboard": {
+   "active": "keyboard_legacy",
+   "collection": false,
+   "files": {
+    "keyboard_legacy": {
+     "bytes": 432,
+     "path": "res://modules/controls_keyboard/keyboard_legacy.tres",
+     "sha256": "ad5e90069f2464eb32085983512fe295c9bbfb6e27302d4586bd979c41ce8b9c"
+    },
+    "keyboard_turn": {
+     "bytes": 452,
+     "path": "res://modules/controls_keyboard/keyboard_turn.tres",
+     "sha256": "2cc3f757805e30ed3116133827cb45eda7a539fec361e02255a6970a2f29c481"
+    }
+   },
+   "version": 1
+  },
+  "controls_mouse": {
+   "active": "desktop_mouse",
+   "collection": false,
+   "files": {
+    "desktop_mouse": {
+     "bytes": 442,
+     "path": "res://modules/controls_mouse/desktop_mouse.tres",
+     "sha256": "56645cb27a8dd7fadf4966ba92a2eb1336b37ea5effb70ca298b9e82bb06cbef"
+    },
+    "desktop_mouse_gentle": {
+     "bytes": 513,
+     "path": "res://modules/controls_mouse/desktop_mouse_gentle.tres",
+     "sha256": "0ac90e3c81c0fa244792dcb20c0726dbad17b1b879270cb51d6f0efeca657ae1"
+    }
+   },
+   "version": 1
+  },
+  "controls_touch": {
+   "active": "touch_twin_stick",
+   "collection": false,
+   "files": {
+    "touch_fixed_sticks": {
+     "bytes": 525,
+     "path": "res://modules/controls_touch/touch_fixed_sticks.tres",
+     "sha256": "36be70e2e72f7d5d535778f200b7d8d0fb84f6b2dfe5f7adfd46f0a87e21df9d"
+    },
+    "touch_twin_stick": {
+     "bytes": 427,
+     "path": "res://modules/controls_touch/touch_twin_stick.tres",
+     "sha256": "3c5ac74d7cbb220b5e0a3046567a4d4b2be332be151f83b7acb17602b845bcf6"
+    }
+   },
+   "version": 1
+  },
+  "cooking": {
+   "active": "home_style",
+   "collection": false,
+   "files": {
+    "home_style": {
+     "bytes": 931,
+     "path": "res://modules/cooking/home_style.tres",
+     "sha256": "3aab762559098145d970ed17ca214508b63be9d227c3cfc3466f45b3e25eb94b"
+    },
+    "quick_cook": {
+     "bytes": 680,
+     "path": "res://modules/cooking/quick_cook.tres",
+     "sha256": "0c89fdc90dd8a3926a7172c5ca74023ca2af1aea75a44ac8a4882ee6ab9eaeb6"
+    }
+   },
+   "version": 1
+  },
+  "crafting": {
+   "active": "farm_shed",
+   "collection": false,
+   "files": {
+    "farm_shed": {
+     "bytes": 550,
+     "path": "res://modules/crafting/farm_shed.tres",
+     "sha256": "01d38ee7e6b68b5baac385f465b5d69fca4bd6a412f8bb8aa408facca6ea3a85"
+    },
+    "stone_workshop": {
+     "bytes": 565,
+     "path": "res://modules/crafting/stone_workshop.tres",
+     "sha256": "13c763e5458bb386b384c933277b646b906768e58d8e2013bb49a0db00c6a33d"
+    }
+   },
+   "version": 1
+  },
+  "crop_types": {
+   "active": "turnip",
+   "collection": true,
+   "files": {
+    "apple_tree": {
+     "bytes": 818,
+     "path": "res://modules/crop_types/apple_tree/apple_tree.tres",
+     "sha256": "ee4e1099eb8795da490d8ec84999d9cfafeb7c74167c670b1acbc7ca2d2b91bd"
+    },
+    "banana": {
+     "bytes": 812,
+     "path": "res://modules/crop_types/banana/banana.tres",
+     "sha256": "5a2a3790fbe29725ab3456b99640a54d30b6cb32143776a61f65351bdf82d335"
+    },
+    "carrot": {
+     "bytes": 662,
+     "path": "res://modules/crop_types/carrot/carrot.tres",
+     "sha256": "0a7c6c04b171fc31c3e836ee5013f29139988af2b5d0f33874fdb976c3211af1"
+    },
+    "corn": {
+     "bytes": 645,
+     "path": "res://modules/crop_types/corn/corn.tres",
+     "sha256": "b4b75780e9ba78230072430a208773586572e3a5a17e641f76066c21001b3dda"
+    },
+    "eggplant": {
+     "bytes": 656,
+     "path": "res://modules/crop_types/eggplant/eggplant.tres",
+     "sha256": "6614ec5ee90f60cbbaf0ed053483dfbfc0267fe7caebb9e158b08e09e3fe5d9f"
+    },
+    "potato": {
+     "bytes": 672,
+     "path": "res://modules/crop_types/potato/potato.tres",
+     "sha256": "b281ad54ee25cdb22187f47f59efb01860dece07cf0df0c2d9407d1099b3fdc7"
+    },
+    "pumpkin": {
+     "bytes": 649,
+     "path": "res://modules/crop_types/pumpkin/pumpkin.tres",
+     "sha256": "4b452688d17152e05bb025f39ac64b3c871dc93606545760f165405fac530ecd"
+    },
+    "strawberry": {
+     "bytes": 662,
+     "path": "res://modules/crop_types/strawberry/strawberry.tres",
+     "sha256": "4b5be450ee7d1515b3240bf2b26689a7d3084cb3dc74fda2214ea03e4f7ae240"
+    },
+    "sunflower": {
+     "bytes": 658,
+     "path": "res://modules/crop_types/sunflower/sunflower.tres",
+     "sha256": "4ae79598bd08ecc718321d79ef31945aa06ce91581e1d507497190e3cd692a1d"
+    },
+    "tomato": {
+     "bytes": 648,
+     "path": "res://modules/crop_types/tomato/tomato.tres",
+     "sha256": "06799d8d776e03e69ab14750e0272044888391484a297843cd5bb58c84026352"
+    },
+    "turnip": {
+     "bytes": 650,
+     "path": "res://modules/crop_types/turnip/turnip.tres",
+     "sha256": "d0dbff2aeebb31521b944dd4e365b4fa21b27ebb6ecaba1cffcbcf7f2e75dae4"
+    }
+   },
+   "version": 1
+  },
+  "crops": {
+   "active": "classic",
+   "collection": false,
+   "files": {
+    "classic": {
+     "bytes": 249,
+     "path": "res://modules/crops/classic.tres",
+     "sha256": "4488c14403ac1ca5222a5a9ef87f73f95662ff35913d55f6c4b450dc907663fd"
+    },
+    "giant": {
+     "bytes": 300,
+     "path": "res://modules/crops/giant.tres",
+     "sha256": "c75616d78d34c7a04fb314f1aed94fa64e64312506d181462c96c9e4c6fe97fd"
+    }
+   },
+   "version": 1
+  },
+  "deep_sea": {
+   "active": "persian_gulf",
+   "collection": false,
+   "files": {
+    "calm_deep": {
+     "bytes": 2505,
+     "path": "res://modules/deep_sea/calm_deep.tres",
+     "sha256": "19d4d5e7405db2790012b3910befa70bb7e69d48a8abfa999a0f401126c8312c"
+    },
+    "persian_gulf": {
+     "bytes": 2573,
+     "path": "res://modules/deep_sea/persian_gulf.tres",
+     "sha256": "415fde39f34d4070ddeef33e273369cad9bdd4a9cbd6f436bec3bcd55aed3f1d"
+    }
+   },
+   "version": 1
+  },
+  "dialogue": {
+   "active": "warm_village",
+   "collection": false,
+   "files": {
+    "brief": {
+     "bytes": 19299,
+     "path": "res://modules/dialogue/brief.tres",
+     "sha256": "dffe1de3a6267cdc6bf80b7ed1f2ec5db4551413094e1333f1717651d6508848"
+    },
+    "warm_village": {
+     "bytes": 19841,
+     "path": "res://modules/dialogue/warm_village.tres",
+     "sha256": "2030f671d09f7f98d5247230838417a9aa6c655e78a74b41e6b5226a7af9d105"
+    }
+   },
+   "version": 2
+  },
+  "digging": {
+   "active": "garden_spade",
+   "collection": false,
+   "files": {
+    "garden_spade": {
+     "bytes": 1206,
+     "path": "res://modules/digging/garden_spade.tres",
+     "sha256": "fe0ac93e6b1b2af0258e1baae2a1155fb313c61073c615c9ced0519a9ab345b9"
+    },
+    "treasure": {
+     "bytes": 1136,
+     "path": "res://modules/digging/treasure.tres",
+     "sha256": "0f547ebd7c633432d0452416c08965ee653f7f9851d18efa834d211a35767f84"
+    }
+   },
+   "version": 1
+  },
+  "dishes": {
+   "active": "omelette",
+   "collection": true,
+   "files": {
+    "banana_smoothie": {
+     "bytes": 548,
+     "path": "res://modules/dishes/banana_smoothie.tres",
+     "sha256": "3649a7421b6d649c4d97a8974e29812594465e86e1e674130c1107afcc2de24e"
+    },
+    "chelo_morgh": {
+     "bytes": 518,
+     "path": "res://modules/dishes/chelo_morgh.tres",
+     "sha256": "9ab778aa9912e30ce496de03c87d3c7a708d339c469f2cb60265de752b5f90d6"
+    },
+    "kuku_sabzi": {
+     "bytes": 501,
+     "path": "res://modules/dishes/kuku_sabzi.tres",
+     "sha256": "9bc166487af9bbdc5f51ccbf2fb7631a00b410fb00efeb6b4baa4572e133b051"
+    },
+    "omelette": {
+     "bytes": 532,
+     "path": "res://modules/dishes/omelette.tres",
+     "sha256": "cee30c5aefc3a531692f8bd27a16d7cae3033a1023961242b7a4b21bf92c04e4"
+    },
+    "sabzi_polo_mahi": {
+     "bytes": 548,
+     "path": "res://modules/dishes/sabzi_polo_mahi.tres",
+     "sha256": "010a20d767b07b2f0d1bdfcf70517761cb9398f8315de1dac2804abcdff43e2a"
+    }
+   },
+   "version": 2
+  },
+  "door_plaques": {
+   "active": "family_plaques",
+   "collection": false,
+   "files": {
+    "classic_signs": {
+     "bytes": 430,
+     "path": "res://modules/door_plaques/classic_signs.tres",
+     "sha256": "74613ffe7b638a1d5ddcc634dead3f295330dccc29cf77e5a8a0823c4ab85b8c"
+    },
+    "family_plaques": {
+     "bytes": 419,
+     "path": "res://modules/door_plaques/family_plaques.tres",
+     "sha256": "7d67db1c1579b2c33bca6dea18127b6a82f1f5d28dd3868d8b67f0b14e26efcf"
+    }
+   },
+   "version": 1
+  },
+  "driving": {
+   "active": "realistic_driving",
+   "collection": false,
+   "files": {
+    "easy_driving": {
+     "bytes": 505,
+     "path": "res://modules/driving/easy_driving.tres",
+     "sha256": "f25a47624b23c6e5affe4f2f99cc8e1124449f99d8d22bb33ae251f351e49e1a"
+    },
+    "realistic_driving": {
+     "bytes": 506,
+     "path": "res://modules/driving/realistic_driving.tres",
+     "sha256": "20cdb0f134a36c502c7041dc8cd84f2a687ee21e40b73e0dd0269a803314c379"
+    }
+   },
+   "version": 1
+  },
+  "driving_license": {
+   "active": "standard",
+   "collection": false,
+   "files": {
+    "standard": {
+     "bytes": 7785,
+     "path": "res://modules/driving_license/standard.tres",
+     "sha256": "7038d64106db260d777856fab3e70b89f580b36417a7892735a9f7249ad13dc3"
+    },
+    "strict": {
+     "bytes": 7820,
+     "path": "res://modules/driving_license/strict.tres",
+     "sha256": "ed6ff4646cbd2efe8dfa654f46016e4eebbf3fc4fcfe8eedc90f8acab423aa41"
+    }
+   },
+   "version": 1
+  },
+  "dry_trees": {
+   "active": "forest_edge",
+   "collection": false,
+   "files": {
+    "forest_edge": {
+     "bytes": 775,
+     "path": "res://modules/dry_trees/forest_edge.tres",
+     "sha256": "d9a51f1b5f5727e02223aa11a690d6d7209be3227c7f94cab899eafa701980e1"
+    },
+    "sparse": {
+     "bytes": 755,
+     "path": "res://modules/dry_trees/sparse.tres",
+     "sha256": "6836cdaa48a592d1f6f79999fdef08a80eb7c2aa9103eec419661925e0c4dd29"
+    }
+   },
+   "version": 1
+  },
+  "families": {
+   "active": "town_families",
+   "collection": false,
+   "files": {
+    "small_households": {
+     "bytes": 1957,
+     "path": "res://modules/families/small_households.tres",
+     "sha256": "b60c4cb37180b15096311caf67544081cad3fb657ff34456d674d60ea461d930"
+    },
+    "town_families": {
+     "bytes": 2638,
+     "path": "res://modules/families/town_families.tres",
+     "sha256": "3481c3837cd0508ae883e2e8c2e31bc200f1b63479857631499169208043424a"
+    }
+   },
+   "version": 1
+  },
+  "fences": {
+   "active": "rustic_wood",
+   "collection": false,
+   "files": {
+    "rustic_wood": {
+     "bytes": 263,
+     "path": "res://modules/fences/rustic_wood.tres",
+     "sha256": "e0e459d2479e86853eda6e4e1b1b117587eea7f6398a6805e8ee5e35d505e606"
+    },
+    "white_picket": {
+     "bytes": 354,
+     "path": "res://modules/fences/white_picket.tres",
+     "sha256": "a5fcc3475036182b4dd5af2a088ff8869972aecdd6e46187412e9b97fc0dd383"
+    }
+   },
+   "version": 1
+  },
+  "fire": {
+   "active": "town_fire_service",
+   "collection": false,
+   "files": {
+    "dry_summer": {
+     "bytes": 421,
+     "path": "res://modules/fire/dry_summer.tres",
+     "sha256": "415b173d65f64c665452fb351360f181841b153953cc86a7fbc0a572b00a5a8f"
+    },
+    "town_fire_service": {
+     "bytes": 396,
+     "path": "res://modules/fire/town_fire_service.tres",
+     "sha256": "c153054affb2fd950d1120897b74a4a2861ea57e5b9f569ca18080e260d10cde"
+    }
+   },
+   "version": 1
+  },
+  "fire_truck": {
+   "active": "town_fire_truck",
+   "collection": false,
+   "files": {
+    "quiet_brigade": {
+     "bytes": 461,
+     "path": "res://modules/fire_truck/quiet_brigade.tres",
+     "sha256": "ac5a2c06284aa32c6749008b54f15a76a65e96ad90b2197f7489a82ecbeb04d4"
+    },
+    "town_fire_truck": {
+     "bytes": 466,
+     "path": "res://modules/fire_truck/town_fire_truck.tres",
+     "sha256": "f11f2e64086e0517e49a2be291e2debb5d10377f71a7b5577fd0bbf3a3a68615"
+    }
+   },
+   "version": 1
+  },
+  "fishing_gear": {
+   "active": "carpenter_rods",
+   "collection": false,
+   "files": {
+    "carpenter_rods": {
+     "bytes": 642,
+     "path": "res://modules/fishing_gear/carpenter_rods.tres",
+     "sha256": "88d1d5c08c3fb0ee30cf0017659155220dcfb171630ca5a3c78a0e40019bfc4f"
+    },
+    "tool_shop_rods": {
+     "bytes": 661,
+     "path": "res://modules/fishing_gear/tool_shop_rods.tres",
+     "sha256": "c3a95ae6233b1d2763a7bbe38ddc07dbff996c4ce5da708f87d33745543f85f1"
+    }
+   },
+   "version": 1
+  },
+  "fonts": {
+   "active": "vazirmatn",
+   "collection": false,
+   "files": {
+    "vazirmatn": {
+     "bytes": 503,
+     "path": "res://modules/fonts/vazirmatn.tres",
+     "sha256": "c2fe9dc999537a365ccb8b6f165fd8887b41944372a147d76007c9b0bc1edae8"
+    },
+    "vazirmatn_bold": {
+     "bytes": 499,
+     "path": "res://modules/fonts/vazirmatn_bold.tres",
+     "sha256": "e43bbba9a6f51b66554ee93bc56cb354b12e45374a66269e252ca3b1fcf589c9"
+    }
+   },
+   "version": 1
+  },
+  "fridge": {
+   "active": "white_fridge",
+   "collection": false,
+   "files": {
+    "steel_fridge": {
+     "bytes": 445,
+     "path": "res://modules/fridge/steel_fridge.tres",
+     "sha256": "8515b5a73dc430e436ccfae9c24aaf5025ee1be6c9d9007abc7bd81f68a1fb62"
+    },
+    "white_fridge": {
+     "bytes": 434,
+     "path": "res://modules/fridge/white_fridge.tres",
+     "sha256": "287091c5377dcb11399a3686c098849255dd96ea802568a53fd18e355aaa81b5"
+    }
+   },
+   "version": 1
+  },
+  "friendship": {
+   "active": "daily_talks",
+   "collection": false,
+   "files": {
+    "daily_talks": {
+     "bytes": 737,
+     "path": "res://modules/friendship/daily_talks.tres",
+     "sha256": "a67acddad9711e8f5c6e52742a77d7d564498fbfaf7f88b4faa3a5083a3ef5ff"
+    },
+    "slow_burn": {
+     "bytes": 723,
+     "path": "res://modules/friendship/slow_burn.tres",
+     "sha256": "7f83aa05137490e758e3f22c653233d7fa57a5f3f7499b11e13021527d18ac18"
+    }
+   },
+   "version": 1
+  },
+  "fruit_gardens": {
+   "active": "family_orchards",
+   "collection": false,
+   "files": {
+    "family_orchards": {
+     "bytes": 1794,
+     "path": "res://modules/fruit_gardens/family_orchards.tres",
+     "sha256": "7a5cca597514064d149f4d1eafde95fdde4523be162385beac665b955d7624e5"
+    },
+    "small_orchards": {
+     "bytes": 1618,
+     "path": "res://modules/fruit_gardens/small_orchards.tres",
+     "sha256": "4261f1b166041c6e846af6a88a57770446bbdc64ee4204e7f613d1e659e2eb00"
+    }
+   },
+   "version": 1
+  },
+  "furniture": {
+   "active": "kenney",
+   "collection": false,
+   "files": {
+    "kenney": {
+     "bytes": 387,
+     "path": "res://modules/furniture/kenney.tres",
+     "sha256": "7c635ce668ca4ca79c7e8174481f24a948c7f5a7eabe61e85ec6c19f2e50ef53"
+    },
+    "kenney_quiet_town": {
+     "bytes": 326,
+     "path": "res://modules/furniture/kenney_quiet_town.tres",
+     "sha256": "74050243f09583053e16ed302f2814b21f26a13fcda7b3a86a771c2e82fab162"
+    }
+   },
+   "version": 1
+  },
+  "garden": {
+   "active": "rustic_rows",
+   "collection": false,
+   "files": {
+    "raised_beds": {
+     "bytes": 478,
+     "path": "res://modules/garden/raised_beds.tres",
+     "sha256": "35f69e94600dae7c012cb68441291683014bc246bdc50d70e4d6cbee573d4188"
+    },
+    "rustic_rows": {
+     "bytes": 489,
+     "path": "res://modules/garden/rustic_rows.tres",
+     "sha256": "b4b440bb4ff3987cbb98e036ffd71708470c68b666107df5a85fef5158459aba"
+    }
+   },
+   "version": 1
+  },
+  "garden_rules": {
+   "active": "seasonal",
+   "collection": false,
+   "files": {
+    "any_season": {
+     "bytes": 298,
+     "path": "res://modules/garden_rules/any_season.tres",
+     "sha256": "1b447dc4e57e35c4bc94b9b6e8b08582b83d533aad7d1689df63718c8c599553"
+    },
+    "seasonal": {
+     "bytes": 309,
+     "path": "res://modules/garden_rules/seasonal.tres",
+     "sha256": "17fa1d6eb96e66cec4fc4d7868f4d78516a159fb2d1428a00916733364e8a817"
+    }
+   },
+   "version": 1
+  },
+  "gas_stove": {
+   "active": "blue_flame",
+   "collection": false,
+   "files": {
+    "big_flame": {
+     "bytes": 396,
+     "path": "res://modules/gas_stove/big_flame.tres",
+     "sha256": "c44360262180947d5a92084bf057c87e79160d476794796c878666ff551a2cce"
+    },
+    "blue_flame": {
+     "bytes": 381,
+     "path": "res://modules/gas_stove/blue_flame.tres",
+     "sha256": "8e5e76eb03bb65448bc11ce59eb56d7c215b6c0fbbdf4e788d5c4e0d00fa5b44"
+    }
+   },
+   "version": 1
+  },
+  "gestures": {
+   "active": "friendly_wave",
+   "collection": false,
+   "files": {
+    "friendly_wave": {
+     "bytes": 436,
+     "path": "res://modules/gestures/friendly_wave.tres",
+     "sha256": "ba987d75f1da767a1261da02a2ec7b1490429d323dc635cf0169d8df860f4a06"
+    },
+    "reserved_nod": {
+     "bytes": 405,
+     "path": "res://modules/gestures/reserved_nod.tres",
+     "sha256": "1307037effbfeba24312afbce2a37c3a60c87f189669fd9fd157db34dd03839c"
+    }
+   },
+   "version": 1
+  },
+  "gym": {
+   "active": "town_gym",
+   "collection": false,
+   "files": {
+    "town_gym": {
+     "bytes": 1532,
+     "path": "res://modules/gym/town_gym.tres",
+     "sha256": "ec8e2811628b5115f1ff9b57e016878455e5cbf46ab82bd1318eb9982ddb8707"
+    },
+    "zurkhaneh_mix": {
+     "bytes": 1612,
+     "path": "res://modules/gym/zurkhaneh_mix.tres",
+     "sha256": "a353a407baa91d7e97e1159831166d9dd25aab95dfd8c071d5ace3d2cccd13e7"
+    }
+   },
+   "version": 1
+  },
+  "herding": {
+   "active": "west_meadow",
+   "collection": false,
+   "files": {
+    "big_flock": {
+     "bytes": 352,
+     "path": "res://modules/herding/big_flock.tres",
+     "sha256": "793e2c02607de63803c216b09232afcb11ecacf0c74aea4dee601ec6bac2d768"
+    },
+    "west_meadow": {
+     "bytes": 394,
+     "path": "res://modules/herding/west_meadow.tres",
+     "sha256": "487a57c0b822cbb49b396ebc322575c45c4cf48f275ebe15cecbb97e94a131a5"
+    }
+   },
+   "version": 1
+  },
+  "house_colors": {
+   "active": "family_colors",
+   "collection": false,
+   "files": {
+    "family_colors": {
+     "bytes": 721,
+     "path": "res://modules/house_colors/family_colors.tres",
+     "sha256": "24390b7a7d1c61621fc328faa2a51efd4ee7887883a5bb8ef8007a2dba4a60cd"
+    },
+    "whitewash": {
+     "bytes": 477,
+     "path": "res://modules/house_colors/whitewash.tres",
+     "sha256": "af921967dec51ea0a0573def4dd7e376fd9bf3db689aebd1f9819fe2e9ec37c8"
+    }
+   },
+   "version": 1
+  },
+  "house_music": {
+   "active": "radios",
+   "collection": false,
+   "files": {
+    "quiet_town": {
+     "bytes": 395,
+     "path": "res://modules/house_music/quiet_town.tres",
+     "sha256": "440fb4ef6e29a50a91c52bfca935a06a7828df1b41fe8e8dd409cf7376276a0b"
+    },
+    "radios": {
+     "bytes": 625,
+     "path": "res://modules/house_music/radios.tres",
+     "sha256": "f185bfa47d307c769bc31e363468f9ccdf0425e85a8c7646eec77c844cb4a983"
+    }
+   },
+   "version": 1
+  },
+  "house_styles": {
+   "active": "wooden",
+   "collection": true,
+   "files": {
+    "modern": {
+     "bytes": 767,
+     "path": "res://modules/house_styles/modern.tres",
+     "sha256": "d2adb67437edb07aadaf12dd744fe8a2cbe0ae159d96008e3948e90432a177f9"
+    },
+    "stone": {
+     "bytes": 730,
+     "path": "res://modules/house_styles/stone.tres",
+     "sha256": "2eee612bc85c41c39176c38a346580af4f90affda9e14bb130ca0668688d2fb3"
+    },
+    "wooden": {
+     "bytes": 725,
+     "path": "res://modules/house_styles/wooden.tres",
+     "sha256": "6511e5a88ce14393a9024172b14f89f6750bffcbb408adf9bf19bf4a77f16d39"
+    }
+   },
+   "version": 1
+  },
+  "house_variety": {
+   "active": "varied_homes",
+   "collection": false,
+   "files": {
+    "uniform_homes": {
+     "bytes": 627,
+     "path": "res://modules/house_variety/uniform_homes.tres",
+     "sha256": "138d73157230dc95fe32fe08bf218dd70868d8587af11a37ea578963885b2518"
+    },
+    "varied_homes": {
+     "bytes": 921,
+     "path": "res://modules/house_variety/varied_homes.tres",
+     "sha256": "2f268b2d2eef3a722ac04cd987c1fab8b700b4f2efb585328da8e43579c554f9"
+    }
+   },
+   "version": 1
+  },
+  "hypermarket": {
+   "active": "hyper_blue",
+   "collection": false,
+   "files": {
+    "hyper_blue": {
+     "bytes": 386,
+     "path": "res://modules/hypermarket/hyper_blue.tres",
+     "sha256": "f113fe8aa3558637d76bf2b31f28a533b1dd861d9efd8841ecde7a7f18b3bca0"
+    },
+    "hyper_green": {
+     "bytes": 399,
+     "path": "res://modules/hypermarket/hyper_green.tres",
+     "sha256": "f8466cc4bfbb5545a70bac28fde74b446c4071f5ee069029c8db51950c9fe094"
+    }
+   },
+   "version": 1
+  },
+  "illnesses": {
+   "active": "cold",
+   "collection": true,
+   "files": {
+    "cold": {
+     "bytes": 623,
+     "path": "res://modules/illnesses/cold.tres",
+     "sha256": "40f6c2105b481ad10424df095d6b3393babe2ea4857a9e35d0e41bf470b9a4dc"
+    },
+    "flu": {
+     "bytes": 599,
+     "path": "res://modules/illnesses/flu.tres",
+     "sha256": "f81ac15bc3695ea90b6092d614f586b344873fb5be917ed5a843ea87f28b4746"
+    }
+   },
+   "version": 1
+  },
+  "ingredients": {
+   "active": "chicken",
+   "collection": true,
+   "files": {
+    "chicken": {
+     "bytes": 437,
+     "path": "res://modules/ingredients/chicken.tres",
+     "sha256": "b051739731fcabe8e534c5c587fb2613b81f74014a4bbd3d7c4511544a0be1bf"
+    },
+    "eggs": {
+     "bytes": 429,
+     "path": "res://modules/ingredients/eggs.tres",
+     "sha256": "81d98b24bb1933e435872cba9354ef25adf4f33c8124ae5630545812b5e94fc5"
+    },
+    "herbs": {
+     "bytes": 467,
+     "path": "res://modules/ingredients/herbs.tres",
+     "sha256": "daafe023da1c712f3ea495319da612e6736c01c2a1aab59830ceefcef28dc5c7"
+    },
+    "onion": {
+     "bytes": 428,
+     "path": "res://modules/ingredients/onion.tres",
+     "sha256": "4acd45cd716cd378e00de49650f4304fc98e8eae831130798be6f43dd7f57eba"
+    },
+    "rice": {
+     "bytes": 432,
+     "path": "res://modules/ingredients/rice.tres",
+     "sha256": "653ee42ade5ecc492bd3c8bd3253d68283f86d85b10e2e697656811982a2619a"
+    },
+    "salt": {
+     "bytes": 427,
+     "path": "res://modules/ingredients/salt.tres",
+     "sha256": "8dfdb6a3ac925461c2260e693faebd2ceb409a53c87cf3231733f6c6f26272a8"
+    },
+    "spices": {
+     "bytes": 455,
+     "path": "res://modules/ingredients/spices.tres",
+     "sha256": "c025af6898f91092d1a215da0962d4081700508a9173d26a6d5f8a515071bd2f"
+    },
+    "tomato_fresh": {
+     "bytes": 477,
+     "path": "res://modules/ingredients/tomato_fresh.tres",
+     "sha256": "3414edab3fdee4a00cd06c8cf9cfc1e53fe0c987f1e4bad5d6565713562cf8d2"
+    }
+   },
+   "version": 1
+  },
+  "kids": {
+   "active": "after_school",
+   "collection": false,
+   "files": {
+    "after_school": {
+     "bytes": 1412,
+     "path": "res://modules/kids/after_school.tres",
+     "sha256": "8fbcdb87e6a71a9a75b20b6707e68a302ad8179077e0e495eaaaedeafaae22d5"
+    },
+    "well_behaved": {
+     "bytes": 1362,
+     "path": "res://modules/kids/well_behaved.tres",
+     "sha256": "1305fd05b988d97b24e8a790f37b48bc8c01ae2f6ea4712643b099b3488f65b8"
+    }
+   },
+   "version": 1
+  },
+  "kitchen": {
+   "active": "modern_electric",
+   "collection": false,
+   "files": {
+    "modern_electric": {
+     "bytes": 558,
+     "path": "res://modules/kitchen/modern_electric.tres",
+     "sha256": "21657de9c5c7c9c607967cdc40c0489097adece683a00f5855a8574d74c7ea52"
+    },
+    "rustic_gas": {
+     "bytes": 553,
+     "path": "res://modules/kitchen/rustic_gas.tres",
+     "sha256": "bb5612068ff5d1cbe75cbc8744540613c689ffeed770692da90fe2fb947ec9c5"
+    },
+    "wood_stove": {
+     "bytes": 531,
+     "path": "res://modules/kitchen/wood_stove.tres",
+     "sha256": "0146d5aacc2f1cfc6b5b88b5bf798d9e2e60285a2915f6b46efb0de0cdd1880a"
+    }
+   },
+   "version": 1
+  },
+  "kitchenware": {
+   "active": "plates_basic",
+   "collection": true,
+   "files": {
+    "blender": {
+     "bytes": 568,
+     "path": "res://modules/kitchenware/blender.tres",
+     "sha256": "ae7ecdfef4f81ed3b4aead29bdfd5c10f62dd26d0aad0519d6b9a889426dca29"
+    },
+    "cutlery": {
+     "bytes": 564,
+     "path": "res://modules/kitchenware/cutlery.tres",
+     "sha256": "2077b6eb6c79d30d213f34a0df38253bf6d399d673ed5e5f13eb4d52be90917c"
+    },
+    "glasses": {
+     "bytes": 526,
+     "path": "res://modules/kitchenware/glasses.tres",
+     "sha256": "7fee7ee8acba0c71c481d6bce331882eda7144c3e34fb8392109c50613955bbe"
+    },
+    "microwave": {
+     "bytes": 560,
+     "path": "res://modules/kitchenware/microwave.tres",
+     "sha256": "31c0fdfecd98b301f5c090717e0fb33380cae67e8bfd40821140f97c3f67637f"
+    },
+    "pan_cast_iron": {
+     "bytes": 581,
+     "path": "res://modules/kitchenware/pan_cast_iron.tres",
+     "sha256": "732a5bfb76fd3fed352baf83a273acba10826b9798b4ec577a69a47483a344ff"
+    },
+    "pan_nonstick": {
+     "bytes": 577,
+     "path": "res://modules/kitchenware/pan_nonstick.tres",
+     "sha256": "a92b3100d97f1240b2dfa13ada25c4ee8f4420404030cc3147ac52fb32d67cb2"
+    },
+    "plates_basic": {
+     "bytes": 537,
+     "path": "res://modules/kitchenware/plates_basic.tres",
+     "sha256": "feadcac8a4636d982c3911e21a4a92be3b9d9156a7ab56c7888e50ce78e94e48"
+    },
+    "plates_porcelain": {
+     "bytes": 584,
+     "path": "res://modules/kitchenware/plates_porcelain.tres",
+     "sha256": "b001fa692ccf8cc43dbb169cb3a787ca9adf1274222e744d092eb1701dedb9d5"
+    },
+    "pot_steel": {
+     "bytes": 560,
+     "path": "res://modules/kitchenware/pot_steel.tres",
+     "sha256": "c03c2b49881c7bdfb2bd11cc9d85a7f12f5c29b32015645e6df5f43265ed3ba3"
+    }
+   },
+   "version": 1
+  },
+  "landmark": {
+   "active": "clock_tower",
+   "collection": false,
+   "files": {
+    "clock_tower": {
+     "bytes": 411,
+     "path": "res://modules/landmark/clock_tower.tres",
+     "sha256": "14cbbab1447797949251520f648c4d390302045d8520e5ea090fc811a79a477f"
+    },
+    "monument": {
+     "bytes": 429,
+     "path": "res://modules/landmark/monument.tres",
+     "sha256": "090e89c2b194bd145357af04d0a527b98aab4d728e4734e9edc651d6f00ab073"
+    }
+   },
+   "version": 1
+  },
+  "landscape": {
+   "active": "highlands",
+   "collection": false,
+   "files": {
+    "highlands": {
+     "bytes": 549,
+     "path": "res://modules/landscape/highlands.tres",
+     "sha256": "b9908ae6776f0d75bf0298f0306320aa00ac44a93ae4f80e489cd10938cb3b36"
+    },
+    "lowlands": {
+     "bytes": 540,
+     "path": "res://modules/landscape/lowlands.tres",
+     "sha256": "d34a22df420c19f4cdcba99a21a5d87f28a62758826530c3265f2dd52ab28f11"
+    }
+   },
+   "version": 1
+  },
+  "lighting": {
+   "active": "warm_bulbs",
+   "collection": false,
+   "files": {
+    "cool_led": {
+     "bytes": 471,
+     "path": "res://modules/lighting/cool_led.tres",
+     "sha256": "a026eb763bfb76aa694d38a99bfd3040fe1a0f387d99466dd7d67c6c488be989"
+    },
+    "warm_bulbs": {
+     "bytes": 489,
+     "path": "res://modules/lighting/warm_bulbs.tres",
+     "sha256": "87062c8d131a7ab22a8b9772246471dabce5076e2267db1b508d7d4507fe2fee"
+    }
+   },
+   "version": 1
+  },
+  "live_updates": {
+   "active": "auto",
+   "collection": false,
+   "files": {
+    "auto": {
+     "bytes": 398,
+     "path": "res://modules/live_updates/auto.tres",
+     "sha256": "f82eac61d0a269409395d5f39667375b3338b9cf9420ce5ce535ea081b26756e"
+    },
+    "manual_off": {
+     "bytes": 358,
+     "path": "res://modules/live_updates/manual_off.tres",
+     "sha256": "79db1032fe4d6755e24d958ee85d1acb16888650f4c90165646b13731f7e7be2"
+    }
+   },
+   "version": 1
+  },
+  "livestock": {
+   "active": "chicken",
+   "collection": true,
+   "files": {
+    "chicken": {
+     "bytes": 1350,
+     "path": "res://modules/livestock/chicken.tres",
+     "sha256": "46b243352ff310c409e6408621b07556b33c0126bae13853a200ec27a8331f85"
+    },
+    "cow": {
+     "bytes": 1331,
+     "path": "res://modules/livestock/cow.tres",
+     "sha256": "60cd8ec999418d8da9f4f28475f8207909890fdf1a02227a8ef5676bb96cf956"
+    },
+    "sheep_flock": {
+     "bytes": 1195,
+     "path": "res://modules/livestock/sheep_flock.tres",
+     "sha256": "9ef9d4eeef7842fa6b73246f105fcfc577e8d4d0c9332a5e620692752409bd59"
+    }
+   },
+   "version": 1
+  },
+  "living_room": {
+   "active": "modern_living",
+   "collection": false,
+   "files": {
+    "cozy_living": {
+     "bytes": 1087,
+     "path": "res://modules/living_room/cozy_living.tres",
+     "sha256": "e97b4ce03e3eeeccb8a297b29e153318f91cc3b8aaced02ed93a363f3e9ac185"
+    },
+    "modern_living": {
+     "bytes": 1147,
+     "path": "res://modules/living_room/modern_living.tres",
+     "sha256": "35ddf76b643d01aacbc92fc625ec9f278a9e7fddf597376ee3d2a6cccde7e778"
+    }
+   },
+   "version": 1
+  },
+  "lod_rules": {
+   "active": "balanced",
+   "collection": false,
+   "files": {
+    "balanced": {
+     "bytes": 388,
+     "path": "res://modules/lod_rules/balanced.tres",
+     "sha256": "f2895771e1e25ae0499893a55658504131ad0711cb4d3e266ae9d34a0a042942"
+    },
+    "crisp": {
+     "bytes": 443,
+     "path": "res://modules/lod_rules/crisp.tres",
+     "sha256": "9092cb1a3bf0a024c60c2e80421d8d5e66c27d63b5ec19496febea3fb97ceafa"
+    }
+   },
+   "version": 1
+  },
+  "market": {
+   "active": "bazaar",
+   "collection": false,
+   "files": {
+    "bazaar": {
+     "bytes": 1427,
+     "path": "res://modules/market/bazaar.tres",
+     "sha256": "fd56d869de0c4565a3f84d7a5a73a701a48b33ea98d2d2948f2c43eab3292d7c"
+    },
+    "farmers_market": {
+     "bytes": 1324,
+     "path": "res://modules/market/farmers_market.tres",
+     "sha256": "b1421963f4542533ca65f6b2053265ee82f0043d6475042964301761276d4af5"
+    }
+   },
+   "version": 1
+  },
+  "market_economy": {
+   "active": "supply_demand",
+   "collection": false,
+   "files": {
+    "stable_prices": {
+     "bytes": 3146,
+     "path": "res://modules/market_economy/stable_prices.tres",
+     "sha256": "cd212603aaf8558fdc00dc0ab0eb95ca7acc659eac2cba771fddc66b56a22b6f"
+    },
+    "supply_demand": {
+     "bytes": 3168,
+     "path": "res://modules/market_economy/supply_demand.tres",
+     "sha256": "116161b1f1676e4642a4255120d242719839d10fa4d08499387ef9815f25b42a"
+    }
+   },
+   "version": 1
+  },
+  "mechanic": {
+   "active": "town_garage",
+   "collection": false,
+   "files": {
+    "budget_garage": {
+     "bytes": 1636,
+     "path": "res://modules/mechanic/budget_garage.tres",
+     "sha256": "9d48f693885544dff746d1184d3d93fe2977c225eae443057d3f85b71522dddb"
+    },
+    "town_garage": {
+     "bytes": 1979,
+     "path": "res://modules/mechanic/town_garage.tres",
+     "sha256": "a9cf3eade496ca669e1e9c12458ed4b23c2d448920ed8396553f39b5684f2f75"
+    }
+   },
+   "version": 1
+  },
+  "minimap": {
+   "active": "parchment",
+   "collection": false,
+   "files": {
+    "night": {
+     "bytes": 580,
+     "path": "res://modules/minimap/night.tres",
+     "sha256": "71d2c6bc87b99a76fd3c37fd175b1483edd2c9e531c22445a790b9895deb8fc3"
+    },
+    "parchment": {
+     "bytes": 593,
+     "path": "res://modules/minimap/parchment.tres",
+     "sha256": "715c6656079a1d63b21b2036f69b5b8bac08cecb861a89a16ff7a39275831fe9"
+    }
+   },
+   "version": 1
+  },
+  "mosque": {
+   "active": "turquoise_dome",
+   "collection": false,
+   "files": {
+    "sandstone": {
+     "bytes": 812,
+     "path": "res://modules/mosque/sandstone.tres",
+     "sha256": "22c2722ffe89c93bf2fa30de138176af475409383cdf453058c0943e35d9f2aa"
+    },
+    "turquoise_dome": {
+     "bytes": 882,
+     "path": "res://modules/mosque/turquoise_dome.tres",
+     "sha256": "d2cc635026834e635d12fe5a4b271cfc834ad722077a5af392db72272f4be2c0"
+    }
+   },
+   "version": 1
+  },
+  "needs": {
+   "active": "balanced",
+   "collection": false,
+   "files": {
+    "balanced": {
+     "bytes": 680,
+     "path": "res://modules/needs/balanced.tres",
+     "sha256": "baee2af3c2632957f044256ac557ceb25f042dff41c203b5830cbbc19310d7ed"
+    },
+    "gentle": {
+     "bytes": 652,
+     "path": "res://modules/needs/gentle.tres",
+     "sha256": "53669dbf76dc2b23a194d4869584cab860e8e41eccb12655ca34db875fe8768f"
+    }
+   },
+   "version": 1
+  },
+  "netcode": {
+   "active": "standard",
+   "collection": false,
+   "files": {
+    "low_bandwidth": {
+     "bytes": 382,
+     "path": "res://modules/netcode/low_bandwidth.tres",
+     "sha256": "bccc38a15d5abd04863eaa954b7c582cbab853d8288d1f0194beb03e0a0ff365"
+    },
+    "standard": {
+     "bytes": 358,
+     "path": "res://modules/netcode/standard.tres",
+     "sha256": "2089945c987db2002ca38728df67d16cfdee89a997e0f4cb18c65534f77e696d"
+    }
+   },
+   "version": 1
+  },
+  "newspaper": {
+   "active": "daily_paper",
+   "collection": false,
+   "files": {
+    "daily_paper": {
+     "bytes": 3052,
+     "path": "res://modules/newspaper/daily_paper.tres",
+     "sha256": "1533f12a252e78e8c4b3f908280a9805bdf488164b79baa8173de36618dafbb6"
+    },
+    "free_bulletin": {
+     "bytes": 3105,
+     "path": "res://modules/newspaper/free_bulletin.tres",
+     "sha256": "0afe904db946717d88c31c2fd719b9d787750ff80c8017d5717deda294f6cc82"
+    }
+   },
+   "version": 1
+  },
+  "night_sky": {
+   "active": "starry",
+   "collection": false,
+   "files": {
+    "starry": {
+     "bytes": 417,
+     "path": "res://modules/night_sky/starry.tres",
+     "sha256": "b4c1953de7d540369a36238bb84ff52694a99e2121b3801aff06a2193ba45fb3"
+    },
+    "town_glow": {
+     "bytes": 447,
+     "path": "res://modules/night_sky/town_glow.tres",
+     "sha256": "1c6ac64d641b2169ff59a40ba635d52a028f41b11ad9d3e4f7fb9c73bbe9fb6f"
+    }
+   },
+   "version": 1
+  },
+  "npc_card": {
+   "active": "parchment",
+   "collection": false,
+   "files": {
+    "dark_glass": {
+     "bytes": 526,
+     "path": "res://modules/npc_card/dark_glass.tres",
+     "sha256": "dafc32aa40b2d974e478eb71b8552c03c23caeaf04a5e6f37e48e393825dc805"
+    },
+    "parchment": {
+     "bytes": 519,
+     "path": "res://modules/npc_card/parchment.tres",
+     "sha256": "395d0324f40e1660ebab6923291d6bd795d2db18dbd48ed69020e67ca72baf34"
+    }
+   },
+   "version": 1
+  },
+  "npc_looks": {
+   "active": "distinct",
+   "collection": false,
+   "files": {
+    "distinct": {
+     "bytes": 818,
+     "path": "res://modules/npc_looks/distinct.tres",
+     "sha256": "79fee1c5fa4a9c2cd0e4328dc3a9c7c14b88baf943b3d9c81fc488bc0b326633"
+    },
+    "subtle": {
+     "bytes": 548,
+     "path": "res://modules/npc_looks/subtle.tres",
+     "sha256": "668f291c8e84defc1b5cb15d68597ad62f38a2c1a01542188ee23ef8e5c063ac"
+    }
+   },
+   "version": 1
+  },
+  "npc_roles": {
+   "active": "stub",
+   "collection": false,
+   "files": {
+    "disabled": {
+     "bytes": 330,
+     "path": "res://modules/npc_roles/disabled.tres",
+     "sha256": "274449a7ebba0fc42da484e62e8f39f66a5eda54202a9fd013133bbf39086251"
+    },
+    "stub": {
+     "bytes": 383,
+     "path": "res://modules/npc_roles/stub.tres",
+     "sha256": "84181185c2068a99facd2d320a88755949020469a2c155f9bb5740cb38ab19c4"
+    }
+   },
+   "version": 1
+  },
+  "npc_social": {
+   "active": "chatty",
+   "collection": false,
+   "files": {
+    "chatty": {
+     "bytes": 913,
+     "path": "res://modules/npc_social/chatty.tres",
+     "sha256": "e388c1477492f1ffa7d8886b22a8d98665cfeb4814318d337f373d195e17e468"
+    },
+    "quiet": {
+     "bytes": 490,
+     "path": "res://modules/npc_social/quiet.tres",
+     "sha256": "099ff44e0aee3a28d7bb47ca2ca5d2936108a976ea76dce61e74327cac608e35"
+    }
+   },
+   "version": 1
+  },
+  "npc_traffic": {
+   "active": "light_traffic",
+   "collection": false,
+   "files": {
+    "busy_traffic": {
+     "bytes": 1280,
+     "path": "res://modules/npc_traffic/busy_traffic.tres",
+     "sha256": "a342b21e576863e50556adccf37bbf7861cd4fb2102d17f4ce38ea37281ba536"
+    },
+    "light_traffic": {
+     "bytes": 912,
+     "path": "res://modules/npc_traffic/light_traffic.tres",
+     "sha256": "3d5b7735e1d6faf980c3003ae3296391e1067a286a669e678ba278563c5fdd34"
+    }
+   },
+   "version": 1
+  },
+  "outages": {
+   "active": "storms_and_quakes",
+   "collection": false,
+   "files": {
+    "stable_grid": {
+     "bytes": 712,
+     "path": "res://modules/outages/stable_grid.tres",
+     "sha256": "8961ca9c5d96e80a6e0cc8b03f51ceb9e30136299072fb41a09e63b210392e12"
+    },
+    "storms_and_quakes": {
+     "bytes": 675,
+     "path": "res://modules/outages/storms_and_quakes.tres",
+     "sha256": "c61146ded1e3bd6845f0eb700627f659c44756179c7bf3a8e11a4baf28918894"
+    }
+   },
+   "version": 1
+  },
+  "passengers": {
+   "active": "town_rides",
+   "collection": false,
+   "files": {
+    "busy_town": {
+     "bytes": 1833,
+     "path": "res://modules/passengers/busy_town.tres",
+     "sha256": "3d417f37d2b2f31181e65d65de8e17ffed98e6ebfa14eba5dc328b0562cbd798"
+    },
+    "town_rides": {
+     "bytes": 1830,
+     "path": "res://modules/passengers/town_rides.tres",
+     "sha256": "37ebe8417425a5b0fe1c0673e9cb2bf5296ffd9e45fe68d90c0a849ea80fd820"
+    }
+   },
+   "version": 2
+  },
+  "personalities": {
+   "active": "town_characters",
+   "collection": false,
+   "files": {
+    "easygoing_town": {
+     "bytes": 4793,
+     "path": "res://modules/personalities/easygoing_town.tres",
+     "sha256": "0e8a6722379218c54e322377c6b1f2850a025c81db99dc983277afd6230d4753"
+    },
+    "town_characters": {
+     "bytes": 4843,
+     "path": "res://modules/personalities/town_characters.tres",
+     "sha256": "fa3e7a40284e8977a8f9a3c1f964c6674aac0cc06573e0a0170b0a1519d03d3e"
+    }
+   },
+   "version": 1
+  },
+  "plants": {
+   "active": "meadow",
+   "collection": false,
+   "files": {
+    "lush": {
+     "bytes": 497,
+     "path": "res://modules/plants/lush.tres",
+     "sha256": "83acdca477deecee761054d594cfe644eed82b70b0d4988e74e8465b86b3b342"
+    },
+    "meadow": {
+     "bytes": 626,
+     "path": "res://modules/plants/meadow.tres",
+     "sha256": "78864ff360eff016fc576ce59b4e5cf1b8bbfc635915d27ff75762f4f9f7078e"
+    }
+   },
+   "version": 1
+  },
+  "police_patrol": {
+   "active": "town_patrol",
+   "collection": false,
+   "files": {
+    "town_patrol": {
+     "bytes": 538,
+     "path": "res://modules/police_patrol/town_patrol.tres",
+     "sha256": "998b83d6eb3cc1069371b3f4f9f8ed3990286806f0a7b0c8d990fe6b0896d960"
+    },
+    "wide_patrol": {
+     "bytes": 588,
+     "path": "res://modules/police_patrol/wide_patrol.tres",
+     "sha256": "44b4b5f0574996ed52bbc58c6955c26c2074e66cedd7cf05325b86f85cbdc9af"
+    }
+   },
+   "version": 1
+  },
+  "population": {
+   "active": "families",
+   "collection": false,
+   "files": {
+    "families": {
+     "bytes": 22386,
+     "path": "res://modules/population/families.tres",
+     "sha256": "21e7ff2b8883ce32a8f75696c1e54ddda48797ed07d92d20035b18d015570c6a"
+    },
+    "small_town": {
+     "bytes": 6581,
+     "path": "res://modules/population/small_town.tres",
+     "sha256": "77be81196b012e95bc96bb085a3df9eb567e09007d7c3bf48c46c6c1e713f048"
+    }
+   },
+   "version": 2
+  },
+  "possession": {
+   "active": "free_choice",
+   "collection": false,
+   "files": {
+    "free_choice": {
+     "bytes": 453,
+     "path": "res://modules/possession/free_choice.tres",
+     "sha256": "a5dccf840eed58e09e55ca5bca22e705fac9264cdbd672331885d26c1a9c4913"
+    },
+    "gentle": {
+     "bytes": 383,
+     "path": "res://modules/possession/gentle.tres",
+     "sha256": "c249b29f06f20a265fc1d84989d046573912a5ec1006d826b64441f5e05311bc"
+    }
+   },
+   "version": 1
+  },
+  "power": {
+   "active": "breaker_panel",
+   "collection": false,
+   "files": {
+    "breaker_panel": {
+     "bytes": 386,
+     "path": "res://modules/power/breaker_panel.tres",
+     "sha256": "b13c43f6aaffa49265bd82abbc0511977fb462ea55ec1cf0ef4e5fb8acc4a78b"
+    },
+    "old_fuse_box": {
+     "bytes": 387,
+     "path": "res://modules/power/old_fuse_box.tres",
+     "sha256": "36f31b0cf71a465b5b24e6ecd944092d906f5e6b6fd4f82afba073bf8d206286"
+    }
+   },
+   "version": 1
+  },
+  "price_board": {
+   "active": "chalkboard",
+   "collection": false,
+   "files": {
+    "chalkboard": {
+     "bytes": 883,
+     "path": "res://modules/price_board/chalkboard.tres",
+     "sha256": "82906a6b00b83f694186845a37e6c08287b23817d831422962b0a6bd9ab78f21"
+    },
+    "market_screen": {
+     "bytes": 844,
+     "path": "res://modules/price_board/market_screen.tres",
+     "sha256": "a6581e477903965c6aa3f26c3839db482723289c155cfecdb64b509f7df43a0c"
+    }
+   },
+   "version": 1
+  },
+  "producers": {
+   "active": "carpenter_boards",
+   "collection": true,
+   "files": {
+    "bakery": {
+     "bytes": 459,
+     "path": "res://modules/producers/bakery.tres",
+     "sha256": "457491a432078cfe74be344df217be521751e24ef21c9d290c29f21a7939cb3b"
+    },
+    "blacksmith_forge": {
+     "bytes": 465,
+     "path": "res://modules/producers/blacksmith_forge.tres",
+     "sha256": "a3eb836339417d5fec30aca68273c4eac770158a0a5d54b1a7674574098d0687"
+    },
+    "blacksmith_tools": {
+     "bytes": 863,
+     "path": "res://modules/producers/blacksmith_tools.tres",
+     "sha256": "d7bdfb02eb057927a8834e4c6e753feb6b1f89abadbaac6e45f00f2bff5b7885"
+    },
+    "carpenter_boards": {
+     "bytes": 499,
+     "path": "res://modules/producers/carpenter_boards.tres",
+     "sha256": "e2a2d07a0e866f25c899b7d26a3b871cb0d6a18268a9844a673ff81af951d2ae"
+    },
+    "carpenter_furniture": {
+     "bytes": 852,
+     "path": "res://modules/producers/carpenter_furniture.tres",
+     "sha256": "d26e10d33c22d321d06a3c40e1ddc2125b40bd9034ba9970003619cd4350cf9d"
+    },
+    "carpenter_logs": {
+     "bytes": 540,
+     "path": "res://modules/producers/carpenter_logs.tres",
+     "sha256": "7ec3c00280b145924457847d35b4fff8ea14afe0dc8a9d9a06ee9f90eb5d5b6e"
+    },
+    "dairy": {
+     "bytes": 480,
+     "path": "res://modules/producers/dairy.tres",
+     "sha256": "8e27f74a80b62c9d4bebfd18bc7e43d755b6671d32072ca93a2f9ade4eab64d6"
+    },
+    "feed_mill": {
+     "bytes": 519,
+     "path": "res://modules/producers/feed_mill.tres",
+     "sha256": "b15d6258b11fdd316100bae516ecc6e8129fee490df93e03962b7251ef61b008"
+    },
+    "fishermen": {
+     "bytes": 507,
+     "path": "res://modules/producers/fishermen.tres",
+     "sha256": "13b7a6f0f20e889a79c08f633e4752b1ae65f8882cc5ae60271b874be13565bb"
+    },
+    "fruit_farms": {
+     "bytes": 553,
+     "path": "res://modules/producers/fruit_farms.tres",
+     "sha256": "501db7160f9573a06359fb42d02e495b692198e168dfcb904f12aa61d55ec049"
+    },
+    "poultry_farm": {
+     "bytes": 495,
+     "path": "res://modules/producers/poultry_farm.tres",
+     "sha256": "15972459a7054ab6865c394165442e4295c5e4886a9d6395da6123e94b340cef"
+    },
+    "tailor_spinning": {
+     "bytes": 503,
+     "path": "res://modules/producers/tailor_spinning.tres",
+     "sha256": "77268fb61760ab8678915c03cfc8d84a221dc5c3f93112b2dc985881f426e17f"
+    },
+    "wholesaler": {
+     "bytes": 569,
+     "path": "res://modules/producers/wholesaler.tres",
+     "sha256": "14f07c3954fff8ffc7016ebb50c2c29202bf50f7b1299cfe714ed817c2638fa4"
+    }
+   },
+   "version": 2
+  },
+  "pushables": {
+   "active": "farm_boxes",
+   "collection": false,
+   "files": {
+    "farm_boxes": {
+     "bytes": 671,
+     "path": "res://modules/pushables/farm_boxes.tres",
+     "sha256": "27813d711f9732e0a1a15f8a07a046f9281fc46aa30fc1482b14de0b6a8af426"
+    },
+    "heavy_boxes": {
+     "bytes": 654,
+     "path": "res://modules/pushables/heavy_boxes.tres",
+     "sha256": "17cea12da9ffa8c1161ae22f1fcbfa213635efbc78c093b6b301d4808e664bf2"
+    }
+   },
+   "version": 2
+  },
+  "quality": {
+   "active": "medium",
+   "collection": true,
+   "files": {
+    "high": {
+     "bytes": 845,
+     "path": "res://modules/quality/high.tres",
+     "sha256": "deb77dbac32c9f2c2569c45fadc03eee962a58fd81989b122e879896a7c6dece"
+    },
+    "low": {
+     "bytes": 841,
+     "path": "res://modules/quality/low.tres",
+     "sha256": "4d2a89839649d12715d3c6f9d6baecaee68f3dd99d4f806037bbe8044cbd998b"
+    },
+    "medium": {
+     "bytes": 411,
+     "path": "res://modules/quality/medium.tres",
+     "sha256": "75dd1425eb429d8caa5536aa36b3aa877f3f72c4b1787627e98847ecfc6c2087"
+    }
+   },
+   "version": 1
+  },
+  "real_clock": {
+   "active": "optional",
+   "collection": false,
+   "files": {
+    "always": {
+     "bytes": 385,
+     "path": "res://modules/real_clock/always.tres",
+     "sha256": "c7aa223c37597114bcbabe760a38b60513450ecdfcc1c6a31c9a46e4f3c536cb"
+    },
+    "optional": {
+     "bytes": 432,
+     "path": "res://modules/real_clock/optional.tres",
+     "sha256": "825dc602de3c6cd4de67d23e36b296efa374e04212d944bd2834d07cc10be974"
+    }
+   },
+   "version": 1
+  },
+  "recipes": {
+   "active": "birdhouse",
+   "collection": true,
+   "files": {
+    "baked_apple": {
+     "bytes": 448,
+     "path": "res://modules/recipes/baked_apple.tres",
+     "sha256": "393a950daf87436592f0e28d512b9af7c66049a16ca62f18216bf0d0fd5adc39"
+    },
+    "birdhouse": {
+     "bytes": 515,
+     "path": "res://modules/recipes/birdhouse.tres",
+     "sha256": "38bf4ec2318a05c24cc6e7462b0ddc18687fa4591e7609d1f2e4cd4790eaa5ba"
+    },
+    "fruit_basket": {
+     "bytes": 525,
+     "path": "res://modules/recipes/fruit_basket.tres",
+     "sha256": "9bd09b130f3041115fa98926f3ee844358a823100d1a1e1b377c8e670ce10e56"
+    },
+    "grilled_fish": {
+     "bytes": 446,
+     "path": "res://modules/recipes/grilled_fish.tres",
+     "sha256": "b6bddc2f2be5aa81fd5d74dbc12ba4be3bc9b0cfce760d8047c2561f67282c74"
+    },
+    "iron_lantern": {
+     "bytes": 520,
+     "path": "res://modules/recipes/iron_lantern.tres",
+     "sha256": "500ab4c22f0e34ee52f49e985bf433fdcc828301d5d1a07d264b6a6ec4b93af3"
+    },
+    "mint_tea": {
+     "bytes": 448,
+     "path": "res://modules/recipes/mint_tea.tres",
+     "sha256": "4e089aecedfe566a9f5921c43e66cbb4ef592ef59ccca3acef7690ae8d3c6ded"
+    },
+    "planter_box": {
+     "bytes": 496,
+     "path": "res://modules/recipes/planter_box.tres",
+     "sha256": "a50d8f27427024550ca6dc88405bdb0089f13d5f13efe18043dc45d1c10c9ad0"
+    },
+    "pumpkin_soup": {
+     "bytes": 453,
+     "path": "res://modules/recipes/pumpkin_soup.tres",
+     "sha256": "479b4e37c65a7aa15722c14e8ef0bb0c8e4d4e555ed6888f207e9bc1f5d528f4"
+    },
+    "shell_fertilizer": {
+     "bytes": 497,
+     "path": "res://modules/recipes/shell_fertilizer.tres",
+     "sha256": "9f84171a9fbaac93ec1fc496e5103be713b5ed23fd90eeb1435771738f67f1e0"
+    },
+    "stone_planter": {
+     "bytes": 487,
+     "path": "res://modules/recipes/stone_planter.tres",
+     "sha256": "0536dc1ccd1b564b28a85d6e47d305d8ce9495ff5ca7b13762417ed6d458430d"
+    },
+    "strawberry_jam": {
+     "bytes": 483,
+     "path": "res://modules/recipes/strawberry_jam.tres",
+     "sha256": "6bea9f84ef833f78fe4c1dda3df0147113c796f0bf53ee29b0de5b752640f4f9"
+    },
+    "tomato_stew": {
+     "bytes": 443,
+     "path": "res://modules/recipes/tomato_stew.tres",
+     "sha256": "bd9e9fc7d0487c4bb01005c7f97e77139274f35464c8c56781db5860562ffa94"
+    },
+    "vegetable_soup": {
+     "bytes": 454,
+     "path": "res://modules/recipes/vegetable_soup.tres",
+     "sha256": "5640501cb08b1d23d76af76d42b3af7584df7d36d3a398b8d1c3f945ad15c8d7"
+    },
+    "wool_yarn": {
+     "bytes": 495,
+     "path": "res://modules/recipes/wool_yarn.tres",
+     "sha256": "bcbcbb525ab343485bb686ff6d630351fddebba4ded04c819f179cb9afac61b0"
+    }
+   },
+   "version": 1
+  },
+  "resident_looks": {
+   "active": "varied_faces",
+   "collection": false,
+   "files": {
+    "subtle_faces": {
+     "bytes": 841,
+     "path": "res://modules/resident_looks/subtle_faces.tres",
+     "sha256": "674a0b4bf84c157b1021bcd9189ffed1322738e014a412f741d2c43947b483c2"
+    },
+    "varied_faces": {
+     "bytes": 982,
+     "path": "res://modules/resident_looks/varied_faces.tres",
+     "sha256": "794e7e0e876ff862af876b57c3a43323cad414c74e9be63c4a830e3efaddac77"
+    }
+   },
+   "version": 1
+  },
+  "road_markings": {
+   "active": "city_white",
+   "collection": false,
+   "files": {
+    "city_white": {
+     "bytes": 518,
+     "path": "res://modules/road_markings/city_white.tres",
+     "sha256": "4cd8081eda4a539fac647f3fb27f094f2f264075b046ce5ded104950cc2ac456"
+    },
+    "faded_paint": {
+     "bytes": 567,
+     "path": "res://modules/road_markings/faded_paint.tres",
+     "sha256": "9cbf11b72dbf1a1eabb6918a725753e71c63c8ad0df5fa935cd3703f490f79f6"
+    }
+   },
+   "version": 1
+  },
+  "road_safety": {
+   "active": "careful_drivers",
+   "collection": false,
+   "files": {
+    "careful_drivers": {
+     "bytes": 2886,
+     "path": "res://modules/road_safety/careful_drivers.tres",
+     "sha256": "5ab051acf8b3dc3ab2396d5df8355377050e8a80ddcf87fecac7900b792311fd"
+    },
+    "light_checks": {
+     "bytes": 2943,
+     "path": "res://modules/road_safety/light_checks.tres",
+     "sha256": "2ffce4c0e99e3d376628b73b80353212a3bc6a09cb0c7662fd18c4e16b36be2a"
+    }
+   },
+   "version": 1
+  },
+  "rocks": {
+   "active": "quaternius",
+   "collection": false,
+   "files": {
+    "mossy_boulders": {
+     "bytes": 371,
+     "path": "res://modules/rocks/mossy_boulders.tres",
+     "sha256": "fb7ca61bced9562ea8ff14765bf1199482e7a91ce2838c00f35c8f5cb010a5ad"
+    },
+    "quaternius": {
+     "bytes": 379,
+     "path": "res://modules/rocks/quaternius.tres",
+     "sha256": "c035286cff13cf7b22c0bd8921080bd63ce80b88d6919307fe006e76f8ab4583"
+    }
+   },
+   "version": 1
+  },
+  "save_sync": {
+   "active": "every_5s",
+   "collection": false,
+   "files": {
+    "every_30s": {
+     "bytes": 332,
+     "path": "res://modules/save_sync/every_30s.tres",
+     "sha256": "0911846c98cc237b77c5534afe060ebfe2f3482ad26982e1e874c78e9dfc6872"
+    },
+    "every_5s": {
+     "bytes": 374,
+     "path": "res://modules/save_sync/every_5s.tres",
+     "sha256": "d935a596cef1debc3fc22f5199ea3456cd6429e0131970111772159f42edeade"
+    }
+   },
+   "version": 1
+  },
+  "sea_horizon": {
+   "active": "blended",
+   "collection": false,
+   "files": {
+    "blended": {
+     "bytes": 386,
+     "path": "res://modules/sea_horizon/blended.tres",
+     "sha256": "193a4f1ddf8cf717b3c12a7c68143c282f41831a96ba8e133142e524c7a50592"
+    },
+    "classic": {
+     "bytes": 382,
+     "path": "res://modules/sea_horizon/classic.tres",
+     "sha256": "2e4fd1642a6195a208a82a6702cb3af6830cbdeb00d48a9e44fa78bbecee1f26"
+    }
+   },
+   "version": 1
+  },
+  "shadows": {
+   "active": "soft_cascades",
+   "collection": false,
+   "files": {
+    "crisp": {
+     "bytes": 385,
+     "path": "res://modules/shadows/crisp.tres",
+     "sha256": "570d44beffc836540e586fbe22970b6d6829f0c622155fd62f1b316cd8fa84ed"
+    },
+    "soft_cascades": {
+     "bytes": 412,
+     "path": "res://modules/shadows/soft_cascades.tres",
+     "sha256": "746366d86062fba534222d8e3f7f409543a7454ba1dc0eafa8da6dc04fe7ce2b"
+    }
+   },
+   "version": 1
+  },
+  "shop_hours": {
+   "active": "standard",
+   "collection": false,
+   "files": {
+    "late_night": {
+     "bytes": 831,
+     "path": "res://modules/shop_hours/late_night.tres",
+     "sha256": "3265d2407d8d1678190487ebe29b694f428b3e1a5d0c1e09cdbfa10a41d530b9"
+    },
+    "standard": {
+     "bytes": 847,
+     "path": "res://modules/shop_hours/standard.tres",
+     "sha256": "e0729da9b150b6dca5c06f100d2ff235d8dc2e7bcb95f25a817c5e478f80c5ac"
+    }
+   },
+   "version": 1
+  },
+  "sky": {
+   "active": "glass_blue",
+   "collection": false,
+   "files": {
+    "clear": {
+     "bytes": 230,
+     "path": "res://modules/sky/clear.tres",
+     "sha256": "627c9943bcd0577ab6449eef278e3c913d6e85a0cf97178772dd1722bb04483f"
+    },
+    "glass_blue": {
+     "bytes": 603,
+     "path": "res://modules/sky/glass_blue.tres",
+     "sha256": "4caff5bee6b3db19b4c97a0ca7ddf6e681ebf3ca5b0d707692f5f8cc4bee1882"
+    },
+    "pastel": {
+     "bytes": 354,
+     "path": "res://modules/sky/pastel.tres",
+     "sha256": "25035b0cdb2e5025bf49a86f2f91eb7a22d7564ad2023b84cc1c4b5c279e29bf"
+    }
+   },
+   "version": 2
+  },
+  "sound_fx": {
+   "active": "rich_fx",
+   "collection": false,
+   "files": {
+    "rich_fx": {
+     "bytes": 1469,
+     "path": "res://modules/sound_fx/rich_fx.tres",
+     "sha256": "1cc769c016ccefdb19dc8551316777de390c025e82c2d81fcfc4d22b2a427b29"
+    },
+    "subtle_fx": {
+     "bytes": 1449,
+     "path": "res://modules/sound_fx/subtle_fx.tres",
+     "sha256": "a6048b9847b576c298280ad83abc43bf3ff789c334de4f18534f45b71d37f9a4"
+    }
+   },
+   "version": 1
+  },
+  "spatial_audio": {
+   "active": "camera_listener",
+   "collection": false,
+   "files": {
+    "camera_listener": {
+     "bytes": 461,
+     "path": "res://modules/spatial_audio/camera_listener.tres",
+     "sha256": "f82203968be0fb5e3fc92b101161eac5a46a2de32b125f695adea885e7b51ef6"
+    },
+    "light": {
+     "bytes": 447,
+     "path": "res://modules/spatial_audio/light.tres",
+     "sha256": "43b26cf10e768bff55e8fad29e9792588dba9f9723370c1b2aa08dbc7d692ada"
+    }
+   },
+   "version": 1
+  },
+  "street_lighting": {
+   "active": "bright_city",
+   "collection": false,
+   "files": {
+    "bright_city": {
+     "bytes": 829,
+     "path": "res://modules/street_lighting/bright_city.tres",
+     "sha256": "45bd5b322a5883d8937255b0d06b6bd5404545f7105319b98e7d3c410c31f86e"
+    },
+    "soft_glow": {
+     "bytes": 857,
+     "path": "res://modules/street_lighting/soft_glow.tres",
+     "sha256": "2a6b2bc141dabe7d926258e278f26ca0f711015ab68ac50716af10e27110532b"
+    }
+   },
+   "version": 1
+  },
+  "street_plants": {
+   "active": "town_avenue",
+   "collection": false,
+   "files": {
+    "sparse_greens": {
+     "bytes": 1499,
+     "path": "res://modules/street_plants/sparse_greens.tres",
+     "sha256": "d9e307fdd4260d1cbbeb327e96b6b6166867f29a7a146a290062bfb18153a1e6"
+    },
+    "town_avenue": {
+     "bytes": 1527,
+     "path": "res://modules/street_plants/town_avenue.tres",
+     "sha256": "1212ad35694b9542f338a836b2145ec3adbc15084eaf503da8cf0706d472cde3"
+    }
+   },
+   "version": 1
+  },
+  "sunbathing": {
+   "active": "sun_beach",
+   "collection": false,
+   "files": {
+    "quiet_cove": {
+     "bytes": 363,
+     "path": "res://modules/sunbathing/quiet_cove.tres",
+     "sha256": "6eae9a8079a561661e2965fdc3d3a36ba38653e1078f5397491a04b44602d4f7"
+    },
+    "sun_beach": {
+     "bytes": 429,
+     "path": "res://modules/sunbathing/sun_beach.tres",
+     "sha256": "8163d6af7db2f692d0c30d7f221b549314a0f84f62dde2cd9b5f7ae21fec2366"
+    }
+   },
+   "version": 1
+  },
+  "terrain": {
+   "active": "green_valley",
+   "collection": false,
+   "files": {
+    "dry_steppe": {
+     "bytes": 316,
+     "path": "res://modules/terrain/dry_steppe.tres",
+     "sha256": "e417a267a924e7ca0c944cc26a9965b56ec03e5445ffea13eaf432cdef3b554f"
+    },
+    "green_valley": {
+     "bytes": 255,
+     "path": "res://modules/terrain/green_valley.tres",
+     "sha256": "96e14ace511eecb07696b31942b65d3ebbc6fef84e6aa57b5648055da3644cb7"
+    }
+   },
+   "version": 1
+  },
+  "tool_types": {
+   "active": "hoe",
+   "collection": true,
+   "files": {
+    "axe": {
+     "bytes": 517,
+     "path": "res://modules/tool_types/axe.tres",
+     "sha256": "288fb034b0a7a0a7ad3829c0907540831b4fe65ca73029a3dd56372913b2978a"
+    },
+    "copper_can": {
+     "bytes": 600,
+     "path": "res://modules/tool_types/copper_can.tres",
+     "sha256": "bec2a8acb452e577f98f7180ebb7140592982cfff12ea26666caf785763bb6f5"
+    },
+    "hammer": {
+     "bytes": 575,
+     "path": "res://modules/tool_types/hammer.tres",
+     "sha256": "15c0cd6526c82bc0a835f7107e07e31e5a0794cfbb7596a57ae82868788a666f"
+    },
+    "harvest_basket": {
+     "bytes": 568,
+     "path": "res://modules/tool_types/harvest_basket.tres",
+     "sha256": "7518ae80505f0ecd5d4c77174ad4cf6ebc7ceb9799d7b255808d074a7415b9bc"
+    },
+    "hoe": {
+     "bytes": 529,
+     "path": "res://modules/tool_types/hoe.tres",
+     "sha256": "e88ca67170f7690898a9e0a7b915a2043b09c941019fd5e3edd97783f8384920"
+    },
+    "seed_pouch": {
+     "bytes": 546,
+     "path": "res://modules/tool_types/seed_pouch.tres",
+     "sha256": "e888e21adc7536ba1f8e34ad0ee67cb9383c372bdc5c553451e5bcb1851ecea1"
+    },
+    "steel_axe": {
+     "bytes": 546,
+     "path": "res://modules/tool_types/steel_axe.tres",
+     "sha256": "392dae7069e086f45d663bc604e5997335211043f217c490da0de0b712b4f882"
+    },
+    "steel_hoe": {
+     "bytes": 583,
+     "path": "res://modules/tool_types/steel_hoe.tres",
+     "sha256": "c2bb79de1300670b1e7a70349287091f5cfa684e3d670ebc781ce03e72106a0e"
+    },
+    "watering_can": {
+     "bytes": 548,
+     "path": "res://modules/tool_types/watering_can.tres",
+     "sha256": "f37e3583612dba6ccda6bbaf9e16ddf6039dfdd38ed1dae0613f98f58d30e6d7"
+    }
+   },
+   "version": 2
+  },
+  "town_lots": {
+   "active": "three_lots",
+   "collection": false,
+   "files": {
+    "for_sale_only": {
+     "bytes": 525,
+     "path": "res://modules/town_lots/for_sale_only.tres",
+     "sha256": "15b62ba3caedc7ffe89988cfe2f9a4759bc058539d07a29a4a1c4af493f4280c"
+    },
+    "three_lots": {
+     "bytes": 581,
+     "path": "res://modules/town_lots/three_lots.tres",
+     "sha256": "9216933167291966a909feaf43c809e5708b8361b43444da934a9c327507e890"
+    }
+   },
+   "version": 2
+  },
+  "town_square": {
+   "active": "ornate_fountain",
+   "collection": false,
+   "files": {
+    "classic_well": {
+     "bytes": 645,
+     "path": "res://modules/town_square/classic_well.tres",
+     "sha256": "00b14792190f86129ea7219ba715c0482816783016a5953339fb9a09f947d6c2"
+    },
+    "ornate_fountain": {
+     "bytes": 733,
+     "path": "res://modules/town_square/ornate_fountain.tres",
+     "sha256": "9b340d7fe9baf38171f6a507e194ad9057d133f69c0c98829e65c883a619b4e4"
+    }
+   },
+   "version": 1
+  },
+  "traffic_rules": {
+   "active": "strict_city",
+   "collection": false,
+   "files": {
+    "gentle_city": {
+     "bytes": 2015,
+     "path": "res://modules/traffic_rules/gentle_city.tres",
+     "sha256": "9c498f164bb63f65be577ddf4e7bb3cfbef9ef49115dfe3647f20765fe31bbbe"
+    },
+    "strict_city": {
+     "bytes": 2034,
+     "path": "res://modules/traffic_rules/strict_city.tres",
+     "sha256": "926a5d3a5f63b86e38fc181e1d99548c21e8b1d38b369a322c122e2aabebdd38"
+    }
+   },
+   "version": 1
+  },
+  "traffic_signs": {
+   "active": "bilingual",
+   "collection": false,
+   "files": {
+    "bilingual": {
+     "bytes": 1751,
+     "path": "res://modules/traffic_signs/bilingual.tres",
+     "sha256": "ae1b45b0dfcad9e9dc62117ebb22ee5ff766e179adf544275cb282c494d5a622"
+    },
+    "persian_only": {
+     "bytes": 1683,
+     "path": "res://modules/traffic_signs/persian_only.tres",
+     "sha256": "1d0ac3e1bbdfc9b0ffaaa702025c4d77c1285cbaa1764077e9ddabe9630395a9"
+    }
+   },
+   "version": 1
+  },
+  "transit": {
+   "active": "city_bus",
+   "collection": false,
+   "files": {
+    "city_bus": {
+     "bytes": 2297,
+     "path": "res://modules/transit/city_bus.tres",
+     "sha256": "cdb0e014249f21e63d9103956b9b5c376af86e8b48cfd28aa9ffb26e97a54ad5"
+    },
+    "minibus": {
+     "bytes": 2247,
+     "path": "res://modules/transit/minibus.tres",
+     "sha256": "21409023c48a7a221f2908dffc6adcebc10afeb2fc7ffca72f480413b7712047"
+    }
+   },
+   "version": 1
+  },
+  "trees": {
+   "active": "quaternius_mixed",
+   "collection": false,
+   "files": {
+    "pine_forest": {
+     "bytes": 812,
+     "path": "res://modules/trees/pine_forest.tres",
+     "sha256": "a6bfc4ccc99a7aefdd0f2fd15108fb893ee792333f92076c9df2659f43d55db9"
+    },
+    "quaternius_mixed": {
+     "bytes": 916,
+     "path": "res://modules/trees/quaternius_mixed.tres",
+     "sha256": "79570d800eae5359786217e33eac61542f434ae458d9a3bec14598f6d0f0e7f4"
+    }
+   },
+   "version": 1
+  },
+  "ui_text": {
+   "active": "farsi",
+   "collection": false,
+   "files": {
+    "farsi": {
+     "bytes": 21612,
+     "path": "res://modules/ui_text/farsi.tres",
+     "sha256": "0895402ebf0935c4b1f502a83c9ca66db1b0531931979819c7f7d2ed9f874966"
+    },
+    "farsi_short": {
+     "bytes": 21608,
+     "path": "res://modules/ui_text/farsi_short.tres",
+     "sha256": "411ddf66834543bc7537bfb97455024b40cb6a5a2f4bf7acbd0e9befdab937f1"
+    }
+   },
+   "version": 5
+  },
+  "vehicles": {
+   "active": "town_cars",
+   "collection": false,
+   "files": {
+    "gentle_cars": {
+     "bytes": 1198,
+     "path": "res://modules/vehicles/gentle_cars.tres",
+     "sha256": "ec677ee8a0245352a19e4bc01d27f11bd6faa15e16d9b9773130253b08069d91"
+    },
+    "town_cars": {
+     "bytes": 1217,
+     "path": "res://modules/vehicles/town_cars.tres",
+     "sha256": "7c5b7e9e75bd40538bc5758b708f895e0e51e2c883a162a0be4f4b1e6aaa8d0e"
+    }
+   },
+   "version": 2
+  },
+  "voice_profiles": {
+   "active": "distinct_voices",
+   "collection": false,
+   "files": {
+    "distinct_voices": {
+     "bytes": 3910,
+     "path": "res://modules/voice_profiles/distinct_voices.tres",
+     "sha256": "ad576a000deb2c59df35d14c12ce3ff3ae4e9ceac155e9a8aa9f7cc92bf6a147"
+    },
+    "uniform_voices": {
+     "bytes": 1146,
+     "path": "res://modules/voice_profiles/uniform_voices.tres",
+     "sha256": "cf286e811b400bef11f3b5415a93aaaab25bd2324d9111556f2b1e6ab6cd173e"
+    }
+   },
+   "version": 1
+  },
+  "voices": {
+   "active": "blips",
+   "collection": false,
+   "files": {
+    "blips": {
+     "bytes": 781,
+     "path": "res://modules/voices/blips.tres",
+     "sha256": "6f9bd44452b23378c834e04b5db5bde912cee0ffd98a7d196ff7453c89ce72da"
+    },
+    "hum": {
+     "bytes": 642,
+     "path": "res://modules/voices/hum.tres",
+     "sha256": "e3cad58aa18b7dba09053a8779e93109e3fc49fb31f3750088009937a1ba914a"
+    }
+   },
+   "version": 1
+  },
+  "wages": {
+   "active": "fair_wages",
+   "collection": false,
+   "files": {
+    "fair_wages": {
+     "bytes": 1105,
+     "path": "res://modules/wages/fair_wages.tres",
+     "sha256": "8b6062ed567ec9170959471260d832296a3b37fa8fd8a40509ffa36ebddb5d8e"
+    },
+    "modest_wages": {
+     "bytes": 1065,
+     "path": "res://modules/wages/modest_wages.tres",
+     "sha256": "6ecb1b8a5d18a1df2359a9ebf61618bda021d4e5e22ac7bbbc2df8672318d17f"
+    }
+   },
+   "version": 2
+  },
+  "wardrobe": {
+   "active": "home_wardrobe",
+   "collection": false,
+   "files": {
+    "festive": {
+     "bytes": 1078,
+     "path": "res://modules/wardrobe/festive.tres",
+     "sha256": "f21bce4c1617b15c3476299e069d538a4e9ad6e0776bed7efd0f8b2e2bc8cb43"
+    },
+    "home_wardrobe": {
+     "bytes": 1227,
+     "path": "res://modules/wardrobe/home_wardrobe.tres",
+     "sha256": "39a606458a4987f9823de4da963c13ca02b427c921cbd261420b20b65376a4c7"
+    }
+   },
+   "version": 1
+  },
+  "water": {
+   "active": "atlantic",
+   "collection": false,
+   "files": {
+    "atlantic": {
+     "bytes": 471,
+     "path": "res://modules/water/atlantic.tres",
+     "sha256": "21da4c7992ac3ae23862139997db6b15b41c54e7ab3e4785bb0a743a35c7a11e"
+    },
+    "tropical": {
+     "bytes": 465,
+     "path": "res://modules/water/tropical.tres",
+     "sha256": "945ed47a7b5c1000d0fd5e61c4269a4da0779f8c3d1120bb8cc06a2fa56f534b"
+    }
+   },
+   "version": 1
+  },
+  "weather_fx": {
+   "active": "soft_weather",
+   "collection": false,
+   "files": {
+    "light_weather": {
+     "bytes": 682,
+     "path": "res://modules/weather_fx/light_weather.tres",
+     "sha256": "13788789e8bb0ffd9113d50931311e7d43e59a670255d8f0e469b96bf43cefdc"
+    },
+    "soft_weather": {
+     "bytes": 434,
+     "path": "res://modules/weather_fx/soft_weather.tres",
+     "sha256": "2e3328c34a5d60afcc548178cb06dbfd3b5ab50cd54df34d735427083015b395"
+    }
+   },
+   "version": 2
+  },
+  "wood_pickup": {
+   "active": "red_pickup",
+   "collection": false,
+   "files": {
+    "busy_pickup": {
+     "bytes": 445,
+     "path": "res://modules/wood_pickup/busy_pickup.tres",
+     "sha256": "14740f63768dfffde94a1de97ec37a1f3dc8b305d88992a90f0e5989e4c5cf69"
+    },
+    "red_pickup": {
+     "bytes": 381,
+     "path": "res://modules/wood_pickup/red_pickup.tres",
+     "sha256": "9c65cd9c0ce31400e93e571fbdcfb2023b7ef6f4308b59bfe9e49e5c92424684"
+    }
+   },
+   "version": 1
+  },
+  "workplaces": {
+   "active": "classic_shops",
+   "collection": false,
+   "files": {
+    "classic_shops": {
+     "bytes": 3830,
+     "path": "res://modules/workplaces/classic_shops.tres",
+     "sha256": "aa557afadf2678b9fcbd115be331107a6676b75ea1e386183f2d78fac2250b52"
+    },
+    "modern_shops": {
+     "bytes": 3753,
+     "path": "res://modules/workplaces/modern_shops.tres",
+     "sha256": "3bbb4c238a60cbdee2afcbae800a2329fba5d1ccc8205e8adcdb158c84950839"
+    }
+   },
+   "version": 1
+  },
+  "world_memory": {
+   "active": "remember_all",
+   "collection": false,
+   "files": {
+    "forgetful": {
+     "bytes": 526,
+     "path": "res://modules/world_memory/forgetful.tres",
+     "sha256": "519dca2132f9ac7f0487579a8bd4565cc5adbe7f33c28ea145c8de7773d86281"
+    },
+    "remember_all": {
+     "bytes": 543,
+     "path": "res://modules/world_memory/remember_all.tres",
+     "sha256": "de5bdc3f211b3586b72e6a570776f6b29cab2906e079a3fd4c235b4e5616e847"
+    }
+   },
+   "version": 1
+  },
+  "world_stream": {
+   "active": "streaming",
+   "collection": false,
+   "files": {
+    "stream_wide": {
+     "bytes": 560,
+     "path": "res://modules/world_stream/stream_wide.tres",
+     "sha256": "c98edaba97404827aceafefafcdc280dd272de43823ad7bceb457d8fd82ee6c3"
+    },
+    "streaming": {
+     "bytes": 516,
+     "path": "res://modules/world_stream/streaming.tres",
+     "sha256": "ef9fa6a0a3f8da402efa1ec9d4b6acb8ddc4e5ec04a23a61030082dbaea149c1"
+    }
+   },
+   "version": 1
+  },
+  "yard_routine": {
+   "active": "farm_day",
+   "collection": false,
+   "files": {
+    "farm_day": {
+     "bytes": 838,
+     "path": "res://modules/yard_routine/farm_day.tres",
+     "sha256": "bfac17e14d28c0be9a0b8dd2f8b6d749629be03a91a9c5d07b31a138274c5c89"
+    },
+    "light_day": {
+     "bytes": 551,
+     "path": "res://modules/yard_routine/light_day.tres",
+     "sha256": "e0713ca22bf5ded007582782a5e73add673e2ca413b4b07361ed7b95ca91d612"
+    }
+   },
+   "version": 1
+  },
+  "yards": {
+   "active": "rail_fence",
+   "collection": false,
+   "files": {
+    "picket": {
+     "bytes": 334,
+     "path": "res://modules/yards/picket.tres",
+     "sha256": "cd108cf4f514e5a7f4c7b964655082f93a91a6a3dfdb8629e3f80e071175eca7"
+    },
+    "rail_fence": {
+     "bytes": 344,
+     "path": "res://modules/yards/rail_fence.tres",
+     "sha256": "01ae2e5f7236cff73b5238143abe34966ebd2d706cdb57f12994bb36ee5c6046"
+    }
+   },
+   "version": 1
+  }
+ }
+}

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KeyboardControlsStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/controls_keyboard/keyboard_controls_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "keyboard_legacy"
+type = "controls_keyboard"
+display_name = "Classic keyboard"
+description = "WASD / arrows camera-relative, A/D strafe, Z/C orbit, A/D steer cars."
+name_fa = "صفحه‌کلید کلاسیک"

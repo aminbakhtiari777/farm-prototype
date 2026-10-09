@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="NeedsStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/needs/needs_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "balanced"
+type = "needs"
+display_name = "Balanced"
+description = "Hunger -4/h, fatigue +4.5/h awake; one meal a day; tired or hungry hours risk a cold."
+hunger_per_hour = 4
+fatigue_per_hour = 4.5
+exhausted_fatigue = 6
+hungry_below = 30
+tired_above = 70
+meals_per_day = 1
+skipped_meal_fatigue = 20
+ill_chance_tired = 0.05
+ill_chance_hungry = 0.05
+ill_chance_base = 0
+npc_ill_chance = 0.004
+npc_meal_hours = PackedInt32Array(7, 13, 20)
+npc_doctor_hours = 1.5
+fee_mult = 1
+starving_speed = 0.85

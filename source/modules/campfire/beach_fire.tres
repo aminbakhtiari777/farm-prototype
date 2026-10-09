@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CampfireStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/campfire/campfire_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "beach_fire"
+type = "campfire"
+display_name = "Beach campfire"
+description = "A stone ring on the sand: 2 firewood burn for 3 hours; 4 log seats; grill a fish."
+name_fa = "آتش ساحلی"

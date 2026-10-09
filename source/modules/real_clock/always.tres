@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RealClockStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/real_clock/real_clock_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "always"
+type = "real_clock"
+display_name = "Real clock (always)"
+description = "Game time always follows the device clock."
+name_fa = "همیشه ساعت واقعی"
+mode = "always"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GasStoveStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/gas_stove/gas_stove_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "blue_flame"
+type = "gas_stove"
+display_name = "Blue gas flame"
+description = "Gas hob in every kitchen; 14 blue flame tongues while cooking."
+name_fa = "شعله‌ی آبی گاز"

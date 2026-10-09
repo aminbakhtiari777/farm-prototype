@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FurnitureStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/furniture/furniture_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "kenney_quiet_town"
+type = "furniture"
+display_name = "Kenney, fewer cars"
+parked_cars = PackedStringArray("sedan", "tractor")

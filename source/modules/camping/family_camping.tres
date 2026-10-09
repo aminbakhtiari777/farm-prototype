@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CampingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/camping/camping_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "family_camping"
+type = "camping"
+display_name = "Family camping"
+description = "Big blue family tent, free firewood, half rest."
+name_fa = "کمپ خانوادگی"
+spots = [{"id": "pine_forest", "en": "Pine forest camp", "fa": "کمپ جنگل کاج", "pos": Vector2(-64, -97)}, {"id": "lookout_hill", "en": "Lookout hill camp", "fa": "کمپ تپه‌ی چشم‌انداز", "pos": Vector2(64, -104)}]
+lines = {"setup": [{"en": "Tent up, fire lit. Listen to the forest...", "fa": "چادر برپا شد، آتش روشن. به صدای جنگل گوش کن..."}], "sleep": [{"en": "You sleep under the stars and wake up fresh.", "fa": "زیر ستاره‌ها می‌خوابی و سرحال بیدار می‌شوی."}], "too_far": [{"en": "Find a camp spot first (forest or lookout hill).", "fa": "اول یک جای کمپ پیدا کن (جنگل یا تپه‌ی چشم‌انداز)."}], "packed": [{"en": "You pack up the tent and put out the fire.", "fa": "چادر را جمع می‌کنی و آتش را خاموش می‌کنی."}]}
+tent_color = Color(0.2, 0.45, 0.8, 1)
+firewood_cost = 0
+rest_bonus = 0.6

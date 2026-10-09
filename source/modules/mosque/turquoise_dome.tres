@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MosqueStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/mosque/mosque_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "turquoise_dome"
+type = "mosque"
+display_name = "Turquoise dome"
+description = "White walls, turquoise dome and tilework, one minaret; a short, quiet call every hour."
+wall_color = Color(0.93, 0.9, 0.82, 1)
+dome_color = Color(0.22, 0.56, 0.62, 1)
+trim_color = Color(0.18, 0.42, 0.55, 1)
+tile_color = Color(0.15, 0.45, 0.6, 1)
+minarets = 1
+minaret_height = 15
+carpet_color = Color(0.55, 0.12, 0.14, 1)
+adhan_sound = "res://assets/audio/sfx/adhan.ogg"
+adhan_db = -10
+call_hours = PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23)
+max_distance = 85
+dome_shape = "onion"
+dome_ribs = 16
+drum_height = 1.4
+rib_color = Color(0.95, 0.85, 0.45, 1)

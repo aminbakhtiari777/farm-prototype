@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ResidentLooksStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/resident_looks/resident_looks_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "subtle_faces"
+type = "resident_looks"
+display_name = "Subtle faces"
+description = "Milder differences between residents."
+name_fa = "چهره‌های نزدیک"
+hijab_chance = 0.35
+mustache_chance = 0.2
+height_range = Vector2(0.96, 1.04)
+build_range = Vector2(0.92, 1.06)
+skin_tones = [Color(0.92, 0.76, 0.62, 1), Color(0.85, 0.68, 0.52, 1), Color(0.75, 0.55, 0.42, 1)]
+eye_colors = [Color(0.25, 0.18, 0.12, 1), Color(0.35, 0.45, 0.55, 1)]
+hair_women = ["Hair_Long", "Hair_Buns"]
+hair_men = ["Hair_Buzzed", "Hair_SimpleParted"]
+hijab_colors = [Color(0.1, 0.1, 0.12, 1), Color(0.15, 0.2, 0.45, 1), Color(0.85, 0.85, 0.85, 1)]

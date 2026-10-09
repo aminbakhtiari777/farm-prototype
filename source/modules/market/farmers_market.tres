@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MarketStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/market/market_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "farmers_market"
+type = "market"
+display_name = "Farmers' market"
+description = "Plain wooden booths with green canvas on grey cobbles; +5% when selling to stalls."
+paving_color = Color(0.55, 0.55, 0.53, 1)
+paving_alt = Color(0.48, 0.48, 0.47, 1)
+wood_color = Color(0.42, 0.3, 0.2, 1)
+awning_colors = [Color(0.3, 0.5, 0.32, 1), Color(0.36, 0.56, 0.36, 1)]
+striped = false
+sell_bonus = 1.05
+stalls = [{"id": "seeds", "title": "Seed & Tool Stall", "legacy": true}, {"id": "produce", "title": "Produce Stall", "sells": [], "buys": ["category:crop", "category:fruit"], "greeting": "Fresh from the fields!"}, {"id": "fish", "title": "Fish Stall", "sells": [], "buys": ["category:fish"], "greeting": "Caught this morning!"}, {"id": "crafts", "title": "Craft Stall", "sells": [], "buys": ["category:crafted"], "greeting": "Hand-made goods fetch a good price here."}, {"id": "bakery", "title": "Bakery Stall", "sells": ["bread_loaf"], "buys": [], "greeting": "Warm bread, just baked."}, {"id": "flowers", "title": "Flower Stall", "sells": ["sunflower_seeds"], "buys": ["sunflower"], "greeting": "Flowers brighten any home."}]
+bunting = false

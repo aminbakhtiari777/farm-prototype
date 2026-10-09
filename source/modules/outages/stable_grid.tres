@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="OutageStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/outages/outage_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "stable_grid"
+type = "outages"
+display_name = "Stable grid"
+description = "Underground lines: storms rarely cut power, quakes very rare, fixed in 1.5 h."
+name_fa = "شبکه‌ی پایدار"
+storm_cut_chance = 0.1
+quake_chance = 0.02
+repair_hours = 1.5
+crew_lines = [{"en": "Line down on Maple St - on our way!", "fa": "خط خیابان افرا قطع شده - داریم می‌رسیم!"}, {"en": "Power will be back soon, stay safe.", "fa": "برق به‌زودی وصل می‌شود، مراقب باشید."}]

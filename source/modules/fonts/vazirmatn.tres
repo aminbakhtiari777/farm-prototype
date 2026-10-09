@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FontStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/fonts/font_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "vazirmatn"
+type = "fonts"
+display_name = "Vazirmatn"
+description = "Vazirmatn Regular (OFL) - Persian/Arabic + Latin glyphs, right-to-left shaping."
+regular_path = "res://assets/fonts/Vazirmatn-Regular.ttf"
+bold_path = "res://assets/fonts/Vazirmatn-Bold.ttf"
+bubble_size = 44
+bubble_outline = 12
+bold_bubbles = false

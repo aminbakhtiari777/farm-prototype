@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="NpcRoleStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/npc_roles/npc_role_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "stub"
+type = "npc_roles"
+display_name = "NPC takeover (groundwork)"
+description = "The server tracks which townsperson a player controls; clients hand that bot to a network controller."

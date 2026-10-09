@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DryTreeStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/dry_trees/dry_tree_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "forest_edge"
+type = "dry_trees"
+display_name = "Dry trees at the forest edge"
+description = "14 dead trees along the west and north forest edges; 3 regrow every morning."
+name_fa = "درختان خشک لب جنگل"
+items = {"firewood": {"name": "Firewood", "name_fa": "هیزم", "type": "produce", "category": "wood", "sell": 12, "description": "Split dry wood. Lights the beach campfire."}, "dry_wood": {"name": "Dry Wood", "name_fa": "چوب خشک", "type": "produce", "category": "wood", "sell": 18, "description": "Seasoned logs. The carpenter saws them into boards."}}

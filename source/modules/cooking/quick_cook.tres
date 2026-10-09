@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CookingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/cooking/cooking_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "quick_cook"
+type = "cooking"
+display_name = "Quick cook (3 steps)"
+description = "Prepare, cook, eat; salt and spices go in automatically."
+steps = [{"id": "prepare", "en": "Prepare", "fa": "آماده کردن", "minutes": 8, "sound": "chop", "stamina": 2}, {"id": "cook", "en": "Cook", "fa": "پختن", "minutes": 20, "sound": "sizzle", "stamina": 1}, {"id": "eat", "en": "Eat", "fa": "خوردن", "minutes": 15, "sound": "eat", "stamina": 0}]
+auto_season = true
+seasoned_bonus = 0

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WorldStreamStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/world_stream/world_stream_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "stream_wide"
+type = "world_stream"
+display_name = "Wide streaming"
+description = "Bigger cells and margin: fewer wake-ups, more loaded at once (fast PCs)."
+name_fa = "بارگذاری گسترده"
+cell_size = 48
+unload_margin = 40
+budget_ms = 3
+auto_units = ["market_stall.gd", "signpost.gd", "street_lamp.gd", "well.gd", "price_board.gd", "seat.gd"]

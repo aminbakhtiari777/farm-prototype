@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="NpcCardStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/npc_card/npc_card_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "dark_glass"
+type = "npc_card"
+display_name = "Dark glass card"
+description = "Dark translucent card, gold accents."
+show_distance = 4.5
+bg_color = Color(0.08, 0.1, 0.14, 0.88)
+ink_color = Color(0.95, 0.95, 0.92, 1)
+accent_color = Color(0.95, 0.75, 0.3, 1)
+heart_color = Color(1, 0.4, 0.5, 1)
+show_family = true
+show_health = true

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WorldStreamStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/world_stream/world_stream_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "streaming"
+type = "world_stream"
+display_name = "Cell streaming (default)"
+description = "32 m cells, 2 ms per frame build budget, builds ahead while driving."
+name_fa = "بارگذاری تدریجی"
+auto_units = ["market_stall.gd", "signpost.gd", "street_lamp.gd", "well.gd", "price_board.gd", "seat.gd"]

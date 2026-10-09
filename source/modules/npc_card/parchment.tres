@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="NpcCardStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/npc_card/npc_card_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "parchment"
+type = "npc_card"
+display_name = "Parchment card"
+description = "Warm paper card with red hearts."
+show_distance = 4
+bg_color = Color(0.98, 0.94, 0.84, 0.95)
+ink_color = Color(0.22, 0.16, 0.1, 1)
+accent_color = Color(0.7, 0.3, 0.2, 1)
+heart_color = Color(0.88, 0.2, 0.3, 1)
+show_family = true
+show_health = true

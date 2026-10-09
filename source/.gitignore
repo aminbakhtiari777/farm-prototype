@@ -1,0 +1,8 @@
+.godot/
+*.tmp
+builds/
+*.apk
+*.aab
+*.exe
+*.app/
+export_presets.cfg.bak

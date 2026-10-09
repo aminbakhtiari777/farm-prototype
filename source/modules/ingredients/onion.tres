@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="IngredientDef" format=3]
+
+[ext_resource type="Script" path="res://modules/ingredients/ingredient_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "onion"
+type = "ingredients"
+display_name = "Onion"
+description = "Yellow onion."
+name_fa = "پیاز"
+price = 5
+sold_at = PackedStringArray("grocery", "stall:produce")
+color = Color(0.9, 0.8, 0.6, 1)
+shape = "veg"
+role = "main"

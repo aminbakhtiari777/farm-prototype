@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeatherFxStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/weather_fx/weather_fx_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "light_weather"
+type = "weather_fx"
+display_name = "Light weather (fast)"
+description = "Same look with fewer flakes / drops, no splashes, no roof overlay - for slow laptops and phones."
+name_fa = "آب‌وهوای سبک (سریع)"
+roof_snow = false
+snow_counts = {"low": 160, "medium": 280, "high": 450}
+rain_counts = {"low": 140, "medium": 240, "high": 400}
+splash_counts = {"low": 0, "medium": 0, "high": 0}
+splashes = false
+box_sizes = {"low": 10, "medium": 12, "high": 15}

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DealershipStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/car_dealership/dealership_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "town_motors"
+type = "car_dealership"
+display_name = "Town Motors"
+description = "3 cars (sedan 900, van 1300, small truck 1600); licence required."
+name_fa = "نمایشگاه خودروی شهر"
+name = {"en": "Town Motors", "fa": "نمایشگاه خودروی شهر"}
+cars = [{"id": "city_sedan", "model": "sedan", "en": "City sedan", "fa": "سواری شهری", "price": 900, "color": Color(0.75, 0.1, 0.12, 1), "top_kmh": 55}, {"id": "family_van", "model": "van", "en": "Family van", "fa": "ون خانوادگی", "price": 1300, "color": Color(0.15, 0.3, 0.6, 1), "top_kmh": 48}, {"id": "work_truck", "model": "delivery", "en": "Small truck", "fa": "کامیونت", "price": 1600, "color": Color(0.9, 0.9, 0.88, 1), "top_kmh": 45}]

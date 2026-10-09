@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="HouseStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/house_styles/house_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "wooden"
+type = "house_styles"
+display_name = "Wooden house"
+kind = "wooden"
+pattern = 0
+wall_color = Color(0.62, 0.44, 0.28, 1)
+joint_color = Color(0.28, 0.18, 0.1, 1)
+roof_color = Color(0.42, 0.24, 0.16, 1)
+roof_type = "gable"
+trim_color = Color(0.9, 0.86, 0.76, 1)
+chimney = true
+interior_wall = Color(0.74, 0.58, 0.4, 1)
+interior_floor = Color(0.42, 0.28, 0.16, 1)
+description = "Timber siding, gable roof; cosy wooden interior."
+furniture = {"rustic": true, "tv": "televisionVintage", "sofa": "loungeChair", "table": "table"}

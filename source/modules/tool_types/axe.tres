@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ToolDef" format=3]
+
+[ext_resource type="Script" path="res://modules/tool_types/tool_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "axe"
+type = "tool_types"
+display_name = "Axe"
+description = "Fells dry trees (3 hits)."
+item_id = "axe"
+kind = "axe"
+tier = 1
+anim = "swing"
+sound = "chop"
+shape = "axe"
+head_color = Color(0.55, 0.56, 0.6, 1)
+handle_color = Color(0.5, 0.34, 0.2, 1)
+buy = 0
+starter = true
+unlock_day = 1
+requires = ""
+reach = 1
+anim_seconds = 0.7

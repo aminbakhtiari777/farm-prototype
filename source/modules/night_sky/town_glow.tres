@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="NightSkyStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/night_sky/night_sky_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "town_glow"
+type = "night_sky"
+display_name = "Town glow"
+description = "Fewer, dimmer stars (light pollution), no Milky Way, a bigger moon."
+name_fa = "آسمان شهری"
+star_density = 0.008
+star_brightness = 1.1
+milky_way = 0
+moon_size = 0.055

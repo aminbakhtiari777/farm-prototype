@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WardrobeStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/wardrobe/wardrobe_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "festive"
+type = "wardrobe"
+display_name = "Festive wardrobe"
+description = "Brighter colours for Nowruz."
+name_fa = "لباس‌های عید"
+tops = [{"id": "work_shirt", "en": "Work shirt", "fa": "پیراهن کار"}, {"id": "tshirt", "en": "T-shirt", "fa": "تی‌شرت"}, {"id": "polo", "en": "Polo", "fa": "پولو"}, {"id": "long_sleeve", "en": "Long sleeves", "fa": "آستین بلند"}, {"id": "jacket", "en": "Jacket", "fa": "کاپشن"}, {"id": "tank", "en": "Tank top", "fa": "رکابی"}]
+shirt_colors = [Color(0.9, 0.2, 0.2, 1), Color(0.1, 0.6, 0.35, 1), Color(0.95, 0.8, 0.2, 1), Color(0.2, 0.45, 0.85, 1), Color(0.95, 0.95, 0.95, 1)]
+pants_colors = [Color(0.2, 0.3, 0.48, 1), Color(0.15, 0.15, 0.17, 1), Color(0.35, 0.3, 0.22, 1), Color(0.45, 0.42, 0.36, 1), Color(0.25, 0.32, 0.25, 1), Color(0.55, 0.5, 0.42, 1)]
+cabinet_color = Color(0.62, 0.42, 0.25, 1)

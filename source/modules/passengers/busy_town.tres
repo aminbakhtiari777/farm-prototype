@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PassengerStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/passengers/passenger_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "busy_town"
+type = "passengers"
+display_name = "Busy town"
+description = "Passengers every 40 minutes and better fares."
+name_fa = "شهر شلوغ"
+stops = [{"id": "square", "en": "Town Square", "fa": "میدان شهر", "pos": Vector2(14, -44.4)}, {"id": "hospital", "en": "Hospital", "fa": "بیمارستان", "pos": Vector2(30, -55.6)}, {"id": "beach", "en": "Beach", "fa": "ساحل", "pos": Vector2(50.5, -14)}, {"id": "university", "en": "University", "fa": "دانشگاه", "pos": Vector2(-5.0, -121)}, {"id": "mosque", "en": "Maple St / Mosque", "fa": "خیابان افرا / مسجد", "pos": Vector2(-14, -85)}, {"id": "garage", "en": "Mechanic", "fa": "تعمیرگاه", "pos": Vector2(50, -55.6)}]
+lines = {"hail": [{"en": "Taxi! Can you take me?", "fa": "آقا/خانم، می‌رسانیدم؟"}, {"en": "Over here! I need a ride.", "fa": "اینجا! باید جایی بروم."}], "board": [{"en": "Thanks! To {dest}, please.", "fa": "ممنون! لطفاً تا {dest}."}, {"en": "{dest}, please - no rush.", "fa": "تا {dest} لطفاً - عجله‌ای نیست."}], "arrive": [{"en": "Here we are. Thank you!", "fa": "رسیدیم. دستت درد نکند!"}, {"en": "Perfect, thanks for the ride.", "fa": "عالی، ممنون که رساندی."}], "tip": [{"en": "Keep the change!", "fa": "بقیه‌اش مال خودت!"}], "slow_down": [{"en": "Easy, easy! Not so fast!", "fa": "یواش، یواش! این‌قدر تند نه!"}], "gave_up": [{"en": "Never mind, I'll walk.", "fa": "اشکالی ندارد، پیاده می‌روم."}]}
+every_hours = 0.7
+fare_base = 12
+fare_per_100m = 7

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FenceStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/fences/fence_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "rustic_wood"
+type = "fences"
+display_name = "Rustic wooden posts + rails"

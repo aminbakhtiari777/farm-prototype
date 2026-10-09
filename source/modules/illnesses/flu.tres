@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="IllnessDef" format=3]
+
+[ext_resource type="Script" path="res://modules/illnesses/illness_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "flu"
+type = "illnesses"
+display_name = "Flu"
+description = "Worn out AND starving: fever, sneezing, much slower."
+name_fa = "آنفولانزا"
+symptoms_en = "fever, sneezing, very weak"
+symptoms_fa = "تب، عطسه، ضعف شدید"
+speed_mult = 0.6
+stamina_regen_mult = 0.4
+sneeze_min = 6
+sneeze_max = 14
+days = 5
+fee = 150
+min_fatigue = 85
+max_hunger = 15
+severity = 2
+tint = Color(0.9, 0.7, 0.6, 1)

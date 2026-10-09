@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FridgeStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/fridge/fridge_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "steel_fridge"
+type = "fridge"
+display_name = "Steel fridge"
+description = "Brushed steel, four shelves."
+name_fa = "یخچال استیل"
+body_color = Color(0.7, 0.72, 0.75, 1)
+shelves = 4
+npc_items = ["eggs", "milk", "tomato_fresh", "chicken", "rice"]

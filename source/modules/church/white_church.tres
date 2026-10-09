@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ChurchStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/church/church_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "white_church"
+type = "church"
+display_name = "White country church"
+description = "Whitewashed walls, red roof, slimmer spire; bell on Sunday-style hours 10 and 17."
+wall_color = Color(0.95, 0.94, 0.9, 1)
+roof_color = Color(0.6, 0.22, 0.18, 1)
+spire_color = Color(0.55, 0.2, 0.16, 1)
+tower_height = 12.5
+glass_colors = [Color(0.3, 0.6, 0.9, 1), Color(0.95, 0.85, 0.4, 1)]
+pew_color = Color(0.55, 0.4, 0.25, 1)
+bell_sound = "res://assets/audio/sfx/church_bell.ogg"
+bell_db = -12
+bell_hours = PackedInt32Array(10, 17)
+max_distance = 80

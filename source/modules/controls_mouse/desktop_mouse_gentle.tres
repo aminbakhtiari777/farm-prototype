@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MouseControlsStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/controls_mouse/mouse_controls_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "desktop_mouse_gentle"
+type = "controls_mouse"
+display_name = "Gentle mouse (camera only)"
+description = "Slower mouse look; in a car the mouse only moves the camera (A/D steer)."
+name_fa = "ماوس آرام (فقط دوربین)"
+look_deg_per_px = 0.09
+mouse_steer = false
+face_camera_idle = false

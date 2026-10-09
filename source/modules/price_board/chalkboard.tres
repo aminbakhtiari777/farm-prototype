@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="PriceBoardStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/price_board/price_board_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "chalkboard"
+type = "price_board"
+display_name = "Chalkboard"
+description = "A green chalkboard on a wooden frame at the market entrance."
+items = PackedStringArray("eggs", "milk", "wool", "chicken", "bread_loaf", "wood_plank", "iron_nails", "tomato", "potato", "apple", "sardine", "hay", "chicken_feed", "yarn")
+title_fa = "تابلوی قیمت بازار"
+title_en = "Market prices"
+bg_color = Color(0.13, 0.22, 0.17, 0.97)
+frame_color = Color(0.45, 0.3, 0.18, 1)
+ink_color = Color(0.95, 0.95, 0.9, 1)
+up_color = Color(1, 0.5, 0.4, 1)
+down_color = Color(0.5, 0.95, 0.55, 1)
+shortage_color = Color(1, 0.35, 0.3, 1)
+position = Vector2(6.6, -15.6)
+yaw_deg = -35.0
+board_rows = 8

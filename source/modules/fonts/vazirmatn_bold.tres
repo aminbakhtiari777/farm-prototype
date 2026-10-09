@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FontStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/fonts/font_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "vazirmatn_bold"
+type = "fonts"
+display_name = "Vazirmatn Bold bubbles"
+description = "Same font, bold speech bubbles (easier to read from afar)."
+regular_path = "res://assets/fonts/Vazirmatn-Regular.ttf"
+bold_path = "res://assets/fonts/Vazirmatn-Bold.ttf"
+bubble_size = 48
+bubble_outline = 14
+bold_bubbles = true

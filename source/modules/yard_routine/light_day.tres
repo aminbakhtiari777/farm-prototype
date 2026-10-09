@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="YardRoutineStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/yard_routine/yard_routine_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "light_day"
+type = "yard_routine"
+display_name = "Light day"
+description = "Two jobs only."
+name_fa = "روز سبک"
+tasks = [{"id": "water", "en": "Water the garden", "fa": "آب دادن باغچه", "from": 5, "to": 20}, {"id": "herd", "en": "Pen the sheep", "fa": "بردن گوسفندها به آغل", "from": 6, "to": 23}]
+reward = 15

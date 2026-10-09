@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDef" format=3]
+
+[ext_resource type="Script" path="res://modules/recipes/recipe_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "shell_fertilizer"
+type = "recipes"
+display_name = "Shell Fertilizer"
+description = "Crushed shells make good fertilizer."
+station = "workbench"
+inputs = {"seashell": 2}
+output_id = "fertilizer"
+output_name = "Fertilizer"
+output_count = 2
+output_sell = 0
+output_category = "crafted"
+stamina = 0
+sort_order = 4

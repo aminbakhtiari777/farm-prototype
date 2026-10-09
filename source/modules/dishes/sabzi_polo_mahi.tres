@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DishDef" format=3]
+
+[ext_resource type="Script" path="res://modules/dishes/dish_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "sabzi_polo_mahi"
+type = "dishes"
+display_name = "Sabzi Polo ba Mahi"
+description = "Herbed rice with fish - the Nowruz classic."
+name_fa = "سبزی‌پلو با ماهی"
+inputs = {"category:fish": 1, "rice": 1, "herbs": 1}
+salt = 1
+spices = 1
+hunger = 90
+stamina = 65
+raw_color = Color(0.75, 0.82, 0.6, 1)
+cooked_color = Color(0.55, 0.7, 0.35, 1)
+sort_order = 3

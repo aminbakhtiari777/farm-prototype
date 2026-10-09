@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ProducerDef" format=3]
+
+[ext_resource type="Script" path="res://modules/producers/producer_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "carpenter_boards"
+type = "producers"
+display_name = "Carpenter: boards"
+description = "Saws logs from the forest into planks every morning."
+name_fa = "نجاری: تخته"
+shop = "carpenter"
+worker_jobs = PackedStringArray("Carpenter")
+outputs = {"wood_plank": 10}
+inputs = {}
+items = {}
+sort_order = 0

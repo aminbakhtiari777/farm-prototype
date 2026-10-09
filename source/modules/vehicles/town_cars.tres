@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="VehicleStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/vehicles/vehicle_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "town_cars"
+type = "vehicles"
+display_name = "Town cars"
+description = "7 parked cars (sedans, van, delivery truck, tractor) you can drive on the existing roads."
+name_fa = "ماشین‌های شهر"
+cars = [{"model": "sedan", "pos": Vector2(-12, -86.65), "yaw": 90, "drivable": true}, {"model": "van", "pos": Vector2(30, -93.35), "yaw": -90, "drivable": true}, {"model": "sedan", "pos": Vector2(3.35, -112), "yaw": 0, "drivable": true}, {"model": "sedan", "pos": Vector2(51.65, -30), "yaw": 180, "drivable": true}, {"model": "delivery", "pos": Vector2(27, -46.1), "yaw": 90, "drivable": true}, {"model": "tractor", "pos": Vector2(15.5, 11.5), "yaw": -17, "drivable": true}, {"model": "sedan", "pos": Vector2(5.2, -16), "yaw": 0, "drivable": true}]
+dealership_note_en = "A car dealership is coming in a later version - for now the town's cars are shared."
+dealership_note_fa = "نمایندگی فروش خودرو در نسخه‌های بعد می‌آید - فعلاً ماشین‌های شهر مشترک‌اند."

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CivicStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/civic/civic_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "plain"
+type = "civic"
+display_name = "Plain civic"
+description = "No porticos or towers - simple municipal buildings."
+desks = {"water_office": {"title": "Water Office", "lines": ["The reservoir is full.", "Clean water for every home."]}, "power_office": {"title": "Electricity Office", "lines": ["The grid is humming.", "Report outages here."]}, "school": {"title": "School", "lines": ["Class is in session!", "Two plus two is four."]}, "university": {"title": "University", "lines": ["Today's lecture: soil chemistry.", "Did you know? Rain waters every crop for free."]}}
+columns = false
+column_color = Color(0.8, 0.8, 0.8, 1)
+flag_color = Color(0.25, 0.35, 0.65, 1)
+wall_tint = Color(0.95, 0.95, 0.95, 1)
+substation = false
+water_tower = false

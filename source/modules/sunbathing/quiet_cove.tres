@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SunbathingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/sunbathing/sunbathing_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "quiet_cove"
+type = "sunbathing"
+display_name = "Quiet cove"
+description = "Four towels, fewer visitors."
+name_fa = "ساحل خلوت"
+towels = 4
+npc_every = 9

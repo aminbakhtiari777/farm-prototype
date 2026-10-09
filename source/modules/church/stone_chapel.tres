@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ChurchStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/church/church_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "stone_chapel"
+type = "church"
+display_name = "Stone chapel"
+description = "Grey stone, slate roof, bell tower with spire; bells at 9, 12 and 18."
+wall_color = Color(0.72, 0.7, 0.66, 1)
+roof_color = Color(0.3, 0.3, 0.34, 1)
+spire_color = Color(0.28, 0.3, 0.34, 1)
+tower_height = 11
+glass_colors = [Color(0.8, 0.2, 0.25, 1), Color(0.2, 0.4, 0.85, 1), Color(0.95, 0.8, 0.25, 1)]
+pew_color = Color(0.42, 0.28, 0.16, 1)
+bell_sound = "res://assets/audio/sfx/church_bell.ogg"
+bell_db = -12
+bell_hours = PackedInt32Array(9, 12, 18)
+max_distance = 90

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ProducerDef" format=3]
+
+[ext_resource type="Script" path="res://modules/producers/producer_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "poultry_farm"
+type = "producers"
+display_name = "Poultry farm"
+description = "Supplies the supermarket with chicken and eggs."
+name_fa = "مرغداری"
+shop = "grocery"
+worker_jobs = PackedStringArray("Supermarket cashier")
+outputs = {"chicken": 4, "eggs": 10}
+inputs = {}
+items = {}
+sort_order = 5

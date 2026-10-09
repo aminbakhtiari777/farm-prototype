@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDef" format=3]
+
+[ext_resource type="Script" path="res://modules/recipes/recipe_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "fruit_basket"
+type = "recipes"
+display_name = "Fruit Basket"
+description = "A gift basket for the fruit shop."
+station = "workbench"
+inputs = {"apple": 2, "banana_fruit": 2, "wood_plank": 1}
+output_id = "fruit_basket"
+output_name = "Fruit Basket"
+output_count = 1
+output_sell = 330
+output_category = "crafted"
+stamina = 0
+sort_order = 7

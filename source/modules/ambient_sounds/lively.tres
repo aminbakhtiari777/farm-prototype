@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AmbientSoundsStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/ambient_sounds/ambient_sounds_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "lively"
+type = "ambient_sounds"
+display_name = "Lively world (default)"
+description = "Birds in 12 trees, crickets in 10 fields, square murmur, river, distant traffic, gusts, storm thunder."
+name_fa = "دنیای زنده"
+kinds = {"birds": {"stream": "res://assets/audio/ambience/birds_day_loop.ogg", "count": 12, "active": 3, "db": -6, "unit": 6, "range": 38, "when": "day"}, "crickets": {"stream": "res://assets/audio/ambience/crickets_night_loop.ogg", "count": 10, "active": 3, "db": -7, "unit": 5, "range": 32, "when": "night"}, "murmur": {"stream": "res://assets/audio/v7b1/murmur_loop.ogg", "count": 4, "active": 2, "db": -8, "unit": 6, "range": 40, "when": "town"}, "river": {"stream": "res://assets/audio/ambience/pond_loop.ogg", "count": 6, "active": 2, "db": -6, "unit": 5, "range": 30, "when": "always"}, "traffic": {"stream": "res://assets/audio/v7b1/traffic_loop.ogg", "count": 6, "active": 2, "db": -12, "unit": 12, "range": 75, "when": "traffic"}}
+gusts = PackedStringArray("res://assets/audio/v7b1/gust_1.ogg", "res://assets/audio/v7b1/gust_2.ogg")
+thunder = PackedStringArray("res://assets/audio/v7b1/thunder_1.ogg", "res://assets/audio/v7b1/thunder_2.ogg")

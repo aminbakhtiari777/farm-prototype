@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="HouseStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/house_styles/house_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "stone"
+type = "house_styles"
+display_name = "Stone cottage"
+kind = "stone"
+pattern = 1
+wall_color = Color(0.62, 0.6, 0.56, 1)
+joint_color = Color(0.36, 0.35, 0.33, 1)
+roof_color = Color(0.3, 0.32, 0.36, 1)
+roof_type = "gable"
+trim_color = Color(0.85, 0.82, 0.76, 1)
+chimney = true
+interior_wall = Color(0.88, 0.84, 0.76, 1)
+interior_floor = Color(0.5, 0.48, 0.45, 1)
+description = "Stone walls, slate roof; whitewashed interior with a stone floor."
+furniture = {"table": "tableCloth", "extra": "bookcaseClosedWide", "rug": "rugRound"}

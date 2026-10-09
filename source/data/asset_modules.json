@@ -1,0 +1,1047 @@
+{
+ "trees": {
+  "active": "quaternius_mixed",
+  "variants": {
+   "quaternius_mixed": "res://modules/trees/quaternius_mixed.tres",
+   "pine_forest": "res://modules/trees/pine_forest.tres"
+  }
+ },
+ "rocks": {
+  "active": "quaternius",
+  "variants": {
+   "quaternius": "res://modules/rocks/quaternius.tres",
+   "mossy_boulders": "res://modules/rocks/mossy_boulders.tres"
+  }
+ },
+ "plants": {
+  "active": "meadow",
+  "variants": {
+   "meadow": "res://modules/plants/meadow.tres",
+   "lush": "res://modules/plants/lush.tres"
+  }
+ },
+ "crops": {
+  "active": "classic",
+  "variants": {
+   "classic": "res://modules/crops/classic.tres",
+   "giant": "res://modules/crops/giant.tres"
+  }
+ },
+ "fences": {
+  "active": "rustic_wood",
+  "variants": {
+   "rustic_wood": "res://modules/fences/rustic_wood.tres",
+   "white_picket": "res://modules/fences/white_picket.tres"
+  }
+ },
+ "terrain": {
+  "active": "green_valley",
+  "variants": {
+   "green_valley": "res://modules/terrain/green_valley.tres",
+   "dry_steppe": "res://modules/terrain/dry_steppe.tres"
+  }
+ },
+ "buildings": {
+  "active": "village",
+  "variants": {
+   "village": "res://modules/buildings/village.tres",
+   "coastal": "res://modules/buildings/coastal.tres"
+  }
+ },
+ "characters": {
+  "active": "quaternius_ubc",
+  "variants": {
+   "quaternius_ubc": "res://modules/characters/quaternius_ubc.tres",
+   "quaternius_ubc_tall": "res://modules/characters/quaternius_ubc_tall.tres"
+  }
+ },
+ "animals": {
+  "active": "white_sheep",
+  "variants": {
+   "white_sheep": "res://modules/animals/white_sheep.tres",
+   "black_sheep": "res://modules/animals/black_sheep.tres"
+  }
+ },
+ "furniture": {
+  "active": "kenney",
+  "variants": {
+   "kenney": "res://modules/furniture/kenney.tres",
+   "kenney_quiet_town": "res://modules/furniture/kenney_quiet_town.tres"
+  }
+ },
+ "water": {
+  "active": "atlantic",
+  "variants": {
+   "atlantic": "res://modules/water/atlantic.tres",
+   "tropical": "res://modules/water/tropical.tres"
+  }
+ },
+ "sky": {
+  "active": "glass_blue",
+  "variants": {
+   "clear": "res://modules/sky/clear.tres",
+   "pastel": "res://modules/sky/pastel.tres",
+   "glass_blue": "res://modules/sky/glass_blue.tres"
+  }
+ },
+ "crop_types": {
+  "collection": true,
+  "active": "turnip",
+  "variants": {
+   "turnip": "res://modules/crop_types/turnip/turnip.tres",
+   "carrot": "res://modules/crop_types/carrot/carrot.tres",
+   "potato": "res://modules/crop_types/potato/potato.tres",
+   "strawberry": "res://modules/crop_types/strawberry/strawberry.tres",
+   "tomato": "res://modules/crop_types/tomato/tomato.tres",
+   "corn": "res://modules/crop_types/corn/corn.tres",
+   "sunflower": "res://modules/crop_types/sunflower/sunflower.tres",
+   "pumpkin": "res://modules/crop_types/pumpkin/pumpkin.tres",
+   "eggplant": "res://modules/crop_types/eggplant/eggplant.tres",
+   "apple_tree": "res://modules/crop_types/apple_tree/apple_tree.tres",
+   "banana": "res://modules/crop_types/banana/banana.tres"
+  }
+ },
+ "garden": {
+  "active": "rustic_rows",
+  "variants": {
+   "rustic_rows": "res://modules/garden/rustic_rows.tres",
+   "raised_beds": "res://modules/garden/raised_beds.tres"
+  }
+ },
+ "garden_rules": {
+  "active": "seasonal",
+  "variants": {
+   "seasonal": "res://modules/garden_rules/seasonal.tres",
+   "any_season": "res://modules/garden_rules/any_season.tres"
+  }
+ },
+ "lighting": {
+  "active": "warm_bulbs",
+  "variants": {
+   "warm_bulbs": "res://modules/lighting/warm_bulbs.tres",
+   "cool_led": "res://modules/lighting/cool_led.tres"
+  }
+ },
+ "power": {
+  "active": "breaker_panel",
+  "variants": {
+   "breaker_panel": "res://modules/power/breaker_panel.tres",
+   "old_fuse_box": "res://modules/power/old_fuse_box.tres"
+  }
+ },
+ "yards": {
+  "active": "rail_fence",
+  "variants": {
+   "rail_fence": "res://modules/yards/rail_fence.tres",
+   "picket": "res://modules/yards/picket.tres"
+  }
+ },
+ "minimap": {
+  "active": "parchment",
+  "variants": {
+   "parchment": "res://modules/minimap/parchment.tres",
+   "night": "res://modules/minimap/night.tres"
+  }
+ },
+ "npc_social": {
+  "active": "chatty",
+  "variants": {
+   "chatty": "res://modules/npc_social/chatty.tres",
+   "quiet": "res://modules/npc_social/quiet.tres"
+  }
+ },
+ "landscape": {
+  "active": "highlands",
+  "variants": {
+   "highlands": "res://modules/landscape/highlands.tres",
+   "lowlands": "res://modules/landscape/lowlands.tres"
+  }
+ },
+ "tool_types": {
+  "collection": true,
+  "active": "hoe",
+  "variants": {
+   "hoe": "res://modules/tool_types/hoe.tres",
+   "steel_hoe": "res://modules/tool_types/steel_hoe.tres",
+   "watering_can": "res://modules/tool_types/watering_can.tres",
+   "copper_can": "res://modules/tool_types/copper_can.tres",
+   "seed_pouch": "res://modules/tool_types/seed_pouch.tres",
+   "harvest_basket": "res://modules/tool_types/harvest_basket.tres",
+   "hammer": "res://modules/tool_types/hammer.tres",
+   "axe": "res://modules/tool_types/axe.tres",
+   "steel_axe": "res://modules/tool_types/steel_axe.tres"
+  }
+ },
+ "house_styles": {
+  "active": "wooden",
+  "collection": true,
+  "variants": {
+   "wooden": "res://modules/house_styles/wooden.tres",
+   "stone": "res://modules/house_styles/stone.tres",
+   "modern": "res://modules/house_styles/modern.tres"
+  }
+ },
+ "crafting": {
+  "active": "farm_shed",
+  "variants": {
+   "farm_shed": "res://modules/crafting/farm_shed.tres",
+   "stone_workshop": "res://modules/crafting/stone_workshop.tres"
+  }
+ },
+ "recipes": {
+  "collection": true,
+  "active": "birdhouse",
+  "variants": {
+   "birdhouse": "res://modules/recipes/birdhouse.tres",
+   "planter_box": "res://modules/recipes/planter_box.tres",
+   "iron_lantern": "res://modules/recipes/iron_lantern.tres",
+   "stone_planter": "res://modules/recipes/stone_planter.tres",
+   "shell_fertilizer": "res://modules/recipes/shell_fertilizer.tres",
+   "wool_yarn": "res://modules/recipes/wool_yarn.tres",
+   "strawberry_jam": "res://modules/recipes/strawberry_jam.tres",
+   "fruit_basket": "res://modules/recipes/fruit_basket.tres",
+   "mint_tea": "res://modules/recipes/mint_tea.tres",
+   "vegetable_soup": "res://modules/recipes/vegetable_soup.tres",
+   "grilled_fish": "res://modules/recipes/grilled_fish.tres",
+   "tomato_stew": "res://modules/recipes/tomato_stew.tres",
+   "pumpkin_soup": "res://modules/recipes/pumpkin_soup.tres",
+   "baked_apple": "res://modules/recipes/baked_apple.tres"
+  }
+ },
+ "market": {
+  "active": "bazaar",
+  "variants": {
+   "bazaar": "res://modules/market/bazaar.tres",
+   "farmers_market": "res://modules/market/farmers_market.tres"
+  }
+ },
+ "town_square": {
+  "active": "ornate_fountain",
+  "variants": {
+   "ornate_fountain": "res://modules/town_square/ornate_fountain.tres",
+   "classic_well": "res://modules/town_square/classic_well.tres"
+  }
+ },
+ "population": {
+  "active": "families",
+  "variants": {
+   "families": "res://modules/population/families.tres",
+   "small_town": "res://modules/population/small_town.tres"
+  }
+ },
+ "workplaces": {
+  "active": "classic_shops",
+  "variants": {
+   "classic_shops": "res://modules/workplaces/classic_shops.tres",
+   "modern_shops": "res://modules/workplaces/modern_shops.tres"
+  }
+ },
+ "civic": {
+  "active": "classical",
+  "variants": {
+   "classical": "res://modules/civic/classical.tres",
+   "plain": "res://modules/civic/plain.tres"
+  }
+ },
+ "mosque": {
+  "active": "turquoise_dome",
+  "variants": {
+   "turquoise_dome": "res://modules/mosque/turquoise_dome.tres",
+   "sandstone": "res://modules/mosque/sandstone.tres"
+  }
+ },
+ "church": {
+  "active": "stone_chapel",
+  "variants": {
+   "stone_chapel": "res://modules/church/stone_chapel.tres",
+   "white_church": "res://modules/church/white_church.tres"
+  }
+ },
+ "kitchen": {
+  "active": "modern_electric",
+  "variants": {
+   "modern_electric": "res://modules/kitchen/modern_electric.tres",
+   "rustic_gas": "res://modules/kitchen/rustic_gas.tres",
+   "wood_stove": "res://modules/kitchen/wood_stove.tres"
+  }
+ },
+ "gestures": {
+  "active": "friendly_wave",
+  "variants": {
+   "friendly_wave": "res://modules/gestures/friendly_wave.tres",
+   "reserved_nod": "res://modules/gestures/reserved_nod.tres"
+  }
+ },
+ "fonts": {
+  "active": "vazirmatn",
+  "variants": {
+   "vazirmatn": "res://modules/fonts/vazirmatn.tres",
+   "vazirmatn_bold": "res://modules/fonts/vazirmatn_bold.tres"
+  }
+ },
+ "dialogue": {
+  "active": "warm_village",
+  "variants": {
+   "warm_village": "res://modules/dialogue/warm_village.tres",
+   "brief": "res://modules/dialogue/brief.tres"
+  }
+ },
+ "friendship": {
+  "active": "daily_talks",
+  "variants": {
+   "daily_talks": "res://modules/friendship/daily_talks.tres",
+   "slow_burn": "res://modules/friendship/slow_burn.tres"
+  }
+ },
+ "shop_hours": {
+  "active": "standard",
+  "variants": {
+   "standard": "res://modules/shop_hours/standard.tres",
+   "late_night": "res://modules/shop_hours/late_night.tres"
+  }
+ },
+ "voices": {
+  "active": "blips",
+  "variants": {
+   "blips": "res://modules/voices/blips.tres",
+   "hum": "res://modules/voices/hum.tres"
+  }
+ },
+ "npc_card": {
+  "active": "parchment",
+  "variants": {
+   "parchment": "res://modules/npc_card/parchment.tres",
+   "dark_glass": "res://modules/npc_card/dark_glass.tres"
+  }
+ },
+ "needs": {
+  "active": "balanced",
+  "variants": {
+   "balanced": "res://modules/needs/balanced.tres",
+   "gentle": "res://modules/needs/gentle.tres"
+  }
+ },
+ "illnesses": {
+  "collection": true,
+  "active": "cold",
+  "variants": {
+   "cold": "res://modules/illnesses/cold.tres",
+   "flu": "res://modules/illnesses/flu.tres"
+  }
+ },
+ "ingredients": {
+  "collection": true,
+  "active": "chicken",
+  "variants": {
+   "chicken": "res://modules/ingredients/chicken.tres",
+   "eggs": "res://modules/ingredients/eggs.tres",
+   "onion": "res://modules/ingredients/onion.tres",
+   "tomato_fresh": "res://modules/ingredients/tomato_fresh.tres",
+   "herbs": "res://modules/ingredients/herbs.tres",
+   "rice": "res://modules/ingredients/rice.tres",
+   "salt": "res://modules/ingredients/salt.tres",
+   "spices": "res://modules/ingredients/spices.tres"
+  }
+ },
+ "dishes": {
+  "collection": true,
+  "active": "omelette",
+  "variants": {
+   "omelette": "res://modules/dishes/omelette.tres",
+   "chelo_morgh": "res://modules/dishes/chelo_morgh.tres",
+   "kuku_sabzi": "res://modules/dishes/kuku_sabzi.tres",
+   "sabzi_polo_mahi": "res://modules/dishes/sabzi_polo_mahi.tres",
+   "banana_smoothie": "res://modules/dishes/banana_smoothie.tres"
+  }
+ },
+ "cooking": {
+  "active": "home_style",
+  "variants": {
+   "home_style": "res://modules/cooking/home_style.tres",
+   "quick_cook": "res://modules/cooking/quick_cook.tres"
+  }
+ },
+ "market_economy": {
+  "active": "supply_demand",
+  "variants": {
+   "supply_demand": "res://modules/market_economy/supply_demand.tres",
+   "stable_prices": "res://modules/market_economy/stable_prices.tres"
+  }
+ },
+ "producers": {
+  "collection": true,
+  "active": "carpenter_boards",
+  "variants": {
+   "carpenter_boards": "res://modules/producers/carpenter_boards.tres",
+   "carpenter_furniture": "res://modules/producers/carpenter_furniture.tres",
+   "blacksmith_forge": "res://modules/producers/blacksmith_forge.tres",
+   "blacksmith_tools": "res://modules/producers/blacksmith_tools.tres",
+   "fruit_farms": "res://modules/producers/fruit_farms.tres",
+   "poultry_farm": "res://modules/producers/poultry_farm.tres",
+   "dairy": "res://modules/producers/dairy.tres",
+   "wholesaler": "res://modules/producers/wholesaler.tres",
+   "bakery": "res://modules/producers/bakery.tres",
+   "fishermen": "res://modules/producers/fishermen.tres",
+   "tailor_spinning": "res://modules/producers/tailor_spinning.tres",
+   "feed_mill": "res://modules/producers/feed_mill.tres",
+   "carpenter_logs": "res://modules/producers/carpenter_logs.tres"
+  }
+ },
+ "wages": {
+  "active": "fair_wages",
+  "variants": {
+   "fair_wages": "res://modules/wages/fair_wages.tres",
+   "modest_wages": "res://modules/wages/modest_wages.tres"
+  }
+ },
+ "price_board": {
+  "active": "chalkboard",
+  "variants": {
+   "chalkboard": "res://modules/price_board/chalkboard.tres",
+   "market_screen": "res://modules/price_board/market_screen.tres"
+  }
+ },
+ "livestock": {
+  "collection": true,
+  "active": "chicken",
+  "variants": {
+   "chicken": "res://modules/livestock/chicken.tres",
+   "cow": "res://modules/livestock/cow.tres",
+   "sheep_flock": "res://modules/livestock/sheep_flock.tres"
+  }
+ },
+ "animal_housing": {
+  "collection": true,
+  "active": "coop",
+  "variants": {
+   "coop": "res://modules/animal_housing/coop.tres",
+   "barn": "res://modules/animal_housing/barn.tres"
+  }
+ },
+ "netcode": {
+  "active": "standard",
+  "variants": {
+   "standard": "res://modules/netcode/standard.tres",
+   "low_bandwidth": "res://modules/netcode/low_bandwidth.tres"
+  }
+ },
+ "chat": {
+  "active": "friendly",
+  "variants": {
+   "friendly": "res://modules/chat/friendly.tres",
+   "family": "res://modules/chat/family.tres"
+  }
+ },
+ "live_updates": {
+  "active": "auto",
+  "variants": {
+   "auto": "res://modules/live_updates/auto.tres",
+   "manual_off": "res://modules/live_updates/manual_off.tres"
+  }
+ },
+ "save_sync": {
+  "active": "every_5s",
+  "variants": {
+   "every_5s": "res://modules/save_sync/every_5s.tres",
+   "every_30s": "res://modules/save_sync/every_30s.tres"
+  }
+ },
+ "away_avatar": {
+  "active": "cafe_or_home",
+  "variants": {
+   "cafe_or_home": "res://modules/away_avatar/cafe_or_home.tres",
+   "always_home": "res://modules/away_avatar/always_home.tres"
+  }
+ },
+ "accounts": {
+  "active": "guest",
+  "variants": {
+   "guest": "res://modules/accounts/guest.tres",
+   "guest_small": "res://modules/accounts/guest_small.tres"
+  }
+ },
+ "npc_roles": {
+  "active": "stub",
+  "variants": {
+   "stub": "res://modules/npc_roles/stub.tres",
+   "disabled": "res://modules/npc_roles/disabled.tres"
+  }
+ },
+ "night_sky": {
+  "active": "starry",
+  "variants": {
+   "starry": "res://modules/night_sky/starry.tres",
+   "town_glow": "res://modules/night_sky/town_glow.tres"
+  }
+ },
+ "real_clock": {
+  "active": "optional",
+  "variants": {
+   "optional": "res://modules/real_clock/optional.tres",
+   "always": "res://modules/real_clock/always.tres"
+  }
+ },
+ "dry_trees": {
+  "active": "forest_edge",
+  "variants": {
+   "forest_edge": "res://modules/dry_trees/forest_edge.tres",
+   "sparse": "res://modules/dry_trees/sparse.tres"
+  }
+ },
+ "fishing_gear": {
+  "active": "carpenter_rods",
+  "variants": {
+   "carpenter_rods": "res://modules/fishing_gear/carpenter_rods.tres",
+   "tool_shop_rods": "res://modules/fishing_gear/tool_shop_rods.tres"
+  }
+ },
+ "campfire": {
+  "active": "beach_fire",
+  "variants": {
+   "beach_fire": "res://modules/campfire/beach_fire.tres",
+   "big_bonfire": "res://modules/campfire/big_bonfire.tres"
+  }
+ },
+ "deep_sea": {
+  "active": "persian_gulf",
+  "variants": {
+   "persian_gulf": "res://modules/deep_sea/persian_gulf.tres",
+   "calm_deep": "res://modules/deep_sea/calm_deep.tres"
+  }
+ },
+ "boats": {
+  "active": "fishing_boats",
+  "variants": {
+   "fishing_boats": "res://modules/boats/fishing_boats.tres",
+   "rowboats": "res://modules/boats/rowboats.tres"
+  }
+ },
+ "sunbathing": {
+  "active": "sun_beach",
+  "variants": {
+   "sun_beach": "res://modules/sunbathing/sun_beach.tres",
+   "quiet_cove": "res://modules/sunbathing/quiet_cove.tres"
+  }
+ },
+ "gym": {
+  "active": "town_gym",
+  "variants": {
+   "town_gym": "res://modules/gym/town_gym.tres",
+   "zurkhaneh_mix": "res://modules/gym/zurkhaneh_mix.tres"
+  }
+ },
+ "house_music": {
+  "active": "radios",
+  "variants": {
+   "radios": "res://modules/house_music/radios.tres",
+   "quiet_town": "res://modules/house_music/quiet_town.tres"
+  }
+ },
+ "kitchenware": {
+  "collection": true,
+  "active": "plates_basic",
+  "variants": {
+   "plates_basic": "res://modules/kitchenware/plates_basic.tres",
+   "plates_porcelain": "res://modules/kitchenware/plates_porcelain.tres",
+   "pot_steel": "res://modules/kitchenware/pot_steel.tres",
+   "pan_nonstick": "res://modules/kitchenware/pan_nonstick.tres",
+   "pan_cast_iron": "res://modules/kitchenware/pan_cast_iron.tres",
+   "cutlery": "res://modules/kitchenware/cutlery.tres",
+   "glasses": "res://modules/kitchenware/glasses.tres",
+   "blender": "res://modules/kitchenware/blender.tres",
+   "microwave": "res://modules/kitchenware/microwave.tres"
+  }
+ },
+ "hypermarket": {
+  "active": "hyper_blue",
+  "variants": {
+   "hyper_blue": "res://modules/hypermarket/hyper_blue.tres",
+   "hyper_green": "res://modules/hypermarket/hyper_green.tres"
+  }
+ },
+ "ui_text": {
+  "active": "farsi",
+  "variants": {
+   "farsi": "res://modules/ui_text/farsi.tres",
+   "farsi_short": "res://modules/ui_text/farsi_short.tres"
+  }
+ },
+ "character_creator": {
+  "active": "quaternius_parts",
+  "variants": {
+   "quaternius_parts": "res://modules/character_creator/quaternius_parts.tres",
+   "slim_start": "res://modules/character_creator/slim_start.tres"
+  }
+ },
+ "wardrobe": {
+  "active": "home_wardrobe",
+  "variants": {
+   "home_wardrobe": "res://modules/wardrobe/home_wardrobe.tres",
+   "festive": "res://modules/wardrobe/festive.tres"
+  }
+ },
+ "npc_looks": {
+  "active": "distinct",
+  "variants": {
+   "distinct": "res://modules/npc_looks/distinct.tres",
+   "subtle": "res://modules/npc_looks/subtle.tres"
+  }
+ },
+ "vehicles": {
+  "active": "town_cars",
+  "variants": {
+   "town_cars": "res://modules/vehicles/town_cars.tres",
+   "gentle_cars": "res://modules/vehicles/gentle_cars.tres"
+  }
+ },
+ "ambulance": {
+  "active": "city_ambulance",
+  "variants": {
+   "city_ambulance": "res://modules/ambulance/city_ambulance.tres",
+   "serious_only": "res://modules/ambulance/serious_only.tres"
+  }
+ },
+ "police_patrol": {
+  "active": "town_patrol",
+  "variants": {
+   "town_patrol": "res://modules/police_patrol/town_patrol.tres",
+   "wide_patrol": "res://modules/police_patrol/wide_patrol.tres"
+  }
+ },
+ "wood_pickup": {
+  "active": "red_pickup",
+  "variants": {
+   "red_pickup": "res://modules/wood_pickup/red_pickup.tres",
+   "busy_pickup": "res://modules/wood_pickup/busy_pickup.tres"
+  }
+ },
+ "gas_stove": {
+  "active": "blue_flame",
+  "variants": {
+   "blue_flame": "res://modules/gas_stove/blue_flame.tres",
+   "big_flame": "res://modules/gas_stove/big_flame.tres"
+  }
+ },
+ "fridge": {
+  "active": "white_fridge",
+  "variants": {
+   "white_fridge": "res://modules/fridge/white_fridge.tres",
+   "steel_fridge": "res://modules/fridge/steel_fridge.tres"
+  }
+ },
+ "living_room": {
+  "active": "modern_living",
+  "variants": {
+   "modern_living": "res://modules/living_room/modern_living.tres",
+   "cozy_living": "res://modules/living_room/cozy_living.tres"
+  }
+ },
+ "house_colors": {
+  "active": "family_colors",
+  "variants": {
+   "family_colors": "res://modules/house_colors/family_colors.tres",
+   "whitewash": "res://modules/house_colors/whitewash.tres"
+  }
+ },
+ "landmark": {
+  "active": "clock_tower",
+  "variants": {
+   "clock_tower": "res://modules/landmark/clock_tower.tres",
+   "monument": "res://modules/landmark/monument.tres"
+  }
+ },
+ "fruit_gardens": {
+  "active": "family_orchards",
+  "variants": {
+   "family_orchards": "res://modules/fruit_gardens/family_orchards.tres",
+   "small_orchards": "res://modules/fruit_gardens/small_orchards.tres"
+  }
+ },
+ "town_lots": {
+  "active": "three_lots",
+  "variants": {
+   "three_lots": "res://modules/town_lots/three_lots.tres",
+   "for_sale_only": "res://modules/town_lots/for_sale_only.tres"
+  }
+ },
+ "pushables": {
+  "active": "farm_boxes",
+  "variants": {
+   "farm_boxes": "res://modules/pushables/farm_boxes.tres",
+   "heavy_boxes": "res://modules/pushables/heavy_boxes.tres"
+  }
+ },
+ "herding": {
+  "active": "west_meadow",
+  "variants": {
+   "west_meadow": "res://modules/herding/west_meadow.tres",
+   "big_flock": "res://modules/herding/big_flock.tres"
+  }
+ },
+ "digging": {
+  "active": "garden_spade",
+  "variants": {
+   "garden_spade": "res://modules/digging/garden_spade.tres",
+   "treasure": "res://modules/digging/treasure.tres"
+  }
+ },
+ "yard_routine": {
+  "active": "farm_day",
+  "variants": {
+   "farm_day": "res://modules/yard_routine/farm_day.tres",
+   "light_day": "res://modules/yard_routine/light_day.tres"
+  }
+ },
+ "world_memory": {
+  "active": "remember_all",
+  "variants": {
+   "remember_all": "res://modules/world_memory/remember_all.tres",
+   "forgetful": "res://modules/world_memory/forgetful.tres"
+  }
+ },
+ "shadows": {
+  "active": "soft_cascades",
+  "variants": {
+   "soft_cascades": "res://modules/shadows/soft_cascades.tres",
+   "crisp": "res://modules/shadows/crisp.tres"
+  }
+ },
+ "cloud_shadows": {
+  "active": "drifting",
+  "variants": {
+   "drifting": "res://modules/cloud_shadows/drifting.tres",
+   "still_day": "res://modules/cloud_shadows/still_day.tres"
+  }
+ },
+ "sea_horizon": {
+  "active": "blended",
+  "variants": {
+   "blended": "res://modules/sea_horizon/blended.tres",
+   "classic": "res://modules/sea_horizon/classic.tres"
+  }
+ },
+ "backstories": {
+  "active": "town_stories",
+  "variants": {
+   "town_stories": "res://modules/backstories/town_stories.tres",
+   "quiet_stories": "res://modules/backstories/quiet_stories.tres"
+  }
+ },
+ "kids": {
+  "active": "after_school",
+  "variants": {
+   "after_school": "res://modules/kids/after_school.tres",
+   "well_behaved": "res://modules/kids/well_behaved.tres"
+  }
+ },
+ "conflicts": {
+  "active": "street_arguments",
+  "variants": {
+   "street_arguments": "res://modules/conflicts/street_arguments.tres",
+   "peaceful_town": "res://modules/conflicts/peaceful_town.tres"
+  }
+ },
+ "possession": {
+  "active": "free_choice",
+  "variants": {
+   "free_choice": "res://modules/possession/free_choice.tres",
+   "gentle": "res://modules/possession/gentle.tres"
+  }
+ },
+ "fire": {
+  "active": "town_fire_service",
+  "variants": {
+   "town_fire_service": "res://modules/fire/town_fire_service.tres",
+   "dry_summer": "res://modules/fire/dry_summer.tres"
+  }
+ },
+ "outages": {
+  "active": "storms_and_quakes",
+  "variants": {
+   "storms_and_quakes": "res://modules/outages/storms_and_quakes.tres",
+   "stable_grid": "res://modules/outages/stable_grid.tres"
+  }
+ },
+ "city_fund": {
+  "active": "municipal_fund",
+  "variants": {
+   "municipal_fund": "res://modules/city_fund/municipal_fund.tres",
+   "lean_budget": "res://modules/city_fund/lean_budget.tres"
+  }
+ },
+ "chatter": {
+  "active": "lively_town",
+  "variants": {
+   "lively_town": "res://modules/chatter/lively_town.tres",
+   "quiet_town": "res://modules/chatter/quiet_town.tres"
+  }
+ },
+ "cafe": {
+  "active": "night_terrace",
+  "variants": {
+   "night_terrace": "res://modules/cafe/night_terrace.tres",
+   "tea_house": "res://modules/cafe/tea_house.tres"
+  }
+ },
+ "mechanic": {
+  "active": "town_garage",
+  "variants": {
+   "town_garage": "res://modules/mechanic/town_garage.tres",
+   "budget_garage": "res://modules/mechanic/budget_garage.tres"
+  }
+ },
+ "driving": {
+  "active": "realistic_driving",
+  "variants": {
+   "realistic_driving": "res://modules/driving/realistic_driving.tres",
+   "easy_driving": "res://modules/driving/easy_driving.tres"
+  }
+ },
+ "passengers": {
+  "active": "town_rides",
+  "variants": {
+   "town_rides": "res://modules/passengers/town_rides.tres",
+   "busy_town": "res://modules/passengers/busy_town.tres"
+  }
+ },
+ "camping": {
+  "active": "forest_and_hill",
+  "variants": {
+   "forest_and_hill": "res://modules/camping/forest_and_hill.tres",
+   "family_camping": "res://modules/camping/family_camping.tres"
+  }
+ },
+ "newspaper": {
+  "active": "daily_paper",
+  "variants": {
+   "daily_paper": "res://modules/newspaper/daily_paper.tres",
+   "free_bulletin": "res://modules/newspaper/free_bulletin.tres"
+  }
+ },
+ "personalities": {
+  "active": "town_characters",
+  "variants": {
+   "town_characters": "res://modules/personalities/town_characters.tres",
+   "easygoing_town": "res://modules/personalities/easygoing_town.tres"
+  }
+ },
+ "voice_profiles": {
+  "active": "distinct_voices",
+  "variants": {
+   "distinct_voices": "res://modules/voice_profiles/distinct_voices.tres",
+   "uniform_voices": "res://modules/voice_profiles/uniform_voices.tres"
+  }
+ },
+ "controls_mouse": {
+  "active": "desktop_mouse",
+  "variants": {
+   "desktop_mouse": "res://modules/controls_mouse/desktop_mouse.tres",
+   "desktop_mouse_gentle": "res://modules/controls_mouse/desktop_mouse_gentle.tres"
+  }
+ },
+ "controls_touch": {
+  "active": "touch_twin_stick",
+  "variants": {
+   "touch_twin_stick": "res://modules/controls_touch/touch_twin_stick.tres",
+   "touch_fixed_sticks": "res://modules/controls_touch/touch_fixed_sticks.tres"
+  }
+ },
+ "controls_keyboard": {
+  "active": "keyboard_legacy",
+  "variants": {
+   "keyboard_legacy": "res://modules/controls_keyboard/keyboard_legacy.tres",
+   "keyboard_turn": "res://modules/controls_keyboard/keyboard_turn.tres"
+  }
+ },
+ "traffic_rules": {
+  "active": "strict_city",
+  "variants": {
+   "strict_city": "res://modules/traffic_rules/strict_city.tres",
+   "gentle_city": "res://modules/traffic_rules/gentle_city.tres"
+  }
+ },
+ "road_markings": {
+  "active": "city_white",
+  "variants": {
+   "city_white": "res://modules/road_markings/city_white.tres",
+   "faded_paint": "res://modules/road_markings/faded_paint.tres"
+  }
+ },
+ "traffic_signs": {
+  "active": "bilingual",
+  "variants": {
+   "bilingual": "res://modules/traffic_signs/bilingual.tres",
+   "persian_only": "res://modules/traffic_signs/persian_only.tres"
+  }
+ },
+ "street_lighting": {
+  "active": "bright_city",
+  "variants": {
+   "bright_city": "res://modules/street_lighting/bright_city.tres",
+   "soft_glow": "res://modules/street_lighting/soft_glow.tres"
+  }
+ },
+ "driving_license": {
+  "active": "standard",
+  "variants": {
+   "standard": "res://modules/driving_license/standard.tres",
+   "strict": "res://modules/driving_license/strict.tres"
+  }
+ },
+ "car_dealership": {
+  "active": "town_motors",
+  "variants": {
+   "town_motors": "res://modules/car_dealership/town_motors.tres",
+   "budget_lot": "res://modules/car_dealership/budget_lot.tres"
+  }
+ },
+ "npc_traffic": {
+  "active": "light_traffic",
+  "variants": {
+   "light_traffic": "res://modules/npc_traffic/light_traffic.tres",
+   "busy_traffic": "res://modules/npc_traffic/busy_traffic.tres"
+  }
+ },
+ "transit": {
+  "active": "city_bus",
+  "variants": {
+   "city_bus": "res://modules/transit/city_bus.tres",
+   "minibus": "res://modules/transit/minibus.tres"
+  }
+ },
+ "car_sounds": {
+  "active": "distinct_engines",
+  "variants": {
+   "distinct_engines": "res://modules/car_sounds/distinct_engines.tres",
+   "quiet_electric": "res://modules/car_sounds/quiet_electric.tres"
+  }
+ },
+ "cafe_lounge": {
+  "active": "classy_lounge",
+  "variants": {
+   "classy_lounge": "res://modules/cafe_lounge/classy_lounge.tres",
+   "jazz_lounge": "res://modules/cafe_lounge/jazz_lounge.tres"
+  }
+ },
+ "car_bodies": {
+  "active": "realistic_cars",
+  "variants": {
+   "realistic_cars": "res://modules/car_bodies/realistic_cars.tres",
+   "simple_cars": "res://modules/car_bodies/simple_cars.tres"
+  }
+ },
+ "resident_looks": {
+  "active": "varied_faces",
+  "variants": {
+   "varied_faces": "res://modules/resident_looks/varied_faces.tres",
+   "subtle_faces": "res://modules/resident_looks/subtle_faces.tres"
+  }
+ },
+ "door_plaques": {
+  "active": "family_plaques",
+  "variants": {
+   "family_plaques": "res://modules/door_plaques/family_plaques.tres",
+   "classic_signs": "res://modules/door_plaques/classic_signs.tres"
+  }
+ },
+ "house_variety": {
+  "active": "varied_homes",
+  "variants": {
+   "varied_homes": "res://modules/house_variety/varied_homes.tres",
+   "uniform_homes": "res://modules/house_variety/uniform_homes.tres"
+  }
+ },
+ "street_plants": {
+  "active": "town_avenue",
+  "variants": {
+   "town_avenue": "res://modules/street_plants/town_avenue.tres",
+   "sparse_greens": "res://modules/street_plants/sparse_greens.tres"
+  }
+ },
+ "fire_truck": {
+  "active": "town_fire_truck",
+  "variants": {
+   "town_fire_truck": "res://modules/fire_truck/town_fire_truck.tres",
+   "quiet_brigade": "res://modules/fire_truck/quiet_brigade.tres"
+  }
+ },
+ "city_hall_interior": {
+  "active": "municipal_office",
+  "variants": {
+   "municipal_office": "res://modules/city_hall_interior/municipal_office.tres",
+   "simple_office": "res://modules/city_hall_interior/simple_office.tres"
+  }
+ },
+ "families": {
+  "active": "town_families",
+  "variants": {
+   "town_families": "res://modules/families/town_families.tres",
+   "small_households": "res://modules/families/small_households.tres"
+  }
+ },
+ "quality": {
+  "collection": true,
+  "active": "medium",
+  "variants": {
+   "low": "res://modules/quality/low.tres",
+   "medium": "res://modules/quality/medium.tres",
+   "high": "res://modules/quality/high.tres"
+  }
+ },
+ "world_stream": {
+  "active": "streaming",
+  "variants": {
+   "streaming": "res://modules/world_stream/streaming.tres",
+   "stream_wide": "res://modules/world_stream/stream_wide.tres"
+  }
+ },
+ "lod_rules": {
+  "active": "balanced",
+  "variants": {
+   "balanced": "res://modules/lod_rules/balanced.tres",
+   "crisp": "res://modules/lod_rules/crisp.tres"
+  }
+ },
+ "audio_budget": {
+  "active": "capped",
+  "variants": {
+   "capped": "res://modules/audio_budget/capped.tres",
+   "generous": "res://modules/audio_budget/generous.tres"
+  }
+ },
+ "weather_fx": {
+  "active": "soft_weather",
+  "variants": {
+   "soft_weather": "res://modules/weather_fx/soft_weather.tres",
+   "light_weather": "res://modules/weather_fx/light_weather.tres"
+  }
+ },
+ "spatial_audio": {
+  "active": "camera_listener",
+  "variants": {
+   "camera_listener": "res://modules/spatial_audio/camera_listener.tres",
+   "light": "res://modules/spatial_audio/light.tres"
+  }
+ },
+ "sound_fx": {
+  "active": "rich_fx",
+  "variants": {
+   "rich_fx": "res://modules/sound_fx/rich_fx.tres",
+   "subtle_fx": "res://modules/sound_fx/subtle_fx.tres"
+  }
+ },
+ "ambient_sounds": {
+  "active": "lively",
+  "variants": {
+   "lively": "res://modules/ambient_sounds/lively.tres",
+   "calm": "res://modules/ambient_sounds/calm.tres"
+  }
+ },
+ "road_safety": {
+  "active": "careful_drivers",
+  "variants": {
+   "careful_drivers": "res://modules/road_safety/careful_drivers.tres",
+   "light_checks": "res://modules/road_safety/light_checks.tres"
+  }
+ }
+}

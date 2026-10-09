@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PushableStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/pushables/pushable_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "farm_boxes"
+type = "pushables"
+display_name = "Farm boxes"
+description = "4 wooden boxes in the farmyard + 2 at the carpenter's; push 0.9 m, stack up to 3."
+name_fa = "جعبه‌های مزرعه"
+boxes = [{"pos": Vector2(13.5, 3.5), "kind": "box"}, {"pos": Vector2(14.7, 3.7), "kind": "box"}, {"pos": Vector2(14.1, 4.9), "kind": "box"}, {"pos": Vector2(15.6, 4.6), "kind": "box"}, {"pos": Vector2(-26, -45), "kind": "box"}, {"pos": Vector2(-24.5, -44.4), "kind": "box"}]

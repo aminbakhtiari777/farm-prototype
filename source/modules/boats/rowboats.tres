@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BoatStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/boats/boat_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "rowboats"
+type = "boats"
+display_name = "Rowboats"
+description = "Two open rowboats, free, slower (10 s)."
+name_fa = "قایق پارویی"
+count = 2
+cabin = false
+sail_seconds = 10
+fuel_fee = 0
+hull_colors = [Color(0.3, 0.5, 0.35, 1), Color(0.6, 0.4, 0.25, 1)]

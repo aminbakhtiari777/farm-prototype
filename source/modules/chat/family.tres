@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ChatStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/chat/chat_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "family"
+type = "chat"
+display_name = "Family chat"
+description = "Shorter messages, slower rate and a small word filter."
+max_length = 120
+rate_count = 3
+blocked_words = PackedStringArray("idiot", "stupid", "احمق")

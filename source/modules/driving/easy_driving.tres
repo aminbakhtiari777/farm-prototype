@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DrivingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/driving/driving_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "easy_driving"
+type = "driving"
+display_name = "Easy driving"
+description = "Automatic only feel, very low fuel use, no wear; lights still needed at night (no fine)."
+name_fa = "رانندگی آسان"
+gear_top = [0.4, 0.7, 1]
+gear_accel = [1.2, 1, 0.85]
+fuel_per_km = 1.5
+damage_per_hit = 0
+no_lights_fine = 0

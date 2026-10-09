@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HouseColorsStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/house_colors/house_colors_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "whitewash"
+type = "house_colors"
+display_name = "Whitewash"
+description = "Mostly white houses with a hint of the family colour."
+name_fa = "سفیدکاری"
+palette = [Color(0.96, 0.95, 0.92, 1), Color(0.95, 0.93, 0.88, 1), Color(0.93, 0.94, 0.95, 1)]
+strength = 0.6

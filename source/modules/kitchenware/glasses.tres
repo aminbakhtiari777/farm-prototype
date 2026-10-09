@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="KitchenwareDef" format=3]
+
+[ext_resource type="Script" path="res://modules/kitchenware/kitchenware_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "glasses"
+type = "kitchenware"
+display_name = "Glasses"
+description = "Kitchenware: Glasses"
+name_fa = "لیوان"
+item_id = "glasses"
+price = 30
+slot = "glasses"
+tier = 1
+requires = ""
+speed = {}
+meal_bonus = 2
+unlocks = PackedStringArray()
+needs_power = false
+color = Color(0.8, 0.92, 1, 1)
+shape = "glass"
+sort_order = 6

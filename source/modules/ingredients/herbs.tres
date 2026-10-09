@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="IngredientDef" format=3]
+
+[ext_resource type="Script" path="res://modules/ingredients/ingredient_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "herbs"
+type = "ingredients"
+display_name = "Fresh herbs"
+description = "Parsley, coriander, dill - for kuku sabzi."
+name_fa = "سبزی"
+price = 12
+sold_at = PackedStringArray("grocery", "stall:produce")
+color = Color(0.25, 0.6, 0.25, 1)
+shape = "leaf"
+role = "main"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="IllnessDef" format=3]
+
+[ext_resource type="Script" path="res://modules/illnesses/illness_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "cold"
+type = "illnesses"
+display_name = "Cold"
+description = "A common cold from too little sleep or food: sneezing, feeling unwell, slower."
+name_fa = "سرماخوردگی"
+symptoms_en = "sneezing, feeling unwell"
+symptoms_fa = "عطسه، بی‌حالی"
+speed_mult = 0.75
+stamina_regen_mult = 0.6
+sneeze_min = 8
+sneeze_max = 20
+days = 3
+fee = 80
+min_fatigue = 0
+max_hunger = 100
+severity = 1
+tint = Color(0.72, 0.86, 0.72, 1)

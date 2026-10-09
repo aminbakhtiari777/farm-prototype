@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlantStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/plants/plant_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "meadow"
+type = "plants"
+display_name = "Meadow grass + wildflowers"
+ground_cover = [["Bush_Common", 70, 0.55, 0.85, 1.6], ["Bush_Common_Flowers", 40, 0.5, 0.8, 1.6], ["Fern_1", 60, 0.12, 0.2, 1.0], ["Flower_3_Group", 70, 0.3, 0.45, 0.8], ["Flower_4_Group", 60, 0.28, 0.42, 0.8], ["Plant_1_Big", 25, 0.25, 0.35, 1.0]]
+flower_colors = PackedColorArray(0.97, 0.95, 0.9, 1.0, 0.98, 0.85, 0.3, 1.0, 0.75, 0.6, 0.9, 1.0, 0.95, 0.6, 0.65, 1.0)

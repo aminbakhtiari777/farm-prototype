@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ToolDef" format=3]
+
+[ext_resource type="Script" path="res://modules/tool_types/tool_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "watering_can"
+type = "tool_types"
+display_name = "Watering Can"
+description = "Waters one crop."
+item_id = "watering_can"
+kind = "watering_can"
+tier = 1
+anim = "pour"
+sound = "water_pour"
+shape = "can"
+head_color = Color(0.45, 0.6, 0.7, 1)
+handle_color = Color(0.35, 0.45, 0.5, 1)
+buy = 0
+starter = false
+unlock_day = 1
+requires = ""
+reach = 1
+anim_seconds = 1

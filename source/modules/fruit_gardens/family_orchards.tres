@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FruitGardenStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/fruit_gardens/fruit_garden_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "family_orchards"
+type = "fruit_gardens"
+display_name = "Family orchards"
+description = "4 back-yard orchards (pomegranate, orange, fig, apple); fruit regrows in 3 days."
+name_fa = "باغ میوه‌ی خانواده‌ها"
+gardens = [{"home": "maple3", "trees": ["pomegranate", "fig", "pomegranate", "orange"]}, {"home": "maple5", "trees": ["orange", "orange", "apple", "pomegranate"]}, {"home": "oak15", "trees": ["fig", "apple", "fig"]}, {"home": "pine9", "trees": ["pomegranate", "apple", "orange", "fig"]}]
+fruits = {"pomegranate": {"en": "pomegranate", "fa": "انار", "color": Color(0.75, 0.12, 0.15, 1), "item": "pomegranate"}, "orange": {"en": "orange", "fa": "پرتقال", "color": Color(0.98, 0.55, 0.1, 1), "item": "orange"}, "fig": {"en": "fig", "fa": "انجیر", "color": Color(0.4, 0.22, 0.35, 1), "item": "fig"}, "apple": {"en": "apple", "fa": "سیب", "color": Color(0.8, 0.15, 0.12, 1), "item": "orchard_apple"}}
+items = {"pomegranate": {"name": "Pomegranate", "name_fa": "انار", "type": "produce", "category": "fruit", "sell": 45, "description": "Ruby seeds, sweet and sour."}, "orange": {"name": "Orange", "name_fa": "پرتقال", "type": "produce", "category": "fruit", "sell": 30, "description": "Juicy orange from a family orchard."}, "fig": {"name": "Fig", "name_fa": "انجیر", "type": "produce", "category": "fruit", "sell": 38, "description": "Soft, sweet fig."}, "orchard_apple": {"name": "Orchard Apple", "name_fa": "سیب باغ", "type": "produce", "category": "fruit", "sell": 28, "description": "Crisp apple from a family orchard."}}

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="KitchenwareDef" format=3]
+
+[ext_resource type="Script" path="res://modules/kitchenware/kitchenware_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "pan_nonstick"
+type = "kitchenware"
+display_name = "Non-stick Pan"
+description = "Kitchenware: Non-stick Pan"
+name_fa = "ماهیتابه‌ی نچسب"
+item_id = "pan_nonstick"
+price = 70
+slot = "pan"
+tier = 1
+requires = ""
+speed = {"cook": 0.85}
+meal_bonus = 0
+unlocks = PackedStringArray()
+needs_power = false
+color = Color(0.18, 0.18, 0.2, 1)
+shape = "pan"
+sort_order = 3

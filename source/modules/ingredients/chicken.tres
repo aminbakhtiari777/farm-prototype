@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="IngredientDef" format=3]
+
+[ext_resource type="Script" path="res://modules/ingredients/ingredient_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "chicken"
+type = "ingredients"
+display_name = "Chicken"
+description = "Fresh whole chicken pieces."
+name_fa = "مرغ"
+price = 45
+sold_at = PackedStringArray("grocery")
+color = Color(0.95, 0.78, 0.66, 1)
+shape = "drumstick"
+role = "main"

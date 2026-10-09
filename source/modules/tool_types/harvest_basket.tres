@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ToolDef" format=3]
+
+[ext_resource type="Script" path="res://modules/tool_types/tool_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "harvest_basket"
+type = "tool_types"
+display_name = "Harvest Basket"
+description = "Holds the harvest (always with you)."
+item_id = "harvest_basket"
+kind = "hands"
+tier = 1
+anim = "pick"
+sound = "harvest"
+shape = "basket"
+head_color = Color(0.7, 0.52, 0.28, 1)
+handle_color = Color(0.55, 0.4, 0.2, 1)
+buy = 0
+starter = true
+unlock_day = 1
+requires = ""
+reach = 1
+anim_seconds = 0.7

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HypermarketStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/hypermarket/hypermarket_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "hyper_green"
+type = "hypermarket"
+display_name = "Hypermarket (green)"
+description = "Same shop, green branding."
+name_fa = "هایپرمارکت سبز"
+sign_color = Color(0.15, 0.55, 0.3, 1)

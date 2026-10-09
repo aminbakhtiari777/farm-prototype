@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/props/market_stall.gd" id="1_market_stall"]
+
+[node name="MarketStall" type="Node3D"]
+script = ExtResource("1_market_stall")

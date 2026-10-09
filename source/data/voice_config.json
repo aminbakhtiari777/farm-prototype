@@ -1,0 +1,15 @@
+{
+	"_comment": "Voice chat client settings. Leave empty until a LiveKit (or compatible SFU) server exists - see docs/VOICE_SETUP.md. Never put API secrets here: the token endpoint must mint short-lived room tokens server-side.",
+	"livekit_url": "",
+	"token_endpoint": "",
+	"room": "farm-town",
+	"turn": {
+		"urls": "turns:YOUR-TURN-HOST:443?transport=tcp",
+		"username": "",
+		"credential": ""
+	},
+	"proximity": {
+		"full_volume_distance": 3.0,
+		"silent_distance": 25.0
+	}
+}

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GardenStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/garden/garden_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "rustic_rows"
+type = "garden"
+display_name = "Rustic rows (dark loam, packed-earth paths)"
+soil_dry = Color(0.4, 0.27, 0.16, 1)
+soil_wet = Color(0.24, 0.16, 0.1, 1)
+path_color = Color(0.62, 0.55, 0.42, 1)
+edge_color = Color(0.45, 0.32, 0.2, 1)
+raised_beds = false
+fence_height = 1
+expand_cost = 150

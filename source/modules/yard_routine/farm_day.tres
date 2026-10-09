@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="YardRoutineStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/yard_routine/yard_routine_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "farm_day"
+type = "yard_routine"
+display_name = "Farm day"
+description = "4 small yard jobs; 30 G + 10 max stamina for the day when done."
+name_fa = "کارهای روزانه‌ی حیاط"
+tasks = [{"id": "water", "en": "Water the garden", "fa": "آب دادن باغچه", "from": 5, "to": 20}, {"id": "stack", "en": "Tidy the boxes (stack 2)", "fa": "مرتب کردن جعبه‌ها (دوتا روی هم)", "from": 6, "to": 22}, {"id": "herd", "en": "Pen the sheep", "fa": "بردن گوسفندها به آغل", "from": 6, "to": 23}, {"id": "dig", "en": "Dig in the yard", "fa": "کندن زمین", "from": 6, "to": 22}]

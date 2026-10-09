@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NightSkyStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/night_sky/night_sky_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "starry"
+type = "night_sky"
+display_name = "Starry countryside"
+description = "Dense stars, the Milky Way and a bright moon with phases (8-day cycle in game time)."
+name_fa = "آسمان پرستاره‌ی روستا"

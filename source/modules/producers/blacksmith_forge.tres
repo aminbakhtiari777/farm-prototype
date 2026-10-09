@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ProducerDef" format=3]
+
+[ext_resource type="Script" path="res://modules/producers/producer_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "blacksmith_forge"
+type = "producers"
+display_name = "Blacksmith: forge"
+description = "Smelts iron bars."
+name_fa = "آهنگری: کوره"
+shop = "blacksmith"
+worker_jobs = PackedStringArray("Blacksmith")
+outputs = {"iron_bar": 3}
+inputs = {}
+items = {}
+sort_order = 2

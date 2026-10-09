@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CafeLoungeStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/cafe_lounge/cafe_lounge_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "jazz_lounge"
+type = "cafe_lounge"
+display_name = "Quiet jazz lounge"
+description = "The same rooms without the disco: warm light, soft radio music, fewer people."
+name_fa = "لانژ آرام"
+name = {"en": "Lounge Cafe", "fa": "کافه لانژ"}
+disco = false
+crowd = 6
+dance_colors = [Color(1, 0.75, 0.45, 1)]
+music = PackedStringArray("res://assets/audio/music/radio_loop.ogg")
+music_db = -10
+dress_tops = PackedStringArray("jacket", "long_sleeve", "work_shirt", "polo")

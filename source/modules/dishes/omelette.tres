@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DishDef" format=3]
+
+[ext_resource type="Script" path="res://modules/dishes/dish_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "omelette"
+type = "dishes"
+display_name = "Tomato Omelette"
+description = "Persian omlet: eggs scrambled with tomato and onion."
+name_fa = "املت گوجه"
+inputs = {"eggs": 2, "tomato_fresh": 1, "onion": 1}
+salt = 1
+spices = 1
+hunger = 60
+stamina = 40
+raw_color = Color(0.95, 0.6, 0.35, 1)
+cooked_color = Color(0.92, 0.55, 0.2, 1)
+sort_order = 0

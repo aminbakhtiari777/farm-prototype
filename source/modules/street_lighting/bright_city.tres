@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StreetLightingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/street_lighting/street_lighting_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "bright_city"
+type = "street_lighting"
+display_name = "Bright city nights"
+description = "Lamps every 10 m on both sides, junction + square + path lights, warm pools, lifted night ambient."
+name_fa = "شب‌های روشن شهر"
+extra_points = [Vector2(-6, -22), Vector2(6, -22), Vector2(-6, -28), Vector2(6, -28), Vector2(0.8, -37.5), Vector2(-3, -16), Vector2(3, -8), Vector2(-1.6, 1.5), Vector2(-12, 3.5), Vector2(14, 2.4), Vector2(30, 6.2), Vector2(-26, 9.5), Vector2(-30, 18), Vector2(57, -105.5), Vector2(48, -117.5), Vector2(-12.5, -124.6), Vector2(-17.5, -121.6), Vector2(-36, -24), Vector2(-20, -21)]

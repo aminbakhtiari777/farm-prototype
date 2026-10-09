@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="IngredientDef" format=3]
+
+[ext_resource type="Script" path="res://modules/ingredients/ingredient_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "rice"
+type = "ingredients"
+display_name = "Rice"
+description = "Long-grain rice (one portion)."
+name_fa = "برنج"
+price = 20
+sold_at = PackedStringArray("grocery")
+color = Color(0.97, 0.96, 0.92, 1)
+shape = "grain"
+role = "main"

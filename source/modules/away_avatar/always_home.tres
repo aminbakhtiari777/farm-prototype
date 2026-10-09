@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AwayAvatarStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/away_avatar/away_avatar_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "always_home"
+type = "away_avatar"
+display_name = "Always home"
+description = "The avatar always walks home and sits on the porch."
+cafe_from = 0
+cafe_to = 0

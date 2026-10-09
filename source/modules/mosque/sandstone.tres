@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MosqueStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/mosque/mosque_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "sandstone"
+type = "mosque"
+display_name = "Sandstone, two minarets"
+description = "Sandstone walls, golden dome, two minarets; the call only at the five prayer times."
+wall_color = Color(0.86, 0.74, 0.55, 1)
+dome_color = Color(0.82, 0.66, 0.3, 1)
+trim_color = Color(0.5, 0.36, 0.2, 1)
+tile_color = Color(0.6, 0.45, 0.25, 1)
+minarets = 2
+minaret_height = 13
+carpet_color = Color(0.2, 0.35, 0.3, 1)
+adhan_sound = "res://assets/audio/sfx/adhan.ogg"
+adhan_db = -12
+call_hours = PackedInt32Array(5, 13, 16, 19, 21)
+max_distance = 75
+dome_shape = "ribbed"
+dome_ribs = 20
+drum_height = 1.2
+rib_color = Color(0.6, 0.45, 0.22, 1)

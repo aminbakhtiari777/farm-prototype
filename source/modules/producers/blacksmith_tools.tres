@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ProducerDef" format=3]
+
+[ext_resource type="Script" path="res://modules/producers/producer_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "blacksmith_tools"
+type = "producers"
+display_name = "Blacksmith: tools"
+description = "Forges nails and farm tools (shears, milk pails) from iron bars."
+name_fa = "آهنگری: ابزار"
+shop = "blacksmith"
+worker_jobs = PackedStringArray("Blacksmith")
+outputs = {"iron_nails": 6, "shears": 1, "milk_pail": 1}
+inputs = {"iron_bar": 2}
+sort_order = 3
+items = {"shears": {"name": "Shears", "name_fa": "قیچی پشم‌چینی", "type": "tool_item", "description": "Needed to shear sheep (blacksmith).", "buy": 120}, "milk_pail": {"name": "Milk Pail", "name_fa": "سطل شیر", "type": "tool_item", "description": "Needed to milk cows (blacksmith).", "buy": 100}}

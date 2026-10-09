@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ToolDef" format=3]
+
+[ext_resource type="Script" path="res://modules/tool_types/tool_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "hammer"
+type = "tool_types"
+display_name = "Hammer"
+description = "Builds things: garden expansions and fences. Sold from day 2."
+item_id = "hammer"
+kind = "hammer"
+tier = 1
+anim = "hammer"
+sound = "hammer"
+shape = "hammer"
+head_color = Color(0.35, 0.36, 0.38, 1)
+handle_color = Color(0.5, 0.34, 0.2, 1)
+buy = 250
+starter = false
+unlock_day = 2
+requires = ""
+reach = 1
+anim_seconds = 0.9

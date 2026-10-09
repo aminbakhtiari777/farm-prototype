@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="QualityStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/quality/quality_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "medium"
+type = "quality"
+display_name = "Medium (balanced)"
+description = "Default on the web: 2 cheap shadow cascades to 35 m, small props shadow-free, 6 lamp lights."
+name_fa = "متوسط (متعادل)"
+level = 1

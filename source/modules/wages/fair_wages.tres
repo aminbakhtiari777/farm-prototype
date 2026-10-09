@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WagesStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/wages/wages_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "fair_wages"
+type = "wages"
+display_name = "Fair wages"
+description = "Every job pays a fair daily wage at 17:00 (doctors most, shop staff least); Fridays off."
+wages = {"doctor": 140, "nurse": 90, "teacher": 80, "professor": 120, "police officer": 85, "carpenter": 75, "blacksmith": 75, "stonemason": 70, "tailor": 65, "jeweller": 80, "electrician": 80, "shopkeeper": 65, "supermarket cashier": 60, "fruit seller": 60, "fisherman": 70, "barista": 55, "postman": 60, "city clerk": 70, "water engineer": 85, "electricity officer": 85, "imam": 60, "priest": 60, "tool seller": 65, "retired teacher": 40, "pupil": 0, "student": 0, "city mail clerk": 60, "city hall manager": 90, "city hall press officer": 70, "tool repairer": 65, "hypermarket manager": 85, "gym coach": 60, "boat captain": 75, "cafe cook": 55, "part-time librarian": 35}
+default_wage = 60
+payday_hour = 17
+start_savings = 200
+allowance = 10
+day_off = 6

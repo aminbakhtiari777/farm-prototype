@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CookingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/cooking/cooking_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "home_style"
+type = "cooking"
+display_name = "Home style (5 steps)"
+description = "Prepare (wash + chop), add salt, add spices, cook, eat - each by hand."
+steps = [{"id": "prepare", "en": "Wash and chop", "fa": "شستن و خرد کردن", "minutes": 10, "sound": "chop", "stamina": 2}, {"id": "salt", "en": "Add salt", "fa": "نمک زدن", "minutes": 1, "sound": "sprinkle", "stamina": 0}, {"id": "spices", "en": "Add spices", "fa": "ادویه زدن", "minutes": 1, "sound": "sprinkle", "stamina": 0}, {"id": "cook", "en": "Cook", "fa": "پختن", "minutes": 25, "sound": "sizzle", "stamina": 1}, {"id": "eat", "en": "Eat", "fa": "خوردن", "minutes": 15, "sound": "eat", "stamina": 0}]
+auto_season = false
+seasoned_bonus = 10

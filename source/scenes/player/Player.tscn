@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://scripts/visuals/humanoid_model_visual.gd" id="2_humanoid_mod"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/footstep_grass_1.ogg" id="3_footstep_gra"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/footstep_grass_2.ogg" id="4_footstep_gra"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/footstep_grass_3.ogg" id="5_footstep_gra"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/footstep_grass_4.ogg" id="6_footstep_gra"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/breathing_heavy_loop.ogg" id="7_breathing_he"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
+radius = 0.3
+height = 1.8
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 5
+floor_snap_length = 0.3
+script = ExtResource("1_player")
+footstep_sounds = Array[AudioStream]([ExtResource("3_footstep_gra"), ExtResource("4_footstep_gra"), ExtResource("5_footstep_gra"), ExtResource("6_footstep_gra")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_1")
+
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+volume_db = -9
+unit_size = 4
+max_distance = 30
+
+[node name="Breathing" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+volume_db = -6
+unit_size = 3
+max_distance = 20
+stream = ExtResource("7_breathing_he")
+
+[node name="Visual" type="Node3D" parent="."]
+script = ExtResource("2_humanoid_mod")
+body_type = "male"
+top_style = "work_shirt"
+shirt_color = Color(0.66, 0.24, 0.18, 1)
+pants_color = Color(0.2, 0.3, 0.48, 1)
+boots_color = Color(0.32, 0.2, 0.11, 1)
+belt_color = Color(0.22, 0.14, 0.08, 1)
+hair_style = "Hair_SimpleParted"
+hair_color = Color(0.32, 0.2, 0.11, 1)
+beard = true

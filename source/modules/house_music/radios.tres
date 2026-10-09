@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HouseMusicStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/house_music/house_music_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "radios"
+type = "house_music"
+display_name = "Radios in some homes"
+description = "The cafe, two homes and the gym play music, heard faintly (muffled) outside."
+name_fa = "رادیو در خانه‌ها"
+sources = {"cafe": "res://assets/audio/music/radio_loop.ogg", "maple4": "res://assets/audio/music/radio_loop.ogg", "harbor2": "res://assets/audio/music/zarb_loop.ogg", "gym": "res://assets/audio/music/gym_loop.ogg"}

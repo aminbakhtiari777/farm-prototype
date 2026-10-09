@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PolicePatrolStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/police_patrol/police_patrol_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "wide_patrol"
+type = "police_patrol"
+display_name = "Wide patrol"
+description = "A longer loop through the whole town."
+name_fa = "گشت گسترده"
+route = [Vector2(-27, -51.5), Vector2(-62, -51.5), Vector2(-62, -88.5), Vector2(53, -88.5), Vector2(53, -51.5), Vector2(12, -51.5), Vector2(1.5, -62), Vector2(1.5, -88.5), Vector2(-45, -88.5), Vector2(-45, -51.5)]
+speed = 7.5

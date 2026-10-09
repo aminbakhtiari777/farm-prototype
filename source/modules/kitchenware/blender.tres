@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="KitchenwareDef" format=3]
+
+[ext_resource type="Script" path="res://modules/kitchenware/kitchenware_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "blender"
+type = "kitchenware"
+display_name = "Blender"
+description = "Kitchenware: Blender"
+name_fa = "مخلوط‌کن"
+item_id = "blender"
+price = 220
+slot = "blender"
+tier = 1
+requires = ""
+speed = {"prepare": 0.6}
+meal_bonus = 0
+unlocks = PackedStringArray("banana_smoothie")
+needs_power = true
+color = Color(0.85, 0.2, 0.2, 1)
+shape = "blender"
+sort_order = 7

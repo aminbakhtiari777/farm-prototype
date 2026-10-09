@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ToolDef" format=3]
+
+[ext_resource type="Script" path="res://modules/tool_types/tool_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "seed_pouch"
+type = "tool_types"
+display_name = "Seed Pouch"
+description = "Sows seeds (always with you)."
+item_id = "seed_pouch"
+kind = "seeds"
+tier = 1
+anim = "sow"
+sound = "seeds"
+shape = "pouch"
+head_color = Color(0.75, 0.62, 0.4, 1)
+handle_color = Color(0.5, 0.38, 0.22, 1)
+buy = 0
+starter = true
+unlock_day = 1
+requires = ""
+reach = 1
+anim_seconds = 0.7

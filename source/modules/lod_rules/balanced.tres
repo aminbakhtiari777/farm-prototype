@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LodRulesStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/lod_rules/lod_rules_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "balanced"
+type = "lod_rules"
+display_name = "Balanced LOD (default)"
+description = "Tiny props 28 m, small 55 m, medium 100 m, large 190 m; no fades."
+name_fa = "جزئیات متعادل"

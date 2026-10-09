@@ -1,0 +1,8 @@
+{
+  "game": "farm-town",
+  "family": "zamith",
+  "build": "v7b1",
+  "version": "7.1.0",
+  "protocol": "7.1",
+  "notes": "v7b.1 platform: multi-export, lobby rooms, updates, free-host lightweight multiplayer"
+}

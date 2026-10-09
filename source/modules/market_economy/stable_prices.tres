@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="MarketEconomyStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/market_economy/market_economy_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "stable_prices"
+type = "market_economy"
+display_name = "Stable prices"
+description = "A calm market: prices move only a little (x0.85 .. x1.25) and recover fast."
+elasticity = 0.15
+min_mult = 0.85
+max_mult = 1.25
+recovery_per_day = 0.6
+default_target = 20
+buffer_days = 3
+retail_markup = 1.5
+sell_impact = 0.5
+history_days = 7
+shortage_below = 0.15
+npc_food_basket = {"bread_loaf": 3, "eggs": 3, "rice": 2, "chicken": 1, "tomato_fresh": 2, "onion": 1, "milk": 2, "apple": 1, "sardine": 1, "potato": 1}
+npc_meal_units = 0.25
+exports = {"wood_plank": 4, "iron_nails": 2, "iron_bar": 1, "wool": 2, "yarn": 1, "milk": 1.5, "eggs": 4, "apple": 2, "strawberry": 1.5, "banana_fruit": 1, "tomato": 2, "potato": 2, "sardine": 3, "mackerel": 1, "chicken": 1, "wooden_chair": 0.5, "wooden_table": 0.4, "hay": 3, "chicken_feed": 4, "rice": 2, "onion": 2, "tomato_fresh": 2, "herbs": 1.5, "bread_loaf": 4, "salt": 1, "spices": 1, "shears": 0.3, "milk_pail": 0.3}
+item_names_fa = {"turnip": "شلغم", "carrot": "هویج", "potato": "سیب‌زمینی", "strawberry": "توت‌فرنگی", "tomato": "گوجه‌فرنگی", "corn": "ذرت", "sunflower": "آفتابگردان", "pumpkin": "کدو حلوایی", "eggplant": "بادمجان", "apple": "سیب", "banana_fruit": "موز", "wool": "پشم", "yarn": "نخ پشمی", "sardine": "ساردین", "mackerel": "ماهی خال‌مخالی", "sea_bass": "ماهی سی‌باس", "tuna": "تن", "red_snapper": "سرخو", "cod": "ماهی کاد", "squid": "ماهی مرکب", "carp": "کپور", "catfish": "گربه‌ماهی", "trout": "قزل‌آلا", "perch": "سوف", "seashell": "صدف", "scallop_shell": "صدف شانه‌ای", "conch": "حلزون دریایی", "wood_plank": "تخته چوبی", "iron_nails": "میخ آهنی", "iron_bar": "شمش آهن", "stone_block": "سنگ ساختمانی", "copper_wire": "سیم مسی", "light_bulb": "لامپ", "bread_loaf": "نان", "silver_ring": "انگشتر نقره", "gold_necklace": "گردنبند طلا", "birdhouse": "خانه پرنده", "planter_box": "گلدان چوبی", "iron_lantern": "فانوس آهنی", "stone_planter": "گلدان سنگی", "jam": "مربا", "fruit_basket": "سبد میوه", "fertilizer": "کود", "fishing_rod": "چوب ماهیگیری", "shirt_red": "پیراهن قرمز", "shirt_green": "پیراهن سبز", "shirt_blue": "پیراهن آبی", "shirt_yellow": "پیراهن زرد", "overalls_denim": "شلوار جین", "apple_sapling": "نهال سیب", "banana_sucker": "پاجوش موز", "turnip_seeds": "بذر شلغم", "carrot_seeds": "بذر هویج", "potato_seeds": "بذر سیب‌زمینی", "strawberry_seeds": "بذر توت‌فرنگی", "tomato_seeds": "بذر گوجه", "corn_seeds": "بذر ذرت", "sunflower_seeds": "بذر آفتابگردان", "pumpkin_seeds": "بذر کدو", "eggplant_seeds": "بذر بادمجان"}

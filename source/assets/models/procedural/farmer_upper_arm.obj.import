@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bs3pxikf2fbmh"
+path="res://.godot/imported/farmer_upper_arm.obj-b8e6b3017bef01500cf43c01acb6724e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/farmer_upper_arm.obj-b8e6b3017bef01500cf43c01acb6724e.mesh"]
+
+source_file="res://assets/models/procedural/farmer_upper_arm.obj"
+dest_files=["res://.godot/imported/farmer_upper_arm.obj-b8e6b3017bef01500cf43c01acb6724e.mesh", "res://.godot/imported/farmer_upper_arm.obj-b8e6b3017bef01500cf43c01acb6724e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

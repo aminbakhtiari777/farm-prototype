@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="NpcLooksStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/npc_looks/npc_looks_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "distinct"
+type = "npc_looks"
+display_name = "Distinct faces"
+description = "Brows, head size, body width, skin tint and hair vary per resident (stable per name)."
+name_fa = "چهره‌های متفاوت"
+brows = ["Eyebrows_Regular", "Eyebrows_Female", "Eyebrows_Regular"]
+hair_women = ["Hair_Long", "Hair_Buns", "Hair_SimpleParted", "Hair_Long"]
+hair_men = ["Hair_SimpleParted", "Hair_Buzzed", "Hair_Buzzed", ""]
+hair_colors = [Color(0.08, 0.06, 0.05, 1), Color(0.2, 0.13, 0.08, 1), Color(0.32, 0.2, 0.11, 1), Color(0.55, 0.38, 0.2, 1), Color(0.78, 0.62, 0.38, 1), Color(0.45, 0.2, 0.1, 1), Color(0.6, 0.6, 0.62, 1)]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FireStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/fire/fire_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "dry_summer"
+type = "fire"
+display_name = "Dry summer"
+description = "Fires spread faster and further; rebuilding takes 3 days."
+name_fa = "تابستان خشک"
+spread_radius = 15
+spread_seconds = 25
+grow_seconds = 15
+rebuild_days = 3

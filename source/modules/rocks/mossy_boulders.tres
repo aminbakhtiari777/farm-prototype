@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RockStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/rocks/rock_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "mossy_boulders"
+type = "rocks"
+display_name = "Mossy boulders"
+kinds = [["Rock_Medium_1", 30, 0.5, 0.95, 1.8], ["Rock_Medium_3", 24, 0.45, 0.9, 1.8]]
+tint = Color(0.78, 0.92, 0.7, 1.0)

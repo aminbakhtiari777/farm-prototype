@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DishDef" format=3]
+
+[ext_resource type="Script" path="res://modules/dishes/dish_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "kuku_sabzi"
+type = "dishes"
+display_name = "Kuku Sabzi"
+description = "Herb frittata: eggs and lots of fresh herbs."
+name_fa = "کوکو سبزی"
+inputs = {"eggs": 2, "herbs": 1}
+salt = 1
+spices = 1
+hunger = 70
+stamina = 50
+raw_color = Color(0.35, 0.6, 0.3, 1)
+cooked_color = Color(0.2, 0.38, 0.15, 1)
+sort_order = 2

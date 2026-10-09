@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LiveUpdatesStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/live_updates/live_updates_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "auto"
+type = "live_updates"
+display_name = "Automatic updates"
+description = "Download changed modules on connect and when the server publishes one; keep the previous version for rollback."

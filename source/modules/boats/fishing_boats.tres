@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BoatStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/boats/boat_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "fishing_boats"
+type = "boats"
+display_name = "Fishing boats (lenj)"
+description = "Three motor boats moored at the pier; 20 G fuel per trip; 6 s to the fishing grounds."
+name_fa = "قایق‌های صیادی"

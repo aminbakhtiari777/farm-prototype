@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CityHallInteriorStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/city_hall_interior/city_hall_interior_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "municipal_office"
+type = "city_hall_interior"
+display_name = "Municipal office"
+description = "Desk, counter, manager + clerks; fund board on the wall; F4 only inside."
+name_fa = "اداره‌ی شهرداری"
+staff = ["Omid Hosseini", "Reza Karimi", "Ramin Soleimani"]

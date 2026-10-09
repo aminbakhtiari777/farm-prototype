@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NewspaperStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/newspaper/newspaper_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "daily_paper"
+type = "newspaper"
+display_name = "Town Daily"
+description = "A daily paper (3 G at the newsstand) with real town events, market movers and the weather."
+name_fa = "روزنامه‌ی روزانه"
+templates = {"fire": {"en": "FIRE: {n} fire(s) - the brigade answered every call.", "fa": "آتش‌سوزی: {n} مورد آتش‌سوزی - آتش‌نشانی به همه رسید."}, "fine": {"en": "Justice: {what} - {amount} G to the city fund.", "fa": "عدالت: {what} - {amount} سکه به صندوق شهر."}, "argument": {"en": "Street arguments: {n} - {calmed} calmed by neighbours.", "fa": "دعوای خیابانی: {n} مورد - {calmed} مورد را همسایه‌ها آرام کردند."}, "outage": {"en": "Power cut {n} time(s); the crew restored it.", "fa": "برق {n} بار قطع شد؛ گروه برق وصلش کرد."}, "quake": {"en": "A mild earthquake shook the town - no injuries.", "fa": "زلزله‌ی خفیفی شهر را لرزاند - کسی آسیب ندید."}, "project": {"en": "Public works: {what} ({state}).", "fa": "کارهای عمومی: {what} ({state})."}, "fund": {"en": "City fund: {amount} G.", "fa": "صندوق شهر: {amount} سکه."}, "cafe_fight": {"en": "Cafe scuffle: {n} - fines for disturbing the peace.", "fa": "دعوا در کافه: {n} مورد - جریمه برای برهم زدن آرامش."}, "rides": {"en": "Farmer's rides: {n} passenger(s) driven safely.", "fa": "مسافرکشی کشاورز: {n} مسافر سالم رسیدند."}, "camp": {"en": "Outdoors: a camp was set up at {what}.", "fa": "طبیعت‌گردی: در {what} کمپ برپا شد."}, "market": {"en": "Market: {what}.", "fa": "بازار: {what}."}, "report": {"en": "Police: {n} new report(s) filed.", "fa": "پلیس: {n} گزارش تازه ثبت شد."}, "trade": {"en": "Trade: {n} deal(s) made in town.", "fa": "تجارت: {n} معامله در شهر انجام شد."}}
+weather = {"sunny": {"en": "Weather: sunny and clear.", "fa": "هوا: آفتابی و صاف."}, "cloudy": {"en": "Weather: cloudy.", "fa": "هوا: ابری."}, "rain": {"en": "Weather: rain - good for the gardens.", "fa": "هوا: بارانی - خوب برای باغچه‌ها."}, "storm": {"en": "Weather: storm warning - stay away from power lines.", "fa": "هوا: هشدار طوفان - از سیم‌های برق دور بمانید."}, "heatwave": {"en": "Weather: heatwave - drink water, stay in the shade.", "fa": "هوا: موج گرما - آب بنوشید، زیر سایه بمانید."}, "snow": {"en": "Weather: snow - drive carefully.", "fa": "هوا: برفی - با احتیاط رانندگی کنید."}}
+quiet = {"en": "A quiet day in town. Neighbours helped each other.", "fa": "یک روز آرام در شهر. همسایه‌ها به هم کمک کردند."}

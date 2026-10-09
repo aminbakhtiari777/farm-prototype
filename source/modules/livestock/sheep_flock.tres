@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="LivestockDef" format=3]
+
+[ext_resource type="Script" path="res://modules/livestock/livestock_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "sheep_flock"
+type = "livestock"
+display_name = "Sheep"
+description = "Grows wool every other day when fed and happy (needs shears). Lives in the barn."
+name_fa = "گوسفند"
+housing = "barn"
+price = 600
+product_item = "wool"
+product_fa = "پشم"
+product_qty = 1
+product_every_days = 2
+happy_above = 60
+content_above = 30
+tool_item = "shears"
+feed_item = "hay"
+feed_per_day = 1
+fed_gain = 12
+unfed_loss = 25
+pet_gain = 5
+start_happiness = 70
+adult_days = 4
+breed_every_days = 5
+breed_chance = 0.4
+shape = "sheep"
+body_color = Color(0.95, 0.94, 0.9, 1)
+accent_color = Color(0.2, 0.17, 0.15, 1)
+size = 1
+young_scale = 0.55
+walk_speed = 0.6
+names_fa = PackedStringArray("پنبه", "ابری", "برفی", "پشمالو", "کوچولو", "سفیدک")
+names_en = PackedStringArray("Cotton", "Cloud", "Snowy", "Fluffy", "Button", "Lamby")
+items = {"hay": {"name": "Hay", "name_fa": "علف خشک", "type": "feed", "description": "One bundle feeds a cow or a sheep for a day.", "buy": 8, "sell": 4}}

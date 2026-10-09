@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GardenStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/garden/garden_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "raised_beds"
+type = "garden"
+display_name = "Raised timber beds, gravel paths"
+soil_dry = Color(0.36, 0.25, 0.17, 1)
+soil_wet = Color(0.2, 0.14, 0.1, 1)
+path_color = Color(0.7, 0.68, 0.62, 1)
+edge_color = Color(0.55, 0.4, 0.25, 1)
+raised_beds = true
+fence_height = 1.1
+expand_cost = 200

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CafeStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/cafe/cafe_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "night_terrace"
+type = "cafe"
+display_name = "Night terrace cafe"
+description = "Terrace open 16-24 with bartender, DJ from 19:00, teas, juices and two strong drinks (limit 2/day)."
+name_fa = "کافه‌ی تراس شب"
+menu = [{"id": "tea", "en": "Persian tea", "fa": "چای ایرانی", "price": 4, "kind": "hot", "stamina": 10, "hunger": 0, "tipsy": 0}, {"id": "coffee", "en": "Coffee", "fa": "قهوه", "price": 7, "kind": "hot", "stamina": 18, "hunger": 0, "tipsy": 0}, {"id": "orange_juice", "en": "Fresh orange juice", "fa": "آب‌پرتقال تازه", "price": 8, "kind": "juice", "stamina": 12, "hunger": 4, "tipsy": 0}, {"id": "pomegranate_juice", "en": "Pomegranate juice", "fa": "آب‌انار", "price": 9, "kind": "juice", "stamina": 12, "hunger": 4, "tipsy": 0}, {"id": "doogh", "en": "Mint doogh", "fa": "دوغ نعنا", "price": 5, "kind": "soft", "stamina": 8, "hunger": 3, "tipsy": 0}, {"id": "lemonade", "en": "Lemonade", "fa": "لیموناد", "price": 6, "kind": "soft", "stamina": 8, "hunger": 0, "tipsy": 0}, {"id": "strong_brew", "en": "Strong house brew", "fa": "نوشیدنی قوی مخصوص", "price": 14, "kind": "strong", "stamina": -5, "hunger": 0, "tipsy": 45}, {"id": "strong_punch", "en": "Spiced strong punch", "fa": "پانچ قوی ادویه‌دار", "price": 16, "kind": "strong", "stamina": -8, "hunger": 0, "tipsy": 60}]
+staff = {"bartender": ["Mina Karimi", "Sima Rahimi"], "dj": ["Navid Sadeghi", "Sima Rahimi"]}
+music = PackedStringArray("res://assets/audio/music/zarb_loop.ogg", "res://assets/audio/music/radio_loop.ogg")
+lines = {"bartender_greet": [{"en": "Welcome! What can I get you?", "fa": "خوش آمدی! چه میل داری؟"}, {"en": "Tea is fresh, just brewed.", "fa": "چای تازه دم است."}], "refuse": [{"en": "That's enough strong stuff for today - have a tea on me.", "fa": "برای امروز نوشیدنی قوی بس است - یک چای مهمان من."}, {"en": "No more strong drinks tonight, my friend. Water?", "fa": "امشب دیگر نوشیدنی قوی نه، دوست من. آب بیاورم؟"}], "dj": [{"en": "This one's for the night owls!", "fa": "این یکی برای شب‌زنده‌دارها!"}, {"en": "Requests? I've got zarb and radio hits!", "fa": "درخواستی دارید؟ ضرب و آهنگ رادیو دارم!"}], "fight": [{"en": "You spilled my drink!", "fa": "نوشیدنی‌ام را ریختی!"}, {"en": "Watch where you're going!", "fa": "جلوی پایت را نگاه کن!"}, {"en": "Say that again!", "fa": "یک بار دیگر بگو!"}, {"en": "Don't push me!", "fa": "هلم نده!"}], "breakup": [{"en": "Enough! Both of you, sit down or go home.", "fa": "بس است! هر دو بنشینید یا بروید خانه."}, {"en": "Not in my cafe! Shake hands.", "fa": "در کافه‌ی من نه! دست بدهید."}], "police": [{"en": "Police! Break it up.", "fa": "پلیس! تمامش کنید."}], "standin": [{"en": "I'm covering for {name} tonight.", "fa": "امشب جای {name} هستم."}, {"en": "{name} is away - I'm helping out.", "fa": "{name} نیست - من کمک می‌کنم."}], "closed": [{"en": "The terrace opens at 16:00.", "fa": "تراس ساعت ۱۶ باز می‌شود."}]}

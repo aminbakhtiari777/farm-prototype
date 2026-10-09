@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrafficSignStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/traffic_signs/traffic_sign_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "persian_only"
+type = "traffic_signs"
+display_name = "Persian-only signs"
+description = "The same signs with Persian text only."
+name_fa = "تابلوهای فقط فارسی"
+no_parking = [{"pos": Vector2(-6, -84.6), "yaw": 180}, {"pos": Vector2(6.2, -66), "yaw": 0}, {"pos": Vector2(-50, -55.9), "yaw": 180}, {"pos": Vector2(60, -44.1), "yaw": 0}]
+directions = [{"pos": Vector2(-5.4, -103.5), "yaw": 180, "lines": [{"fa": "میدان شهر", "en": "Town Square", "arrow": "up"}, {"fa": "مدرسه", "en": "School", "arrow": "left"}, {"fa": "کلیسا", "en": "Church", "arrow": "right"}]}, {"pos": Vector2(-56.5, -44.4), "yaw": -90, "lines": [{"fa": "میدان شهر", "en": "Town Square", "arrow": "up"}, {"fa": "پلیس / کوچه‌ی کاج", "en": "Police / Pine Ln", "arrow": "left"}]}, {"pos": Vector2(67, -55.6), "yaw": 90, "lines": [{"fa": "میدان شهر", "en": "Town Square", "arrow": "up"}, {"fa": "بندر و ساحل", "en": "Harbour & Beach", "arrow": "left"}]}, {"pos": Vector2(43.5, -44.4), "yaw": -90, "lines": [{"fa": "شهر جدید (در دست ساخت)", "en": "New City (u/c)", "arrow": "up"}, {"fa": "بندر و ساحل", "en": "Harbour & Beach", "arrow": "right"}]}, {"pos": Vector2(18.5, -44.4), "yaw": -90, "lines": [{"fa": "شهر جدید", "en": "New City", "arrow": "up"}, {"fa": "بیمارستان", "en": "Hospital", "arrow": "left"}, {"fa": "سوپرمارکت", "en": "Supermarket", "arrow": "right"}]}]
+bilingual = false

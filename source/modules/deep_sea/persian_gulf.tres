@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DeepSeaStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/deep_sea/deep_sea_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "persian_gulf"
+type = "deep_sea"
+display_name = "Persian Gulf deep water"
+description = "Hamour, king mackerel, pomfret, lobster, swordfish and the rare sailfish (20-90 x the price of a sardine)."
+name_fa = "آب‌های عمیق خلیج فارس"
+fish = {"hamour": {"name": "Hamour (Grouper)", "name_fa": "هامور", "type": "produce", "category": "fish", "sell": 320, "fish": {"seasons": ["spring", "summer", "autumn", "winter"], "water": "deep", "hours": [5, 21], "weather": ["sunny", "cloudy", "rain", "storm", "heatwave", "snow"], "weight": 1, "rare": false}}, "king_mackerel": {"name": "King Mackerel", "name_fa": "شیرماهی", "type": "produce", "category": "fish", "sell": 380, "fish": {"seasons": ["spring", "summer", "autumn"], "water": "deep", "hours": [5, 19], "weather": ["sunny", "cloudy", "rain", "storm", "heatwave", "snow"], "weight": 0.8, "rare": false}}, "black_pomfret": {"name": "Black Pomfret", "name_fa": "حلوا سیاه", "type": "produce", "category": "fish", "sell": 300, "fish": {"seasons": ["spring", "summer", "autumn", "winter"], "water": "deep", "hours": [0, 24], "weather": ["sunny", "cloudy", "rain", "storm", "heatwave", "snow"], "weight": 0.9, "rare": false}}, "silver_pomfret": {"name": "Silver Pomfret", "name_fa": "حلوا سفید", "type": "produce", "category": "fish", "sell": 460, "fish": {"seasons": ["autumn", "winter"], "water": "deep", "hours": [6, 18], "weather": ["sunny", "cloudy", "rain", "storm", "heatwave", "snow"], "weight": 0.35, "rare": false}}, "lobster": {"name": "Lobster", "name_fa": "لابستر", "type": "produce", "category": "fish", "sell": 540, "fish": {"seasons": ["spring", "summer", "autumn", "winter"], "water": "deep", "hours": [18, 24], "weather": ["sunny", "cloudy", "rain", "storm", "heatwave", "snow"], "weight": 0.3, "rare": false}}, "swordfish": {"name": "Swordfish", "name_fa": "شمشیرماهی", "type": "produce", "category": "fish", "sell": 680, "fish": {"seasons": ["summer", "autumn"], "water": "deep", "hours": [5, 13], "weather": ["sunny", "cloudy", "rain", "storm", "heatwave", "snow"], "weight": 0.15, "rare": true}}, "sailfish": {"name": "Sailfish", "name_fa": "بادبان‌ماهی", "type": "produce", "category": "fish", "sell": 950, "fish": {"seasons": ["summer"], "water": "deep", "hours": [6, 12], "weather": ["sunny", "heatwave"], "weight": 0.08, "rare": true}}}

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DiggingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/digging/digging_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "treasure"
+type = "digging"
+display_name = "Treasure hunt"
+description = "Old coins are more common."
+name_fa = "گنج‌یابی"
+finds = [{"item": "stone", "chance": 0.35, "en": "a stone", "fa": "یک سنگ"}, {"item": "worm", "chance": 0.25, "en": "a worm (fishing bait)", "fa": "یک کرم (طعمه‌ی ماهیگیری)"}, {"item": "old_coin", "chance": 0.15, "en": "an old coin!", "fa": "یک سکه‌ی قدیمی!"}]
+items = {"stone": {"name": "Stone", "name_fa": "سنگ", "type": "produce", "category": "material", "sell": 3, "description": "A stone from the ground. The mason buys them."}, "worm": {"name": "Worm", "name_fa": "کرم خاکی", "type": "produce", "category": "bait", "sell": 2, "description": "Fishing bait."}, "old_coin": {"name": "Old Coin", "name_fa": "سکه‌ی قدیمی", "type": "produce", "category": "treasure", "sell": 250, "description": "A Qajar-era silver coin. Worth a lot to a collector."}}

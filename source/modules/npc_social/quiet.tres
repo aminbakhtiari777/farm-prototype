@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SocialStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/npc_social/social_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "quiet"
+type = "npc_social"
+display_name = "Quiet town"
+chat_distance = 2.5
+chat_chance = 0.2
+chat_seconds = 4
+greet_distance = 2.5
+wander_radius = 8
+lines = PackedStringArray("Hm.", "Nice day.", "...")
+replies = PackedStringArray("Mm-hm.", "Yes.")
+greetings = PackedStringArray("Hello.", "Hi.")

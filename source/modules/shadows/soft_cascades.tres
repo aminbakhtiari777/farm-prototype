@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShadowStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/shadows/shadow_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "soft_cascades"
+type = "shadows"
+display_name = "Soft cascaded shadows"
+description = "Desktop: 4 blended cascades to 90 m, soft penumbra (0.6 deg); web: 2 cascades to 45 m."
+name_fa = "سایه‌ی نرم آبشاری"

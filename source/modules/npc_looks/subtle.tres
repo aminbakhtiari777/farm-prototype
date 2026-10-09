@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="NpcLooksStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/npc_looks/npc_looks_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "subtle"
+type = "npc_looks"
+display_name = "Subtle variety"
+description = "Only brows and small size changes; hair from the population module."
+name_fa = "تنوع کم"
+brows = ["Eyebrows_Regular"]
+head_range = Vector2(0.98, 1.02)
+width_range = Vector2(0.96, 1.03)
+tint_jitter = 0.02
+hair_women = []
+hair_men = []
+beard_chance = -1
+hair_colors = []

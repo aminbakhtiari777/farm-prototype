@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CivicStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/civic/civic_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "classical"
+type = "civic"
+display_name = "Classical civic"
+description = "Columned porticos, flags, a substation yard by the Electricity Office and a water tower by the Water Office."
+desks = {"water_office": {"title": "Water Office", "lines": ["The reservoir is full.", "Clean water for every home."]}, "power_office": {"title": "Electricity Office", "lines": ["The grid is humming.", "Report outages here."]}, "school": {"title": "School", "lines": ["Class is in session!", "Two plus two is four."]}, "university": {"title": "University", "lines": ["Today's lecture: soil chemistry.", "Did you know? Rain waters every crop for free."]}}
+columns = true
+column_color = Color(0.95, 0.93, 0.88, 1)
+flag_color = Color(0.2, 0.55, 0.3, 1)
+wall_tint = Color(1, 1, 1, 1)
+substation = true
+water_tower = true

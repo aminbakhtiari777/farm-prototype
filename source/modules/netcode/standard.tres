@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NetcodeStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/netcode/netcode_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "standard"
+type = "netcode"
+display_name = "Standard (15 Hz)"
+description = "WebSocket, 15 snapshots/s, 120 ms interpolation, server-checked movement."
+tick_hz = 15

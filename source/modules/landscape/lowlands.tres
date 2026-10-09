@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="LandscapeStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/landscape/landscape_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "lowlands"
+type = "landscape"
+display_name = "Lowlands: lighter forest, green hills"
+forest_rings = 2
+forest_density = 0.6
+forest_scale = Vector2(1.1, 1.6)
+far_trees = 400
+mountain_height = 30
+mountain_count = 10
+mountain_color = Color(0.3, 0.42, 0.25, 1)
+snow_line = 1.5
+river = true
+river_width = 3
+river_color = Color(0.32, 0.58, 0.6, 1)

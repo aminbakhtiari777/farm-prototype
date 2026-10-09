@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="LandscapeStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/landscape/landscape_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "highlands"
+type = "landscape"
+display_name = "Highlands: tall forest, snowy mountains, river"
+forest_rings = 4
+forest_density = 1
+forest_scale = Vector2(1.5, 2.4)
+far_trees = 900
+mountain_height = 70
+mountain_count = 16
+mountain_color = Color(0.38, 0.4, 0.42, 1)
+snow_line = 0.62
+river = true
+river_width = 4
+river_color = Color(0.3, 0.56, 0.64, 1)

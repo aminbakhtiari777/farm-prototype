@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RoadMarkingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/road_markings/road_marking_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "city_white"
+type = "road_markings"
+display_name = "City markings"
+description = "Bright white lane / stop lines, yellow centre lines near junctions, parking bays, arrows, school text."
+name_fa = "خط‌کشی شهری"
+school_text = {"en": "SCHOOL", "fa": "مدرسه", "pos": Vector2(34, -87.8), "yaw": 90}

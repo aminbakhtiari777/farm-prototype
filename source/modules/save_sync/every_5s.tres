@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SaveSyncStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/save_sync/save_sync_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "every_5s"
+type = "save_sync"
+display_name = "Sync every 5 s"
+description = "Upload the save every 5 seconds while online; newest group wins, the server wins for world state."

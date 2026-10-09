@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "pine"
+albedo_color = Color(0.13, 0.25, 0.15, 1)
+roughness = 0.95
+rim_enabled = true
+rim = 0.15
+rim_tint = 0.7

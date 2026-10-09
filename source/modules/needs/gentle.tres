@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="NeedsStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/needs/needs_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "gentle"
+type = "needs"
+display_name = "Gentle"
+description = "Slower hunger and fatigue, lower illness risk, cheaper doctor."
+hunger_per_hour = 2.5
+fatigue_per_hour = 3
+exhausted_fatigue = 3
+hungry_below = 25
+tired_above = 80
+meals_per_day = 1
+skipped_meal_fatigue = 10
+ill_chance_tired = 0.02
+ill_chance_hungry = 0.02
+ill_chance_base = 0
+npc_ill_chance = 0.002
+npc_meal_hours = PackedInt32Array(8, 13, 19)
+npc_doctor_hours = 1
+fee_mult = 0.6
+starving_speed = 0.9

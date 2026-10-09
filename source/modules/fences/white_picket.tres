@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FenceStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/fences/fence_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "white_picket"
+type = "fences"
+display_name = "White picket fence"
+post_spacing = 1.4
+post_height = 0.95
+post_size = 0.09
+rails = 2
+color = Color(2.4, 2.4, 2.3, 1.0)

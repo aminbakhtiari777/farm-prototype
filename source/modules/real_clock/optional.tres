@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RealClockStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/real_clock/real_clock_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "optional"
+type = "real_clock"
+display_name = "Real clock (optional)"
+description = "Game time follows the device clock when switched on in Settings; the moon shows the real phase."
+name_fa = "ساعت واقعی (اختیاری)"

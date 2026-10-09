@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PolicePatrolStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/police_patrol/police_patrol_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "town_patrol"
+type = "police_patrol"
+display_name = "Town patrol"
+description = "One police car circles the west town blocks 06:00-23:00; lights at night."
+name_fa = "گشت پلیس شهر"
+route = [Vector2(-27, -51.5), Vector2(-45, -51.5), Vector2(-45, -88.5), Vector2(-1.5, -88.5), Vector2(-1.5, -61.5), Vector2(-12, -51.5)]

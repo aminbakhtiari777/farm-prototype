@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MechanicStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/mechanic/mechanic_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "budget_garage"
+type = "mechanic"
+display_name = "Budget garage"
+description = "Cheaper repairs and fuel, only two upgrades."
+name_fa = "تعمیرگاه ارزان"
+upgrades = [{"id": "sport_tyres", "en": "Sport tyres (better grip and pickup)", "fa": "لاستیک اسپرت (چسبندگی و شتاب بهتر)", "cost": 140, "accel": 1.15, "grip": 1.2}, {"id": "eco_injector", "en": "Eco injector (-30% fuel use)", "fa": "انژکتور کم‌مصرف (۳۰٪ مصرف کمتر)", "cost": 120, "fuel": 0.7}]
+staff = PackedStringArray("Babak Nouri", "Hassan Jafari")
+lines = {"greet": [{"en": "Salam! What's wrong with your car?", "fa": "سلام! ماشینت چه مشکلی دارد؟"}, {"en": "Bring it in, let's have a look.", "fa": "بیاورش داخل، یک نگاهی بیندازیم."}], "repaired": [{"en": "Good as new. Drive gently!", "fa": "مثل روز اولش شد. آرام رانندگی کن!"}], "fueled": [{"en": "Full tank - safe travels.", "fa": "باک پر شد - سفر به خیر."}], "upgraded": [{"en": "Installed. You'll feel the difference.", "fa": "نصب شد. فرقش را حس می‌کنی."}], "standin": [{"en": "The mechanic is away - I'm minding the shop.", "fa": "مکانیک نیست - من حواسم به مغازه هست."}], "poor": [{"en": "Not enough money - come back later.", "fa": "پولت کافی نیست - بعداً بیا."}]}
+repair_per_pct = 1.2
+fuel_per_pct = 0.4

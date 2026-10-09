@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GestureStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/gestures/gesture_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "friendly_wave"
+type = "gestures"
+display_name = "Friendly wave"
+description = "Townspeople often wave when the farmer passes within 7 m."
+wave_distance = 7
+wave_chance = 0.75
+wave_seconds = 1.8
+cooldown = 30
+arm_raise = 2.3
+wave_speed = 2.4

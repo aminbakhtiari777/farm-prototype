@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RoadMarkingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/road_markings/road_marking_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "faded_paint"
+type = "road_markings"
+display_name = "Faded paint"
+description = "Older, greyer paint; no arrows or parking bays."
+name_fa = "رنگ کهنه"
+school_text = {"en": "SCHOOL", "fa": "مدرسه", "pos": Vector2(34, -87.8), "yaw": 90}
+paint = Color(0.72, 0.72, 0.68, 1)
+center_paint = Color(0.75, 0.66, 0.3, 1)
+arrows = false
+parking_bays = false

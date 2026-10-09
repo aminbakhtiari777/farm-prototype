@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DrivingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/driving/driving_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "realistic_driving"
+type = "driving"
+display_name = "Realistic driving"
+description = "5 gears (auto/manual), fuel 7%/km, wear on crashes, headlights needed at night (30 G fine)."
+name_fa = "رانندگی واقع‌گرایانه"
+gear_top = [0.24, 0.44, 0.64, 0.84, 1]
+gear_accel = [1.35, 1.1, 0.9, 0.72, 0.6]

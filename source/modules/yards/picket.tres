@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="YardStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/yards/yard_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "picket"
+type = "yards"
+display_name = "White picket fences"
+kind = "picket"
+wood_color = Color(0.93, 0.92, 0.88, 1)
+height = 0.9
+post_spacing = 1.6

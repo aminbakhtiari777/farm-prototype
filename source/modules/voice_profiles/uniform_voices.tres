@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="VoiceProfileStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/voice_profiles/voice_profile_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "uniform_voices"
+type = "voice_profiles"
+display_name = "Classic voices"
+description = "Everyone uses the v5b voice rules (gender/age pitch) and the same warm tone."
+name_fa = "صداهای کلاسیک"
+people = {}
+tones = {"warm": {"en": "warm", "fa": "گرم", "volume_db": 0, "jitter": 0.05}, "bright": {"en": "bright", "fa": "روشن", "volume_db": 1, "jitter": 0.09}, "gruff": {"en": "gruff", "fa": "خش‌دار", "volume_db": 1.5, "jitter": 0.03}, "soft": {"en": "soft", "fa": "نرم", "volume_db": -4, "jitter": 0.04}, "lively": {"en": "lively", "fa": "پرشور", "volume_db": 1, "jitter": 0.12}, "slow": {"en": "slow", "fa": "شمرده", "volume_db": -1, "jitter": 0.03}}
+tone_lines = {"warm": [{"en": "Come by for tea sometime, dear.", "fa": "یک وقت برای چای سر بزن، عزیزم."}, {"en": "How's your family? Well, I hope.", "fa": "خانواده خوبند؟ امیدوارم خوب باشند."}]}

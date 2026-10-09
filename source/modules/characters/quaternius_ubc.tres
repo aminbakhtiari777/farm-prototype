@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CharacterStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/characters/character_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "quaternius_ubc"
+type = "characters"
+models = {
+"male": "res://assets/third_party/quaternius/characters/Superhero_Male_FullBody.gltf",
+"female": "res://assets/third_party/quaternius/characters/Superhero_Female_FullBody.gltf"
+}
+skins = {
+"male": PackedStringArray("res://assets/third_party/quaternius/characters/T_Superhero_Male_Ligh.png", "res://assets/third_party/quaternius/characters/T_Superhero_Male_Dark.png"),
+"female": PackedStringArray("res://assets/third_party/quaternius/characters/T_Superhero_Female_Light_BaseColor.png", "res://assets/third_party/quaternius/characters/T_Superhero_Female_Dark_BaseColor.png")
+}
+animation_library = "res://assets/third_party/quaternius/animations/UAL1_Standard.glb"
+hair_dir = "res://assets/third_party/quaternius/characters/hair/"
+display_name = "Quaternius Universal Base Characters"

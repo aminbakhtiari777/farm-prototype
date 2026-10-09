@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LightingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/lighting/lighting_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "warm_bulbs"
+type = "lighting"
+display_name = "Warm incandescent bulbs"
+bulb_color = Color(1, 0.78, 0.48, 1)
+window_color = Color(1, 0.72, 0.38, 1)
+porch_energy = 2.4
+on_before_sunset_h = 0.25
+off_after_sunrise_h = 0.25
+candle_color = Color(1, 0.55, 0.2, 1)
+candle_energy = 1.3
+flicker = 0.25

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CityHallInteriorStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/city_hall_interior/city_hall_interior_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "simple_office"
+type = "city_hall_interior"
+display_name = "Simple office"
+description = "Smaller interior, no wall board (talk to the manager)."
+name_fa = "اداره‌ی ساده"
+wall_board = false
+staff = ["Omid Hosseini"]

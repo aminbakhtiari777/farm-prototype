@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="LivestockDef" format=3]
+
+[ext_resource type="Script" path="res://modules/livestock/livestock_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "chicken"
+type = "livestock"
+display_name = "Chicken"
+description = "Lays an egg a day when fed and happy. Lives in the coop."
+name_fa = "مرغ"
+housing = "coop"
+price = 150
+product_item = "eggs"
+product_fa = "تخم‌مرغ"
+product_qty = 1
+happy_above = 60
+content_above = 30
+tool_item = ""
+feed_item = "chicken_feed"
+feed_per_day = 1
+fed_gain = 12
+unfed_loss = 25
+pet_gain = 5
+start_happiness = 70
+adult_days = 3
+breed_every_days = 3
+breed_chance = 0.5
+shape = "bird"
+body_color = Color(0.97, 0.95, 0.9, 1)
+accent_color = Color(0.85, 0.12, 0.1, 1)
+size = 1
+young_scale = 0.55
+walk_speed = 0.8
+names_fa = PackedStringArray("زری", "خالدار", "پری", "نازی", "قشنگ", "طلایی", "مینو", "گلی")
+names_en = PackedStringArray("Pearl", "Speckle", "Nugget", "Clucky", "Daisy", "Goldie", "Pepper", "Hazel")
+items = {"chicken_feed": {"name": "Chicken Feed", "name_fa": "دان مرغ", "type": "feed", "description": "One scoop feeds one chicken for a day.", "buy": 4, "sell": 2}, "hay": {"name": "Hay", "name_fa": "علف خشک", "type": "feed", "description": "One bundle feeds a cow or a sheep for a day.", "buy": 8, "sell": 4}}

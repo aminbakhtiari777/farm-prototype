@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SaveSyncStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/save_sync/save_sync_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "every_30s"
+type = "save_sync"
+display_name = "Sync every 30 s"
+description = "Lighter: upload every 30 seconds."
+upload_seconds = 30

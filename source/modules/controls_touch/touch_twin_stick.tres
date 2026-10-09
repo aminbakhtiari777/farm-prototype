@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TouchControlsStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/controls_touch/touch_controls_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "touch_twin_stick"
+type = "controls_touch"
+display_name = "Twin sticks (floating)"
+description = "Left stick moves, right stick looks / steers; sticks follow your thumbs."
+name_fa = "دو دسته‌ی شناور"

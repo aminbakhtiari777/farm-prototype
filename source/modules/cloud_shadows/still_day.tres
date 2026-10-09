@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CloudShadowStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/cloud_shadows/cloud_shadow_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "still_day"
+type = "cloud_shadows"
+display_name = "Few clouds"
+description = "Only a few faint patches."
+name_fa = "ابر کم"
+strength = 0.18
+coverage = {"sunny": 0.175, "cloudy": 0.375, "rain": 0.45, "storm": 0.475, "heatwave": 0.075, "snow": 0.4}

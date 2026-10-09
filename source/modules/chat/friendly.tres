@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ChatStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/chat/chat_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "friendly"
+type = "chat"
+display_name = "Friendly chat"
+description = "200 characters, 5 messages per 10 s, bubbles over heads."

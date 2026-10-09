@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LandmarkStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/landmark/landmark_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "monument"
+type = "landmark"
+display_name = "Freedom monument"
+description = "A tall white stone arch-monument with a turquoise band."
+name_fa = "بنای یادبود"
+kind = "monument"
+height = 12
+brick = Color(0.92, 0.9, 0.85, 1)

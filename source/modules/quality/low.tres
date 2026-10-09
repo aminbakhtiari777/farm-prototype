@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="QualityStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/quality/quality_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "low"
+type = "quality"
+display_name = "Low (fastest)"
+description = "Slow laptops / phones: no sun shadows, 75% 3D resolution, short view ranges, 3 lamp lights."
+name_fa = "کم (سریع‌ترین)"
+level = 0
+sun_shadows = 0
+shadow_distance = 0
+shadow_atlas = 1024
+shadow_min_size = 99
+render_scale = 0.75
+msaa = 0
+mesh_lod_threshold = 4
+lod_scale = 0.6
+tree_view_scale = 0.65
+grass_view_scale = 0.55
+stream_radius = 70
+light_fade_distance = 30
+lamp_lights = 3
+npc_visible_distance = 42
+npc_anim_distance = 24
+npc_shadow_distance = 0
+anim_distance = 28
+max_voices = 8
+audio_distance = 50
+auto_fps_floor = 0
+max_physics_steps = 3
+npc_far_tick = 6

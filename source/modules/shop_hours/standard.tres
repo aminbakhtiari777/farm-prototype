@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ShopHoursStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/shop_hours/shop_hours_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "standard"
+type = "shop_hours"
+display_name = "Standard hours"
+description = "Shops 8-17/18, supermarket 8-21, cafe 7-20, offices 8-16; hospital always open."
+hours = {"store": [8, 18], "supermarket": [8, 21], "grocery": [8, 21], "cafe": [7, 20], "carpenter": [8, 17], "blacksmith": [8, 17], "mason": [8, 17], "fruit_shop": [8, 19], "clothing": [9, 18], "jewelry": [9, 18], "tool_shop": [8, 18], "electrical": [8, 18], "water_office": [8, 16], "power_office": [8, 16], "city_hall": [9, 16], "post": [8, 16], "market": [7, 19], "workshop": [0, 24]}
+default_hours = [8, 18]
+always_open = PackedStringArray("hospital", "doctor", "workshop", "home")

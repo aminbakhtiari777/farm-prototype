@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeatherFxStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/weather_fx/weather_fx_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "soft_weather"
+type = "weather_fx"
+display_name = "Soft realistic weather"
+description = "Round soft snowflakes that settle and melt, visible wind-angled rain that wets the ground."
+name_fa = "آب‌وهوای نرم و واقعی"

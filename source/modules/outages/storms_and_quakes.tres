@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="OutageStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/outages/outage_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "storms_and_quakes"
+type = "outages"
+display_name = "Storms and mild quakes"
+description = "Storms cut power half the time; ~6%/day mild quake; crew fixes it in 3 h."
+name_fa = "طوفان و زلزله‌ی خفیف"
+crew_lines = [{"en": "Line down on Maple St - on our way!", "fa": "خط خیابان افرا قطع شده - داریم می‌رسیم!"}, {"en": "Power will be back soon, stay safe.", "fa": "برق به‌زودی وصل می‌شود، مراقب باشید."}]

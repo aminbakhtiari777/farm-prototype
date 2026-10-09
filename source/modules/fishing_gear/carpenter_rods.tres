@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FishingGearStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/fishing_gear/fishing_gear_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "carpenter_rods"
+type = "fishing_gear"
+display_name = "Rods at the carpenter"
+description = "The carpenter carves fishing rods: basic rod and a pro rod (faster bites, more rare fish)."
+name_fa = "چوب ماهیگیری از نجاری"
+items = {"pro_rod": {"name": "Pro Fishing Rod", "name_fa": "چوب ماهیگیری حرفه‌ای", "type": "tool", "buy": 700, "description": "Bites come faster and rare fish bite more often."}}

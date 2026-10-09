@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AnimalStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/animals/animal_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "black_sheep"
+type = "animals"
+display_name = "Black sheep"
+wool_color = Color(0.2, 0.18, 0.17, 1.0)
+face_color = Color(0.08, 0.07, 0.07, 1.0)

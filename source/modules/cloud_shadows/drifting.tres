@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CloudShadowStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/cloud_shadows/cloud_shadow_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "drifting"
+type = "cloud_shadows"
+display_name = "Drifting cloud shadows"
+description = "Soft patches drift west to east; more on cloudy days."
+name_fa = "سایه‌ی ابرهای روان"
+coverage = {"sunny": 0.35, "cloudy": 0.75, "rain": 0.9, "storm": 0.95, "heatwave": 0.15, "snow": 0.8}

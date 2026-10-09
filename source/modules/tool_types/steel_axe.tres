@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ToolDef" format=3]
+
+[ext_resource type="Script" path="res://modules/tool_types/tool_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "steel_axe"
+type = "tool_types"
+display_name = "Steel Axe"
+description = "Sharper: one hit less per tree."
+item_id = "steel_axe"
+kind = "axe"
+tier = 2
+anim = "swing"
+sound = "chop"
+shape = "axe"
+head_color = Color(0.78, 0.8, 0.84, 1)
+handle_color = Color(0.35, 0.22, 0.14, 1)
+buy = 450
+starter = false
+unlock_day = 1
+requires = ""
+reach = 2
+anim_seconds = 0.6

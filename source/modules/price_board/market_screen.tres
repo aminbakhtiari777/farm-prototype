@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="PriceBoardStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/price_board/price_board_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "market_screen"
+type = "price_board"
+display_name = "LED screen"
+description = "A dark digital price screen."
+items = PackedStringArray("eggs", "milk", "wool", "chicken", "bread_loaf", "wood_plank", "iron_nails", "tomato", "potato", "apple", "sardine", "hay", "chicken_feed", "yarn")
+title_fa = "قیمت‌های امروز"
+title_en = "Today's prices"
+bg_color = Color(0.05, 0.06, 0.09, 0.97)
+frame_color = Color(0.2, 0.2, 0.22, 1)
+ink_color = Color(0.9, 0.95, 1, 1)
+up_color = Color(1, 0.35, 0.3, 1)
+down_color = Color(0.3, 1, 0.5, 1)
+shortage_color = Color(1, 0.75, 0.2, 1)
+position = Vector2(6.6, -15.6)
+yaw_deg = -35.0
+board_rows = 8

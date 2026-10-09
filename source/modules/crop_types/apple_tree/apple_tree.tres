@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CropDef" format=3]
+
+[ext_resource type="Script" path="res://modules/crop_types/crop_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "apple_tree"
+type = "crop_types"
+display_name = "Apple Tree"
+description = "Apple Tree - 1.0 m², spring/summer/autumn, 10 days to harvest, fruits again every 3 days."
+seed_id = "apple_sapling"
+seed_name = "Apple Sapling"
+produce_id = "apple"
+produce_name = "Apple"
+seasons = PackedStringArray("spring", "summer", "autumn")
+stage_days = PackedFloat32Array(2, 3, 3, 2)
+yield_amount = 4
+seed_price = 400
+sell_price = 45
+footprint_m2 = 1
+shape = "tree"
+leaf_color = Color(0.25, 0.48, 0.18, 1)
+flower_color = Color(1, 0.86, 0.9, 1)
+fruit_color = Color(0.85, 0.12, 0.1, 1)
+height = 2.6
+fruit_size = 0.06
+fruit_count = 12
+regrow_days = 3

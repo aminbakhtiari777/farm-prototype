@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="TreeStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/trees/tree_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "pine_forest"
+type = "trees"
+display_name = "Evergreen pine forest"
+broadleaf = PackedStringArray("CommonTree_2")
+pines = PackedStringArray("Pine_1", "Pine_2", "Pine_3", "Pine_4", "Pine_5")
+edge_models = PackedStringArray("Pine_5", "Pine_2", "Pine_4")
+dead_tree = ""
+pine_fraction = 0.85
+leaf_tints = {
+"spring": Color(1.05, 1.18, 0.85, 1.0),
+"summer": Color(0.82, 0.95, 0.72, 1.0),
+"autumn": Color(1.9, 0.95, 0.32, 1.0),
+"winter": Color(1, 1, 1, 1.0)
+}
+pine_tints = {
+"spring": Color(1.0, 1.05, 0.95, 1.0),
+"summer": Color(0.9, 0.95, 0.85, 1.0),
+"autumn": Color(0.95, 0.95, 0.85, 1.0),
+"winter": Color(1.25, 1.35, 1.4, 1.0)
+}

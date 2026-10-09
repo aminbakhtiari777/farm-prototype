@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="TrafficRulesStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/traffic_rules/traffic_rules_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "gentle_city"
+type = "traffic_rules"
+display_name = "Gentle rules"
+description = "Same signals; shorter stops, smaller fines, licence taken only at the 3rd offence."
+name_fa = "قوانین ملایم"
+speed_limits = {"Main St": 40, "Oak Ave": 40, "Maple St": 40, "Pine Ln": 30, "Harbor Rd": 50, "New City Rd": 60}
+signals = [{"id": "oak_maple", "pos": Vector2(0, -90), "en": "Oak Ave / Maple St", "fa": "خیابان بلوط / خیابان افرا", "camera": true, "officer": true}, {"id": "pine_main", "pos": Vector2(-45, -50), "en": "Pine Ln / Main St", "fa": "کوچه‌ی کاج / خیابان اصلی", "camera": true, "officer": false}, {"id": "harbor_main", "pos": Vector2(55, -50), "en": "Harbor Rd / Main St", "fa": "جاده‌ی بندر / خیابان اصلی", "camera": true, "officer": false}]
+stops = [{"id": "pine_maple", "pos": Vector2(-45, -90), "approaches": ["n", "s"], "en": "Pine Ln / Maple St", "fa": "کوچه‌ی کاج / خیابان افرا"}]
+speed_cameras = []
+officer_lines = {"whistle": [{"en": "Stop! The light is red!", "fa": "ایست! چراغ قرمز است!"}, {"en": "Wait for the green!", "fa": "صبر کن تا سبز شود!"}], "wave": [{"en": "Go ahead, slowly.", "fa": "برو، آرام."}, {"en": "Drive safely!", "fa": "با احتیاط برانید!"}], "caught": [{"en": "Licence and papers, please.", "fa": "گواهینامه و مدارک، لطفاً."}, {"en": "The camera saw everything.", "fa": "دوربین همه چیز را ثبت کرد."}], "ok": [{"en": "Good driving, well done.", "fa": "رانندگی خوب، آفرین."}, {"en": "Thanks for stopping.", "fa": "ممنون که ایستادی."}]}
+stop_hold_s = 2
+min_red_wait_s = 3
+red_light_fine = 80
+stop_sign_fine = 30
+offences_to_confiscate = 3
+speed_tolerance_kmh = 10

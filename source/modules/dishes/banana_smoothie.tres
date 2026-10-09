@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DishDef" format=3]
+
+[ext_resource type="Script" path="res://modules/dishes/dish_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "banana_smoothie"
+type = "dishes"
+display_name = "Banana Milk (Shir Moz)"
+description = "Banana blended with cold milk - needs a blender."
+name_fa = "شیر موز"
+inputs = {"banana_fruit": 1, "milk": 1}
+salt = 0
+spices = 0
+requires = "blender"
+hunger = 35
+stamina = 35
+raw_color = Color(0.98, 0.95, 0.75, 1)
+cooked_color = Color(0.97, 0.9, 0.65, 1)
+sort_order = 4

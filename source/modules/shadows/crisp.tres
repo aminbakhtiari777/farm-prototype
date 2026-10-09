@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShadowStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/shadows/shadow_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "crisp"
+type = "shadows"
+display_name = "Crisp shadows"
+description = "Sharper edges, shorter range."
+name_fa = "سایه‌ی تیز"
+desktop_angular = 0
+desktop_blur = 1
+desktop_distance = 70

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ProducerDef" format=3]
+
+[ext_resource type="Script" path="res://modules/producers/producer_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "fruit_farms"
+type = "producers"
+display_name = "Orchards"
+description = "Town orchards deliver fresh fruit and vegetables to the fruit shop."
+name_fa = "باغ‌ها"
+shop = "fruit_shop"
+worker_jobs = PackedStringArray("Fruit seller")
+outputs = {"apple": 4, "strawberry": 3, "banana_fruit": 2, "tomato": 3, "potato": 3}
+inputs = {}
+items = {}
+sort_order = 4

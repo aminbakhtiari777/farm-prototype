@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SocialStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/npc_social/social_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "chatty"
+type = "npc_social"
+display_name = "Chatty neighbours"
+chat_distance = 3.2
+chat_chance = 0.6
+chat_seconds = 7
+greet_distance = 3.5
+wander_radius = 14
+lines = PackedStringArray("Lovely weather today!", "Did you see the new crops at the farm?", "The café has fresh bread.", "I'm off to the market.", "Have you been to the beach?", "The fish are biting at the pier.", "Busy day at work...", "Power went out again last night!", "Those sunflowers are huge.", "See you at the square!")
+replies = PackedStringArray("Ha, indeed!", "Oh really?", "Sounds good.", "Let's go together.", "Maybe tomorrow.", "Nice!")
+greetings = PackedStringArray("Hello, farmer!", "Morning!", "Hi there!", "How's the garden?", "Evening!")

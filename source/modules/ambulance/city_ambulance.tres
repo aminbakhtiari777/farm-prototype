@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AmbulanceStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/ambulance/ambulance_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "city_ambulance"
+type = "ambulance"
+display_name = "City ambulance"
+description = "Answers every flu and 40% of colds; crew of two; lights flash on the way."
+name_fa = "آمبولانس شهر"
+dispatch = {"flu": 1, "cold": 0.4, "*": 0.6}

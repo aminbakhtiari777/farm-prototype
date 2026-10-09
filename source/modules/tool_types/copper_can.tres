@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ToolDef" format=3]
+
+[ext_resource type="Script" path="res://modules/tool_types/tool_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "copper_can"
+type = "tool_types"
+display_name = "Copper Watering Can"
+description = "Upgrade: waters a 3x3 area at once and holds 40 L."
+item_id = "copper_can"
+kind = "watering_can"
+tier = 2
+anim = "pour"
+sound = "water_pour"
+shape = "can"
+head_color = Color(0.8, 0.45, 0.25, 1)
+handle_color = Color(0.6, 0.32, 0.18, 1)
+buy = 800
+starter = false
+unlock_day = 1
+requires = "watering_can"
+reach = 3
+anim_seconds = 1

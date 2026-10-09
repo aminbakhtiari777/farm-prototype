@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ProducerDef" format=3]
+
+[ext_resource type="Script" path="res://modules/producers/producer_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "feed_mill"
+type = "producers"
+display_name = "Feed mill"
+description = "Chicken feed and hay for farm animals (sold at the carpenter's livestock desk)."
+name_fa = "کارخانه علوفه"
+shop = "livestock"
+worker_jobs = PackedStringArray()
+outputs = {"chicken_feed": 12, "hay": 10}
+inputs = {}
+items = {}
+sort_order = 11

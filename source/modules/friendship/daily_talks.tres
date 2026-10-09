@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FriendshipStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/friendship/friendship_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "daily_talks"
+type = "friendship"
+display_name = "Daily talks"
+description = "+10 for the first talk each day (+2 for a streak); no decay."
+points_per_talk = 10
+streak_bonus = 2
+max_points = 100
+decay_per_day = 0
+level_points = PackedInt32Array(0, 20, 45, 70, 95)
+level_names = [{"fa": ["غریبه"], "en": ["Stranger"]}, {"fa": ["آشنا"], "en": ["Acquaintance"]}, {"fa": ["دوست"], "en": ["Friend"]}, {"fa": ["دوست صمیمی"], "en": ["Good friend"]}, {"fa": ["مثل خانواده"], "en": ["Like family"]}]
+hearts = 10

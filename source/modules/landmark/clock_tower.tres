@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LandmarkStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/landmark/landmark_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "clock_tower"
+type = "landmark"
+display_name = "Clock tower"
+description = "14 m brick clock tower on the square's east corner; the four clock faces show game time; turquoise tiled cap."
+name_fa = "برج ساعت"

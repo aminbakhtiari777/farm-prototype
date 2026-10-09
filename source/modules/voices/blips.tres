@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="VoiceStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/voices/voice_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "blips"
+type = "voices"
+display_name = "Vowel blips"
+description = "Short synthesized vowel blips (a/e/i/o/u formants); women and children higher, men lower."
+samples = PackedStringArray("res://assets/audio/voice/blip_a.ogg", "res://assets/audio/voice/blip_e.ogg", "res://assets/audio/voice/blip_i.ogg", "res://assets/audio/voice/blip_o.ogg", "res://assets/audio/voice/blip_u.ogg")
+man_pitch = 0.82
+woman_pitch = 1.28
+child_pitch = 1.7
+teen_pitch = 1.12
+elder_mult = 0.92
+syllable_jitter = 0.07
+person_jitter = 0.06
+syllable_seconds = 0.095
+max_syllables = 12
+volume_db = -9
+max_distance = 22

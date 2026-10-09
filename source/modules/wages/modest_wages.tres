@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WagesStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/wages/wages_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "modest_wages"
+type = "wages"
+display_name = "Modest wages"
+description = "Lower wages - townspeople spend more carefully."
+wages = {"doctor": 98, "nurse": 62, "teacher": 56, "professor": 84, "police officer": 59, "carpenter": 52, "blacksmith": 52, "stonemason": 49, "tailor": 45, "jeweller": 56, "electrician": 56, "shopkeeper": 45, "supermarket cashier": 42, "fruit seller": 42, "fisherman": 49, "barista": 38, "postman": 42, "city clerk": 49, "water engineer": 59, "electricity officer": 59, "imam": 42, "priest": 42, "tool seller": 45, "retired teacher": 28, "pupil": 0, "student": 0, "city mail clerk": 48, "city hall manager": 72, "city hall press officer": 56, "tool repairer": 52, "hypermarket manager": 68, "gym coach": 48, "boat captain": 60, "cafe cook": 44, "part-time librarian": 28}
+default_wage = 45
+payday_hour = 17
+start_savings = 120
+allowance = 5
+day_off = 6

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlantStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/plants/plant_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "lush"
+type = "plants"
+display_name = "Lush tall grass"
+ground_cover = [["Bush_Common", 110, 0.6, 0.95, 1.6], ["Fern_1", 110, 0.14, 0.24, 1.0], ["Plant_1_Big", 50, 0.3, 0.4, 1.0]]
+grass_height = Vector2(0.32, 0.6)
+grass_density = 1.2
+flower_colors = PackedColorArray(1.0, 0.45, 0.35, 1.0, 1.0, 0.9, 0.4, 1.0)

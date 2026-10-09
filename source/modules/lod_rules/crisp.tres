@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LodRulesStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/lod_rules/lod_rules_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "crisp"
+type = "lod_rules"
+display_name = "Crisp LOD"
+description = "Longer ranges with soft fades (fast PCs)."
+name_fa = "جزئیات واضح"
+tiny_range = 40
+small_range = 80
+medium_range = 150
+large_range = 260
+label_range = 40
+fade = true

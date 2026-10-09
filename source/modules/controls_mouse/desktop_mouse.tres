@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MouseControlsStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/controls_mouse/mouse_controls_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "desktop_mouse"
+type = "controls_mouse"
+display_name = "Mouse look + mouse steering"
+description = "Pointer-lock mouse look, mouse X steers cars, the farmer faces where you look."
+name_fa = "نگاه و فرمان با ماوس"

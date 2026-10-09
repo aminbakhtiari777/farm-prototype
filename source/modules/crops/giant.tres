@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CropStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/crops/crop_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "giant"
+type = "crops"
+display_name = "Giant show crops"
+plant_scale = 1.35
+leaf_tint = Color(0.85, 1.1, 0.8, 1.0)

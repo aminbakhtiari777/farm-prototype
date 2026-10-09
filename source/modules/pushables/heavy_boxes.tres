@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PushableStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/pushables/pushable_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "heavy_boxes"
+type = "pushables"
+display_name = "Heavy boxes"
+description = "Shorter pushes (0.5 m), stack 2."
+name_fa = "جعبه‌های سنگین"
+boxes = [{"pos": Vector2(13.5, 3.5), "kind": "box"}, {"pos": Vector2(14.7, 3.7), "kind": "box"}, {"pos": Vector2(14.1, 4.9), "kind": "box"}, {"pos": Vector2(15.6, 4.6), "kind": "box"}, {"pos": Vector2(-26, -45), "kind": "box"}, {"pos": Vector2(-24.5, -44.4), "kind": "box"}]
+push_step = 0.5
+max_stack = 2

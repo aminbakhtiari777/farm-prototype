@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="HousingDef" format=3]
+
+[ext_resource type="Script" path="res://modules/animal_housing/housing_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "barn"
+type = "animal_housing"
+display_name = "Barn"
+description = "A big barn with a pasture for up to 6 cows and sheep. 1500 G + 24 planks + 8 nails, takes 2 days."
+name_fa = "طویله"
+kinds = PackedStringArray("cow", "sheep_flock")
+capacity = 6
+cost_gold = 1500
+cost_items = {"wood_plank": 24, "iron_nails": 8}
+build_days = 2
+position = Vector2(8.0, 19.5)
+yaw_deg = 0
+size = Vector3(6.0, 3.6, 4.6)
+paddock_offset = Vector2(0.0, 6.6)
+paddock_size = Vector2(11.0, 8.0)
+wall_color = Color(0.62, 0.2, 0.16, 1)
+roof_color = Color(0.28, 0.27, 0.27, 1)
+trim_color = Color(0.97, 0.96, 0.92, 1)

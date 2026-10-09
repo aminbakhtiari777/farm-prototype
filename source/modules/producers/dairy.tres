@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ProducerDef" format=3]
+
+[ext_resource type="Script" path="res://modules/producers/producer_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "dairy"
+type = "producers"
+display_name = "Dairy"
+description = "A small dairy - milk is often short, so farm milk sells well."
+name_fa = "لبنیاتی"
+shop = "grocery"
+worker_jobs = PackedStringArray("Supermarket cashier")
+outputs = {"milk": 3}
+inputs = {}
+items = {}
+sort_order = 6

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ToolDef" format=3]
+
+[ext_resource type="Script" path="res://modules/tool_types/tool_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "steel_hoe"
+type = "tool_types"
+display_name = "Steel Hoe"
+description = "Upgrade: tills two cells (1 m²) per swing. Sold from day 3."
+item_id = "steel_hoe"
+kind = "hoe"
+tier = 2
+anim = "swing"
+sound = "hoe_dig"
+shape = "blade"
+head_color = Color(0.78, 0.8, 0.85, 1)
+handle_color = Color(0.35, 0.22, 0.12, 1)
+buy = 450
+starter = false
+unlock_day = 3
+requires = "hoe"
+reach = 2
+anim_seconds = 0.7

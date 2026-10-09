@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="VoiceStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/voices/voice_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "hum"
+type = "voices"
+display_name = "Soft hum"
+description = "Softer, rounder humming blips, slower."
+samples = PackedStringArray("res://assets/audio/voice/hum_0.ogg", "res://assets/audio/voice/hum_1.ogg", "res://assets/audio/voice/hum_2.ogg")
+man_pitch = 0.85
+woman_pitch = 1.25
+child_pitch = 1.6
+teen_pitch = 1.1
+elder_mult = 0.94
+syllable_jitter = 0.05
+person_jitter = 0.05
+syllable_seconds = 0.13
+max_syllables = 9
+volume_db = -11
+max_distance = 18

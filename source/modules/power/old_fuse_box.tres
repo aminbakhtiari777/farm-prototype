@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PowerStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/power/power_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "old_fuse_box"
+type = "power"
+display_name = "Old wooden fuse box"
+box_color = Color(0.45, 0.3, 0.18, 1)
+lever_color = Color(0.15, 0.15, 0.15, 1)
+fireplace = true
+candles_per_home = 5
+lantern = false

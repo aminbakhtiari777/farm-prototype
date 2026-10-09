@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="IngredientDef" format=3]
+
+[ext_resource type="Script" path="res://modules/ingredients/ingredient_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "eggs"
+type = "ingredients"
+display_name = "Eggs"
+description = "Farm eggs, sold singly."
+name_fa = "تخم‌مرغ"
+price = 6
+sold_at = PackedStringArray("grocery")
+color = Color(0.98, 0.95, 0.88, 1)
+shape = "egg"
+role = "main"

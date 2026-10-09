@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CropDef" format=3]
+
+[ext_resource type="Script" path="res://modules/crop_types/crop_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "tomato"
+type = "crop_types"
+display_name = "Tomato"
+description = "Tomato - 1.0 m², summer, 6 days to harvest."
+seasons = PackedStringArray("summer")
+stage_days = PackedFloat32Array(1, 1.5, 2, 1.5)
+yield_amount = 3
+seed_price = 90
+sell_price = 50
+footprint_m2 = 1
+shape = "bush"
+leaf_color = Color(0.24, 0.45, 0.16, 1)
+flower_color = Color(1, 0.9, 0.2, 1)
+fruit_color = Color(0.9, 0.18, 0.1, 1)
+height = 0.85
+fruit_size = 0.055
+fruit_count = 7
+regrow_days = 0

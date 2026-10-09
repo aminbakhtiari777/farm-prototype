@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GymStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/gym/gym_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "zurkhaneh_mix"
+type = "gym"
+display_name = "Gym + zurkhaneh beat"
+description = "Same equipment, free entry, a drum-heavy zurkhaneh-style beat."
+name_fa = "باشگاه با ضرب زورخانه"
+equipment = [{"id": "treadmill", "en": "run on the treadmill", "fa": "دویدن روی تردمیل", "pose": "jog", "minutes": 30, "stamina": 14, "fitness": 6, "pos": Vector2(-0.62, -0.35), "yaw": 0}, {"id": "treadmill2", "en": "run on the treadmill", "fa": "دویدن روی تردمیل", "pose": "jog", "minutes": 30, "stamina": 14, "fitness": 6, "pos": Vector2(-0.62, 0.15), "yaw": 0}, {"id": "dumbbells", "en": "lift dumbbells", "fa": "وزنه زدن با دمبل", "pose": "lift", "minutes": 20, "stamina": 10, "fitness": 5, "pos": Vector2(0.62, -0.4), "yaw": -90}, {"id": "bench_press", "en": "do bench presses", "fa": "پرس سینه", "pose": "lie", "minutes": 20, "stamina": 12, "fitness": 5.5, "pos": Vector2(0.55, 0.2), "yaw": -90}, {"id": "bike", "en": "ride the exercise bike", "fa": "رکاب زدن دوچرخه‌ی ثابت", "pose": "sit", "minutes": 25, "stamina": 9, "fitness": 4.5, "pos": Vector2(-0.1, -0.55), "yaw": 0}, {"id": "mat", "en": "stretch on the mat", "fa": "حرکات کششی روی تشک", "pose": "ground_sit", "minutes": 15, "stamina": 3, "fitness": 2.5, "pos": Vector2(0.05, 0.3), "yaw": 180}]
+fee = 0
+music = "res://assets/audio/music/zarb_loop.ogg"
+accent = Color(0.75, 0.2, 0.2, 1)

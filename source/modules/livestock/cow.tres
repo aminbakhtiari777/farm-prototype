@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="LivestockDef" format=3]
+
+[ext_resource type="Script" path="res://modules/livestock/livestock_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "cow"
+type = "livestock"
+display_name = "Cow"
+description = "Gives milk every day when fed and happy (needs a milk pail). Lives in the barn."
+name_fa = "گاو"
+housing = "barn"
+price = 900
+product_item = "milk"
+product_fa = "شیر"
+product_qty = 2
+happy_above = 60
+content_above = 30
+tool_item = "milk_pail"
+feed_item = "hay"
+feed_per_day = 2
+fed_gain = 12
+unfed_loss = 25
+pet_gain = 5
+start_happiness = 70
+adult_days = 5
+breed_every_days = 6
+breed_chance = 0.35
+shape = "cow"
+body_color = Color(0.96, 0.95, 0.92, 1)
+accent_color = Color(0.12, 0.1, 0.09, 1)
+size = 1
+young_scale = 0.55
+walk_speed = 0.55
+names_fa = PackedStringArray("مِهری", "شیرین", "خال‌خالی", "گلپر", "ماهک", "نسیم")
+names_en = PackedStringArray("Bella", "Clover", "Buttercup", "Molly", "Rosie", "Willow")
+items = {"milk": {"name": "Milk", "name_fa": "شیر", "type": "animal_product", "description": "Fresh farm milk. Sell it or cook with it.", "sell": 30, "category": "dairy"}, "hay": {"name": "Hay", "name_fa": "علف خشک", "type": "feed", "description": "One bundle feeds a cow or a sheep for a day.", "buy": 8, "sell": 4}}

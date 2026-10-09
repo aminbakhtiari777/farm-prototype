@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FamiliesStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/families/families_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "small_households"
+type = "families"
+display_name = "Small households"
+description = "Mostly couples and singles (no 4-kid homes)."
+name_fa = "خانوارهای کوچک"
+households = [{"id": "Rahimi", "home": "maple4", "kind": "family", "kind_fa": "خانواده", "kind_en": "family"}, {"id": "Ahmadi", "home": "maple3", "kind": "newlyweds", "kind_fa": "تازه‌عروس و داماد (با مادر)", "kind_en": "newlyweds (with her mother)"}, {"id": "Moradi", "home": "oak12", "kind": "young_couple", "kind_fa": "زوج جوان", "kind_en": "young couple"}, {"id": "Tehrani", "home": "oak15", "kind": "grown_kids", "kind_fa": "زوج میانسال (فرزندان بزرگ شده‌اند)", "kind_en": "couple, children grown up"}, {"id": "Jafari", "home": "pine9", "kind": "grown_kids", "kind_fa": "زوج میانسال (فرزندان بزرگ شده‌اند)", "kind_en": "couple, children grown up"}, {"id": "Sadeghi", "home": "harbor2", "kind": "young_couple", "kind_fa": "زوج جوان", "kind_en": "young couple"}, {"id": "Nouri", "home": "maple1", "kind": "couple_no_kids", "kind_fa": "زوج بدون فرزند", "kind_en": "couple without children"}, {"id": "Bell", "home": "oak10", "kind": "older_couple", "kind_fa": "زوج مسن", "kind_en": "older couple"}, {"id": "Haddad", "home": "pine14", "kind": "older_couple", "kind_fa": "زوج مسن", "kind_en": "older couple"}, {"id": "Kia", "home": "oak16", "kind": "elderly_couple", "kind_fa": "زوج سالمند", "kind_en": "elderly couple"}, {"id": "Houshyar", "home": "harbor4", "kind": "young_family", "kind_fa": "خانواده‌ی جوان", "kind_en": "young family"}, {"id": "Soleimani", "home": "pine18", "kind": "single", "kind_fa": "مجرد", "kind_en": "single"}]

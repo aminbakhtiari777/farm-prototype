@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GasStoveStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/gas_stove/gas_stove_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "big_flame"
+type = "gas_stove"
+display_name = "Big flame"
+description = "Taller flames, one burner left on low."
+name_fa = "شعله‌ی بلند"
+flame_height = 0.13
+tongues = 18
+idle_burners = 1

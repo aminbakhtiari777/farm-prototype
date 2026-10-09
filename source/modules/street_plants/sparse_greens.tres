@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StreetPlantsStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/street_plants/street_plants_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "sparse_greens"
+type = "street_plants"
+display_name = "Sparse greens"
+description = "Fewer plants, mostly bushes and planters."
+name_fa = "سبزه‌ی کم"
+species = [{"id": "plane", "kind": "tree", "color": Color(0.22, 0.48, 0.22, 1), "size": 1.15, "trunk": Color(0.4, 0.28, 0.16, 1)}, {"id": "cypress", "kind": "tree", "color": Color(0.18, 0.38, 0.22, 1), "size": 1.35, "trunk": Color(0.35, 0.25, 0.15, 1), "shape": "cone"}, {"id": "olive", "kind": "tree", "color": Color(0.4, 0.48, 0.28, 1), "size": 0.95, "trunk": Color(0.45, 0.35, 0.22, 1)}, {"id": "jacaranda", "kind": "tree", "color": Color(0.45, 0.35, 0.7, 1), "size": 1.05, "trunk": Color(0.4, 0.28, 0.16, 1)}, {"id": "boxwood", "kind": "bush", "color": Color(0.2, 0.42, 0.22, 1), "size": 0.55}, {"id": "lavender", "kind": "bush", "color": Color(0.55, 0.4, 0.7, 1), "size": 0.45}, {"id": "rose", "kind": "flowers", "color": Color(0.85, 0.2, 0.3, 1), "size": 0.35}, {"id": "marigold", "kind": "flowers", "color": Color(0.95, 0.7, 0.15, 1), "size": 0.32}, {"id": "planter_stone", "kind": "planter", "color": Color(0.7, 0.66, 0.58, 1), "size": 0.7, "plant": Color(0.25, 0.5, 0.25, 1)}, {"id": "planter_clay", "kind": "planter", "color": Color(0.7, 0.4, 0.25, 1), "size": 0.55, "plant": Color(0.9, 0.3, 0.4, 1)}]
+tree_spacing = 16

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HerdingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/herding/herding_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "west_meadow"
+type = "herding"
+display_name = "West meadow flock"
+description = "5 sheep, pen with a west gate near the pond path; 40 G for penning them."
+name_fa = "گله‌ی چمنزار غربی"

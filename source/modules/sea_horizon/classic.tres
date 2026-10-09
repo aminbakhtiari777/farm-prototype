@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SeaHorizonStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/sea_horizon/sea_horizon_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "classic"
+type = "sea_horizon"
+display_name = "Classic horizon"
+description = "The old grey ground band under the horizon."
+name_fa = "افق قدیمی"
+blend = 0
+fog_match = 0

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="KidsStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/kids/kids_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "well_behaved"
+type = "kids"
+display_name = "Well-behaved kids"
+description = "Bikes and games, no doorbell pranks."
+name_fa = "بچه‌های مؤدب"
+bike_loop = [Vector2(0, -38.5), Vector2(11.5, -45), Vector2(13, -50), Vector2(11.5, -55.5), Vector2(0, -61.5), Vector2(-11.5, -55.5), Vector2(-13, -50), Vector2(-11.5, -45)]
+bike_colors = [Color(0.85, 0.15, 0.12, 1), Color(0.15, 0.4, 0.8, 1), Color(0.2, 0.65, 0.3, 1)]
+chat_lines = [{"en": "Race you to the fountain!", "fa": "تا فواره مسابقه!"}, {"en": "My bike is faster!", "fa": "دوچرخه‌ی من تندتره!"}, {"en": "Tag, you're it!", "fa": "گرفتمت، تو گرگی!"}, {"en": "Let's play hide-and-seek!", "fa": "بیا قایم‌باشک بازی کنیم!"}, {"en": "Did you see the fire truck?", "fa": "ماشین آتش‌نشانی رو دیدی؟"}]
+mischief_lines = [{"en": "Who rang the bell?! Kids again...", "fa": "کی زنگ زد؟! باز این بچه‌ها..."}, {"en": "I'll tell your parents!", "fa": "به پدر و مادرت می‌گم!"}]
+kid_lines = [{"en": "Run!", "fa": "فرار کن!"}, {"en": "Hee hee!", "fa": "هی هی!"}]
+mischief_chance = 0
+bike_speed = 3.5

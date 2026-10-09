@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RoadSafetyStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/road_safety/road_safety_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "light_checks"
+type = "road_safety"
+display_name = "Light checks (fast)"
+description = "Same rules with cheaper checks for slow laptops: far cars check less often, no walker prediction, smaller crowd."
+name_fa = "بررسی سبک (سریع)"
+lines = {"exclaim": [{"en": "Hey! Watch out!", "fa": "آی! حواست کجاست؟!"}, {"en": "Ouch! Slow down!", "fa": "آخ! یواش‌تر!"}, {"en": "Whoa! Careful!", "fa": "وای! مواظب باش!"}, {"en": "Didn't you see me?!", "fa": "مگه منو ندیدی؟!"}], "hurt": [{"en": "Ow... my leg...", "fa": "آخ... پام..."}, {"en": "Help... I can't get up.", "fa": "کمک... نمی‌تونم بلند شم."}, {"en": "Call an ambulance...", "fa": "یکی به آمبولانس زنگ بزنه..."}], "recovered": [{"en": "Thank you, doctor. I'm fine now.", "fa": "ممنون آقای دکتر، الان خوبم."}, {"en": "Just a bruise. Thank God.", "fa": "فقط کبود شده، خدا رو شکر."}, {"en": "I'm OK. I'll be more careful.", "fa": "خوبم، دیگه بیشتر مواظبم."}], "crowd": [{"en": "Oh my God! Is he alright?", "fa": "یا خدا! حالش خوبه؟"}, {"en": "Someone call 115!", "fa": "یکی به ۱۱۵ زنگ بزنه!"}, {"en": "He was driving too fast!", "fa": "خیلی تند می‌رفت!"}, {"en": "Don't move him, wait for the ambulance.", "fa": "تکونش ندید، صبر کنید آمبولانس بیاد."}, {"en": "I saw everything, the car didn't stop.", "fa": "من دیدم، ماشینه وای‌نستاد."}, {"en": "The police are coming.", "fa": "پلیس داره میاد."}, {"en": "Poor thing... are you OK?", "fa": "طفلکی... خوبی؟"}, {"en": "These drivers are in such a hurry!", "fa": "این راننده‌ها چقدر عجله دارن!"}, {"en": "Thank God it's not serious.", "fa": "خدا رو شکر چیز جدی‌ای نیست."}], "police": [{"en": "Everyone step back, please.", "fa": "لطفاً همه عقب بایستید."}, {"en": "Licence and papers, please.", "fa": "گواهینامه و مدارک، لطفاً."}, {"en": "Hitting a pedestrian is a serious offence.", "fa": "زدن عابر پیاده تخلف سنگینی است."}], "paramedic": [{"en": "Don't move, we're here. Where does it hurt?", "fa": "تکون نخور، ما اینجاییم. کجات درد می‌کنه؟"}, {"en": "Nothing broken. You'll be fine.", "fa": "چیزی نشکسته. خوب می‌شی."}], "player_hit": [{"en": "Ouch! A car bumped into you!", "fa": "آخ! یه ماشین بهت خورد!"}], "driver_sorry": [{"en": "Sorry! I didn't see you!", "fa": "ببخشید! ندیدمتون!"}]}
+near_radius = 60
+far_interval = 0.5
+predict_s = 0
+pedestrian_look = 10
+crowd_max = 4

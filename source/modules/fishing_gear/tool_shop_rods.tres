@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FishingGearStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/fishing_gear/fishing_gear_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "tool_shop_rods"
+type = "fishing_gear"
+display_name = "Rods at the tool shop"
+description = "Rods sold at the tool shop and the carpenter."
+name_fa = "چوب ماهیگیری از ابزارفروشی"
+sold_at = PackedStringArray("carpenter", "tool_shop")
+items = {"pro_rod": {"name": "Pro Fishing Rod", "name_fa": "چوب ماهیگیری حرفه‌ای", "type": "tool", "buy": 650, "description": "Bites come faster and rare fish bite more often."}}

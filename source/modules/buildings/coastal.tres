@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BuildingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/buildings/building_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "coastal"
+type = "buildings"
+display_name = "Coastal white + terracotta"
+wall_tint = Color(1.12, 1.12, 1.12, 1.0)
+roof_palette = PackedColorArray(0.72, 0.36, 0.22, 1.0, 0.66, 0.32, 0.2, 1.0, 0.2, 0.35, 0.55, 1.0)

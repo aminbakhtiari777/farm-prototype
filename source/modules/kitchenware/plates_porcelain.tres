@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="KitchenwareDef" format=3]
+
+[ext_resource type="Script" path="res://modules/kitchenware/kitchenware_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "plates_porcelain"
+type = "kitchenware"
+display_name = "Porcelain Plates"
+description = "Kitchenware: Porcelain Plates"
+name_fa = "بشقاب چینی"
+item_id = "plates_porcelain"
+price = 140
+slot = "plates"
+tier = 2
+requires = "plates_basic"
+speed = {}
+meal_bonus = 8
+unlocks = PackedStringArray()
+needs_power = false
+color = Color(0.92, 0.95, 1, 1)
+shape = "plate"
+sort_order = 1

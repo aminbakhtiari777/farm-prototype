@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WorldMemoryStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/world_memory/world_memory_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "forgetful"
+type = "world_memory"
+display_name = "Forgetful town"
+description = "Townspeople forget after 14 days; drops vanish after 3."
+name_fa = "شهر فراموشکار"
+remember = PackedStringArray("moved", "holes", "drops", "cars", "fruit", "npc", "routine", "sofa", "herd")
+forget_days = 14
+npc_memory_max = 6

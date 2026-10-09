@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDef" format=3]
+
+[ext_resource type="Script" path="res://modules/recipes/recipe_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "iron_lantern"
+type = "recipes"
+display_name = "Iron Lantern"
+description = "Hand-made lantern with a copper-wired bulb."
+station = "workbench"
+inputs = {"iron_bar": 1, "copper_wire": 1}
+output_id = "iron_lantern"
+output_name = "Iron Lantern"
+output_count = 1
+output_sell = 230
+output_category = "crafted"
+stamina = 0
+sort_order = 2

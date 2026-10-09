@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SeaHorizonStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/sea_horizon/sea_horizon_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "blended"
+type = "sea_horizon"
+display_name = "Blended sea horizon"
+description = "Distant sea fades smoothly into the haze - no grey band."
+name_fa = "افق دریای یکدست"

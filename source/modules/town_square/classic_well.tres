@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SquareStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/town_square/square_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "classic_well"
+type = "town_square"
+display_name = "Classic well square"
+description = "The v3 square: stone well in the middle, ring mosaic, four lamps."
+centerpiece = "well"
+fountain_tiers = 1
+stone_color = Color(0.7, 0.68, 0.64, 1)
+mosaic_a = Color(0.66, 0.6, 0.52, 1)
+mosaic_b = Color(0.56, 0.52, 0.46, 1)
+mosaic_c = Color(0.5, 0.42, 0.36, 1)
+pattern = 2
+flower_colors = [Color(0.95, 0.95, 0.9, 1)]
+ornate_lamps = 4
+statue = false
+hedges = false

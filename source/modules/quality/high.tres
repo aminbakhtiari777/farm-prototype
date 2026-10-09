@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="QualityStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/quality/quality_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "high"
+type = "quality"
+display_name = "High (best looks)"
+description = "Default on desktop: full soft shadow cascades, long view ranges, 8 lamp lights, 4x MSAA."
+name_fa = "زیاد (بهترین ظاهر)"
+level = 2
+sun_shadows = 2
+shadow_distance = 60
+shadow_atlas = 4096
+shadow_min_size = 0.45
+render_scale = 1
+msaa = 2
+mesh_lod_threshold = 1
+lod_scale = 1
+tree_view_scale = 1
+grass_view_scale = 1
+stream_radius = 150
+light_fade_distance = 70
+lamp_lights = 8
+npc_visible_distance = 60
+npc_anim_distance = 45
+npc_shadow_distance = 28
+anim_distance = 60
+max_voices = 24
+audio_distance = 90
+auto_fps_floor = 22
+max_physics_steps = 6
+npc_far_tick = 3

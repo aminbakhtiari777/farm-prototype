@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DoorPlaqueStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/door_plaques/door_plaque_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "classic_signs"
+type = "door_plaques"
+display_name = "Classic roof signs"
+description = "Keep the big roof family banners (v6b behaviour)."
+name_fa = "تابلوهای قدیمی"
+enabled = false
+hide_home_roof_signs = false

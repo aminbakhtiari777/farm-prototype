@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RockStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/rocks/rock_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "quaternius"
+type = "rocks"
+display_name = "Quaternius grey rocks"
+kinds = [["Rock_Medium_1", 22, 0.25, 0.6, 1.4], ["Rock_Medium_2", 22, 0.25, 0.6, 1.4], ["Rock_Medium_3", 16, 0.25, 0.55, 1.4]]

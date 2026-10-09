@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AmbulanceStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/ambulance/ambulance_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "serious_only"
+type = "ambulance"
+display_name = "Serious cases only"
+description = "Only the flu (and worse) gets the ambulance."
+name_fa = "فقط موارد جدی"
+dispatch = {"flu": 1, "cold": 0, "*": 0.3}
+speed = 8

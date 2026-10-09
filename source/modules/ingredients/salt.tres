@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="IngredientDef" format=3]
+
+[ext_resource type="Script" path="res://modules/ingredients/ingredient_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "salt"
+type = "ingredients"
+display_name = "Salt"
+description = "A pinch of salt per dish."
+name_fa = "نمک"
+price = 2
+sold_at = PackedStringArray("grocery")
+color = Color(0.98, 0.98, 1, 1)
+shape = "powder"
+role = "seasoning"

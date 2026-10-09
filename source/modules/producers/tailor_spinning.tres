@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ProducerDef" format=3]
+
+[ext_resource type="Script" path="res://modules/producers/producer_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "tailor_spinning"
+type = "producers"
+display_name = "Tailor: spinning"
+description = "Spins wool into yarn - buys up the wool farmers sell."
+name_fa = "خیاطی: ریسندگی"
+shop = "clothing"
+worker_jobs = PackedStringArray("Tailor")
+outputs = {"yarn": 2}
+inputs = {"wool": 2}
+sort_order = 10
+items = {}

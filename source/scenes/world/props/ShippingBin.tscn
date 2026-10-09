@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/props/shipping_bin.gd" id="1_shipping_bin"]
+
+[node name="ShippingBin" type="Node3D"]
+script = ExtResource("1_shipping_bin")

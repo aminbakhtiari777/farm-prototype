@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ProducerDef" format=3]
+
+[ext_resource type="Script" path="res://modules/producers/producer_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "carpenter_furniture"
+type = "producers"
+display_name = "Carpenter: furniture"
+description = "Turns planks into chairs and tables."
+name_fa = "نجاری: مبلمان"
+shop = "carpenter"
+worker_jobs = PackedStringArray("Carpenter")
+outputs = {"wooden_chair": 1, "wooden_table": 1}
+inputs = {"wood_plank": 6}
+sort_order = 1
+items = {"wooden_chair": {"name": "Wooden Chair", "name_fa": "صندلی چوبی", "type": "furniture", "description": "Hand-made by the carpenter.", "buy": 90, "sell": 55}, "wooden_table": {"name": "Wooden Table", "name_fa": "میز چوبی", "type": "furniture", "description": "A sturdy kitchen table.", "buy": 220, "sell": 130}}

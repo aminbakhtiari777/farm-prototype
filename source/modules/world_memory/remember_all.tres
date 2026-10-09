@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WorldMemoryStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/world_memory/world_memory_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "remember_all"
+type = "world_memory"
+display_name = "Remember everything"
+description = "Nothing is forgotten: objects, holes, drops, cars, fruit and townspeople's memories."
+name_fa = "همه چیز به یاد می‌ماند"
+remember = PackedStringArray("moved", "holes", "drops", "cars", "fruit", "npc", "routine", "sofa", "herd")

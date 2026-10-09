@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AudioBudgetStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/audio_budget/audio_budget_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "generous"
+type = "audio_budget"
+display_name = "Generous voices"
+description = "Longer cache life, bigger pool (fast PCs)."
+name_fa = "صداهای بیشتر"
+release_after = 300
+pool_size = 16

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "iris"
+albedo_color = Color(0.25, 0.42, 0.55, 1)
+roughness = 0.1
+clearcoat_enabled = true
+clearcoat = 1.0
+clearcoat_roughness = 0.02

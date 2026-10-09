@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ProducerDef" format=3]
+
+[ext_resource type="Script" path="res://modules/producers/producer_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "wholesaler"
+type = "producers"
+display_name = "Wholesaler"
+description = "Rice, onions, tomatoes, herbs, salt and spices for the supermarket."
+name_fa = "عمده‌فروش"
+shop = "grocery"
+worker_jobs = PackedStringArray("Supermarket cashier")
+outputs = {"rice": 8, "onion": 8, "tomato_fresh": 8, "herbs": 6, "salt": 10, "spices": 8}
+inputs = {}
+items = {}
+sort_order = 7

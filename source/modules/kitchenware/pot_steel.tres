@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="KitchenwareDef" format=3]
+
+[ext_resource type="Script" path="res://modules/kitchenware/kitchenware_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "pot_steel"
+type = "kitchenware"
+display_name = "Steel Pot"
+description = "Kitchenware: Steel Pot"
+name_fa = "قابلمه‌ی استیل"
+item_id = "pot_steel"
+price = 90
+slot = "pot"
+tier = 1
+requires = ""
+speed = {"cook": 0.8}
+meal_bonus = 0
+unlocks = PackedStringArray()
+needs_power = false
+color = Color(0.75, 0.77, 0.8, 1)
+shape = "pot"
+sort_order = 2

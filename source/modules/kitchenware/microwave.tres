@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="KitchenwareDef" format=3]
+
+[ext_resource type="Script" path="res://modules/kitchenware/kitchenware_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "microwave"
+type = "kitchenware"
+display_name = "Microwave"
+description = "Kitchenware: Microwave"
+name_fa = "مایکروویو"
+item_id = "microwave"
+price = 360
+slot = "microwave"
+tier = 1
+requires = ""
+speed = {"cook": 0.5}
+meal_bonus = 0
+unlocks = PackedStringArray()
+needs_power = true
+color = Color(0.9, 0.9, 0.9, 1)
+shape = "microwave"
+sort_order = 8

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AmbientSoundsStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/ambient_sounds/ambient_sounds_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "calm"
+type = "ambient_sounds"
+display_name = "Calm (lightest)"
+description = "Fewer emitters (1 of each kind plays), rarer gusts, no traffic bed."
+name_fa = "آرام"
+kinds = {"birds": {"stream": "res://assets/audio/ambience/birds_day_loop.ogg", "count": 6, "active": 1, "db": -6, "unit": 6, "range": 38, "when": "day"}, "crickets": {"stream": "res://assets/audio/ambience/crickets_night_loop.ogg", "count": 5, "active": 1, "db": -7, "unit": 5, "range": 32, "when": "night"}, "murmur": {"stream": "res://assets/audio/v7b1/murmur_loop.ogg", "count": 3, "active": 1, "db": -8, "unit": 6, "range": 40, "when": "town"}, "river": {"stream": "res://assets/audio/ambience/pond_loop.ogg", "count": 3, "active": 1, "db": -6, "unit": 5, "range": 30, "when": "always"}}
+gusts = PackedStringArray("res://assets/audio/v7b1/gust_1.ogg", "res://assets/audio/v7b1/gust_2.ogg")
+thunder = PackedStringArray("res://assets/audio/v7b1/thunder_1.ogg", "res://assets/audio/v7b1/thunder_2.ogg")
+gust_interval = Vector2(16, 40)
+bed_2d_scale = 0.5

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CropStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/crops/crop_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "classic"
+type = "crops"
+display_name = "Classic rounded crops"

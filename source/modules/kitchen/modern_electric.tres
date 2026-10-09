@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="KitchenStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/kitchen/kitchen_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "modern_electric"
+type = "kitchen"
+display_name = "Modern electric kitchen"
+description = "White cabinets, dark worktop, electric hob + hood. Needs power to cook."
+stove = "electric"
+cabinet_color = Color(0.9, 0.9, 0.86, 1)
+counter_color = Color(0.28, 0.28, 0.3, 1)
+stove_color = Color(0.92, 0.92, 0.92, 1)
+hood = true
+upper_cabinets = true
+sink = true
+pots = true

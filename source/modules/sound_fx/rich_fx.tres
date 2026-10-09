@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundFxStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/sound_fx/sound_fx_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "rich_fx"
+type = "sound_fx"
+display_name = "Rich footsteps + doors (default)"
+description = "Five surfaces, nearby residents' steps, latch / thud on every door."
+name_fa = "صدای قدم و در"
+surfaces = {"grass": {"streams": ["res://assets/audio/sfx/footstep_grass_1.ogg", "res://assets/audio/sfx/footstep_grass_2.ogg", "res://assets/audio/sfx/footstep_grass_3.ogg", "res://assets/audio/sfx/footstep_grass_4.ogg"], "db": -9, "pitch": 1}, "asphalt": {"streams": ["res://assets/audio/v7b1/step_asphalt_1.ogg", "res://assets/audio/v7b1/step_asphalt_2.ogg", "res://assets/audio/v7b1/step_asphalt_3.ogg"], "db": -11, "pitch": 1}, "stone": {"streams": ["res://assets/audio/v7b1/step_asphalt_1.ogg", "res://assets/audio/v7b1/step_asphalt_2.ogg", "res://assets/audio/v7b1/step_asphalt_3.ogg"], "db": -10, "pitch": 1.15}, "wood": {"streams": ["res://assets/audio/v7b1/step_wood_1.ogg", "res://assets/audio/v7b1/step_wood_2.ogg", "res://assets/audio/v7b1/step_wood_3.ogg"], "db": -9, "pitch": 1}, "sand": {"streams": ["res://assets/audio/v7b1/step_sand_1.ogg", "res://assets/audio/v7b1/step_sand_2.ogg", "res://assets/audio/v7b1/step_sand_3.ogg"], "db": -8, "pitch": 1}}
+door_open = "res://assets/audio/v7b1/door_latch.ogg"
+door_close = "res://assets/audio/v7b1/door_close.ogg"

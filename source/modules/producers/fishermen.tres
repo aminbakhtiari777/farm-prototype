@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ProducerDef" format=3]
+
+[ext_resource type="Script" path="res://modules/producers/producer_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "fishermen"
+type = "producers"
+display_name = "Fishermen"
+description = "The town's fishermen bring their morning catch to the fish stall."
+name_fa = "ماهیگیران"
+shop = "stall:fish"
+worker_jobs = PackedStringArray("Fisherman")
+outputs = {"sardine": 6, "mackerel": 2}
+inputs = {}
+items = {}
+sort_order = 9

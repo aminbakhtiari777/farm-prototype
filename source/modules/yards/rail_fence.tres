@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="YardStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/yards/yard_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "rail_fence"
+type = "yards"
+display_name = "Wooden post-and-rail fences"
+kind = "rail"
+wood_color = Color(0.5, 0.36, 0.22, 1)
+height = 0.95
+post_spacing = 1.6

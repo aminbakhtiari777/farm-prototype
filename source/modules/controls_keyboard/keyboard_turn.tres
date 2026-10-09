@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeyboardControlsStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/controls_keyboard/keyboard_controls_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "keyboard_turn"
+type = "controls_keyboard"
+display_name = "Keyboard turning"
+description = "A/D and the left/right arrows turn the camera and the farmer (tank style)."
+name_fa = "چرخش با صفحه‌کلید"
+ad_turns = true

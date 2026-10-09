@@ -1,0 +1,19 @@
+# DISABLED BY DEFAULT — rename to keepalive.yml and set the secret/var when using a sleeping free host.
+# Schedule: every 10 minutes, GET the /health URL so Render/Railway free tiers stay awake.
+name: farm-town-keepalive
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping /health
+        env:
+          FARM_HEALTH_URL: ${{ secrets.FARM_HEALTH_URL }}
+        run: |
+          if [ -z "$FARM_HEALTH_URL" ]; then echo "Set secrets.FARM_HEALTH_URL"; exit 0; fi
+          # Any HTTP answer wakes a sleeping host (single-port hosts answer the WebSocket port with 400/426).
+          code=$(curl -sS --max-time 20 -o /dev/null -w "%{http_code}" "$FARM_HEALTH_URL" || echo 000)
+          echo "keepalive -> $code"; [ "$code" != "000" ]

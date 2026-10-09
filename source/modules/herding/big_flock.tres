@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="HerdingStyle" format=3]
+
+[ext_resource type="Script" path="res://modules/herding/herding_style.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "big_flock"
+type = "herding"
+display_name = "Big flock"
+description = "8 sheep, faster."
+name_fa = "گله‌ی بزرگ"
+flock = 8
+flee_speed = 3
+reward = 70

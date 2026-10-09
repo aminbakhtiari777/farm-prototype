@@ -1,0 +1,477 @@
+{
+ "_comment": "Data-driven game content. Add crops/items/weather here; no code changes needed for new crops of an existing shape. Prices in G. Crops (and their seed/produce items) live in res://modules/crop_types/<id>/ and are merged in by GameData.",
+ "start": {
+  "money": 500,
+  "inventory": {
+   "hoe": 1,
+   "watering_can": 1,
+   "turnip_seeds": 4
+  },
+  "water": 20
+ },
+ "calendar": {
+  "days_per_season": 7,
+  "start_hour": 8.0,
+  "real_minutes_per_day_at_1x": 12.0,
+  "speed_presets": [
+   0.5,
+   1.0,
+   2.0,
+   5.0,
+   10.0
+  ]
+ },
+ "seasons": [
+  {
+   "id": "spring",
+   "name": "Spring",
+   "sunrise": 6.0,
+   "sunset": 18.5,
+   "max_sun_elevation": 55.0,
+   "weather": {
+    "sunny": 0.45,
+    "cloudy": 0.25,
+    "rain": 0.25,
+    "storm": 0.05
+   }
+  },
+  {
+   "id": "summer",
+   "name": "Summer",
+   "sunrise": 5.0,
+   "sunset": 20.0,
+   "max_sun_elevation": 68.0,
+   "weather": {
+    "sunny": 0.5,
+    "cloudy": 0.1,
+    "rain": 0.15,
+    "storm": 0.1,
+    "heatwave": 0.15
+   }
+  },
+  {
+   "id": "autumn",
+   "name": "Autumn",
+   "sunrise": 6.5,
+   "sunset": 18.0,
+   "max_sun_elevation": 45.0,
+   "weather": {
+    "sunny": 0.35,
+    "cloudy": 0.3,
+    "rain": 0.25,
+    "storm": 0.1
+   }
+  },
+  {
+   "id": "winter",
+   "name": "Winter",
+   "sunrise": 7.5,
+   "sunset": 16.5,
+   "max_sun_elevation": 30.0,
+   "weather": {
+    "sunny": 0.3,
+    "cloudy": 0.3,
+    "snow": 0.4
+   }
+  }
+ ],
+ "weather": {
+  "sunny": {
+   "name": "Sunny",
+   "waters_crops": false,
+   "growth_bonus": 0.25,
+   "quality_delta": 0.05,
+   "price_mult": 1.0,
+   "cloud_coverage": 0.35,
+   "light": 1.0
+  },
+  "cloudy": {
+   "name": "Cloudy",
+   "waters_crops": false,
+   "growth_bonus": 0.0,
+   "quality_delta": 0.0,
+   "price_mult": 1.0,
+   "cloud_coverage": 0.8,
+   "light": 0.6
+  },
+  "rain": {
+   "name": "Rain",
+   "waters_crops": true,
+   "growth_bonus": 0.0,
+   "quality_delta": 0.0,
+   "price_mult": 1.05,
+   "cloud_coverage": 0.95,
+   "light": 0.42
+  },
+  "storm": {
+   "name": "Storm",
+   "waters_crops": true,
+   "growth_bonus": 0.0,
+   "quality_delta": -0.2,
+   "price_mult": 1.15,
+   "cloud_coverage": 1.0,
+   "light": 0.28
+  },
+  "heatwave": {
+   "name": "Heatwave",
+   "waters_crops": false,
+   "growth_bonus": 0.0,
+   "quality_delta": -0.15,
+   "price_mult": 1.1,
+   "cloud_coverage": 0.1,
+   "light": 1.1
+  },
+  "snow": {
+   "name": "Snow",
+   "waters_crops": false,
+   "growth_bonus": 0.0,
+   "quality_delta": 0.0,
+   "price_mult": 1.0,
+   "cloud_coverage": 0.9,
+   "light": 0.5
+  }
+ },
+ "items": {
+  "wool": {
+   "name": "Wool",
+   "type": "produce",
+   "sell": 100,
+   "demand": {
+    "spring": 0.9,
+    "summer": 0.8,
+    "autumn": 1.1,
+    "winter": 1.4
+   }
+  },
+  "fertilizer": {
+   "name": "Fertilizer",
+   "type": "consumable",
+   "buy": 30,
+   "description": "Used automatically when planting: +50% growth speed."
+  },
+  "fishing_rod": {
+   "name": "Fishing Rod",
+   "type": "tool",
+   "buy": 250,
+   "description": "Cast from the beach, pier or pond shore (E near water)."
+  },
+  "crate": {
+   "name": "Wooden Crate",
+   "type": "misc"
+  },
+  "sardine": {
+   "name": "Sardine",
+   "type": "produce",
+   "category": "fish",
+   "sell": 35,
+   "fish": {
+    "seasons": [
+     "spring",
+     "summer",
+     "autumn",
+     "winter"
+    ],
+    "water": "sea",
+    "hours": [
+     5,
+     20
+    ],
+    "weather": [
+     "sunny",
+     "cloudy",
+     "rain",
+     "storm",
+     "snow",
+     "heatwave"
+    ],
+    "weight": 1.0
+   }
+  },
+  "mackerel": {
+   "name": "Mackerel",
+   "type": "produce",
+   "category": "fish",
+   "sell": 60,
+   "fish": {
+    "seasons": [
+     "spring",
+     "summer"
+    ],
+    "water": "sea",
+    "hours": [
+     5,
+     19
+    ],
+    "weather": [
+     "sunny",
+     "cloudy",
+     "heatwave"
+    ],
+    "weight": 0.8
+   }
+  },
+  "sea_bass": {
+   "name": "Sea Bass",
+   "type": "produce",
+   "category": "fish",
+   "sell": 110,
+   "fish": {
+    "seasons": [
+     "summer",
+     "autumn"
+    ],
+    "water": "sea",
+    "hours": [
+     17,
+     24
+    ],
+    "weather": [
+     "sunny",
+     "cloudy",
+     "rain"
+    ],
+    "weight": 0.5
+   }
+  },
+  "tuna": {
+   "name": "Tuna",
+   "type": "produce",
+   "category": "fish",
+   "sell": 260,
+   "fish": {
+    "seasons": [
+     "summer"
+    ],
+    "water": "sea",
+    "hours": [
+     6,
+     12
+    ],
+    "weather": [
+     "sunny",
+     "heatwave"
+    ],
+    "weight": 0.2
+   }
+  },
+  "red_snapper": {
+   "name": "Red Snapper",
+   "type": "produce",
+   "category": "fish",
+   "sell": 140,
+   "fish": {
+    "seasons": [
+     "autumn",
+     "summer"
+    ],
+    "water": "sea",
+    "hours": [
+     6,
+     18
+    ],
+    "weather": [
+     "rain",
+     "storm",
+     "cloudy"
+    ],
+    "weight": 0.4
+   }
+  },
+  "cod": {
+   "name": "Cod",
+   "type": "produce",
+   "category": "fish",
+   "sell": 120,
+   "fish": {
+    "seasons": [
+     "winter",
+     "autumn"
+    ],
+    "water": "sea",
+    "hours": [
+     5,
+     20
+    ],
+    "weather": [
+     "sunny",
+     "cloudy",
+     "snow",
+     "rain"
+    ],
+    "weight": 0.55
+   }
+  },
+  "squid": {
+   "name": "Squid",
+   "type": "produce",
+   "category": "fish",
+   "sell": 150,
+   "fish": {
+    "seasons": [
+     "winter"
+    ],
+    "water": "sea",
+    "hours": [
+     18,
+     26
+    ],
+    "weather": [
+     "sunny",
+     "cloudy",
+     "snow"
+    ],
+    "weight": 0.35
+   }
+  },
+  "carp": {
+   "name": "Carp",
+   "type": "produce",
+   "category": "fish",
+   "sell": 40,
+   "fish": {
+    "seasons": [
+     "spring",
+     "summer",
+     "autumn",
+     "winter"
+    ],
+    "water": "pond",
+    "hours": [
+     5,
+     24
+    ],
+    "weather": [
+     "sunny",
+     "cloudy",
+     "rain",
+     "storm",
+     "snow",
+     "heatwave"
+    ],
+    "weight": 1.0
+   }
+  },
+  "catfish": {
+   "name": "Catfish",
+   "type": "produce",
+   "category": "fish",
+   "sell": 180,
+   "fish": {
+    "seasons": [
+     "spring",
+     "autumn"
+    ],
+    "water": "pond",
+    "hours": [
+     19,
+     27
+    ],
+    "weather": [
+     "rain",
+     "storm"
+    ],
+    "weight": 0.35
+   }
+  },
+  "trout": {
+   "name": "Rainbow Trout",
+   "type": "produce",
+   "category": "fish",
+   "sell": 95,
+   "fish": {
+    "seasons": [
+     "spring",
+     "summer"
+    ],
+    "water": "pond",
+    "hours": [
+     6,
+     18
+    ],
+    "weather": [
+     "sunny",
+     "cloudy",
+     "heatwave"
+    ],
+    "weight": 0.6
+   }
+  },
+  "perch": {
+   "name": "Perch",
+   "type": "produce",
+   "category": "fish",
+   "sell": 75,
+   "fish": {
+    "seasons": [
+     "winter",
+     "autumn"
+    ],
+    "water": "pond",
+    "hours": [
+     8,
+     17
+    ],
+    "weather": [
+     "sunny",
+     "cloudy",
+     "snow"
+    ],
+    "weight": 0.7
+   }
+  },
+  "seashell": {
+   "name": "Seashell",
+   "type": "produce",
+   "category": "shell",
+   "sell": 25
+  },
+  "scallop_shell": {
+   "name": "Scallop Shell",
+   "type": "produce",
+   "category": "shell",
+   "sell": 45
+  },
+  "conch": {
+   "name": "Conch",
+   "type": "produce",
+   "category": "shell",
+   "sell": 120
+  }
+ },
+ "pricing": {
+  "out_of_season_mult": 1.5,
+  "in_season_mult": 1.0
+ },
+ "fishing": {
+  "_comment": "Wait for a bite (seconds), then press E inside the reaction window (seconds). Weather ids must match 'weather'.",
+  "bite_wait": [
+   2.5,
+   7.0
+  ],
+  "reaction_window": 0.9,
+  "night_bonus_weight": 0.0,
+  "shells_per_day": [
+   5,
+   9
+  ],
+  "shell_weights": {
+   "seashell": 0.65,
+   "scallop_shell": 0.28,
+   "conch": 0.07
+  }
+ },
+ "stamina": {
+  "max": 100,
+  "sprint_drain": 16,
+  "jump_cost": 9,
+  "walk_recover": 5,
+  "idle_recover": 8,
+  "sit_recover": 24,
+  "exhausted_until": 30,
+  "tool_cost": 1.5
+ },
+ "watering_can": {
+  "capacity": 20,
+  "copper_capacity": 40
+ }
+}

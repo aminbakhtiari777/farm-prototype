@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDef" format=3]
+
+[ext_resource type="Script" path="res://modules/recipes/recipe_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "grilled_fish"
+type = "recipes"
+display_name = "Grilled Fish"
+description = "Fresh from the sea."
+station = "stove"
+inputs = {"sardine": 1}
+output_id = ""
+output_name = ""
+output_count = 1
+output_sell = 0
+output_category = "meal"
+stamina = 45
+sort_order = 10
