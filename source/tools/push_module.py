@@ -24,7 +24,7 @@ import argparse, hashlib, json, os, re, shutil, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-GODOT = os.path.expanduser("~/godot/godot")
+GODOT = os.environ.get("GODOT", shutil.which("godot") or os.path.expanduser("~/godot/godot"))
 DEFAULT_CONTENT = ROOT / "server" / "content"
 
 

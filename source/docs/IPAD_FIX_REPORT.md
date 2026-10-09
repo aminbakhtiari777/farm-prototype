@@ -46,6 +46,10 @@ testing; it does not replace the live game's HTML/PCK/WASM files.
   wood pickup, town lots, save timing, steering-wheel fixtures, farmhouse sign
   expectations, transit boarding and road-safety/accident scenarios. Some are
   outdated test assumptions; they are not all confirmed gameplay defects.
+- The local network suite ran 60 checks with 6 failures in the module-update
+  sequence. Its publisher still pointed at the original author's Godot path;
+  that tool now resolves the configured/on-PATH binary too. Treat the recorded
+  network failures as environment/tooling failures until the suite is rerun.
 
 ## Release limitation
 
