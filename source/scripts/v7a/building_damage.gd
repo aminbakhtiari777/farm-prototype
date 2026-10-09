@@ -47,6 +47,7 @@ static func _clear_extras(b: Building) -> void:
 static func apply(b: Building, state: String, burn: float, days_left: int = 0) -> void:
 	if b == null or not is_instance_valid(b):
 		return
+	b.damage_args = [state, burn, days_left]
 	_clear_extras(b)
 	var ext := b.get_node_or_null(^"ExteriorParts") as Node3D
 	var roof := b.get_node_or_null(^"RoofParts") as Node3D

@@ -67,6 +67,10 @@ var anim_tree: AnimationTree
 var hold_point: Node3D  ## carried objects attach here (in front of the chest)
 var hand_point: BoneAttachment3D  ## right hand (fishing rod...)
 var _playback: AnimationNodeStateMachinePlayback
+var _loading_model: bool = false
+var _asset_generation: int = 0
+var _retry_model_at: int = 0
+var _placeholder: MeshInstance3D
 var _speed: float = 0.0
 var _lift_t: float = 0.0
 var _airborne: bool = false
@@ -117,8 +121,67 @@ func _ready() -> void:
 	if st0:
 		body_scale = st0.body_scale
 
+	if AssetPacks.enabled:
+		hold_point = Node3D.new()
+		hold_point.position = Vector3(0, 1.05, 0.42)
+		add_child(hold_point)
+		_placeholder = MeshInstance3D.new()
+		var capsule := CapsuleMesh.new()
+		capsule.radius = 0.25
+		capsule.height = 1.5
+		_placeholder.mesh = capsule
+		_placeholder.position.y = 0.85
+		_placeholder.material_override = ProceduralProp.color_material(shirt_color, 0.9, false)
+		add_child(_placeholder)
+	else:
+		_build_model()
+		_build_tree()
+
+
+func _request_model() -> void:
+	if _loading_model or Time.get_ticks_msec() < _retry_model_at:
+		return
+	var actor := get_parent()
+	while actor and not actor.is_in_group(&"townspeople") and not actor.is_in_group(&"player"):
+		actor = actor.get_parent()
+	var player := get_tree().get_first_node_in_group(&"player") as Node3D
+	if actor and actor.is_in_group(&"townspeople") and player:
+		if global_position.distance_to(player.global_position) > PerfQuality.style().npc_visible_distance + 12.0:
+			return
+	_loading_model = true
+	var generation := _asset_generation
+	var alive: WeakRef = weakref(self)
+	var ok: bool = await AssetPacks.ensure_all(["female" if body_type == "female" else "male", "hair", "animations"])
+	if alive.get_ref() == null:
+		return
+	if generation != _asset_generation:
+		_loading_model = false
+		return
+	if not ok:
+		_loading_model = false
+		_retry_model_at = Time.get_ticks_msec() + 10000
+		return
+	while not AssetPacks.can_build_now():
+		await get_tree().process_frame
+		if alive.get_ref() == null:
+			return
+		if generation != _asset_generation:
+			_loading_model = false
+			return
+	var pose_before := _pose
+	var airborne_before := _airborne
 	_build_model()
 	_build_tree()
+	_pose = &""
+	_airborne = false
+	set_pose(pose_before)
+	set_airborne(airborne_before)
+	if is_instance_valid(_placeholder):
+		_placeholder.queue_free()
+	_placeholder = null
+	_loading_model = false
+	if actor and actor.is_in_group(&"player"):
+		print("CHARACTER MODEL: player ready")
 
 
 # ------------------------------------------------------------------ building
@@ -155,9 +218,10 @@ func _build_model() -> void:
 	chest.name = "ChestAttachment"
 	chest.bone_name = "spine_03"
 	skeleton.add_child(chest)
-	hold_point = Node3D.new()
+	if not is_instance_valid(hold_point):
+		hold_point = Node3D.new()
+		add_child(hold_point)
 	hold_point.name = "HoldPoint"
-	add_child(hold_point)
 	hold_point.position = Vector3(0, 1.05, 0.42)
 	hand_point = BoneAttachment3D.new()
 	hand_point.name = "RightHand"
@@ -355,8 +419,10 @@ func rebuild() -> void:
 	_pose = &""
 	_carry_amount = 0.0
 	_carry_target = 0.0
-	_build_model()
-	_build_tree()
+	_asset_generation += 1
+	if not AssetPacks.enabled:
+		_build_model()
+		_build_tree()
 	rebuilds += 1
 
 
@@ -497,6 +563,8 @@ func _link(sm: AnimationNodeStateMachine, from: StringName, to: StringName, at_e
 # ------------------------------------------------------------------ runtime
 func _process(delta: float) -> void:
 	if anim_tree == null:
+		if AssetPacks.enabled:
+			_request_model()
 		return
 	_carry_amount = move_toward(_carry_amount, _carry_target, delta * 4.0)
 	anim_tree.set(&"parameters/carry/blend_amount", _carry_amount)
@@ -587,7 +655,10 @@ func current_state() -> StringName:
 
 
 func set_airborne(value: bool) -> void:
-	if value == _airborne or _playback == null:
+	if _playback == null:
+		_airborne = value
+		return
+	if value == _airborne:
 		return
 	_airborne = value
 	if value:
@@ -598,7 +669,10 @@ func set_airborne(value: bool) -> void:
 
 ## Persistent poses: &"sit" (chair/bench), &"ground_sit", &"kneel", &"talk" or &"" (stand).
 func set_pose(pose: StringName) -> void:
-	if _playback == null or pose == _pose:
+	if _playback == null:
+		_pose = pose
+		return
+	if pose == _pose:
 		return
 	var old := _pose
 	_pose = pose

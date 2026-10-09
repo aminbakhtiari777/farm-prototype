@@ -876,8 +876,35 @@ func _queue_prop(pos: Vector2, build: Callable) -> void:
 	_pending_props.append({"pos": pos, "build": build})
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	stream_buildings(delta)
 	build_nearby_props()
+
+
+func stream_buildings(delta: float) -> void:
+	if not Building.lazy_exteriors():
+		return
+	var player := get_tree().get_first_node_in_group(&"player") as Node3D
+	if player == null:
+		return
+	var quality := PerfQuality.style()
+	var radius := clampf(quality.stream_radius, 55.0, 110.0) if quality else 75.0
+	var nearest: Building = null
+	var distance := INF
+	for b: Building in buildings.values():
+		var d := Vector2(b.global_position.x - player.global_position.x, b.global_position.z - player.global_position.z).length()
+		if b.player_inside or d < radius:
+			b._exterior_far_time = 0.0
+			if not b.exterior_built and d < distance:
+				nearest = b
+				distance = d
+		elif b.exterior_built:
+			b._exterior_far_time += delta
+			if d > radius + 35.0 and b._exterior_far_time > 15.0:
+				b.release_interior()
+				b.release_exterior()
+	if nearest:
+		nearest.ensure_exterior()
 
 
 func build_nearby_props(force: bool = false) -> void:

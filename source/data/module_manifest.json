@@ -1476,15 +1476,15 @@
     "night": {
      "bytes": 580,
      "path": "res://modules/minimap/night.tres",
-     "sha256": "71d2c6bc87b99a76fd3c37fd175b1483edd2c9e531c22445a790b9895deb8fc3"
+     "sha256": "10368b4c0d92d5e17189da44e66b9cd4e696e0ea368a9b7562ddd192c66bd521"
     },
     "parchment": {
      "bytes": 593,
      "path": "res://modules/minimap/parchment.tres",
-     "sha256": "715c6656079a1d63b21b2036f69b5b8bac08cecb861a89a16ff7a39275831fe9"
+     "sha256": "c514d6d2044d72ec9f79f2bb644c4750700d5f36fb6ca62066cd31d6e6f1f6f7"
     }
    },
-   "version": 1
+   "version": 2
   },
   "mosque": {
    "active": "turquoise_dome",

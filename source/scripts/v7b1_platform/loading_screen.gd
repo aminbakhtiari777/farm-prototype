@@ -32,6 +32,7 @@ var _pct: Label
 var _tip: Label
 var _title: Label
 var source: String = "warmup"
+var waiting_for_assets: bool = false
 
 
 func T(fa: String, en: String) -> String:
@@ -142,7 +143,10 @@ func _process(delta: float) -> void:
 		_tip_i += 1
 		_show_tip()
 	var target := 0.0
-	if threaded_path != "":
+	if waiting_for_assets:
+		source = "assets"
+		target = 0.0
+	elif threaded_path != "":
 		source = "threaded"
 		var arr := []
 		var st := ResourceLoader.load_threaded_get_status(threaded_path, arr)

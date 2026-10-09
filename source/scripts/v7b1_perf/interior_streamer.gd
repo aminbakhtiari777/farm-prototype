@@ -32,7 +32,7 @@ static func lazy_for(b: Node) -> bool:
 	var st := Modules.style("world_stream") as WorldStreamStyle
 	if st == null or not st.enabled:
 		return false
-	return str(b.get("kind")) == "home" and str(b.get("layout_id")) != "farmhouse" and not bool(b.get("sleep_here"))
+	return str(b.get("layout_id")) != "farmhouse" and not bool(b.get("sleep_here"))
 
 
 ## Registered (module) interiors stream only in the real game; smoke tests,

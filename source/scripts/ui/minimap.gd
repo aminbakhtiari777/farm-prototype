@@ -5,6 +5,7 @@ extends Control
 ## edge, the farmer (arrow) and townspeople (dots). Colours/size from the
 ## active "minimap" module; Tab toggles it.
 
+var _labels: Dictionary = {}
 var _timer: float = 0.0
 var _player: Node3D
 var _river: PackedVector2Array = PackedVector2Array()
@@ -17,6 +18,8 @@ func _ready() -> void:
 	clip_contents = true
 	set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	_apply_style()
+	_make_labels()
+	get_viewport().size_changed.connect(_apply_style)
 	Modules.on_swap("minimap", self, func(_m: AssetModule) -> void: _apply_style())
 
 
@@ -26,7 +29,8 @@ func style() -> MinimapStyle:
 
 func _apply_style() -> void:
 	var st := style()
-	var s := float(st.size if st else 220)
+	var available := get_viewport().get_visible_rect().size
+	var s := minf(float(st.size if st else 150), clampf(available.y * 0.22, 96.0, 150.0))
 	custom_minimum_size = Vector2(s, s)
 	size = Vector2(s, s)
 	offset_left = -s - 14.0
@@ -43,11 +47,82 @@ func _process(delta: float) -> void:
 	if _timer > 0.0:
 		return
 	_timer = 0.1
+	_update_labels()
 	queue_redraw()
 
 
 func toggle() -> void:
 	visible = not visible
+
+
+## Small, shaped Persian/English labels remain tied to layout data even when
+## a building's visual nodes are unloaded. Nearby labels get priority.
+func place_name(b: Dictionary) -> String:
+	var id := str(b["id"])
+	var names := {
+		"farmhouse": ["مزرعه", "Farm"], "store": ["فروشگاه", "Store"],
+		"cafe": ["کافه", "Cafe"], "city_hall": ["شهرداری", "City Hall"],
+		"hospital": ["بیمارستان", "Hospital"], "supermarket": ["سوپرمارکت", "Market"],
+		"police": ["پلیس", "Police"], "workshop": ["کارگاه", "Workshop"],
+		"carpenter": ["نجاری", "Carpenter"], "blacksmith": ["آهنگری", "Smith"],
+		"school": ["مدرسه", "School"], "mosque": ["مسجد", "Mosque"],
+		"church": ["کلیسا", "Church"], "gym": ["باشگاه", "Gym"],
+		"hypermarket": ["هایپرمارکت", "Hypermarket"]
+	}
+	if names.has(id):
+		return Lang.tt(names[id][0], names[id][1])
+	if str(b.get("kind", "")) == "home":
+		return Lang.tt("خانه ", "Home ") + Lang.digits(str(b.get("address", id)).get_slice(" ", 0))
+	return Lang.loc_ui(str(b.get("sign", id)))
+
+
+func _make_labels() -> void:
+	for b in TownLayout.BUILDINGS:
+		var label := Label.new()
+		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		label.add_theme_font_override(&"font", Lang.bubble_font())
+		label.add_theme_font_size_override(&"font_size", 10)
+		label.add_theme_color_override(&"font_color", Color(1.0, 0.98, 0.88))
+		label.add_theme_color_override(&"font_outline_color", Color(0.06, 0.08, 0.05, 0.95))
+		label.add_theme_constant_override(&"outline_size", 3)
+		label.text_direction = Control.TEXT_DIRECTION_AUTO
+		label.visible = false
+		add_child(label)
+		_labels[b["id"]] = label
+
+
+func _update_labels() -> void:
+	var player := get_tree().get_first_node_in_group(&"player") as Node3D
+	if player == null:
+		return
+	var centre := Vector2(player.global_position.x, player.global_position.z)
+	var candidates: Array = TownLayout.BUILDINGS.duplicate()
+	candidates.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return (a["pos"] as Vector2).distance_squared_to(centre) < (b["pos"] as Vector2).distance_squared_to(centre))
+	var occupied: Array[Rect2] = [Rect2(size * 0.5 - Vector2(7, 9), Vector2(14, 18))]
+	for b in candidates:
+		var label: Label = _labels[b["id"]]
+		label.visible = false
+		label.text = place_name(b)
+		label.size = label.get_minimum_size()
+		var point := world_to_map(b["pos"], centre)
+		if not Rect2(Vector2(4, 18), size - Vector2(8, 22)).has_point(point):
+			continue
+		var options := [Vector2(-label.size.x * 0.5, 12), Vector2(-label.size.x * 0.5, -label.size.y - 12), Vector2(12, -label.size.y * 0.5)]
+		for offset: Vector2 in options:
+			var pos := (point + offset).clamp(Vector2(4, 18), size - label.size - Vector2(4, 4))
+			var box := Rect2(pos, label.size).grow(1)
+			var overlaps := false
+			for used: Rect2 in occupied:
+				if used.intersects(box):
+					overlaps = true
+					break
+			if overlaps:
+				continue
+			label.position = pos
+			label.visible = true
+			occupied.append(box)
+			break
 
 
 ## World (x, z) -> minimap pixel.
@@ -122,7 +197,7 @@ func _draw() -> void:
 	for npc in get_tree().get_nodes_in_group(&"townspeople"):
 		var n3 := npc as Node3D
 		if n3 and n3.is_visible_in_tree():
-			draw_circle(world_to_map(Vector2(n3.global_position.x, n3.global_position.z), centre), 3.0, st.npc)
+			draw_circle(world_to_map(Vector2(n3.global_position.x, n3.global_position.z), centre), 1.5, st.npc)
 	# Farmer arrow (heading).
 	var c0 := size * 0.5
 	var fwd := Vector2(sin(heading), cos(heading))

@@ -16,5 +16,5 @@ building = Color(0.62, 0.36, 0.26, 1)
 forest = Color(0.25, 0.42, 0.22, 1)
 player = Color(0.9, 0.15, 0.1, 1)
 npc = Color(0.15, 0.3, 0.8, 1)
-size = 220
+size = 150
 metres = 90

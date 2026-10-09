@@ -342,6 +342,8 @@ func pick_up(item: Carryable) -> void:
 	carried = item
 	item.on_picked_up(self)
 	var hold: Node3D = (_visual as HumanoidModelVisual).hold_point if _visual is HumanoidModelVisual else self
+	if not is_instance_valid(hold):
+		hold = self
 	if item.get_parent():
 		item.get_parent().remove_child(item)
 	hold.add_child(item)

@@ -13,6 +13,8 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
+
+AssetPacks="*res://scripts/v7b1_perf/asset_packs.gd"
 PackLoader="*res://scripts/v7b1_platform/pack_loader.gd"
 AssetRegistry="*res://scripts/autoload/asset_registry.gd"
 

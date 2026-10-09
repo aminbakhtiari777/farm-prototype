@@ -12,5 +12,5 @@ extends AssetModule
 @export var player: Color = Color(0.9, 0.15, 0.1)
 @export var npc: Color = Color(0.15, 0.3, 0.8)
 ## Widget size in pixels and how many metres it shows across.
-@export var size: int = 220
+@export var size: int = 150
 @export var metres: float = 90.0

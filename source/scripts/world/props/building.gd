@@ -72,6 +72,96 @@ var interior_built: bool = true
 var _interior_args: Array = []
 var _interior_nodes: Array = []
 var _interior_far_time: float = 0.0
+var damage_args: Array = []
+var exterior_built: bool = false
+var _services_built: bool = false
+var _visual_only: bool = false
+var _exterior_nodes: Array = []
+var _exterior_far_time: float = 0.0
+static var force_exterior_lazy: int = -1
+
+
+static func lazy_exteriors() -> bool:
+	if force_exterior_lazy >= 0:
+		return force_exterior_lazy == 1
+	for a in OS.get_cmdline_user_args():
+		if a == "--smoke-test" or a.begins_with("--net-test") or "shots" in a or a == "--perf":
+			return false
+	return true
+
+
+func _rebuild() -> void:
+	_services_built = false
+	exterior_built = false
+	_exterior_nodes.clear()
+	super._rebuild()
+
+
+## Build only visual children; keep doors, furniture, module attachments and
+## collision identities intact. TownBuilder schedules at most one per frame.
+func ensure_exterior() -> void:
+	if exterior_built:
+		return
+	var before := get_children()
+	_visual_only = true
+	var rng := RandomNumberGenerator.new()
+	rng.seed = random_seed
+	_build(rng)
+	_visual_only = false
+	_exterior_nodes = get_children().filter(func(c: Node) -> bool: return not before.has(c))
+	exterior_built = true
+	if not damage_args.is_empty():
+		BuildingDamage.apply(self, str(damage_args[0]), float(damage_args[1]), int(damage_args[2]))
+	if player_inside and roof_mesh:
+		roof_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+
+
+func release_exterior() -> void:
+	if not exterior_built or player_inside or not lazy_exteriors():
+		return
+	for c in _exterior_nodes:
+		if is_instance_valid(c):
+			remove_child(c)
+			(c as Node).queue_free()
+	_exterior_nodes.clear()
+	exterior_mesh = null
+	roof_mesh = null
+	sign_label = null
+	address_label = null
+	exterior_built = false
+
+
+func add_box_collider(box_size: Vector3, pos: Vector3, rot: Vector3 = Vector3.ZERO) -> void:
+	if not _visual_only:
+		super.add_box_collider(box_size, pos, rot)
+
+
+func add_cylinder_collider(radius: float, height: float, pos: Vector3) -> void:
+	if not _visual_only:
+		super.add_cylinder_collider(radius, height, pos)
+
+
+## Cheap structural collision remains for NPCs and fast arrival/teleports.
+func _build_structure() -> void:
+	var w := size.x
+	var h := size.y
+	var d := size.z
+	var base := FOUNDATION_HEIGHT
+	add_box_collider(Vector3(w + 0.2, base, d + 0.2), Vector3(0, base * 0.5, 0))
+	add_box_collider(Vector3(w, h, WALL_T), Vector3(0, base + h * 0.5, -d * 0.5 + WALL_T * 0.5))
+	for side in [-1.0, 1.0]:
+		add_box_collider(Vector3(WALL_T, h, d - WALL_T * 2.0), Vector3(side * (w * 0.5 - WALL_T * 0.5), base + h * 0.5, 0))
+	var left_w := door_offset - DOOR_W * 0.5 + w * 0.5
+	var right_w := w * 0.5 - door_offset - DOOR_W * 0.5
+	add_box_collider(Vector3(left_w, h, WALL_T), Vector3(-w * 0.5 + left_w * 0.5, base + h * 0.5, d * 0.5 - WALL_T * 0.5))
+	add_box_collider(Vector3(right_w, h, WALL_T), Vector3(w * 0.5 - right_w * 0.5, base + h * 0.5, d * 0.5 - WALL_T * 0.5))
+	add_box_collider(Vector3(DOOR_W, h - DOOR_H, WALL_T), Vector3(door_offset, base + DOOR_H + (h - DOOR_H) * 0.5, d * 0.5 - WALL_T * 0.5))
+	if has_porch:
+		add_box_collider(Vector3(w * 0.75, base, 1.8), Vector3(door_offset, base * 0.5, d * 0.5 + 0.9))
+		add_box_collider(Vector3(1.2, 0.46, 0.42), Vector3(door_offset - w * 0.75 * 0.3, base + 0.23, d * 0.5 + 0.45))
+		_ramp(Vector3(door_offset, 0, d * 0.5 + 2.7), Vector3(door_offset, base, d * 0.5 + 1.7), 1.6)
+	else:
+		_ramp(Vector3(door_offset, 0, d * 0.5 + 0.9), Vector3(door_offset, base, d * 0.5 - 0.05), 1.8)
 
 
 ## Furnish the interior now (no-op when already built). Deterministic: same rng state as an eager build.
@@ -263,6 +353,11 @@ func is_point_inside(world: Vector3) -> bool:
 
 # ------------------------------------------------------------------ build
 func _build(rng: RandomNumberGenerator) -> void:
+	if not Engine.is_editor_hint() and lazy_exteriors() and not _visual_only:
+		_build_structure()
+		_build_services(rng)
+		return
+	exterior_built = true
 	var w := size.x
 	var h := size.y
 	var d := size.z
@@ -375,13 +470,6 @@ func _build_rest(rng: RandomNumberGenerator, w: float, h: float, d: float, base:
 		add_box(Vector3(1.6, base * 0.5, 0.45), Vector3(door_offset, base * 0.25, hd + 0.22), stone, Vector3.ZERO, ext)
 		add_box(Vector3(1.6, base * 0.5, 0.35), Vector3(door_offset, base * 0.75 - 0.01, hd + 0.08), stone, Vector3.ZERO, ext)
 		_ramp(Vector3(door_offset, 0.0, hd + 0.9), Vector3(door_offset, base, hd - 0.05), 1.8)
-	door = BuildingDoor.new()
-	door.name = "Door"
-	door.width = DOOR_W - 0.06
-	door.height = DOOR_H - 0.04
-	door.panel_color = door_color
-	door.position = Vector3(door_offset - DOOR_W * 0.5 + 0.03, base, hd - WALL_T * 0.5)
-	add_child(door)
 
 	# Windows (outer face + inner face so they read from inside too).
 	var row_y := base + h * 0.5 + 0.15 if not upper_windows else base + h * 0.3 + 0.15
@@ -409,7 +497,7 @@ func _build_rest(rng: RandomNumberGenerator, w: float, h: float, d: float, base:
 
 	# Wall lantern by the door (night lights module) + farmhouse extras.
 	_wall_lantern(ext)
-	if sleep_here and not Engine.is_editor_hint():
+	if sleep_here and not Engine.is_editor_hint() and not has_node(^"BreakerBox"):
 		_farmhouse_power()
 
 	# Signs.
@@ -419,6 +507,46 @@ func _build_rest(rng: RandomNumberGenerator, w: float, h: float, d: float, base:
 		_address_plaque(address, ext)
 	if not Engine.is_editor_hint():
 		DoorPlaques.attach(self, ext)  # v7b.1 door_plaques module
+
+	if not _services_built:
+		_build_services(rng)
+
+	# v5a: module extras (awnings, porticos, dome + minaret, bell tower...).
+	if not Engine.is_editor_hint():
+		BuildingDecor.decorate(self, ext, roof)
+
+	# Bake static geometry.
+	exterior_mesh = MeshMerger.merge_children_baked(ext, self, "ExteriorMesh")
+	ext.add_child(exterior_mesh)
+	exterior_mesh.visibility_range_end = 260.0
+	roof_mesh = MeshMerger.merge_children_baked(roof, self, "RoofMesh")
+	roof.add_child(roof_mesh)
+	roof_mesh.visibility_range_end = 260.0
+
+
+func _build_services(rng: RandomNumberGenerator) -> void:
+	_services_built = true
+	if sleep_here and not Engine.is_editor_hint() and not has_node(^"BreakerBox"):
+		_farmhouse_power()
+	var w := size.x
+	var h := size.y
+	var d := size.z
+	var base := FOUNDATION_HEIGHT
+	var top := base + h
+	var hd := d * 0.5
+	if has_porch and not Engine.is_editor_hint() and not has_node(^"PorchSeat"):
+		var seat := Seat.new()
+		seat.name = "PorchSeat"
+		seat.position = Vector3(door_offset - w * 0.75 * 0.3, base, hd + 0.57)
+		seat.display_name = "porch bench"
+		add_child(seat)
+	door = BuildingDoor.new()
+	door.name = "Door"
+	door.width = DOOR_W - 0.06
+	door.height = DOOR_H - 0.04
+	door.panel_color = door_color
+	door.position = Vector3(door_offset - DOOR_W * 0.5 + 0.03, base, hd - WALL_T * 0.5)
+	add_child(door)
 
 	# Interior (furniture + interactive items).
 	interior_root = Node3D.new()
@@ -468,18 +596,6 @@ func _build_rest(rng: RandomNumberGenerator, w: float, h: float, d: float, base:
 			if body.is_in_group(&"player"):
 				_set_inside(false))
 
-	# v5a: module extras (awnings, porticos, dome + minaret, bell tower...).
-	if not Engine.is_editor_hint():
-		BuildingDecor.decorate(self, ext, roof)
-
-	# Bake static geometry.
-	exterior_mesh = MeshMerger.merge_children_baked(ext, self, "ExteriorMesh")
-	ext.add_child(exterior_mesh)
-	exterior_mesh.visibility_range_end = 260.0
-	roof_mesh = MeshMerger.merge_children_baked(roof, self, "RoofMesh")
-	roof.add_child(roof_mesh)
-	roof_mesh.visibility_range_end = 260.0
-
 
 func add_gable_to(width: float, height: float, depth: float, pos: Vector3, mat: Material, rot: Vector3, parent: Node3D) -> void:
 	var mesh := PrismMesh.new()
@@ -506,6 +622,8 @@ func _wall(box_size: Vector3, pos: Vector3, outer: Material, inner: Material, in
 
 
 func _ramp(from: Vector3, to: Vector3, width: float) -> void:
+	if _visual_only:
+		return
 	# Invisible slope from the ground (from) up to the floor (to); the farmer
 	# can't step up ledges, so every doorway gets one.
 	var run := absf(to.z - from.z)
@@ -600,7 +718,7 @@ func _porch(_rng: RandomNumberGenerator, parent: Node3D, roof_mat: Material) -> 
 	for sx in [-0.5, 0.5]:
 		add_box(Vector3(0.06, 0.44, 0.36), bench_pos + Vector3(sx, 0.22, 0), wood, Vector3.ZERO, parent)
 	add_box_collider(Vector3(1.2, 0.46, 0.42), bench_pos + Vector3(0, 0.23, 0))
-	if not Engine.is_editor_hint():
+	if not Engine.is_editor_hint() and not has_node(^"PorchSeat"):
 		var seat := Seat.new()
 		seat.name = "PorchSeat"
 		seat.position = bench_pos + Vector3(0, 0, 0.12)
@@ -652,7 +770,9 @@ func _wall_lantern(parent: Node3D) -> void:
 			l2.add_to_group(&"porch_lights")
 			add_child(l2)
 	else:
-		NightLights.porch_positions.append(world)
+		if not has_meta(&"porch_registered"):
+			NightLights.porch_positions.append(world)
+			set_meta(&"porch_registered", true)
 
 
 ## Farmhouse: main power switch (BreakerBox) on the front wall.
@@ -717,6 +837,7 @@ func _set_inside(value: bool) -> void:
 		return
 	player_inside = value
 	if value:
+		ensure_exterior()
 		ensure_interior()
 	if roof_mesh:
 		roof_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY if value else GeometryInstance3D.SHADOW_CASTING_SETTING_ON

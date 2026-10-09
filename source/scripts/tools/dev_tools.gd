@@ -576,6 +576,10 @@ func _smoke_npcs() -> bool:
 	# Night: everyone goes home.
 	TimeManager.reset_calendar(TimeManager.day, 23.5, "sunny")
 	for b: TownspersonBot in bots:
+		# Include a conversation still active when the resident arrives home.
+		var sc := b.controller as ScheduleController
+		if sc:
+			sc.chat_timer = 10.0
 		b.snap_to_schedule()
 	await _frames(30)
 	var home := 0
@@ -3958,10 +3962,16 @@ func _smoke_v7a_fire() -> bool:
 		if b2 == target or str(CityState.damage_of(FireService.id_of(b2)).get("state", "ok")) != "ok":
 			continue
 		for b3 in fl:
-			if b3 != b2 and b3 != target and V7aKit.flat(b3.global_position).distance_to(V7aKit.flat(b2.global_position)) - (maxf(b3.size.x, b3.size.z) + maxf(b2.size.x, b2.size.z)) * 0.35 < fs.style().spread_radius:
+			if b3 != b2 and b3 != target and str(CityState.damage_of(FireService.id_of(b3)).get("state", "ok")) == "ok" and V7aKit.flat(b3.global_position).distance_to(V7aKit.flat(b2.global_position)) - (maxf(b3.size.x, b3.size.z) + maxf(b2.size.x, b2.size.z)) * 0.35 < fs.style().spread_radius:
 				other = b2
 		if other:
 			break
+	# The previous response can leave the truck beside this building. Keep
+	# it away for the spread phase so immediate hosing cannot prevent ignition.
+	var truck_pos := fs.truck.global_position
+	fs.truck.stop()
+	if other:
+		fs.truck.place(other.global_position + Vector3(200, 0, 200), 0.0)
 	fs.ignite(other, "accident")
 	var f2: Node = fs.fires.get(FireService.id_of(other))
 	if f2:
@@ -3969,6 +3979,7 @@ func _smoke_v7a_fire() -> bool:
 		f2.set("spread_t", fs.style().spread_seconds)
 	await _frames(3)
 	_check(fs.spreads > spreads and fs.fires.size() >= 2, "fire spread to a neighbour (spreads %d, burning %d)" % [fs.spreads, fs.fires.size()])
+	fs.truck.place(truck_pos, 0.0)
 	var amb := _v6b().ambulance if _v6b() else null
 	_check(amb != null and (fs.has_meta(&"amb_standby") or amb.state != AmbulanceService.State.IDLE), "ambulance on standby")
 	for id in fs.fires.keys():
