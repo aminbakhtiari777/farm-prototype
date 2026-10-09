@@ -248,6 +248,12 @@ func _hard_hit(w6: V6bWorld, ar: AccidentResponse) -> bool:
 	var car := _town_car()
 	if car == null:
 		return false
+	# Earlier gearbox tests may leave this shared car in first gear.
+	var systems := car.get_node_or_null(^"CarSystems") as CarSystems
+	if systems:
+		systems.set_auto(true)
+		systems.state()["fuel"] = 100.0
+		systems.state()["condition"] = 100.0
 	var amb := w6.ambulance
 	var pol := w6.police
 	amb.reset()
@@ -267,7 +273,9 @@ func _hard_hit(w6: V6bWorld, ar: AccidentResponse) -> bool:
 	var fwd := Vector3(sin(yaw), 0, cos(yaw))
 	var right := Vector3(-fwd.z, 0, fwd.x)
 	var spot := c0 + fwd * (car.size.z * 0.5 + 3.0)
-	var bots := _free_bots(6)
+	# Hit reactions use a real-time cooldown. Headless physics can execute the
+	# light-hit scenario in less than that cooldown, so use a different victim.
+	var bots := _free_bots(6, [ar.last_hit.get("person")])
 	if bots.size() < 5:
 		t._check(false, "enough townspeople for the crowd test (%d)" % bots.size())
 		return false

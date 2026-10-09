@@ -413,10 +413,10 @@ func _build_tree() -> void:
 
 	var sm := AnimationNodeStateMachine.new()
 	var loco := AnimationNodeBlendSpace1D.new()
-	loco.add_blend_point(_clip("Idle"), 0.0, -1, &"idle")
-	loco.add_blend_point(_clip("Walk"), WALK_CLIP_SPEED, -1, &"walk")
-	loco.add_blend_point(_clip("Jog_Fwd"), JOG_CLIP_SPEED, -1, &"jog")
-	loco.add_blend_point(_clip("Sprint"), SPRINT_CLIP_SPEED, -1, &"sprint")
+	loco.add_blend_point(_clip("Idle"), 0.0)
+	loco.add_blend_point(_clip("Walk"), WALK_CLIP_SPEED)
+	loco.add_blend_point(_clip("Jog_Fwd"), JOG_CLIP_SPEED)
+	loco.add_blend_point(_clip("Sprint"), SPRINT_CLIP_SPEED)
 	loco.min_space = 0.0
 	loco.max_space = 8.0
 	loco.sync = true

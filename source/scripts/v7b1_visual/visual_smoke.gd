@@ -134,8 +134,11 @@ func run_cars() -> bool:
 		var sw := dc.model_root.find_child("SteeringWheel", true, false) as SteeringWheel
 		# Stand next to the car (far cars may be put to sleep by the perf layer).
 		await t._place(Vector2(dc.global_position.x + 3.5, dc.global_position.z), 0.0, 5)
+		var processing := dc.is_physics_processing()
+		dc.set_physics_process(false)
 		dc.steer_amount = 1.0
-		await t._frames(3)
+		await _tree().process_frame
+		await _tree().process_frame
 		if is_equal_approx(sw.amount, 0.0):
 			print("  steer probe: can_process=%s car=%s front=%d" % [sw.can_process(), sw.get(&"_car"), (sw.get(&"_front") as Array).size()])
 		var rim := sw.get_node(^"Rim") as Node3D
@@ -143,10 +146,13 @@ func run_cars() -> bool:
 		var fw := dc.model_root.find_child("Wheel_FL", true, false) as Node3D
 		var fwy: float = fw.rotation.y if fw else 0.0
 		dc.steer_amount = -1.0
-		await t._frames(3)
+		await _tree().process_frame
+		await _tree().process_frame
 		var right := rim.rotation.z
 		dc.steer_amount = 0.0
-		await t._frames(2)
+		await _tree().process_frame
+		await _tree().process_frame
+		dc.set_physics_process(processing)
 		t._check(absf(left) > 1.5 and signf(left) != signf(right) and is_equal_approx(sw.amount, 0.0), "steering wheel turns left %.0f deg / right %.0f deg with steer_amount" % [rad_to_deg(left), rad_to_deg(right)])
 		t._check(absf(fwy) > 0.3, "front wheels steer (%.0f deg)" % rad_to_deg(fwy))
 		var eye := CarBody.CockpitEye.eye(dc.size)
@@ -274,7 +280,7 @@ func run_town() -> bool:
 		if b.kind != "home":
 			continue
 		homes += 1
-		if b.sign_label != null:
+		if b.sign_label != null and not DoorPlaques.text_for(b).is_empty():
 			roof_boards += 1
 		var lab := b.find_child("FamilyPlaqueLabel", true, false) as Label3D
 		if lab:
@@ -286,6 +292,9 @@ func run_town() -> bool:
 			if lab.global_position.distance_to(dp) > 2.6:
 				bad_text.append("%s far from door" % b.layout_id)
 	t._check(roof_boards == 0, "no family boards on home roofs (%d left)" % roof_boards)
+	var farmhouse := town.buildings.get("farmhouse") as Building
+	t._check(farmhouse != null and farmhouse.sign_label != null,
+		"farmhouse keeps its sign when it has no family plaque")
 	t._check(plaques >= homes - 1 and plaques >= 15, "family plaque by the door on %d / %d homes" % [plaques, homes])
 	t._check(bad_text.is_empty(), "plaques read 'خانواده آقای ...' %s" % [bad_text.slice(0, 3)])
 	var ahmadi := town.buildings.get("maple3") as Building
@@ -411,7 +420,8 @@ func run_city_hall() -> bool:
 	var mgr := ch.staffing.holder("city_manager")
 	t._check(mgr != null and mgr.display_name == "Omid", "manager is Omid Hosseini")
 	ch.staffing.release_all()
-	ch.staffing.auto = true
+	# Leave background staffing disabled for the remaining smoke sections.
+	ch.staffing.auto = false
 	cf._unhandled_input(ev)
 	await t._frames(2)
 	t._check(cf.panel.visible, "F4 inside City Hall opens the fund panel")

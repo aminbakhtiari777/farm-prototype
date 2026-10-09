@@ -157,6 +157,19 @@ func run_streaming() -> bool:
 	t._check(far_b != null and far_b.visible, "streaming: far building exterior still drawn (LOD handles it)")
 	var awake0 := ws.awake_units()
 	t._check(awake0 < ws.unit_count(), "streaming: only %d / %d units awake at the farm" % [awake0, ws.unit_count()])
+	var late := Node3D.new()
+	_tree().current_scene.add_child(late)
+	late.global_position = far_b.global_position + Vector3(1, 0, 1)
+	ws.register(late, late.global_position)
+	t._check(late.process_mode == Node.PROCESS_MODE_DISABLED and not late.visible,
+		"streaming: late content in a sleeping cell starts dormant")
+	ws.call("_update_queues", false)
+	ws.call("_update_queues", false)
+	var pending: Array = ws.get("_queue_in")
+	var unique := {}
+	for key in pending:
+		unique[key] = true
+	t._check(unique.size() == pending.size(), "streaming: repeated updates do not duplicate pending cells")
 	# Builders: called when their cell first loads.
 	var hits := []
 	ws.register_builder(func(k: Vector2i, _r: Rect2) -> void: hits.append(k))
@@ -166,12 +179,28 @@ func run_streaming() -> bool:
 	await _frames(3)
 	t._check(far_b.process_mode != Node.PROCESS_MODE_DISABLED, "streaming: teleport wakes the building's cell at once")
 	t._check(ws.is_loaded(bp), "streaming: cell under the player loaded")
+	t._check(late.process_mode != Node.PROCESS_MODE_DISABLED and late.visible,
+		"streaming: approaching wakes late content too")
 	t._check(hits.size() > 0, "streaming: progressive cell builders ran (%d cells)" % hits.size())
 	# Back to the farm: the town cell sleeps again (unload with hysteresis).
 	await t._place(Vector2(-3, 7.5), 180.0, 4)
 	ws.call("_update_queues", true)
 	ws.call("_drain", 999.0)
 	t._check(far_b.process_mode == Node.PROCESS_MODE_DISABLED, "streaming: leaving unloads the far cell again")
+	late.queue_free()
+	# Exercise the actual town's deferred builder, without eagerly populating
+	# its fixture. A distant job must wait and run exactly once on approach.
+	var town := t._town as TownBuilder
+	var jobs := []
+	town._queue_prop(Vector2(1000, 1000), func() -> void: jobs.append(true))
+	town.build_nearby_props()
+	t._check(jobs.is_empty(), "town: distant furniture stays uninstantiated")
+	var old_pos: Vector3 = t._player.global_position
+	t._player.global_position = Vector3(1000, 0, 1000)
+	town.build_nearby_props()
+	town.build_nearby_props()
+	t._check(jobs.size() == 1, "town: approaching builds pending furniture exactly once")
+	t._player.global_position = old_pos
 	return true
 
 

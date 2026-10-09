@@ -18,15 +18,15 @@ Usage:
                              [--web-out DIR] [--web-build DIR]
 """
 from __future__ import annotations
-import hashlib, json, os, re, shutil, subprocess, sys, time
+import hashlib, json, os, re, shutil, socket, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-GODOT = os.path.expanduser("~/godot/godot")
+GODOT = os.environ.get("GODOT", shutil.which("godot") or os.path.expanduser("~/godot/godot"))
 STATE = Path("/workspace/farm-v7b1-gate-state.json")
 PUBLISHED = Path("/tmp/farm-pages")
 MODULES_DIR = ROOT / "modules"
-PWVENV = Path("/tmp/pwvenv/bin/python")
+PWVENV = Path(os.environ.get("FARM_TEST_PYTHON", sys.executable))
 DEFAULT_WEB_BUILD = Path("/workspace/farm-prototype-v7b1-webbuild")
 DEFAULT_WEB_OUT = Path("/workspace/farm-prototype-v7b1-web")
 
@@ -387,10 +387,12 @@ def step_smoke() -> bool:
     r = run([GODOT, "--headless", "--path", str(ROOT), "--", "--smoke-test"], timeout=900)
     # Keep the last 80 lines of the smoke report.
     lines = (r.stdout + r.stderr).splitlines()
+    Path("/workspace/farm-full-smoke-last.log").write_text(r.stdout + r.stderr)
     for line in lines:
         if line.startswith("-- ") or "[FAIL]" in line or line.startswith("SMOKE ") or "SCRIPT ERROR" in line or line.startswith("ERROR:"):
             log(line)
-    ok = r.returncode == 0 and any("SMOKE TEST PASSED" in l for l in lines)
+    ok = (r.returncode == 0 and any("SMOKE TEST PASSED" in l for l in lines)
+          and not any("SCRIPT ERROR:" in l for l in lines))
     for l in lines:
         m = re.search(r"SMOKE TEST: (\d+) checks, (\d+) failed", l)
         if m:
@@ -453,7 +455,7 @@ def step_web_export(web_build: Path, web_out: Path) -> bool:
              str(web_out / "index.html")], timeout=900)
     # Godot prints progress to stderr; success ends with "failed: 0" or exit 0 + index.pck.
     pck = web_out / "index.pck"
-    ok = pck.exists() and pck.stat().st_size > 1_000_000
+    ok = r.returncode == 0 and pck.exists() and pck.stat().st_size > 1_000_000
     if not ok:
         sys.stderr.write((r.stdout + r.stderr)[-3000:])
     log("WEB EXPORT: %s (index.pck %s bytes)" % ("PASS" if ok else "FAIL",
@@ -461,28 +463,33 @@ def step_web_export(web_build: Path, web_out: Path) -> bool:
     return ok
 
 
-def step_chrome(web_out: Path, port: int = 8767) -> bool:
+def step_chrome(web_out: Path, port: int = 0) -> bool:
     log("\n=== HEADLESS CHROME ===")
     if not PWVENV.exists():
         log("WEB CHROME: FAIL (no /tmp/pwvenv)")
         return False
     # Serve the build.
+    if port == 0:
+        with socket.socket() as listener:
+            listener.bind(("127.0.0.1", 0))
+            port = listener.getsockname()[1]
     srv = subprocess.Popen([sys.executable, "-u", "-m", "http.server", str(port)],
                            cwd=web_out, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     try:
         time.sleep(0.8)
         out_png = Path("/workspace/farm-v7b1-web-local.png")
         test = Path("/tmp/webtest_v7b1_gate.py")
-        test.write_text('''import asyncio, time, sys
+        test.write_text('''import asyncio, base64, time, sys, shutil
+from pathlib import Path
 from playwright.async_api import async_playwright
 URL = sys.argv[1]; OUT = sys.argv[2]; WAIT = int(sys.argv[3]) if len(sys.argv) > 3 else 22000
 async def main():
     async with async_playwright() as p:
-        browser = await p.chromium.launch(channel="chrome", headless=True, args=[
+        browser = await p.chromium.launch(executable_path=shutil.which("chromium") or shutil.which("google-chrome"), headless=True, args=[
             "--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist",
-            "--enable-webgl", "--use-gl=angle", "--autoplay-policy=user-gesture-required"])
+            "--enable-webgl", "--use-gl=angle", "--no-sandbox", "--autoplay-policy=user-gesture-required"])
         logs = []
-        page = await browser.new_page(viewport={"width": 1600, "height": 900})
+        page = await browser.new_page(viewport={"width": 640, "height": 360})
         t0 = time.time()
         page.on("console", lambda m: logs.append((round(time.time()-t0,1), m.type, m.text)))
         page.on("pageerror", lambda e: logs.append((round(time.time()-t0,1), "pageerror", str(e))))
@@ -502,16 +509,26 @@ async def main():
                     return True
                 await page.keyboard.press("Enter")
                 await page.wait_for_timeout(900)
-            await page.wait_for_timeout(2500)
+            deadline = time.time() + 90
+            while time.time() < deadline and not any("ENTRY: in game" in l[2] for l in logs[mark[0]:]):
+                await page.wait_for_timeout(500)
             return any("ENTRY: in game" in l[2] for l in logs[mark[0]:])
         mark = [0]
         entered1 = await enter_game()
         print("entry flow -> single-player:", entered1)
         await page.wait_for_timeout(1500)
-        await page.mouse.click(800, 500)
+        await page.mouse.click(320, 180)
         await page.keyboard.down("KeyW"); await page.wait_for_timeout(1200); await page.keyboard.up("KeyW")
         await page.wait_for_timeout(5000)
-        await page.screenshot(path=OUT)
+        async def capture(path):
+            # Snapshot the current compositor surface without waiting for a new
+            # WebGL frame, which can starve on software-only rendering hosts.
+            session = await page.context.new_cdp_session(page)
+            result = await asyncio.wait_for(session.send("Page.captureScreenshot", {
+                "format": "png", "fromSurface": False, "captureBeyondViewport": False}), 45)
+            Path(path).write_bytes(base64.b64decode(result["data"]))
+            await session.detach()
+        await capture(OUT)
         errs = [l for l in logs if l[1] in ("error", "pageerror")
                 and "AudioWorklet" not in l[2] and "AudioContext" not in l[2]
                 and "ALSA" not in l[2]]
@@ -519,7 +536,7 @@ async def main():
         for l in errs: print("   ", l)
         for l in logs[:12]: print("    log:", l)
         # Web save must survive a page reload (v3 bug): F5, reload, F9.
-        await page.mouse.click(800, 500)
+        await page.mouse.click(320, 180)
         await page.wait_for_timeout(800)
         await page.keyboard.press("F5")
         await page.wait_for_timeout(2500)
@@ -535,7 +552,7 @@ async def main():
         await page.wait_for_timeout(1500)
         after = await page.evaluate(probe)
         print("save still there after reload:", after, "bytes")
-        await page.mouse.click(800, 500)
+        await page.mouse.click(320, 180)
         await page.wait_for_timeout(800)
         await page.keyboard.press("F9")
         await page.wait_for_timeout(2000)
@@ -544,7 +561,7 @@ async def main():
         errs2 = [l for l in logs[n0:] if l[1] in ("error", "pageerror")]
         print("console errors after reload:", len(errs2))
         for l in errs2: print("   ", l)
-        await page.screenshot(path=OUT.replace(".png", "-reload-f9.png"))
+        await capture(OUT.replace(".png", "-reload-f9.png"))
         await browser.close()
         print("websockets opened (must be 0, offline by default):", len(sockets), sockets[:3])
         print("requests to other hosts (must be 0):", len(foreign), foreign[:3])
@@ -553,7 +570,7 @@ async def main():
 asyncio.run(main())
 ''')
         r = run([str(PWVENV), "-u", str(test), f"http://127.0.0.1:{port}/", str(out_png), "22000"],
-                timeout=180)
+                timeout=420)
         sys.stdout.write(r.stdout); sys.stderr.write(r.stderr)
         ok = r.returncode == 0
         log("CHROME: " + ("PASS" if ok else "FAIL"))

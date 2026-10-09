@@ -17,6 +17,8 @@ static func style_id() -> String:
 	var k := key()
 	if k in ["low", "medium", "high"]:
 		return k
+	if ControlInput.touch_device_available() and (OS.has_feature("web") or OS.has_feature("mobile")):
+		return "low"
 	return "medium" if OS.has_feature("web") else "high"
 
 

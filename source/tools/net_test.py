@@ -17,7 +17,7 @@ import json, math, os, shutil, signal, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-GODOT = os.path.expanduser("~/godot/godot")
+GODOT = os.environ.get("GODOT", "godot")
 WORK = Path("/tmp/v7b1-net")
 PORT = int(sys.argv[sys.argv.index("--port") + 1]) if "--port" in sys.argv else 8931
 URL = "ws://127.0.0.1:%d" % PORT
@@ -327,8 +327,12 @@ def main() -> int:
         pa = status("A")["pos"]
         send("A", "walk", dir=[0, -1], secs=1.5, speed=2.6)
         send("A", "money", value=5555)
-        time.sleep(3.0)
-        check(status("A").get("frames", 0) > f0 + 60 and dist(pa, status("A")["pos"]) > 2.0, "A keeps playing locally (walked %.1f m)" % dist(pa, status("A")["pos"]))
+        # Wait for simulated movement rather than assuming three wall-clock
+        # seconds include enough physics ticks on a busy CI host.
+        moving = wait(lambda: status("A").get("frames", 0) > f0 + 60
+                      and dist(pa, status("A").get("pos", pa)) > 2.0,
+                      15, "offline movement")
+        check(moving, "A keeps playing locally (walked %.1f m)" % dist(pa, status("A")["pos"]))
         send("A", "save_now")
         check(wait(lambda: status("A").get("has_local_save") is True, 10, "local save"), "offline progress is saved locally")
         check(money_on_server(guest_a) == 4321, "server still has the old copy while it is down")

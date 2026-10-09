@@ -330,6 +330,22 @@ func run_touch() -> bool:
 	_touch(1, rp, false)
 	await _flush()
 	t._check(ControlInput.touch_look == Vector2.ZERO, "right stick released")
+	# Lost browser focus / resize must never leave the farmer walking forever.
+	_touch(8, lp, true)
+	_drag(8, lp + Vector2(0, -tc.radius), Vector2(0, -tc.radius))
+	_touch(9, rp, true)
+	_drag(9, rp + Vector2(tc.radius, 0), Vector2(tc.radius, 0))
+	await _flush()
+	tc.notification(Node.NOTIFICATION_APPLICATION_FOCUS_OUT)
+	await _flush()
+	t._check(ControlInput.touch_move == Vector2.ZERO and ControlInput.touch_look == Vector2.ZERO \
+		and tc.left.finger == -1 and tc.right.finger == -1, "losing focus releases both sticks")
+	_touch(8, lp, true)
+	_drag(8, lp + Vector2(0, -tc.radius), Vector2(0, -tc.radius))
+	await _flush()
+	tc._layout()
+	await _flush()
+	t._check(ControlInput.touch_move == Vector2.ZERO and tc.left.finger == -1, "resizing releases the movement stick")
 	# Amin: stick angle - diagonals walk at the pushed angle relative to the camera,
 	# at any camera yaw; the right stick also turns the camera vertically.
 	t._rig.snap_view(37.0, -20.0, 6.0)

@@ -15,7 +15,7 @@ for name in os.listdir(DST):
         full = os.path.join(DST, name)
         shutil.rmtree(full) if os.path.isdir(full) and not os.path.islink(full) else os.remove(full)
 for name in os.listdir(SRC):
-    if name in (".godot", "devtmp", "export_presets.cfg"):
+    if name in (".godot", ".git", ".github", "devtmp", "builds", "export_presets.cfg"):
         continue
     full = os.path.join(SRC, name)
     if os.path.isdir(full):
@@ -34,7 +34,7 @@ def patch(path, subs):
 
 patch("project.godot", [
     ('config/name="Farm Town"', 'config/name="Farm Town (Web)"'),
-    ('PackedStringArray("4.7", "Forward Plus")', 'PackedStringArray("4.7", "GL Compatibility")'),
+    ('PackedStringArray("4.7", "Forward Plus")', 'PackedStringArray("4.6", "GL Compatibility")'),
     ("[rendering]\n", "[farm]\n\nnature_density=0.27\n\n[rendering]\n\nrenderer/rendering_method=\"gl_compatibility\"\n"
                       "renderer/rendering_method.mobile=\"gl_compatibility\"\ntextures/vram_compression/import_etc2_astc=true\n"),
     ("anti_aliasing/quality/screen_space_aa=1\n", ""),
@@ -97,7 +97,7 @@ for dup in ("T_Hair_1_Normal_png.png", "T_Hair_1_BaseColor.png", "T_Hair_2_Norma
             os.remove(os.path.join(chars, dup + ext))
 WEB_EXCLUDE = ("README.md, *.md, tools/*, devtmp/*, docs/*, server/*, builds/*, scripts/tools/dev_tools.gd, scripts/tools/dev_shots.gd, "
                "scripts/tools/net_test_driver.gd, *_smoke.gd, *_shots.gd, scripts/v7b1_perf/perf_profiler.gd, assets/icons/ios/*, assets/icons/android_*, assets/icons/*.icns, assets/icons/*.ico")
-preset = open("/workspace/farm-prototype-webbuild/export_presets.cfg").read()
+preset = open(os.path.join(SRC, "config/web_export_presets.cfg")).read()
 preset = preset.replace('export_path="../farm-prototype-web/index.html"', 'export_path="%s/index.html"' % OUT)
 preset = preset.replace('exclude_filter="README.md, *.md, tools/*"', 'exclude_filter="%s"' % WEB_EXCLUDE)
 assert WEB_EXCLUDE in preset

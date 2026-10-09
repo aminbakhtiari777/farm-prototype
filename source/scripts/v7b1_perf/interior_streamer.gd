@@ -131,6 +131,8 @@ func _process(delta: float) -> void:
 			continue
 		var d := a.global_position.distance_to(p.global_position)
 		if not e["built"] and d < float(e["radius"]):
+			if not can_build_now():
+				continue
 			e["built"] = true
 			(e["build"] as Callable).call()
 		elif e["built"] and d > float(e["radius"]) + 15.0:

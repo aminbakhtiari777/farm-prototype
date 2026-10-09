@@ -25,6 +25,8 @@ var buildings: Dictionary = {}  ## id -> Building
 var _chunks: Dictionary = {}  ## Vector2i -> Node3D (static meshes to merge)
 var _body: StaticBody3D
 var _mat_cache: Dictionary = {}
+var _pending_props: Array = []
+var _merge_generation: int = 0
 
 
 func _ready() -> void:
@@ -740,15 +742,16 @@ func _build_street_furniture() -> void:
 	for s in spots:
 		var p: Vector2 = s[0]
 		var yaw: float = s[1]
-		bench(Vector3(p.x, ground(p.x, p.y), p.y), yaw)
-		var tp := p + Vector2(cos(yaw), -sin(yaw)) * 1.25
-		trash_bin(Vector3(tp.x, ground(tp.x, tp.y), tp.y))
+		_queue_prop(p, func() -> void:
+			bench(Vector3(p.x, ground(p.x, p.y), p.y), yaw)
+			var tp := p + Vector2(cos(yaw), -sin(yaw)) * 1.25
+			trash_bin(Vector3(tp.x, ground(tp.x, tp.y), tp.y)))
 	# Planters along Main St.
 	for x: float in [-30.0, -18.0, 18.0, 30.0, 44.0, 64.0]:
 		for z: float in [-45.4, -54.6]:
 			if _near_door(Vector2(x, z), 3.0) or _in_building(Vector2(x, z), 0.8):
 				continue
-			planter(Vector3(x, ground(x, z), z))
+			_queue_prop(Vector2(x, z), func() -> void: planter(Vector3(x, ground(x, z), z)))
 	# Hedge along the farm's north edge and the farm cart.
 	var hedge := _mat("hedge", Color(0.2, 0.36, 0.14), 0.95)
 	for k in 6:
@@ -867,12 +870,53 @@ func _build_street_signs() -> void:
 				add_child(l)
 
 
+## Keep distant furniture uninstantiated until the player approaches. Collision
+## is created along with the visual, well outside interaction distance.
+func _queue_prop(pos: Vector2, build: Callable) -> void:
+	_pending_props.append({"pos": pos, "build": build})
+
+
+func _process(_delta: float) -> void:
+	build_nearby_props()
+
+
+func build_nearby_props(force: bool = false) -> void:
+	var player := get_tree().get_first_node_in_group(&"player") as Node3D
+	if player == null and not force:
+		return
+	var centre := Vector2(player.global_position.x, player.global_position.z) if player else Vector2.ZERO
+	var quality := PerfQuality.style()
+	var radius := maxf(45.0, quality.stream_radius) if quality else 65.0
+	var start := Time.get_ticks_usec()
+	var changed := false
+	for i in range(_pending_props.size() - 1, -1, -1):
+		var job: Dictionary = _pending_props[i]
+		if not force and centre.distance_to(job["pos"]) > radius:
+			continue
+		_pending_props.remove_at(i)
+		(job["build"] as Callable).call()
+		changed = true
+		# One batch per frame; distant jobs stay pending, rather than catching up
+		# all at once after a teleport.
+		if not force and Time.get_ticks_usec() - start >= 1500:
+			break
+	if changed:
+		_merge_chunks()
+
+
 func _merge_chunks() -> void:
+	_merge_generation += 1
 	for key in _chunks:
 		var n: Node3D = _chunks[key]
-		var merged := MeshMerger.merge_children(n, self, "StreetProps_%d_%d" % [key.x, key.y])
+		var merged := MeshMerger.merge_children(n, self, "StreetProps_%d_%d_%d" % [key.x, key.y, _merge_generation])
 		merged.visibility_range_end = PROP_VISIBILITY
 		merged.visibility_range_end_margin = 10.0
 		merged.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
 		add_child(merged)
+		# The streamer's initial scan runs once. Later furniture batches must
+		# register themselves so cell sleeping also covers these new meshes.
+		var streamer := get_tree().get_first_node_in_group(&"world_streamer") as WorldStreamer
+		if streamer and streamer._scanned:
+			streamer.register(merged, merged.global_transform * merged.get_aabb().get_center(), true)
 		n.queue_free()
+	_chunks.clear()
