@@ -406,6 +406,8 @@ func _drop_rider(r: Dictionary, k: int) -> void:
 	if k >= 0 and k < stops.size():
 		var side: Vector2 = stops[k]["side"]
 		b.global_position = TrafficKit.ground(side) + Vector3(randf_range(-0.8, 0.8), 0.05, 0.6)
+	# Do not pick the same resident straight back up at the arrival stop.
+	b.set_meta(&"bus_alight_until", Time.get_ticks_msec() + 10000)
 	if b.controller == sc:
 		b.set_controller(V7bKit.original_of(sc))
 
@@ -421,6 +423,8 @@ func _load(vehicle: Node3D, k: int, pay_player: bool = false) -> int:
 		if n >= 2 or riders.size() >= st.max_riders:
 			break
 		if b.hidden_inside or b.resident.is_empty() or int(b.resident.get("age", 0)) < 12:
+			continue
+		if Time.get_ticks_msec() < int(b.get_meta(&"bus_alight_until", 0)):
 			continue
 		if not (b.controller is ScheduleController) or b.global_position.distance_to(here) > 14.0:
 			continue

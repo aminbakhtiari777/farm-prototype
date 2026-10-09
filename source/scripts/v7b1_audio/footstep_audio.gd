@@ -136,6 +136,11 @@ func _physics_process(delta: float) -> void:
 		_pick_npcs(st)
 	for id in _tracked.keys():
 		var rec: Array = _tracked[id]
+		# Population swaps can free actors between refreshes of this cache.
+		# A freed Variant must be checked before casting it to a script class.
+		if not is_instance_valid(rec[0]):
+			_tracked.erase(id)
+			continue
 		var bot := rec[0] as TownspersonBot
 		if bot == null or not is_instance_valid(bot) or not bot.is_inside_tree():
 			_tracked.erase(id)

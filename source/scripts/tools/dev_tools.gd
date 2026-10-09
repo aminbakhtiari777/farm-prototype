@@ -132,6 +132,11 @@ func _section(title: String) -> void:
 	print("-- " + title)
 	_release_all()
 	GameEvents.close_all_modals()
+	# Opening a shop explicitly assigns staff, even with automatic simulation
+	# disabled. Return those shared actors before the next independent section.
+	for staffing in get_tree().get_nodes_in_group(&"staffing"):
+		staffing.auto = false
+		staffing.release_all()
 	await _frames(2)
 
 
@@ -168,6 +173,12 @@ func _run_smoke_test() -> void:
 	Ranch.sim_enabled = false
 	Ranch.reset()
 	Settings.set_value("dialogue_language", "fa")
+	# City Hall has its own Staffing, separate from the cafe/garage instance.
+	# Disable all background staffing while deterministic fixtures own actors.
+	for node in get_tree().current_scene.find_children("*", "Node", true, false):
+		if node is Staffing:
+			node.auto = false
+			node.release_all()
 	# v7a: no random kids' play / arguments / storm cuts / quakes outside their own sections.
 	var w7 := _v7a()
 	if w7:
@@ -839,7 +850,7 @@ func _smoke_ui() -> bool:
 	var tabs: Array[String] = []
 	for c in cm.tabs.get_children():
 		tabs.append(str(c.name))
-	_check(tabs == ["Movement", "Camera", "Interaction & Tools", "Time & World", "Voice", "Online (beta)", "Character & Car", "Town Life", "System"], "categories %s" % str(tabs))
+	_check(tabs == ["Movement", "Camera", "Interaction & Tools", "Time & World", "Voice", "Online (beta)", "Character & Car", "Town Life", "System", "MouseTouch"], "categories %s" % str(tabs))
 	await _tap(&"menu")
 	_check(not cm.visible, "Esc closes the Controls menu")
 	var missing := ControlsMenu.uncategorized_actions()
@@ -2321,15 +2332,18 @@ func _smoke_v4_npc_social() -> bool:
 		sc.social_cooldown = 0.0
 	a.global_position = Vector3(c.x - 0.8, Terrain.height_at(c.x, c.y - 3.0) + 0.1, c.y - 3.0)
 	b.global_position = Vector3(c.x + 0.8, Terrain.height_at(c.x, c.y - 3.0) + 0.1, c.y - 3.0)
+	# Keep unrelated random chats from changing this exact-count fixture.
+	social.set_physics_process(false)
 	var n0 := social.chats_started
 	_check(social.start_chat(a, b), "two townspeople start a chat")
+	_check(social.chats_started == n0 + 1, "chat counted")
+	social.set_physics_process(true)
 	_check((a.controller as ScheduleController).chat_timer > 0.0 and (b.controller as ScheduleController).chat_timer > 0.0, "both stop and face each other")
 	_check((a.get("_bubble") as Label3D).visible and (a.get("_bubble") as Label3D).text != "", "speech bubble: '%s'" % (a.get("_bubble") as Label3D).text)
 	var t0 := Time.get_ticks_msec()
 	while Time.get_ticks_msec() - t0 < 4000:
 		await get_tree().physics_frame
 	_check((b.get("_bubble") as Label3D).visible, "partner replies: '%s'" % (b.get("_bubble") as Label3D).text)
-	_check(social.chats_started == n0 + 1, "chat counted")
 	var r0 := social.reactions
 	var other := bots[2] as TownspersonBot
 	social.react(other, _player)
@@ -2607,7 +2621,8 @@ func _smoke_v5a_population() -> bool:
 	var text := ""
 	for l in pp.find_children("*", "Label", true, false):
 		text += (l as Label).text + " "
-	_check(text.contains("Karimi") and text.contains("Haddad"), "directory lists the families")
+	_check(text.contains(Families.surname_text({"surname": "Karimi"}))
+		and text.contains(Families.surname_text({"surname": "Haddad"})), "directory lists the families in the selected language")
 	await _tap(&"people_panel")
 	_check(not pp.visible, "J closes it")
 	return true
@@ -3574,7 +3589,7 @@ func _smoke_v6b_town() -> bool:
 	kind = w.gardens.pick(j, _player)
 	_check(kind == "theft" and w.gardens.thefts >= 1, "theft counted (%d)" % w.gardens.thefts)
 	_check(WorldMemory.reports.size() >= 1, "fruit theft filed a police report")
-	_check(w.lots.lots.size() >= 2, "extra lots (%d)" % w.lots.lots.size())
+	_check(w.lots.lots.size() == (Modules.style("town_lots") as TownLotsStyle).lots.size() and not w.lots.lots.is_empty(), "configured extra lots (%d)" % w.lots.lots.size())
 	_check(_swap_back("landmark"), "landmark live swap")
 	return true
 
@@ -3732,7 +3747,7 @@ func _smoke_v7a_backstories() -> bool:
 	var card := _hud.get("npc_card") as NpcCard
 	if card:
 		card.show_for(b)
-		await _frames(3)
+		# Inspect show_for before the proximity scanner chooses a different NPC.
 		var sl := card.find_child("Story", true, false) as Label
 		_check(sl != null and sl.visible and sl.text.contains("کیسه"), "NPC card shows the story + memory")
 		card._hide()
@@ -3828,7 +3843,8 @@ func _smoke_v7a_conflicts() -> bool:
 	var pp := _v6b().police if _v6b() else null
 	_check(pp != null and (pp.responding or pp.car.flashing), "police called")
 	c.active["t"] = c.style().duration + 0.5
-	await _frames(3)
+	await get_tree().process_frame
+	await get_tree().process_frame
 	_check(not c.is_arguing() and c.settled_by_police >= 1 and WorldMemory.reports.size() > reports, "police settled it + report filed")
 	if pp:
 		pp.responding = false
@@ -4564,10 +4580,11 @@ func _smoke_v7b_save() -> bool:
 	TownLife.tipsy = 0.0
 	TownLife.show_log = false
 	SaveGame.apply(data)
+	# Assert restored timers before gameplay resumes decrementing them.
+	_check(TownLife.tipsy == 12.0 and TownLife.show_log, "tipsy + chat log setting restored")
 	await _frames(2)
 	var c := TownLife.car("test_car")
 	_check(float(c["fuel"]) == 42.0 and float(c["condition"]) == 77.0 and "led_lights" in c["upgrades"], "car state restored")
-	_check(TownLife.tipsy == 12.0 and TownLife.show_log, "tipsy + chat log setting restored")
 	TownLife.cars.erase("test_car")
 	TownLife.tipsy = 0.0
 	TownLife.show_log = false

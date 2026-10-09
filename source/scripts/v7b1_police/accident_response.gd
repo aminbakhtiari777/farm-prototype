@@ -36,6 +36,23 @@ func style() -> RoadSafetyStyle:
 
 func _ready() -> void:
 	_rng.randomize()
+	get_tree().node_added.connect(_watch_car)
+	for car in get_tree().get_nodes_in_group(&"drivable_cars"):
+		_watch_car(car)
+
+
+func _watch_car(node: Node) -> void:
+	if node is DrivableCar:
+		var car := node as DrivableCar
+		var callback := _physical_hit.bind(car)
+		if not car.pedestrian_hit.is_connected(callback):
+			car.pedestrian_hit.connect(callback)
+
+
+func _physical_hit(person: Node3D, impact_speed: float, car: DrivableCar) -> void:
+	var st := style()
+	if auto and st and st.enabled and impact_speed * 3.6 >= st.hit_min_kmh:
+		register_hit(person, car, impact_speed * 3.6)
 
 
 func _v6b() -> V6bWorld:

@@ -272,6 +272,8 @@ func run_offences() -> bool:
 		var tow: Dictionary = tw.impound.tows[0]
 		var truck := tow["truck"] as RoadCar
 		var p0 := truck.global_position
+		# The farmer must not block a safety-aware tow truck after getting out.
+		await t._place(Vector2(p0.x + 15.0, p0.z + 15.0), 0.0)
 		await t._frames(180)
 		t._check(truck.global_position.distance_to(p0) > 3.0 or not tw.impound.tows.has(tow), "tow truck drives off with the car")
 		tw.impound._finish_tow(tow)
@@ -529,7 +531,8 @@ func run_bus() -> bool:
 	tr.bus.path_i = int(tr.bus.stop_idx[k])
 	tr.arrive(k)
 	t._check(tr.bus.at_stop == k and tr.riding_count(tr.bus) >= 1, "bus stops, waiting resident boards (%d)" % tr.riding_count(tr.bus))
-	await t._frames(150)
+	# Boarding includes a bounded 7-second walk-to-door fallback.
+	await t._frames(480)
 	var boarded := false
 	for r: Dictionary in tr.riders:
 		if r["bot"] == bot and bool(r["boarded"]):

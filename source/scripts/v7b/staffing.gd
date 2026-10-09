@@ -15,6 +15,14 @@ var takeovers: int = 0
 var _t: float = 3.0
 
 
+func _ready() -> void:
+	add_to_group(&"staffing")
+	# Some interiors create their own instance after DevTools initializes.
+	# Those instances must use the same deterministic smoke-test policy.
+	if "--smoke-test" in OS.get_cmdline_user_args():
+		auto = false
+
+
 func add_post(role: String, preferred: Array, spot: Vector3, face: Vector3, hours: Vector2) -> void:
 	release(role)
 	posts[role] = {"preferred": preferred, "spot": spot, "face": face, "hours": hours, "holder": null, "standin": false, "for": ""}

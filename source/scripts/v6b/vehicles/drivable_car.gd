@@ -9,6 +9,7 @@ extends CharacterBody3D
 var key: String = ""
 var model_name: String = "sedan"
 var speed: float = 0.0
+signal pedestrian_hit(person: Node3D, impact_speed: float)
 var yaw: float = 0.0
 var steer: float = 0.0
 var driver: Player = null
@@ -231,9 +232,16 @@ func _physics_process(delta: float) -> void:
 	velocity = forward() * speed
 	var before := global_position
 	move_and_slide()
-	if get_slide_collision_count() > 0 and absf(speed) > 3.0:
+	# Report physical contact before collision braking reduces the speed.
+	# A proximity-only detector can otherwise see a severe hit as a stumble.
+	var impact_speed := absf(speed)
+	for i in get_slide_collision_count():
+		var person := get_slide_collision(i).get_collider() as Node3D
+		if person is TownspersonBot or (person is Player and person != driver):
+			pedestrian_hit.emit(person, impact_speed)
+	if get_slide_collision_count() > 0 and impact_speed > 3.0:
 		if sys:
-			sys.on_crash(speed)
+			sys.on_crash(impact_speed)
 		speed *= 0.4
 	var p := global_position
 	p.y = Terrain.height_at(p.x, p.z)
