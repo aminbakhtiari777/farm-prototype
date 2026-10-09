@@ -32,6 +32,11 @@ building exterior during scene initialization. This update splits those costs.
 
 - Focused streaming regressions: 26 checks, zero failures.
 - Focused performance/map checks: 135 checks, zero failures.
+- Full gameplay smoke suite: 2,628 checks, zero failures. Focused emergency
+  response checks: 59; night routines: 58; fire response/spread: 18, all passing.
+- Residents arriving home to sleep now end lingering social conversations.
+  The smoke fixtures isolate normal stamina from exhaustion, observe emergency
+  states before treatment completes, and separate fire spread from nearby hosing.
 - Export splitting verifies every original resource's MD5 and preserves the
   complete resource inventory across the core and optional packs.
 - An isolated Godot project mounted the core and all optional packs, confirmed
@@ -39,7 +44,10 @@ building exterior during scene initialization. This update splits those costs.
   animations with their imported dependencies.
 - Chromium passed menu download timing, model readiness, single-player entry,
   no console errors, persistent save/reload/F9 and offline connection checks.
-- Complete release gate: pending final run.
+- Complete release gate passed: compile 765 files, gameplay 2,628 checks,
+  networking 60 checks, export and Chromium. All checks had zero failures.
+  Core PCK: 5,510,996 bytes, versus 10,587,640 before splitting. All 15
+  exported artifacts are recorded with SHA-256 before publication.
 
 ## Boundaries
 
