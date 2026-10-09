@@ -120,18 +120,28 @@ func _yield_police(w6: V6bWorld, ar: AccidentResponse) -> bool:
 	_put_bot(ped, _at(path, 24.0))
 	var hits0 := ar.hits
 	var speed0 := car.speed
+	var yield_style := RoadSafety.style()
+	var aside_delay := yield_style.step_aside_s
+	# First verify braking against a stationary blocker, then verify the
+	# configured waiting/step-aside behaviour as a separate phase.
+	yield_style.step_aside_s = 30.0
+	for key in [&"rs_wait", &"rs_next", &"rs_cap", &"rs_blocker", &"rs_yielding"]:
+		car.remove_meta(key)
 	car.speed = 10.0   # 36 km/h: needs ~12 m to stop (old check looked 3.2 m past the nose)
 	car.follow(path)
 	await t._frames(2)
 	var min_gap := INF
 	var stopped_f := -1
 	var top := 0.0
-	for i in 240:
+	for i in 480:
 		await t._frames(1)
 		top = maxf(top, car.cur_speed)
 		min_gap = minf(min_gap, _gap(car, car.size.z, car.forward(), ped))
 		if car.cur_speed < 0.05 and stopped_f < 0 and i > 20:
 			stopped_f = i
+			break
+	yield_style.step_aside_s = aside_delay
+	car.set_meta(&"rs_wait", 0.0)
 	t._check(top > 7.0, "police car got up to speed (%.1f km/h)" % (top * 3.6))
 	t._check(stopped_f >= 0 and min_gap > 0.4, "police car stops before the pedestrian (gap %.2f m, stopped at frame %d)" % [min_gap, stopped_f])
 	t._check(ar.hits == hits0, "no contact (hits %d)" % (ar.hits - hits0))
@@ -322,9 +332,11 @@ func _hard_hit(w6: V6bWorld, ar: AccidentResponse) -> bool:
 	var log0 := TownLife.chat_log.size()
 	var amb_f := -1
 	var pol_f := -1
-	var max_still := 0
+	var stayed_down := true
 	for i in 1500:
 		await t._frames(1)
+		if not bool(acc["treated"]):
+			stayed_down = stayed_down and hc != null and v.controller == hc and hc.mode == "down"
 		if amb_f < 0 and str(acc["amb_state"]) in ["treating", "done"]:
 			amb_f = i
 		if pol_f < 0 and str(acc["police_state"]) == "on_scene":
@@ -340,7 +352,7 @@ func _hard_hit(w6: V6bWorld, ar: AccidentResponse) -> bool:
 	t._check(ar.lines_said - lines0 >= 3 and TownLife.chat_log.size() > log0, "crowd chatter (%d lines, chat log +%d)" % [ar.lines_said - lines0, TownLife.chat_log.size() - log0])
 	t._check(amb_f >= 0, "ambulance arrived, paramedics treating (frame %d)" % amb_f)
 	t._check(pol_f >= 0, "police arrived (frame %d)" % pol_f)
-	t._check(hc != null and v.controller == hc and hc.mode == "down", "person stayed down until treated")
+	t._check(stayed_down, "person stayed down until treated")
 	if pol_f < 0:
 		ar._on_police_arrived(acc)
 	if amb_f < 0:

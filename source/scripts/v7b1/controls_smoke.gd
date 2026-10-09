@@ -730,6 +730,9 @@ func run_regress() -> bool:
 	await t._frames(20)
 	t._check(v.current_state() == &"loco" and not v.is_airborne() and v.get_pose() == &"" and p.rest_timer <= 0.0,
 		"Space spam while sprinting: no stuck jump / pose (%s, pose '%s', rest %.1f)" % [v.current_state(), v.get_pose(), p.rest_timer])
+	# Eight jumps can legitimately exhaust the farmer; check the normal-speed
+	# assertion after restoring stamina. Exhausted walking is checked below.
+	p.restore_stamina(p.stamina_max)
 	d = await _walk_test()
 	t._check(d > 1.0, "still walks after the Space spam (%.1f m)" % d)
 	# A jump that empties the stamina must not freeze the farmer in the rest pose.
