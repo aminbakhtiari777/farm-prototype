@@ -188,6 +188,19 @@ func run_streaming() -> bool:
 	ws.call("_drain", 999.0)
 	t._check(far_b.process_mode == Node.PROCESS_MODE_DISABLED, "streaming: leaving unloads the far cell again")
 	late.queue_free()
+	# Exercise the actual town's deferred builder, without eagerly populating
+	# its fixture. A distant job must wait and run exactly once on approach.
+	var town := t._town as TownBuilder
+	var jobs := []
+	town._queue_prop(Vector2(1000, 1000), func() -> void: jobs.append(true))
+	town.build_nearby_props()
+	t._check(jobs.is_empty(), "town: distant furniture stays uninstantiated")
+	var old_pos: Vector3 = t._player.global_position
+	t._player.global_position = Vector3(1000, 0, 1000)
+	town.build_nearby_props()
+	town.build_nearby_props()
+	t._check(jobs.size() == 1, "town: approaching builds pending furniture exactly once")
+	t._player.global_position = old_pos
 	return true
 
 

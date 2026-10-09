@@ -77,7 +77,10 @@ func sync_real_clock(now_minutes: float = -1.0) -> void:
 func set_real_clock(value: bool) -> void:
 	real_clock = value
 	if value:
-		sync_real_clock()
+		# Enabling the mode is an explicit clock change, including backwards.
+		# Subsequent device clock corrections still use sync_real_clock's guard.
+		minutes = real_minutes_now()
+		_emit_clock()
 	settings_changed.emit()
 
 

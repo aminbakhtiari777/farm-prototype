@@ -49,6 +49,10 @@ func _find_actors() -> bool:
 	_rig = get_tree().get_first_node_in_group(&"camera_rig") as FollowCamera
 	_hud = scene.get_node_or_null(^"HUD")
 	_town = scene.get_node_or_null(^"Town") as TownBuilder
+	# Baseline sections inspect furniture throughout the town. Construct that
+	# fixture explicitly; normal gameplay leaves distant props pending.
+	if _town:
+		_town.build_nearby_props(true)
 	return _player != null and _sheep != null and _rig != null and _hud != null and _town != null
 
 

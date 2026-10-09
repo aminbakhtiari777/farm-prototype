@@ -120,7 +120,7 @@ func _auto_scan() -> void:
 	var town := scene.get_node_or_null(^"Town")
 	if town:
 		for c in town.get_children():
-			if c is Node3D and str(c.name).begins_with("Chunk_"):
+			if c is Node3D and not c.is_queued_for_deletion() and (str(c.name).begins_with("Chunk_") or str(c.name).begins_with("StreetProps_")):
 				# important = never hidden (AutoLod visibility ranges fade streets in step
 				# with the buildings standing on them; hiding whole chunks popped roads).
 				var aabb_c := _centre_of(c as Node3D)
