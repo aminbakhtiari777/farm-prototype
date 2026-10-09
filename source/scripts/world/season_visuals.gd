@@ -44,11 +44,11 @@ func _ready() -> void:
 	var wfx: Script = load(_WFX_PATH) if ResourceLoader.exists(_WFX_PATH) else null
 	if wfx and wfx.call("is_enabled"):
 		weather_fx = wfx.new()
-	elif OS.has_feature("web"):
-		print("WEATHER: v4 fallback particles (script %s)" % str(wfx != null))
 		weather_fx.terrain_material = terrain_material
 		weather_fx.grass_material = grass_material
 		add_child(weather_fx)
+	elif OS.has_feature("web"):
+		print("WEATHER: v4 fallback particles (script %s)" % str(wfx != null))
 	_build_particles()
 	TimeManager.season_changed.connect(func(_i: int) -> void: apply())
 	TimeManager.weather_changed.connect(func(_w: String) -> void: apply())

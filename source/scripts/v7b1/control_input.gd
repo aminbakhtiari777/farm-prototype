@@ -44,6 +44,7 @@ var _had_lock: bool = false
 var soft_capture: bool = false
 ## Space presses that were kept from re-pressing a focused UI button (diagnostics).
 var space_guards: int = 0
+var _touch_capability: int = -1
 
 
 func mouse_style() -> MouseControlsStyle:
@@ -75,7 +76,22 @@ func refresh_touch_mode() -> void:
 		"off":
 			set_touch_active(false)
 		_:
-			set_touch_active(touch_seen or (not _headless and DisplayServer.is_touchscreen_available()))
+			set_touch_active(touch_seen or touch_device_available())
+
+
+## iPadOS can identify itself as desktop Safari; use hardware capability.
+func touch_device_available() -> bool:
+	if _headless:
+		return false
+	if _touch_capability >= 0:
+		return _touch_capability == 1
+	_touch_capability = 1 if DisplayServer.is_touchscreen_available() else 0
+	if OS.has_feature("web"):
+		var points: Variant = JavaScriptBridge.eval("navigator.maxTouchPoints || 0", true)
+		if points is float or points is int:
+			if int(points) > 0:
+				_touch_capability = 1
+	return _touch_capability == 1
 
 
 func set_touch_active(on: bool) -> void:
@@ -182,7 +198,8 @@ func _input(event: InputEvent) -> void:
 		# A real mouse click (not one emulated from a touch) means desktop play.
 		if mb.pressed and mb.device != InputEvent.DEVICE_ID_EMULATION and touch_active and not _headless \
 				and str(Settings.get_value("touch_controls")) == "auto":
-			set_touch_active(false)
+			if not touch_device_available():
+				set_touch_active(false)
 		# v7b.1: capture on a click into the game world even when a full-screen HUD
 		# control would swallow the click before _unhandled_input (buttons excluded).
 		if mb.pressed and mb.button_index == MOUSE_BUTTON_LEFT and mb.device != InputEvent.DEVICE_ID_EMULATION \

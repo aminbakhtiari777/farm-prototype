@@ -22,11 +22,11 @@ import hashlib, json, os, re, shutil, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-GODOT = os.path.expanduser("~/godot/godot")
+GODOT = os.environ.get("GODOT", shutil.which("godot") or os.path.expanduser("~/godot/godot"))
 STATE = Path("/workspace/farm-v7b1-gate-state.json")
 PUBLISHED = Path("/tmp/farm-pages")
 MODULES_DIR = ROOT / "modules"
-PWVENV = Path("/tmp/pwvenv/bin/python")
+PWVENV = Path(os.environ.get("FARM_TEST_PYTHON", sys.executable))
 DEFAULT_WEB_BUILD = Path("/workspace/farm-prototype-v7b1-webbuild")
 DEFAULT_WEB_OUT = Path("/workspace/farm-prototype-v7b1-web")
 
@@ -473,12 +473,12 @@ def step_chrome(web_out: Path, port: int = 8767) -> bool:
         time.sleep(0.8)
         out_png = Path("/workspace/farm-v7b1-web-local.png")
         test = Path("/tmp/webtest_v7b1_gate.py")
-        test.write_text('''import asyncio, time, sys
+        test.write_text('''import asyncio, time, sys, shutil
 from playwright.async_api import async_playwright
 URL = sys.argv[1]; OUT = sys.argv[2]; WAIT = int(sys.argv[3]) if len(sys.argv) > 3 else 22000
 async def main():
     async with async_playwright() as p:
-        browser = await p.chromium.launch(channel="chrome", headless=True, args=[
+        browser = await p.chromium.launch(executable_path=shutil.which("chromium") or shutil.which("google-chrome"), headless=True, args=[
             "--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist",
             "--enable-webgl", "--use-gl=angle", "--autoplay-policy=user-gesture-required"])
         logs = []

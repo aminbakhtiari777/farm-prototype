@@ -77,6 +77,9 @@ func register(node: Node, world_pos: Vector3, important: bool = false) -> void:
 	if not _by_key.has(u.key):
 		_by_key[u.key] = []
 	(_by_key[u.key] as Array).append(u)
+	# Content added by late modules must inherit the cell's current state.
+	if _scanned and not _loaded.has(u.key):
+		_set_awake(u, false)
 
 
 func _style() -> WorldStreamStyle:
@@ -126,7 +129,7 @@ func _auto_scan() -> void:
 	_timer = 0.0
 	_centre = Vector3(INF, 0, INF)
 	_update_queues(true)
-	_drain(999.0)
+	_drain(st.budget_ms)
 
 
 func _centre_of(n: Node3D) -> Vector3:
@@ -198,6 +201,9 @@ func _update_queues(force: bool) -> void:
 			var cz: float = (z + 0.5) * cs
 			if Vector2(cx - p.x, cz - p.z).length_squared() <= r2:
 				want[k] = true
+	# Discard stale work after a turn/teleport and never queue a cell twice.
+	_queue_in.clear()
+	_queue_out.clear()
 	for k in want.keys():
 		if not _loaded.has(k):
 			_queue_in.append(k)

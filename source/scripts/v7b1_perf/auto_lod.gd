@@ -29,6 +29,9 @@ func _ready() -> void:
 			_auto_stepped = false
 			_force_id = ""  # an explicit choice cancels the automatic step-down
 			apply_quality())
+	ControlInput.scheme_changed.connect(func(_on: bool) -> void:
+		if PerfQuality.is_auto():
+			apply_quality())
 	Modules.on_swap("quality", self, func(_m: Resource) -> void:
 		PerfQuality.invalidate()
 		apply_quality())

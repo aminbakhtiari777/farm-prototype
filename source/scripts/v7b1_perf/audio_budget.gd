@@ -83,7 +83,9 @@ func _players() -> Array:
 	if _cache_age > 3.0:
 		_cache_age = 0.0
 		_cache_players = get_tree().current_scene.find_children("*", "AudioStreamPlayer3D", true, false)
-	return _cache_players.filter(func(x: Node) -> bool: return is_instance_valid(x) and x.is_inside_tree())
+	# Freed interior audio nodes remain in this cache until the next scan.
+	# A typed argument fails conversion before the validity guard can run.
+	return _cache_players.filter(func(x) -> bool: return is_instance_valid(x) and x.is_inside_tree())
 
 
 func _pause(a: AudioStreamPlayer3D) -> void:

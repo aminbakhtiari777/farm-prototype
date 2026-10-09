@@ -149,11 +149,19 @@ func _reset_all() -> void:
 	pad.queue_redraw()
 
 
+func _notification(what: int) -> void:
+	# Safari may cancel a gesture when switching tabs or rotating the device.
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT and pad != null:
+		_reset_all()
+
+
 func screen_size() -> Vector2:
 	return get_viewport().get_visible_rect().size
 
 
 func _layout() -> void:
+	if not _fingers.is_empty():
+		_reset_all()
 	var st := style()
 	var s := screen_size()
 	var short := minf(s.x, s.y)

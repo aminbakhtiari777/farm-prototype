@@ -70,6 +70,9 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if ControlInput.blocked():
+		_orbiting = false
+		return
 	if event.is_action_pressed(&"camera_orbit"):
 		_orbiting = true
 	elif event.is_action_released(&"camera_orbit"):
@@ -80,7 +83,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		zoom_by(0.8)
 	elif event.is_action_pressed(&"camera_reset"):
 		reset_behind_target()
-	elif event is InputEventMouseMotion and _orbiting:
+	elif event is InputEventMouseMotion and _orbiting and not ControlInput.captured \
+			and event.device != InputEvent.DEVICE_ID_EMULATION:
 		var m := event as InputEventMouseMotion
 		var sens := mouse_sensitivity * float(Settings.get_value("camera_sensitivity"))
 		var invert := -1.0 if bool(Settings.get_value("camera_invert_y")) else 1.0

@@ -13,7 +13,8 @@ static func style() -> DoorPlaqueStyle:
 ## True when this home should NOT put a family board on the roof.
 static func hide_roof_sign(b: Building) -> bool:
 	var st := style()
-	return st != null and st.enabled and st.hide_home_roof_signs and b != null and b.kind == "home"
+	return st != null and st.enabled and st.hide_home_roof_signs and b != null \
+		and b.kind == "home" and not text_for(b).is_empty()
 
 
 ## Text for the door plaque (empty when the module is off or the house has no family).

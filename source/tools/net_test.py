@@ -17,7 +17,7 @@ import json, math, os, shutil, signal, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-GODOT = os.path.expanduser("~/godot/godot")
+GODOT = os.environ.get("GODOT", "godot")
 WORK = Path("/tmp/v7b1-net")
 PORT = int(sys.argv[sys.argv.index("--port") + 1]) if "--port" in sys.argv else 8931
 URL = "ws://127.0.0.1:%d" % PORT
