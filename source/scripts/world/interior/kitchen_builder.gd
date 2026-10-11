@@ -88,8 +88,27 @@ static func build(ctx: Dictionary, side: float, hw: float, hd: float) -> Interio
 
 static func _base_cabinet(ctx: Dictionary, x: float, z: float, cab: Color, top: Color) -> void:
 	var fl := float(ctx["floor"])
-	InteriorBuilder.box(ctx, Vector3(0.82, 0.86, 0.6), Vector3(x, fl + 0.43, z), cab, 0.0, true)
+	# Hollow cabinet with its own hinge; a solid baked box hid the shelves.
+	var node := Node3D.new()
+	node.name = "KitchenCabinet"
+	node.position = Vector3(x, fl, z)
+	(ctx["root"] as Node3D).add_child(node)
+	for spec in [[Vector3(0.04, 0.86, 0.6), Vector3(-0.39, 0.43, 0)], [Vector3(0.04, 0.86, 0.6), Vector3(0.39, 0.43, 0)], [Vector3(0.82, 0.04, 0.6), Vector3(0, 0.06, 0)], [Vector3(0.82, 0.04, 0.6), Vector3(0, 0.45, 0)], [Vector3(0.82, 0.86, 0.04), Vector3(0, 0.43, -0.28)]]:
+		V7aKit.box(node, spec[0], spec[1], ProceduralProp.color_material(cab, 0.8), false)
+	var hinge := BuildingDoor.new()
+	hinge.name = "CabinetDoor"
+	hinge.width = 0.78
+	hinge.height = 0.78
+	hinge.panel_color = cab
+	hinge.position = Vector3(-0.39, 0.08, 0.32)
+	node.add_child(hinge)
+	if hinge._zone:
+		hinge._zone.set_action_text(Lang.tt("باز یا بسته کردن کابینت", "open or close the cabinet"))
+		(hinge._zone.get_child(0) as CollisionShape3D).shape = _cabinet_zone()
 	InteriorBuilder.box(ctx, Vector3(0.86, 0.05, 0.64), Vector3(x, fl + 0.885, z + 0.01), top)
-	InteriorBuilder.box(ctx, Vector3(0.01, 0.7, 0.01), Vector3(x, fl + 0.45, z + 0.305), cab.darkened(0.3))
-	InteriorBuilder.box(ctx, Vector3(0.12, 0.02, 0.02), Vector3(x - 0.1, fl + 0.75, z + 0.31), Color(0.5, 0.5, 0.52))
-	InteriorBuilder.box(ctx, Vector3(0.12, 0.02, 0.02), Vector3(x + 0.1, fl + 0.75, z + 0.31), Color(0.5, 0.5, 0.52))
+
+
+static func _cabinet_zone() -> SphereShape3D:
+	var sphere := SphereShape3D.new()
+	sphere.radius = 0.9
+	return sphere

@@ -6,6 +6,9 @@ extends Node3D
 enum State { DOCKED, OUT, AT_SEA, BACK }
 
 var index: int = 0
+var island_trip: bool = false
+var engine_running: bool = false
+var engine_sound: AudioStreamPlayer3D
 var owner_boats: Boats
 var hull_color: Color = Color.WHITE
 var has_cabin: bool = true
@@ -26,10 +29,18 @@ var _bob: float = 0.0
 
 func _ready() -> void:
 	add_to_group(&"fishing_boats")
+	engine_sound = AudioStreamPlayer3D.new()
+	engine_sound.stream = load("res://assets/audio/boat_engine.ogg") if ResourceLoader.exists("res://assets/audio/boat_engine.ogg") else null
+	if engine_sound.stream is AudioStreamOggVorbis:
+		(engine_sound.stream as AudioStreamOggVorbis).loop = true
+	engine_sound.volume_db = -22
+	engine_sound.max_distance = 24
+	engine_sound.unit_size = 2.0
+	add_child(engine_sound)
 	global_position = mooring
 	rotation.y = mooring_yaw
 	_build()
-	board_spot = ActionSpot.make(get_parent(), board_point, 1.2, _board_text, board, func() -> bool: return is_instance_valid(self) and state == State.DOCKED)
+	board_spot = ActionSpot.make(get_parent(), board_point, 1.2, _board_text, func(_who: Node3D) -> void: TownGameplay.open_boat_menu(), func() -> bool: return is_instance_valid(self) and state == State.DOCKED)
 	board_spot.name = "BoardBoat%d" % index
 
 
@@ -144,7 +155,7 @@ func _build() -> void:
 	_box(seat, Vector3(1.6, 0.08, 0.4), Vector3(0, 0.42, -0.2), ProceduralProp.color_material(Color(0.5, 0.36, 0.22), 0.8, false))
 	add_child(seat)
 	seat.ready.connect(func() -> void: seat.zone.enabled = false, CONNECT_ONE_SHOT)
-	helm_spot = ActionSpot.make(self, Vector3(0.6, 0.12, -0.6), 0.9, _helm_text, helm, func() -> bool: return state == State.AT_SEA)
+	helm_spot = ActionSpot.make(self, Vector3(0.6, 0.12, -0.6), 0.9, _helm_text, func(_who: Node3D) -> void: TownGameplay.open_boat_menu(), func() -> bool: return state == State.AT_SEA)
 	helm_spot.name = "Helm"
 
 
@@ -192,6 +203,8 @@ func can_sail() -> String:
 func board(who: Node3D) -> bool:
 	if state != State.DOCKED or who == null:
 		return false
+	if island_trip and not is_instance_valid(TownGameplay.island):
+		TownGameplay._build_island()
 	var why := can_sail()
 	if why != "":
 		GameEvents.notification_requested.emit(why)
@@ -201,6 +214,9 @@ func board(who: Node3D) -> bool:
 	passenger = who
 	_seat_passenger()
 	state = State.OUT
+	engine_running = true
+	if engine_sound.stream:
+		engine_sound.play()
 	_t = 0.0
 	_dur = st.sail_seconds if st else 6.0
 	Lifestyle.boat_trips += 1
@@ -218,6 +234,9 @@ func helm(who: Node3D) -> bool:
 	passenger = who if who else passenger
 	_seat_passenger()
 	state = State.BACK
+	engine_running = true
+	if engine_sound.stream:
+		engine_sound.play()
 	_t = 0.0
 	TimeManager.advance_minutes(30.0)
 	helm_spot.refresh()
@@ -240,7 +259,7 @@ func _seat_passenger() -> void:
 func _bezier(t: float, back: bool) -> Array:
 	var p0 := mooring
 	var p1 := mooring + Vector3(Boats.PIER_DIR.x, 0, Boats.PIER_DIR.y) * 14.0
-	var p2 := sea_spot
+	var p2 := TownGameplay.ISLAND_DOCK if island_trip else sea_spot
 	if back:
 		var tmp := p0
 		p0 = p2
@@ -278,14 +297,18 @@ func _physics_process(delta: float) -> void:
 
 
 func _arrive() -> void:
+	engine_running = false
+	if engine_sound:
+		engine_sound.stop()
 	if state == State.OUT:
 		state = State.AT_SEA
-		global_position = sea_spot
+		global_position = TownGameplay.ISLAND_DOCK if island_trip else sea_spot
 		if passenger and passenger.has_method("stand_up"):
 			passenger.call("stand_up")
-			passenger.global_position = to_global(Vector3(0, 0.25, -0.6))
+			passenger.global_position = TownGameplay.ISLAND + Vector3(0, 1.3, -12) if island_trip else to_global(Vector3(0, 0.25, -0.6))
+			passenger.reset_physics_interpolation()
 		helm_spot.refresh()
-		GameEvents.notification_requested.emit(Lang.tt("به آب‌های عمیق رسیدی! رو به دریا بایست و قلاب بینداز (E). برای برگشت سراغ سکان برو.", "Deep water! Face the sea over the rail and cast (E). Use the helm to sail back."))
+		GameEvents.notification_requested.emit(Lang.tt("جزیرهٔ میوه؛ میوه بچین. کنار اسکله برای بازگشت E بزن.", "Fruit island; pick fruit. Use E at the landing to return.") if island_trip else Lang.tt("آب‌های عمیق؛ E برای قلاب، B برای تور و بازگشت.", "Deep water; E to fish, B for net and return."))
 	elif state == State.BACK:
 		state = State.DOCKED
 		global_position = mooring

@@ -23,11 +23,15 @@ uniform float belt_high = 0.566;
 uniform float boots_top = 0.115;
 uniform float head_start = 0.88;
 uniform float pants_check = 0.0;   // 1 = subtle twill stripes (jeans/overalls)
+uniform float body_roundness = 0.04;
 
 varying vec2 bind_pos;
 
 void vertex() {
 	bind_pos = UV2;
+	float belly = smoothstep(0.49, 0.61, UV2.x) * (1.0 - smoothstep(0.68, 0.8, UV2.x));
+	float torso = 1.0 - smoothstep(0.10, 0.16, UV2.y);
+	VERTEX.z += body_roundness * belly * torso * smoothstep(0.0, 0.04, VERTEX.z);
 }
 
 // 0 skin, 1 shirt, 2 pants, 3 boots, 4 belt
@@ -52,7 +56,7 @@ void fragment() {
 	if (r == 0) {
 		ALBEDO = texture(skin_albedo, UV).rgb * skin_tint.rgb;
 		NORMAL_MAP = texture(skin_normal, UV).rgb;
-		NORMAL_MAP_DEPTH = 0.7;
+		NORMAL_MAP_DEPTH = 0.18;
 		ROUGHNESS = texture(skin_roughness, UV).r * 0.9 + 0.08;
 		SSS_STRENGTH = 0.0;
 	} else {

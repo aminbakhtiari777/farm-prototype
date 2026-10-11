@@ -238,7 +238,7 @@ func _run_smoke_test() -> void:
 		_smoke_v7b1_audio_spatial, _smoke_v7b1_audio_budget,
 		_smoke_v7b1_weather,
 		_smoke_v7b1_police,
-		_smoke_modules, _smoke_save_load]
+		_smoke_gameplay_completion, _smoke_modules, _smoke_save_load]
 	# Dev: `-- --smoke-test --smoke-only=v5c,v5a_shops` runs matching sections only.
 	var only := ""
 	for arg in OS.get_cmdline_user_args():
@@ -1151,6 +1151,8 @@ func _smoke_v5b_voices() -> bool:
 	bot.global_position = Vector3(near.x, Terrain.height_at(near.x, near.z) + 0.1, near.z)
 	await _frames(2)
 	var n0 := vb.spoken
+	_check(not vb.speak(bot, "Hello"), "synthetic voices are silent by default")
+	vb.synthesized_speech_enabled = true
 	bot.say("سلام!", 1.5)
 	await _frames(2)
 	_check(vb.spoken > n0 and vb.is_speaking(bot), "say() triggers voice blips (spoken %d)" % vb.spoken)
@@ -1163,6 +1165,7 @@ func _smoke_v5b_voices() -> bool:
 	AssetRegistry.set_active("voices", "hum")
 	_check((Modules.style("voices") as VoiceStyle).samples[0].contains("hum"), "voices module swaps to hum")
 	AssetRegistry.set_active("voices", "blips")
+	vb.synthesized_speech_enabled = false
 	return true
 
 
@@ -1188,7 +1191,7 @@ func _smoke_v5b_npc_card() -> bool:
 	bot.zone.interacted.emit(_player)
 	await _frames(3)
 	_check(Friendship.hearts(Friendship.key_of(bot)) > 0.0, "talking fills hearts (%.1f)" % Friendship.hearts(Friendship.key_of(bot)))
-	_check((card.get("_dialogue") as Label).text != "", "card shows the dialogue")
+	_check(not (card.get("_dialogue") as Label).visible and (card.get("_friend") as Label).text != "", "compact card shows feeling and keeps long dialogue hidden")
 	AssetRegistry.set_active("npc_card", "dark_glass")
 	_check((Modules.style("npc_card") as NpcCardStyle).bg_color.v < 0.5, "npc_card module swaps to dark_glass")
 	AssetRegistry.set_active("npc_card", "parchment")
@@ -3753,7 +3756,7 @@ func _smoke_v7a_backstories() -> bool:
 		card.show_for(b)
 		# Inspect show_for before the proximity scanner chooses a different NPC.
 		var sl := card.find_child("Story", true, false) as Label
-		_check(sl != null and sl.visible and sl.text.contains("کیسه"), "NPC card shows the story + memory")
+		_check(sl != null and not sl.visible and (card.get("_name") as Label).text != "" and (card.get("_hours") as Label).text != "", "compact card shows identity and location; long stories stay hidden")
 		card._hide()
 	Settings.set_value("dialogue_language", "en")
 	_check(Backstories.card_lines(b.resident)[0].unicode_at(0) < 0x0600, "English toggle: '%s'" % Backstories.card_lines(b.resident)[0].left(30))
@@ -4212,10 +4215,12 @@ func _smoke_v7b_voices_personalities() -> bool:
 	if vb:
 		Settings.set_value("npc_voices", true)
 		await _place(Vector2(hassan.global_position.x + 2.0, hassan.global_position.z), 270.0, 4)
+		vb.synthesized_speech_enabled = true
 		vb.speak(hassan, "سلام علیکم، حال شما چطور است؟")
 		var rh := vb.last_rate
 		vb.speak(mina, "سلام! چه روز قشنگی!")
 		_check(absf(rh - vb.last_rate) > 0.01 or rh != 1.0, "speaking rate differs (%.2f vs %.2f)" % [rh, vb.last_rate])
+		vb.synthesized_speech_enabled = false
 	_check(Personalities.trait_id(hassan.resident) == "hot_tempered" and Personalities.trait_id(parvin.resident) == "generous", "personality traits assigned")
 	_check(Personalities.trait_name(sara.resident) != "" and _v7b_fa(Personalities.trait_name(sara.resident)), "trait name in Persian: %s" % Personalities.trait_name(sara.resident))
 	var fair := 100
@@ -4855,3 +4860,8 @@ func _smoke_v7b1_audio_budget() -> bool:
 func _smoke_v7b1_police() -> bool:
 	await _section("v7b.1 police: AI cars yield to people, hit reactions, ambulance + police + crowd after a hard hit")
 	return await load("res://scripts/v7b1_police/police_smoke.gd").new(self).run()
+
+
+func _smoke_gameplay_completion() -> bool:
+	await _section("gameplay completion: household, doors, tools, island, net and thermal budgets")
+	return await load("res://scripts/gameplay/gameplay_smoke.gd").new(self).run()

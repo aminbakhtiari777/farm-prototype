@@ -139,6 +139,7 @@ func do_next() -> String:
 	var msg := session.do_step(sid, get_tree())
 	if session.step_index > before and station:
 		station.set_stage(sid)
+		TownGameplay.animate_hands("eat" if sid == "eat" else "place")
 	_log.text = msg
 	GameEvents.notification_requested.emit(msg)
 	refresh()

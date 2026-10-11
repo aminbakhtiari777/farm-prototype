@@ -38,6 +38,7 @@ CityState="*res://scripts/v7a/city_state.gd"
 TownLife="*res://scripts/v7b/town_life.gd"
 ControlInput="*res://scripts/v7b1/control_input.gd"
 TrafficState="*res://scripts/v7b1_traffic/traffic_state.gd"
+TownGameplay="*res://scripts/gameplay/town_gameplay.gd"
 
 [display]
 

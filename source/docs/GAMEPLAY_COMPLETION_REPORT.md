@@ -1,0 +1,19 @@
+# Household, island and touch performance update
+
+The update limits touch-web frame rate to 30, bounds the rendered viewport, reduces Low-quality streaming radius to 42 m, and limits animated residents, lights and ambient voices. Existing verified deferred packs and exterior streaming remain in use. The island is built on demand.
+
+Doorway black panels were removed. Door locking persists across saves. Base kitchen cabinets have hinged door leaves. Interior interaction targets are ignored outside their building. Fridge food stock, including depleted stock, is saved; taking, storing, eating and cooking use inventory rather than granting replacement groceries. Sleep changes the date and hour. Television headlines reflect city events and update daily.
+
+NPC presentation now varies widths and torso roundness, darkens hair/eyebrows and shows a compact name, age/job, place and relationship card. Adult striking has reaction, temporary injury marking and social/police consequences. Tool selection, island fruit picking/regrowth/trading, motor voyages and timed fishing nets use the existing inventory/economy.
+
+## Comparison with GTA
+
+Relevant engineering practices are distance-based activation, staged loading, bounded graphics budgets, contextual controls and persistent world state. This prototype applies those practices, but its procedural art, hand interactions, combat and boat travel do not match GTA's animation, simulation or production quality. Boat journeys follow a route; this is not a free-steering marine simulation. Cabinet coverage here concerns base cabinets. Food hand actions are simplified held-object interactions using the generic pickup/interaction clips, rather than a dedicated hand-to-mouth cooking/eating animation. The bundled library has no punch clip, so striking currently reuses the interaction clip with knock-back/injury reactions; it is not a full fistfight animation or NPC retaliation system. Spade/pickaxe actions reuse the existing digging behavior and tool presentation. Upper cabinet doors remain static.
+
+## Verification limits
+
+The automated gate covers compilation, full gameplay smoke tests, multiplayer/network checks, web export and a Chromium browser run. The added regression section checks household persistence, doors, sleep, daily television news, boat/island travel, harvest/trading, net fishing and joystick drag invariants. Browser emulation cannot establish physical iPad temperature, Safari performance or an all-day energy budget; those require testing the published build on the actual device.
+
+The final full smoke run passed **2,970 checks with zero failures**; compilation passed **767 files**. Touch-browser regression is reproducible with `python3 tools/web_ipad_regression.py URL SCREENSHOT_PATH 22000` (Playwright and Chromium required). The combined release also passed 60 network checks. Web export succeeded. The touch-browser regression passed desktop-identity tablet detection, zero pack downloads before Play, actual two-finger movement (0.71 m net displacement), portrait/landscape rendering bounds and the 30 FPS cap, with zero browser execution errors. Runtime scripts/shaders/scenes in the touch test and final gated export match exactly. The final Chromium gate passed: entry/model loading, zero console errors, saving and reloading the 16,262-byte browser save, and zero asset-pack downloads after reload. All gated artifacts are checked by hash before publication.
+
+Before publication, upstream commit `b883f68` was discovered. Its binary-only GDScript fixes were recovered into the canonical source: HTTP pack gzip handling, byte progress, bounded retries, retry UI and post-movement landing state. Its HTML download progress/retry behavior is now maintained in `config/web_shell.html` and selected by the web export preset. The full gate was rerun on the combined source.

@@ -107,7 +107,8 @@ func _physics_process(delta: float) -> void:
 	if vehicle != null:
 		velocity = Vector3.ZERO
 		return
-	_coyote = coyote_time if is_on_floor() else maxf(_coyote - delta, 0.0)
+	var was_on_floor := is_on_floor()
+	_coyote = coyote_time if was_on_floor else maxf(_coyote - delta, 0.0)
 	_jump_buf = maxf(_jump_buf - delta, 0.0)
 	if Input.is_action_just_pressed(&"jump") and not GameEvents.ui_open and not _is_sitting() and carried == null and not fishing.active:
 		_jump_buf = jump_buffer
@@ -198,25 +199,26 @@ func _physics_process(delta: float) -> void:
 
 	velocity.x = horizontal.x
 	velocity.z = horizontal.z
-	if jumped:
-		pass
-	elif is_on_floor():
-		if not _was_on_floor:
-			if _air_time > 0.3:
-				Sfx.play_at(&"land", global_position, -12.0)
-		# v7b.1: always land the visual when on the floor (a missed landing left the
-		# jump pose stuck after Space).
-		if _visual is HumanoidModelVisual:
-			(_visual as HumanoidModelVisual).set_airborne(false)
-		_air_time = 0.0
+	if not jumped and was_on_floor:
 		velocity.y = -0.5
 	else:
 		_air_time += delta
 		velocity.y -= _gravity * delta
 	move_and_slide()
-	if not is_on_floor() and _was_on_floor and not jumped and _visual is HumanoidModelVisual and velocity.y < -2.0:
+	var on_floor_now := is_on_floor()
+	# Floor state is only authoritative after move_and_slide(). Reading it before
+	# movement let _was_on_floor become true on the landing frame before the
+	# landing pose was cleared, leaving the legs suspended in the jump pose.
+	if on_floor_now:
+		if not was_on_floor and _air_time > 0.3:
+			Sfx.play_at(&"land", global_position, -12.0)
+		if _visual is HumanoidModelVisual:
+			(_visual as HumanoidModelVisual).set_airborne(false)
+		_air_time = 0.0
+		velocity.y = -0.5
+	elif was_on_floor and not jumped and _visual is HumanoidModelVisual and velocity.y < -2.0:
 		(_visual as HumanoidModelVisual).set_airborne(true)
-	_was_on_floor = is_on_floor() and not jumped
+	_was_on_floor = on_floor_now
 
 	# Stamina drain / recover
 	var speed := horizontal.length()
@@ -509,6 +511,9 @@ func _update_interaction_target() -> void:
 	for target in _nearby:
 		if not is_instance_valid(target) or not target.can_interact():
 			continue
+		var item := target.get_parent() as InteriorItem
+		if item and item.building and not item.building.player_inside:
+			continue
 		# Skip seats while already sitting / carrying; skip carryables when fishing.
 		if target.get_parent() is Seat and (_is_sitting() or carried):
 			continue
@@ -518,6 +523,8 @@ func _update_interaction_target() -> void:
 		var d := to.length()
 		var look := facing.dot(Vector3(to.x, 0, to.z).normalized()) if d > 0.01 else 1.0
 		var score := look * 2.0 - d
+		if target.get_parent() is BuildingDoor and look > 0.3:
+			score += 1.2
 		# Prefer carryables slightly when looking at them so E picks them up first.
 		if target.has_meta(&"carryable"):
 			score += 0.4

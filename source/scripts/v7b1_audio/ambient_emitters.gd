@@ -264,6 +264,10 @@ func refresh() -> void:
 	var cap := maxi(1, w.voice_cap() - 2)   # keep 2 voices for steps / doors
 	var want: Array = []
 	for kind in emitters:
+		# Crowd and traffic audio come from actual people and vehicles, not a
+		# synthetic loop playing beside an empty road or empty square.
+		if str(kind) in ["traffic", "murmur"] or w.indoors:
+			continue
 		var spec: Dictionary = st.kinds.get(kind, {})
 		var reach := float(spec.get("range", 35.0))
 		var c: Array = []
@@ -336,8 +340,8 @@ func apply_filters() -> void:
 	var st := style()
 	if amb and "bed_scale" in amb and st:
 		var bs: Dictionary = amb.get("bed_scale")
-		bs["birds"] = st.bed_2d_scale
-		bs["crickets"] = st.bed_2d_scale
+		bs["birds"] = 0.0
+		bs["crickets"] = 0.0
 
 
 # ------------------------------------------------------------------ sky
@@ -346,13 +350,13 @@ func _sky(delta: float, st: AmbientSoundsStyle) -> void:
 	if w == null:
 		return
 	var weather := TimeManager.weather_id
-	var wet := weather in ["rain", "storm"]
+	var wet := weather == "storm"
 	# Gust: sweeps past overhead from a random side (pan moves across).
 	if gust.playing:
 		_gust_age += delta
 		gust.global_position = _gust_from.lerp(_gust_to, clampf(_gust_age / _gust_len, 0.0, 1.0))
 	_gust_t -= delta * (1.8 if weather == "storm" else 1.3 if wet or weather == "cloudy" else 1.0)
-	if _gust_t <= 0.0:
+	if _gust_t <= 0.0 and not w.indoors and weather in ["cloudy", "rain", "storm", "snow"]:
 		_gust_t = randf_range(st.gust_interval.x, st.gust_interval.y)
 		play_gust()
 	# Thunder: rain / storm only, far away in a random direction.

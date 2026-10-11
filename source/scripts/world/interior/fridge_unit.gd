@@ -75,21 +75,10 @@ func _ready() -> void:
 
 func stored_items() -> Array:
 	var out: Array = []
-	var st := style()
-	if building and building.layout_id == "farmhouse":
-		for id: String in Economy.inventory:
-			if Economy.count(id) <= 0:
-				continue
-			var it := GameData.item(id)
-			if str(it.get("category", "")) in ["ingredient", "fish", "fruit"] or str(it.get("type", "")) in ["produce", "ingredient", "fruit", "food"]:
-				out.append([id, mini(Economy.count(id), 4)])
-		return out
-	if st:
-		var r := RandomNumberGenerator.new()
-		r.seed = hash(building.layout_id if building else "home")
-		for id: String in st.npc_items:
-			if r.randf() < 0.75:
-				out.append([id, 1 + r.randi() % 3])
+	var stock := Economy.pantry(building.layout_id if building else "home")
+	for id in stock:
+		if int(stock[id]) > 0:
+			out.append([str(id), int(stock[id])])
 	return out
 
 
@@ -113,7 +102,7 @@ func refresh_contents() -> void:
 	var slot := 0
 	for pair in items:
 		var col := _color_of(str(pair[0]))
-		for k in int(pair[1]):
+		for k in mini(int(pair[1]), 3):
 			var shelf := slot / 5
 			if shelf > shelves:
 				break

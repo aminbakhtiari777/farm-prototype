@@ -28,6 +28,10 @@ static func _v6a_extend(shop_id: String, out: Dictionary) -> void:
 		for r in gear.rods:
 			if not r in sells:
 				sells.append(r)
+	if shop_id == "fruit_shop":
+		buys_l.append_array(["mango", "guava", "coconut"])
+	if shop_id == "tool_shop":
+		sells.append_array(["spade", "pickaxe", "fishing_net"])
 	if shop_id in ["carpenter", "tool_shop"]:
 		if not "steel_axe" in sells:
 			sells.append("steel_axe")
@@ -68,7 +72,7 @@ static func _shop(shop_id: String) -> Dictionary:
 		if hs == null:
 			return {}
 		return {"title": hs.title, "title_fa": hs.title_fa, "greeting": hs.greeting, "greeting_fa": hs.greeting_fa,
-			"sells": hs.sells.duplicate(), "buys": hs.buys.duplicate(), "buy_mult": 1.0}
+			"sells": hs.sells.duplicate(), "buys": hs.buys.duplicate() + ["hamour", "black_pomfret", "mango", "guava", "coconut"], "buy_mult": 1.0}
 	if shop_id.begins_with("stall:"):
 		var ms := Modules.style("market") as MarketStyle
 		if ms:

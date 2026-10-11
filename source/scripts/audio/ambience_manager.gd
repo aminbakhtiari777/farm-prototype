@@ -18,7 +18,7 @@ var players: Dictionary = {}
 var target: Dictionary = {}
 ## v7b.1 audio: per-layer multiplier on the 2D beds (AmbientEmitters turns the
 ## birds / crickets beds down because placed 3D emitters now carry them).
-var bed_scale: Dictionary = {"wind": 1.0, "birds": 1.0, "crickets": 1.0}
+var bed_scale: Dictionary = {"wind": 0.35, "birds": 0.0, "crickets": 0.0}
 var _indoors: bool = false
 var _timer: float = 0.0
 

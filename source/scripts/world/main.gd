@@ -17,6 +17,7 @@ func _ready() -> void:
 		if query is String and not (query as String).is_empty():
 			Demo.apply_url_params.call_deferred(get_tree(), query)
 	_add_feature_modules()
+	TownGameplay.attach_world(self)
 	var args := OS.get_cmdline_user_args()
 	for arg in args:
 		if arg.begins_with("--net-test="):

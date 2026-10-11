@@ -45,6 +45,7 @@ var soft_capture: bool = false
 ## Space presses that were kept from re-pressing a focused UI button (diagnostics).
 var space_guards: int = 0
 var _touch_capability: int = -1
+var _web_resize_callback: JavaScriptObject
 
 
 func mouse_style() -> MouseControlsStyle:
@@ -62,7 +63,13 @@ func keyboard_style() -> KeyboardControlsStyle:
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_headless = DisplayServer.get_name() == "headless"
+	if OS.has_feature("web"):
+		_web_resize_callback = JavaScriptBridge.create_callback(func(_args: Array) -> void: _fit_ui.call_deferred(touch_active))
+		var window := JavaScriptBridge.get_interface("window")
+		window.addEventListener("resize", _web_resize_callback)
+		window.addEventListener("orientationchange", _web_resize_callback)
 	refresh_touch_mode.call_deferred()
+	get_tree().root.size_changed.connect(func() -> void: _fit_ui.call_deferred(touch_active))
 	Settings.changed.connect(func(k: String, _v: Variant) -> void:
 		if k == "touch_controls":
 			refresh_touch_mode())
@@ -106,17 +113,26 @@ func set_touch_active(on: bool) -> void:
 	scheme_changed.emit(on)
 
 
-## Phones / web with touch: scale the 1600x900 UI to the screen (canvas_items
-## stretch, aspect expand) so text and panels stay readable on high-DPI screens.
+## Bound touch rendering in either orientation, including after rotation.
 func _fit_ui(on: bool) -> void:
 	if _headless or not is_inside_tree() or not (OS.has_feature("web") or OS.has_feature("mobile")):
 		return
 	var ts := touch_style()
 	var root := get_tree().root
 	if on and ts and ts.fit_ui:
-		root.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
-		root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND
-		root.content_scale_size = Vector2i(1600, 900)
+		# Compatibility/WebGL ignores 3D scaling on some devices. Bound the
+		# actual viewport as well, rather than rendering at Retina resolution.
+		if root.content_scale_mode != Window.CONTENT_SCALE_MODE_VIEWPORT:
+			root.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
+		if root.content_scale_aspect != Window.CONTENT_SCALE_ASPECT_EXPAND:
+			root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND
+		var portrait := root.size.y > root.size.x
+		if OS.has_feature("web"):
+			portrait = bool(JavaScriptBridge.eval("window.innerHeight > window.innerWidth", true))
+		var desired := Vector2i(720, 1280) if portrait else Vector2i(1280, 720)
+		if root.content_scale_size != desired:
+			root.content_scale_size = desired
+			print("TOUCH VIEWPORT: %dx%d" % [desired.x, desired.y])
 	else:
 		root.content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
 

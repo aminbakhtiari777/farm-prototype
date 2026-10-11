@@ -19,6 +19,7 @@ func style() -> NewspaperStyle:
 
 
 func _ready() -> void:
+	add_to_group(&"newspapers")
 	rebuild()
 	Modules.on_swap("newspaper", self, func(_m: Resource) -> void: rebuild())
 	TimeManager.day_started.connect(func(_d: int) -> void: compose())

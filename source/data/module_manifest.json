@@ -1908,9 +1908,9 @@
      "sha256": "deb77dbac32c9f2c2569c45fadc03eee962a58fd81989b122e879896a7c6dece"
     },
     "low": {
-     "bytes": 841,
+     "bytes": 838,
      "path": "res://modules/quality/low.tres",
-     "sha256": "4d2a89839649d12715d3c6f9d6baecaee68f3dd99d4f806037bbe8044cbd998b"
+     "sha256": "6974bba497176ed05829ef31dea9ee800e04eb4de6f98004be3557d6104d8071"
     },
     "medium": {
      "bytes": 411,
@@ -1918,7 +1918,7 @@
      "sha256": "75dd1425eb429d8caa5536aa36b3aa877f3f72c4b1787627e98847ecfc6c2087"
     }
    },
-   "version": 1
+   "version": 3
   },
   "real_clock": {
    "active": "optional",

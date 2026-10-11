@@ -16,6 +16,7 @@ signal online_requested
 
 const SPLASH_SECS := 3.0
 const STAGGER := 0.1
+const REQUIRED_WEB_PACKS := ["world", "hair", "animations"]
 
 static var completed: bool = false  ## survives the Boot -> Main scene change
 
@@ -93,6 +94,7 @@ func _ready() -> void:
 	loading = LoadingScreen.new()
 	loading.visible = false
 	loading.finished.connect(_on_loading_finished)
+	loading.retry_requested.connect(func() -> void: start_loading(mode))
 	root.add_child(loading)
 	get_viewport().size_changed.connect(_layout)
 	Settings.changed.connect(func(k: String, _v: Variant) -> void:
@@ -591,12 +593,21 @@ func start_loading(m: String) -> void:
 	settings.visible = false
 	about.visible = false
 	loading.waiting_for_assets = loading_path != "" and AssetPacks.enabled
+	loading.asset_keys = REQUIRED_WEB_PACKS
 	loading.start(loading_path)
 	if loading.waiting_for_assets:
-		var assets_ready: bool = await AssetPacks.ensure_all(["world", "hair", "animations"])
-		while not assets_ready:
-			await get_tree().create_timer(10.0).timeout
-			assets_ready = await AssetPacks.ensure_all(["world", "hair", "animations"])
+		var assets_ready := false
+		for attempt in 3:
+			AssetPacks.reset_retry(REQUIRED_WEB_PACKS)
+			assets_ready = await AssetPacks.ensure_all(REQUIRED_WEB_PACKS)
+			if assets_ready:
+				break
+			if attempt < 2:
+				await get_tree().create_timer(2.0 * float(attempt + 1)).timeout
+		if not assets_ready:
+			loading.fail(T("دانلود فایل‌های شهر کامل نشد. دکمهٔ تلاش دوباره را بزن.",
+				"The town files could not be downloaded. Press Retry."))
+			return
 		loading.waiting_for_assets = false
 
 

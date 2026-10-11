@@ -16,6 +16,7 @@ var _glow_timer: float = 0.0
 var zone: Interactable
 var _screen: MeshInstance3D
 var _screen_light: OmniLight3D
+var _news: Label3D
 var _uses_today: int = 0
 
 const TV_SHADER := """
@@ -23,17 +24,10 @@ shader_type spatial;
 render_mode unshaded;
 uniform float on = 0.0;
 void fragment() {
-	vec2 uv = UV;
-	float t = TIME * 0.6;
-	vec3 sky = mix(vec3(0.25, 0.55, 0.95), vec3(0.95, 0.75, 0.45), 0.5 + 0.5 * sin(t * 0.7));
-	vec3 ground = mix(vec3(0.2, 0.55, 0.25), vec3(0.35, 0.3, 0.6), 0.5 + 0.5 * sin(t * 0.4 + 1.0));
-	float horizon = 0.45 + 0.08 * sin(uv.x * 9.0 + t * 2.0);
-	vec3 c = uv.y < horizon ? sky : ground;
-	float sun = smoothstep(0.12, 0.1, distance(uv, vec2(0.5 + 0.3 * sin(t), 0.25)));
-	c = mix(c, vec3(1.0, 0.95, 0.7), sun);
-	c *= 0.9 + 0.1 * sin(uv.y * 300.0 + TIME * 20.0);
-	ALBEDO = mix(vec3(0.02, 0.025, 0.03), c * 1.6, on);
-	EMISSION = c * 1.4 * on;
+	vec3 c = mix(vec3(0.02, 0.025, 0.03), vec3(0.025, 0.08, 0.17), on);
+	ALBEDO = c;
+	EMISSION = c * on;
+
 }
 """
 
@@ -60,6 +54,7 @@ func _ready() -> void:
 		return
 	TimeManager.day_started.connect(func(_d: int) -> void: _uses_today = 0)
 	if kind == "tv":
+		TimeManager.day_started.connect(func(_day: int) -> void: _refresh_news())
 		PowerGrid.power_changed.connect(func(on: bool) -> void:
 			if not on and is_on:
 				set_on(false))
@@ -92,6 +87,18 @@ func setup_screen(screen_size: Vector2, local_pos: Vector3) -> void:
 	_screen_light.position = local_pos + Vector3(0, 0, 0.6)
 	_screen_light.visible = false
 	add_child(_screen_light)
+	_news = Label3D.new()
+	_news.name = "CityNews"
+	Lang.setup_label3d(_news)
+	_news.font_size = 20
+	_news.pixel_size = screen_size.x / 600.0
+	_news.width = 540
+	_news.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_news.position = local_pos + Vector3(0, 0, 0.02)
+	_news.no_depth_test = false
+	_news.modulate = Color(1, 1, 1)
+	_news.visible = false
+	add_child(_news)
 
 
 func screen_emission() -> float:
@@ -115,7 +122,7 @@ func _action_text() -> String:
 		"bed":
 			return "sleep until morning" if building and building.sleep_here else "rest on the bed"
 		"tool_rack":
-			return "take tools (refill can / fishing rod)"
+			return "open the tool bag"
 		"workbench":
 			return "build a wooden crate"
 		"shop_counter":
@@ -203,24 +210,17 @@ func _on_interacted(who: Node3D) -> void:
 			var fu := (get_meta(&"fridge_unit") if has_meta(&"fridge_unit") else null) as FridgeUnit
 			if fu and is_instance_valid(fu) and not fu.is_open:
 				fu.open_door()
-				GameEvents.notification_requested.emit(fu.contents_text())
-				return
-			if fu and is_instance_valid(fu):
-				fu.close_door()
-			_restore(who, 25.0, "A crisp apple from the fridge. +25 stamina")
-			Needs.eat(8.0, false)
+				TownGameplay.open_fridge(fu)
+			else:
+				if fu and is_instance_valid(fu):
+					fu.close_door()
 		"bed":
 			if building and building.sleep_here:
-				if who.has_method("restore_stamina"):
-					who.call("restore_stamina", 1000.0)
-				# v5b: sleeping resets fatigue (Needs).
-				Needs.begin_sleep()
-				TimeManager.sleep_until_morning(6.0)
-				Needs.end_sleep()
-				GameEvents.notification_requested.emit("Good morning! %s, %s" % [TimeManager.date_text(), TimeManager.weather_name()])
+				TownGameplay.sleep_in(self, who)
 			else:
 				_restore(who, 40.0, "You rest for a moment. +40 stamina")
 				Needs.fatigue = maxf(Needs.fatigue - 10.0, 0.0)
+
 		"tool_rack":
 			_tool_rack()
 		"workbench":
@@ -326,7 +326,24 @@ func set_on(value: bool) -> void:
 		(_screen.material_override as ShaderMaterial).set_shader_parameter(&"on", 1.0 if value else 0.0)
 		_screen_light.visible = value
 		_screen_light.light_energy = 0.8 if value else 0.0
+	if _news:
+		_news.visible = value
+	_refresh_news()
 	zone.set_action_text(_action_text())
+
+
+func _refresh_news() -> void:
+	if not is_on or _news == null:
+		return
+	var paper := get_tree().get_first_node_in_group(&"newspapers") as Newspaper
+	if paper == null:
+		return
+	var issue := paper.compose()
+	var lines := PackedStringArray([Lang.tt("اخبار شهر · روز ", "City news · day ") + Lang.digits(str(TimeManager.day))])
+	lines.append(str((issue.get("weather", {}) as Dictionary).get("fa" if Lang.is_fa() else "en", "")))
+	for entry: Dictionary in (issue.get("items", []) as Array).slice(0, 3):
+		lines.append(str(entry.get("fa" if Lang.is_fa() else "en", "")).left(80))
+	_news.text = "\n".join(lines)
 
 
 func _restore(who: Node3D, amount: float, message: String) -> void:
@@ -336,17 +353,12 @@ func _restore(who: Node3D, amount: float, message: String) -> void:
 
 
 func _tool_rack() -> void:
-	var msgs: PackedStringArray = []
-	if Economy.has("watering_can"):
+	if building and building.sleep_here:
+		for id in ["hoe", "watering_can", "fishing_rod", "spade", "pickaxe", "hammer", "fishing_net"]:
+			if not Economy.has(id):
+				Economy.add_item(id, 1)
 		Economy.refill_can()
-		msgs.append("Watering can refilled")
-	if not Economy.has("fishing_rod") and building and building.sleep_here:
-		Economy.add_item("fishing_rod", 1)
-		msgs.append("took the old fishing rod")
-	if not Economy.has("hoe"):
-		Economy.add_item("hoe", 1)
-		msgs.append("took a hoe")
-	GameEvents.notification_requested.emit(", ".join(msgs) if not msgs.is_empty() else "Nothing to take")
+	TownGameplay.open_bag()
 
 
 func _workbench() -> void:

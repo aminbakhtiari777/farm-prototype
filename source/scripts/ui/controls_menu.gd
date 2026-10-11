@@ -12,7 +12,7 @@ const CATEGORIES := [
 	["Camera", [["camera_orbit", "Orbit (hold + drag)"], ["camera_left", "Orbit left"], ["camera_right", "Orbit right"],
 		["camera_up", "Tilt up"], ["camera_down", "Tilt down"], ["zoom_in", "Zoom in"], ["zoom_out", "Zoom out"], ["camera_reset", "Reset behind farmer"]]],
 	["Interaction & Tools", [["interact", "Interact: farm, talk, doors, sit on benches, TV, fish at water"], ["pick_up", "Pick up / place carryable"],
-		["cycle_seed", "Choose seed"], ["toggle_inventory", "Inventory (bag)"], ["people_panel", "Town directory (people, families, jobs)"], ["market_prices", "Market prices board (price trends, town economy)"]]],
+		["attack", "Strike a nearby adult"], ["door_lock", "Lock / unlock your house"], ["boat_menu", "Boat destination and net fishing"], ["use_tool", "Use selected bag tool"], ["sleep_now", "Sleep at nearby bed"], ["bag_actions", "Bag: select tools, eat food"], ["cycle_seed", "Choose seed"], ["toggle_inventory", "Inventory (bag)"], ["people_panel", "Town directory (people, families, jobs)"], ["market_prices", "Market prices board (price trends, town economy)"]]],
 	["Time & World", [["time_pause", "Pause / resume clock"], ["time_slower", "Slower clock"], ["time_faster", "Faster clock"],
 		["toggle_day_night", "Day/night cycle on/off"], ["next_season", "Jump to next season"], ["toggle_minimap", "Minimap on/off"]]],
 	["Voice", [["push_to_talk", "Push to talk (hold)"], ["voice_panel", "Voice status & mute list"]]],
