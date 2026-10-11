@@ -888,7 +888,7 @@ func stream_buildings(delta: float) -> void:
 	if player == null:
 		return
 	var quality := PerfQuality.style()
-	var radius := clampf(quality.stream_radius, 55.0, 110.0) if quality else 75.0
+	var radius := clampf(quality.stream_radius, 30.0, 110.0) if quality else 75.0
 	var nearest: Building = null
 	var distance := INF
 	for b: Building in buildings.values():

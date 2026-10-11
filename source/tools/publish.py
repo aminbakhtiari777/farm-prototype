@@ -81,7 +81,7 @@ def main() -> int:
     (pages / ".nojekyll").touch()
     # Add (never remove) public design docs linked from the README.
     (pages / "docs").mkdir(exist_ok=True)
-    for doc in ("SERVER_SETUP.md", "MULTIPLAYER_PLAN.md", "MULTIPLAYER.md", "BUILDING.md", "UPDATES.md"):
+    for doc in ("SERVER_SETUP.md", "MULTIPLAYER_PLAN.md", "MULTIPLAYER.md", "BUILDING.md", "UPDATES.md", "GAMEPLAY_COMPLETION_REPORT.md"):
         if (ROOT / "docs" / doc).exists():
             shutil.copy2(ROOT / "docs" / doc, pages / "docs" / doc)
     if args.readme:

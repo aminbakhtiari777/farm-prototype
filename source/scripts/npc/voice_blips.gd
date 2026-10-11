@@ -5,6 +5,7 @@ extends Node
 ## speech). Pitch depends on the person: women and children higher, men lower,
 ## elders a bit lower, plus a stable per-person offset and per-syllable jitter.
 
+var synthesized_speech_enabled := false
 var spoken: int = 0
 var last_pitch: float = 1.0
 var last_rate: float = 1.0  ## v7b voice profile speaking rate
@@ -65,6 +66,10 @@ func _load_streams() -> void:
 ## Starts the blip "speech" for a bot saying `text`.
 func speak(bot: Node3D, text: String) -> bool:
 	if bot == null or not is_instance_valid(bot):
+		return false
+	# Synthesized vowel blips sound like unrelated effects, not conversation.
+	# Keep the explicit diagnostics available, but ordinary dialogue uses text.
+	if not synthesized_speech_enabled:
 		return false
 	var st := style()
 	_load_streams()

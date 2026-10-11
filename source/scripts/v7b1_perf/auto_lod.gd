@@ -99,6 +99,11 @@ func apply_quality() -> void:
 
 
 func _apply_renderer(st: QualityStyle) -> void:
+	# Touch web devices need a sustained power budget, even when they can
+	# render more frames briefly before heating up.
+	Engine.max_fps = 30 if ControlInput.touch_device_available() and OS.has_feature("web") else 60
+	if OS.has_feature("web") and ControlInput.touch_device_available():
+		print("TOUCH FRAME CAP: %d" % Engine.max_fps)
 	var vp := get_viewport()
 	if vp:
 		vp.scaling_3d_scale = clampf(st.render_scale, 0.5, 1.0)
@@ -231,6 +236,14 @@ func _size_of(g: GeometryInstance3D) -> float:
 
 
 func _apply_geom(g: GeometryInstance3D, st: QualityStyle, rules: LodRulesStyle) -> void:
+	# A door panel is small but must stay visible whenever its building is.
+	var owner_node := g.get_parent()
+	while owner_node:
+		if owner_node is BuildingDoor:
+			g.visibility_range_end = 0.0
+			g.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF if st.level == 0 else GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+			return
+		owner_node = owner_node.get_parent()
 	var id := g.get_instance_id()
 	var size := _size_of(g)
 	# Huge things (terrain, sea, mountains) keep no auto range.

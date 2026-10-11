@@ -12,6 +12,7 @@ signal toggled(open: bool)
 @export var open_angle_degrees: float = 100.0
 
 var is_open: bool = false
+var locked: bool = false
 var _panel: AnimatableBody3D
 var _zone: Interactable
 var _tween: Tween
@@ -37,7 +38,7 @@ func _ready() -> void:
 	# v7b.1 perf: only the main panel casts a shadow (inset panels / knobs
 	# used to add ~4 shadow casters per door = ~160 extras across town).
 	# Panels / knob for detail.
-	for i in 2:
+	for i in (2 if width > 0.9 else 0):
 		var inset := MeshInstance3D.new()
 		var ib := BoxMesh.new()
 		ib.size = Vector3(width * 0.62, height * 0.32, 0.09)
@@ -52,7 +53,7 @@ func _ready() -> void:
 	sm.height = 0.08
 	knob.mesh = sm
 	knob.material_override = ProceduralProp.color_material(Color(0.78, 0.63, 0.28), 0.3, false)
-	knob.position = Vector3(width - 0.12, 1.0, 0.07)
+	knob.position = Vector3(width - 0.12, height * 0.45, 0.07)
 	knob.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	_panel.add_child(knob)
 	var knob2 := knob.duplicate() as MeshInstance3D
@@ -71,7 +72,7 @@ func _ready() -> void:
 	_zone.collision_layer = 8
 	_zone.collision_mask = 2
 	_zone.action_text = "open the door"
-	_zone.position = Vector3(width * 0.5, 1.0, 0)
+	_zone.position = Vector3(width * 0.5, height * 0.5, 0)
 	var zs := CollisionShape3D.new()
 	var sphere := SphereShape3D.new()
 	sphere.radius = 1.5
@@ -87,13 +88,23 @@ func _ready() -> void:
 	_audio.position = Vector3(width * 0.5, 1.2, 0)
 	add_child(_audio)
 	add_to_group(&"doors")
+	var b := get_parent() as Building
+	if b:
+		locked = bool(Economy.door_locks.get(b.layout_id, false))
+		if locked:
+			_zone.set_action_text(Lang.tt("قفل است (؛: بازکردن قفل)", "locked (;: unlock)"))
 
 
 func toggle() -> void:
+	if locked:
+		GameEvents.notification_requested.emit(Lang.tt("در قفل است؛ ابتدا قفل را باز کن.", "The door is locked; unlock it first."))
+		return
 	set_open(not is_open)
 
 
 func set_open(value: bool, instant: bool = false) -> void:
+	if value and locked:
+		return
 	if value == is_open:
 		return
 	is_open = value
@@ -104,7 +115,7 @@ func set_open(value: bool, instant: bool = false) -> void:
 	if instant:
 		_panel.rotation.y = target
 	else:
-		_tween = create_tween()
+		_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		_tween.tween_property(_panel, "rotation:y", target, 0.55).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		if _audio.stream:
 			_audio.pitch_scale = randf_range(0.9, 1.1) * (1.0 if value else 1.15)
@@ -123,6 +134,12 @@ func _physics_process(delta: float) -> void:
 	if _auto_timer > 0.0:
 		return
 	_auto_timer = 0.25
+	if not (get_parent() is Building):
+		return
+	var viewer := get_tree().get_first_node_in_group(&"player") as Node3D
+	if viewer and viewer.global_position.distance_squared_to(global_position) > 400.0:
+		_auto_timer = 1.0
+		return
 	var someone := false
 	for bot in get_tree().get_nodes_in_group(&"townspeople"):
 		var n := bot as Node3D
@@ -135,3 +152,13 @@ func _physics_process(delta: float) -> void:
 	elif not someone and is_open and _auto_opened:
 		set_open(false)
 		_auto_opened = false
+
+
+func set_locked(value: bool) -> void:
+	if value and is_open:
+		set_open(false)
+	locked = value
+	var b := get_parent() as Building
+	if b:
+		Economy.door_locks[b.layout_id] = value
+	_zone.set_action_text(Lang.tt("قفل است (؛: بازکردن قفل)", "locked (;: unlock)") if value else "open the door")

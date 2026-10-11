@@ -32,7 +32,7 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	anchor_left = 1.0
 	anchor_right = 1.0
-	offset_left = -400
+	offset_left = -286
 	offset_right = -20
 	offset_top = 292
 	offset_bottom = 292
@@ -46,7 +46,7 @@ func _ready() -> void:
 	_hours = UIKit.label(v, "", 14)
 	_family = UIKit.label(v, "", 14)
 	_family.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_family.custom_minimum_size.x = 350
+	_family.custom_minimum_size.x = 240
 	var fr := HBoxContainer.new()
 	fr.add_theme_constant_override(&"separation", 8)
 	v.add_child(fr)
@@ -59,10 +59,10 @@ func _ready() -> void:
 	_story = UIKit.label(v, "", 13)
 	_story.name = "Story"
 	_story.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_story.custom_minimum_size.x = 350
+	_story.custom_minimum_size.x = 240
 	_dialogue = UIKit.label(v, "", 17)
 	_dialogue.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_dialogue.custom_minimum_size.x = 350
+	_dialogue.custom_minimum_size.x = 240
 	_hint = UIKit.label(v, "", 13)
 	for b in get_tree().get_nodes_in_group(&"townspeople"):
 		_hook(b)
@@ -155,52 +155,15 @@ func refresh() -> void:
 	_name.text = Dialogue.name_of(r) if not r.is_empty() else bot.display_name
 	var age := int(r.get("age", 0))
 	var work := str(r.get("work", ""))
-	if fa:
-		_job.text = "%s ساله، %s%s" % [Lang.digits(str(age)), Dialogue.job_of(r), (" در " + Dialogue.place_of(work)) if work != "" else ""]
-	else:
-		_job.text = "%d · %s" % [age, Population.job_text(r)]
-	_hours.visible = work != "" and work != "pier"
-	if _hours.visible:
-		_hours.text = ("%s: %s" % [Dialogue.place_of(work), ShopHours.status_text(work)])
-		var open := ShopHours.is_open(work)
-		_hours.add_theme_color_override(&"font_color", Color(0.2, 0.55, 0.25) if open else Color(0.75, 0.25, 0.2))
-	var fam: Array = Population.family_of(r) if not r.is_empty() else []
-	_family.visible = (st == null or st.show_family) and not fam.is_empty()
-	if _family.visible:
-		var parts: PackedStringArray = []
-		for m: Dictionary in fam:
-			var rel := Dialogue.relation_text(r, m)
-			parts.append("%s (%s)" % [Dialogue.first_name(m), rel])
-		_family.text = ("خانواده: " + "، ".join(parts)) if fa else "Family: " + ", ".join(parts)
-	# v7b.1 families module: household kind + role + address.
-	var hh := Families.card_line(r)
-	if hh != "":
-		_family.text = (_family.text + "\n" + hh) if _family.visible else hh
-		_family.visible = true
-	var key := Friendship.key_of(bot)
-	var today := Friendship.talked_today(key)
-	_friend.text = "%s%s" % [Friendship.level_name(key), ("، امروز صحبت کردید" if today else "") if fa else ("  · talked today" if today else "")]
-	_hearts.queue_redraw()
-	var s := Needs.npc_state(bot)
-	var ill := str(s.get("illness", ""))
-	_health.visible = st == null or st.show_health
-	if ill != "":
-		var d := Needs.illness_def(ill)
-		_health.text = ("بیمار: %s (%s)" % [d.name_fa, d.symptoms_fa]) if fa else "Ill: %s (%s)" % [d.display_name.to_lower(), d.symptoms_en]
-		_health.add_theme_color_override(&"font_color", Color(0.75, 0.3, 0.2))
-	else:
-		_health.text = "سالم" if fa else "Healthy"
-		_health.add_theme_color_override(&"font_color", Color(0.25, 0.5, 0.3))
-	# v7a: backstory (talents, problem, past, what they remember about you).
-	var bst := Backstories.style()
-	var lines := Backstories.card_lines(r) if bst and bst.show_on_card else PackedStringArray()
-	_story.visible = not lines.is_empty()
-	_story.text = "\n".join(lines)
-	var talking := _talk_bot == bot and Time.get_ticks_msec() / 1000.0 < _talk_until and not bot.last_talk.is_empty()
-	_dialogue.visible = talking
-	if talking:
-		_dialogue.text = "\n".join(bot.last_talk)
-	_hint.text = ("صحبت کردن (E)" if fa else "E: talk") if not today else ("دوباره صحبت کن (E)" if fa else "E: talk again")
+	# Four compact lines: identity, age, location and feeling toward the player.
+	_job.text = Lang.tt("سن: %s" % Lang.digits(str(age)), "Age: %d" % age)
+	_hours.visible = true
+	_hours.text = Dialogue.place_of(work if work != "" else str(r.get("home", "")))
+	_friend.text = Friendship.level_name(Friendship.key_of(bot))
+	_hearts.get_parent().visible = true
+	_hearts.visible = false
+	for extra: Label in [_family, _health, _story, _dialogue, _hint]:
+		extra.visible = false
 	reset_size()
 
 

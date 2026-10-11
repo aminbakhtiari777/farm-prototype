@@ -10,6 +10,16 @@ Play it at https://aminbakhtiari777.github.io/farm-prototype/ (click the game on
 - The initial PCK contains the core/menu. Shared world assets load after Play; avatar packs download when needed and use verified caches. Building exteriors construct one at a time near the player, and distant geometry is released.
 - The minimap is smaller (up to 150 px, responsive on small screens), with Persian/English place labels that work even when building graphics are unloaded.
 
+## Household and island update
+- Touch-web rendering is capped at 30 FPS with a bounded viewport, shorter streaming radius and fewer nearby animated residents and lamps.
+- Movement sticks retain their drag origin and are farther apart. Synthetic conversation/empty-street loops are silent; the boat motor runs only during travel.
+- Exterior door openings are clear; hinged doors and base-cabinet doors respond to interaction. Your house door can be locked, and the lock is saved.
+- Household fridges start with a week's groceries. Taking, storing and eating change saved stock; food is held visibly during interactions. Sleeping advances to the next morning and restores stamina. TVs display daily town news.
+- Residents have varied widths, softer torso shapes, dark eyebrows and compact identity/relationship cards.
+- The bag supports tool selection and eating. Boat menus offer motor trips to a lazily built fruit island and net fishing offshore; produce and fish can be sold at the appropriate shops.
+- [Implementation and verification limits](docs/GAMEPLAY_COMPLETION_REPORT.md).
+- Keyboard: **0** bag, **'** selected tool, **;** house lock, **F8** nearby bed, **Backslash** boat options, **Y** strike a nearby adult. Touch buttons provide these actions.
+
 ## What's new in v7b.1 (controls)
 - GTA-style mouse look: click the game once to capture the mouse, then the mouse turns the camera (up / down / left / right) and **W A S D** walk where you are looking. **Esc** (or any panel) frees the cursor.
 - Driving: the mouse steers left / right (A / D still work), **W** gas, **S** brake / reverse, **Space** handbrake. **V** or **C** switches to the cockpit view - the steering wheel turns with you, the mouse looks around inside the car and up through the roof. A gear readout shows A (automatic), 1-4, R or N.

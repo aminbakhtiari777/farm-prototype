@@ -8,6 +8,7 @@ extends Control
 ##   3. a short warm-up (first frames compile shaders / settle the town).
 
 signal finished
+signal retry_requested
 
 const TIPS := [
 	["با E با مردم حرف بزن؛ هر کس شخصیت و داستان خودش را دارد.", "Press E to talk to people — everyone has their own story."],
@@ -31,8 +32,10 @@ var _bar: ProgressBar
 var _pct: Label
 var _tip: Label
 var _title: Label
+var _retry: Button
 var source: String = "warmup"
 var waiting_for_assets: bool = false
+var asset_keys: Array = []
 
 
 func T(fa: String, en: String) -> String:
@@ -86,6 +89,12 @@ func _ready() -> void:
 	_tip.add_theme_font_size_override(&"font_size", 17)
 	_tip.add_theme_color_override(&"font_color", Color(0.85, 0.92, 0.8))
 	v.add_child(_tip)
+	_retry = Button.new()
+	_retry.text = T("تلاش دوباره", "Retry")
+	_retry.custom_minimum_size = Vector2(0, 44)
+	_retry.visible = false
+	_retry.pressed.connect(func() -> void: retry_requested.emit())
+	v.add_child(_retry)
 	get_viewport().size_changed.connect(_fit)
 	_fit()
 	set_process(false)
@@ -105,6 +114,7 @@ func start(path: String = "") -> void:
 	_tip_i = randi() % TIPS.size()
 	visible = true
 	running = true
+	_retry.visible = false
 	_title.text = T("در حال آماده کردن شهر…", "Preparing the town…")
 	_show_tip()
 	_set_progress(0.0)
@@ -126,6 +136,15 @@ func _set_progress(p: float) -> void:
 	_pct.text = "%d%%" % int(round(progress * 100.0))
 
 
+func fail(message: String) -> void:
+	running = false
+	set_process(false)
+	_title.text = T("آماده‌سازی شهر ناموفق بود", "Town preparation failed")
+	_tip.text = message
+	_pct.text = T("اتصال اینترنت را بررسی کن.", "Check your connection.")
+	_retry.visible = true
+
+
 func _streamer_progress() -> float:
 	for n in get_tree().get_nodes_in_group(&"world_streamer"):
 		if n.has_method("load_progress"):
@@ -145,7 +164,8 @@ func _process(delta: float) -> void:
 	var target := 0.0
 	if waiting_for_assets:
 		source = "assets"
-		target = 0.0
+		# Asset packs occupy the first 90%; the threaded scene finishes the rest.
+		target = AssetPacks.load_progress(asset_keys) * 0.9
 	elif threaded_path != "":
 		source = "threaded"
 		var arr := []
@@ -163,7 +183,8 @@ func _process(delta: float) -> void:
 		else:
 			source = "warmup"
 			target = _t / min_secs
-	_set_progress(maxf(progress, lerpf(progress, target, minf(1.0, delta * 8.0)) + delta * 0.05))
+	if target > progress:
+		_set_progress(minf(target, maxf(lerpf(progress, target, minf(1.0, delta * 8.0)), progress + delta * 0.02)))
 	if target >= 1.0 and progress >= 0.999 and _t >= min_secs * 0.5:
 		_set_progress(1.0)
 		running = false

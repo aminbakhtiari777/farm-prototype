@@ -19,6 +19,9 @@ var inventory: Dictionary = {}  ## item_id -> count
 var selected_seed: String = ""
 ## Water left in the watering can; refill at the well, pond, sea or a tool rack.
 var water: int = 20
+var pantries: Dictionary = {}
+var door_locks: Dictionary = {}
+var equipped_tool: String = "hoe"
 
 signal water_changed(water: int, capacity: int)
 
@@ -31,6 +34,9 @@ func reset() -> void:
 	var start: Dictionary = GameData.data.get("start", {})
 	money = int(start.get("money", 500))
 	inventory = {}
+	pantries = {}
+	door_locks = {}
+	equipped_tool = "hoe"
 	var inv: Dictionary = start.get("inventory", {})
 	for id in inv:
 		inventory[id] = int(inv[id])
@@ -285,10 +291,13 @@ func item_category(id: String) -> String:
 
 ## Snapshot for SaveGame.
 func to_save() -> Dictionary:
-	return {"money": money, "inventory": inventory.duplicate(), "selected_seed": selected_seed, "water": water}
+	return {"money": money, "inventory": inventory.duplicate(), "selected_seed": selected_seed, "water": water, "pantries": pantries.duplicate(true), "door_locks": door_locks.duplicate(), "equipped_tool": equipped_tool}
 
 
 func from_save(data: Dictionary) -> void:
+	pantries = data.get("pantries", {}).duplicate(true)
+	door_locks = data.get("door_locks", {}).duplicate()
+	equipped_tool = str(data.get("equipped_tool", "hoe"))
 	money = int(data.get("money", money))
 	inventory = {}
 	var inv: Dictionary = data.get("inventory", {})
@@ -324,3 +333,13 @@ func best_tool(kind: String) -> ToolDef:
 		if best == null or t.tier > best.tier:
 			best = t
 	return best
+
+
+func pantry(home: String) -> Dictionary:
+	if not pantries.has(home):
+		var stock := {}
+		for id in ["apple", "milk", "eggs", "rice", "tomato", "potato"]:
+			if not GameData.item(id).is_empty():
+				stock[id] = 14 if id in ["rice", "eggs"] else 7
+		pantries[home] = stock
+	return pantries[home]

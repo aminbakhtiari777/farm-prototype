@@ -117,6 +117,10 @@ func apply(data: Dictionary) -> void:
 	var t: Dictionary = data.get("time", {})
 	TimeManager.reset_calendar(int(t.get("day", 1)), float(t.get("minutes", 480.0)) / 60.0, str(t.get("weather", "sunny")))
 	Economy.from_save(data.get("economy", {}))
+	for door in get_tree().get_nodes_in_group(&"doors"):
+		var front := door as BuildingDoor
+		if front and front.get_parent() is Building:
+			front.set_locked(bool(Economy.door_locks.get((front.get_parent() as Building).layout_id, false)))
 	var tree := get_tree()
 	var plot := tree.get_first_node_in_group(&"farm_plot")
 	if plot and plot.has_method("from_save") and data.has("farm"):

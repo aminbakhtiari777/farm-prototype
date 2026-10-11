@@ -94,6 +94,12 @@ const BUTTONS := [
 	["horn", &"horn", "tap", "بوق", "Horn", Color(1.0, 0.9, 0.5)],
 	["lights", &"headlights", "tap", "چراغ", "Lights", Color(1.0, 1.0, 0.75)],
 	["camera", &"car_camera", "tap", "دوربین", "Camera", Color(0.7, 0.85, 1.0)],
+	["bag", &"bag_actions", "tap", "کیف", "Bag", Color(0.7, 0.9, 0.8)],
+	["use_tool", &"use_tool", "tap", "ابزار", "Tool", Color(0.8, 0.7, 0.5)],
+	["attack", &"attack", "tap", "ضربه", "Hit", Color(1.0, 0.5, 0.4)],
+	["door_lock", &"door_lock", "tap", "قفل", "Lock", Color(0.9, 0.85, 0.4)],
+	["boat_menu", &"boat_menu", "tap", "قایق", "Boat", Color(0.5, 0.85, 1.0)],
+	["sleep_now", &"sleep_now", "tap", "خواب", "Sleep", Color(0.8, 0.7, 1.0)],
 	["help", &"open_controls", "tap", "؟", "?", Color(0.85, 0.85, 0.85)],
 	["menu", &"menu", "tap", "منو", "Menu", Color(0.85, 0.85, 0.85)],
 ]
@@ -167,8 +173,8 @@ func _layout() -> void:
 	var short := minf(s.x, s.y)
 	radius = short * (st.stick_radius if st else 0.11)
 	btn = short * (st.button_size if st else 0.115)
-	left.home = Vector2(short * 0.3, s.y - short * 0.3)
-	right.home = Vector2(s.x - btn * 3.0 - radius * 1.35, s.y - short * 0.3)
+	left.home = Vector2(short * 0.18, s.y - short * 0.24)
+	right.home = Vector2(maxf(s.x * 0.63, s.x - btn * 3.0 - radius * 1.35), s.y - short * 0.24)
 	if not _stick_active(left):
 		left.origin = left.home
 	if not _stick_active(right):
@@ -194,12 +200,14 @@ func _place_buttons() -> void:
 		"jump": [Vector2(s.x - 2.25 * b, s.y - 0.6 * b - lift), 1.0],
 		"sprint": [Vector2(s.x - 0.7 * b, s.y - 2.25 * b - lift), 1.0],
 		"help": [Vector2(s.x - 0.6 * b, s.y * 0.5 - 0.62 * b), 0.8],
+		"bag": [Vector2(s.x - 0.6 * b, s.y * 0.5 + 0.6 * b), 0.8],
+		"use_tool": [Vector2(s.x - 0.6 * b, s.y * 0.5 + 1.6 * b), 0.8],
 		"menu": [Vector2(s.x - 0.6 * b, s.y * 0.5 - 1.6 * b), 0.8],
 	}
 	var slots := [Vector2(s.x - 0.7 * b, s.y - 3.45 * b - lift), Vector2(s.x - 1.95 * b, s.y - 1.75 * b - lift),
 		Vector2(s.x - 1.95 * b, s.y - 2.95 * b - lift), Vector2(s.x - 0.7 * b, s.y - 4.65 * b - lift)]
 	var si := 0
-	for id in ["possess", "dig", "demolish", "fire", "horn", "lights", "camera"]:
+	for id in ["door_lock", "boat_menu", "sleep_now", "attack", "possess", "dig", "demolish", "fire", "horn", "lights", "camera"]:
 		var t := buttons[id] as TButton
 		if t.visible and si < slots.size():
 			base[id] = [slots[si], 0.9]
@@ -259,6 +267,11 @@ func refresh_context() -> void:
 		"demolish": not ui and possessed and not car and ps.allowed("demolish"),
 		"fire": not ui and possessed and not car and ps.allowed("fire"),
 		"horn": not ui and car, "lights": not ui and car, "camera": not ui and car,
+		"bag": not ui, "use_tool": not ui and not car,
+		"attack": not ui and not car and not possessed and TownGameplay.near_adult(),
+		"door_lock": not ui and not possessed and TownGameplay.nearest_door() != null,
+		"boat_menu": not ui and not possessed and TownGameplay.near_boat(),
+		"sleep_now": not ui and not possessed and TownGameplay.near_bed(),
 		"help": not ui, "menu": true,
 	}
 	var fa := Lang.is_fa()
@@ -385,8 +398,9 @@ func _update_stick(k: Stick, p: Vector2) -> void:
 	if off.length() > radius:
 		var st := style()
 		if st == null or st.floating:
-			# Drag past the rim: the base follows the thumb (GTA mobile feel).
-			k.origin = p - off.normalized() * radius
+			# Keep the base fixed during a gesture. Moving it on every drag
+			# changes the heading of a held movement stick and bends straight walks.
+			pass
 		off = off.limit_length(radius)
 	k.knob = off
 	k.value = off / maxf(radius, 1.0)

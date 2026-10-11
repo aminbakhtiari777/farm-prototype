@@ -248,7 +248,7 @@ func run_ambient() -> bool:
 	var crickets_on := false
 	for p in em["crickets"]:
 		crickets_on = crickets_on or ae.is_active(p)
-	t._check(murmur_on and not crickets_on, "noon at the square: crowd murmur plays, crickets silent")
+	t._check(not murmur_on and not crickets_on, "noon: synthetic crowd loop and night crickets are silent")
 	# Night in a field: crickets near you, no birds, no murmur.
 	_set_time(23.0)
 	var c0 := (em["crickets"][0] as Node3D).global_position

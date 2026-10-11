@@ -18,7 +18,7 @@ extends AssetModule
 ## body_height
 @export var height_range: Vector2 = Vector2(0.92, 1.08)
 ## body_width
-@export var build_range: Vector2 = Vector2(0.86, 1.12)
+@export var build_range: Vector2 = Vector2(0.84, 1.3)
 ## chance a child inherits the parents' hair / skin
 @export var family_share: float = 0.7
 @export var hair_women: Array = []

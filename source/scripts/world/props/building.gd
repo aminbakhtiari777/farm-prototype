@@ -465,7 +465,8 @@ func _build_rest(rng: RandomNumberGenerator, w: float, h: float, d: float, base:
 
 	# Door frame, steps + invisible ramp so the farmer walks up onto the floor.
 	add_box(Vector3(DOOR_W + 0.24, DOOR_H + 0.14, 0.06), Vector3(door_offset, base + (DOOR_H + 0.14) * 0.5, hd + 0.005), trim, Vector3.ZERO, ext)
-	add_box(Vector3(DOOR_W - 0.02, DOOR_H - 0.02, 0.02), Vector3(door_offset, base + DOOR_H * 0.5, hd + 0.04), color_material(Color(0.1, 0.08, 0.06), 0.9), Vector3.ZERO, ext)
+	# The hinged BuildingDoor is the only panel: a baked dark rectangle here
+	# used to remain across the opening after the actual door swung away.
 	if not has_porch:
 		add_box(Vector3(1.6, base * 0.5, 0.45), Vector3(door_offset, base * 0.25, hd + 0.22), stone, Vector3.ZERO, ext)
 		add_box(Vector3(1.6, base * 0.5, 0.35), Vector3(door_offset, base * 0.75 - 0.01, hd + 0.08), stone, Vector3.ZERO, ext)

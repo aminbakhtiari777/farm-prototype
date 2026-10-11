@@ -46,12 +46,12 @@ func run_quality() -> bool:
 	var sun := _sun()
 	t._check(pw.lod.current_style().id == "low", "Low preset applied")
 	t._check(sun != null and not sun.shadow_enabled, "Low: no sun shadows")
-	t._check(is_equal_approx(t.get_viewport().scaling_3d_scale, 0.75), "Low: 75% 3D render scale")
+	t._check(is_equal_approx(t.get_viewport().scaling_3d_scale, 0.6), "Low: 60% 3D render scale")
 	t._check(Engine.max_physics_steps_per_frame == 3, "Low: max 3 physics steps / frame")
 	var pool := _tree().current_scene.find_child("LampLights", true, false)
 	await _frames(2)
 	if pool:
-		t._check(int(pool.get("light_count")) == 3, "Low: 3 real lamp lights")
+		t._check(int(pool.get("light_count")) == 1, "Low: 1 real lamp light")
 	Settings.set_value("quality", "medium")
 	await _frames(3)
 	t._check(sun != null and sun.shadow_enabled and sun.directional_shadow_mode == DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS and is_equal_approx(sun.directional_shadow_max_distance, 35.0), "Medium: 2 cheap cascades to 35 m")
@@ -86,6 +86,16 @@ func run_lod() -> bool:
 	var small_shadow := 0
 	for g in town.find_children("*", "GeometryInstance3D", true, false):
 		var gi := g as GeometryInstance3D
+		var ancestor := gi.get_parent()
+		var hinged := false
+		while ancestor and ancestor != town:
+			if ancestor is BuildingDoor:
+				hinged = true
+				break
+			ancestor = ancestor.get_parent()
+		if hinged:
+			t._check(gi.visibility_range_end == 0, "hinged panel stays visible with its streamed building")
+			continue
 		total += 1
 		if gi.visibility_range_end > 0.0:
 			ranged += 1

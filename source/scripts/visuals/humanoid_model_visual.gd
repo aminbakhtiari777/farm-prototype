@@ -248,7 +248,10 @@ func _attach_hair(style: String) -> void:
 	# The hair meshes are modelled in body space ("origin at 0").
 	hair.transform = skeleton.get_bone_global_rest(head).affine_inverse()
 	attach.add_child(hair)
-	var mat := _hair_material(hair_color)
+	var mat := _hair_material(hair_color.darkened(0.25) if style.begins_with("Eyebrows") else hair_color)
+	# Some eyebrow scenes have a mesh as their root, which find_children omits.
+	if hair is MeshInstance3D:
+		(hair as MeshInstance3D).material_override = mat
 	for mi in hair.find_children("*", "MeshInstance3D", true, false):
 		var m := mi as MeshInstance3D
 		for s in m.mesh.get_surface_count():
@@ -337,7 +340,7 @@ func _hair_material(color: Color) -> Material:
 		return _material_cache[key]
 	var m := StandardMaterial3D.new()
 	m.albedo_texture = load(_style_hair() + "T_Hair_1_BaseColor.png")
-	m.albedo_color = color * 2.2
+	m.albedo_color = Color(clampf(color.r, 0.02, 0.65), clampf(color.g, 0.02, 0.65), clampf(color.b, 0.02, 0.65))
 	m.normal_enabled = true
 	m.normal_texture = load(_style_hair() + "T_Hair_1_Normal.png")
 	m.roughness = 0.62
@@ -379,6 +382,7 @@ func _apply_outfit() -> void:
 	m.set_shader_parameter(&"fabric_noise", preload("res://assets/materials/detail_noise_tex.tres"))
 	m.set_shader_parameter(&"fabric_normal", preload("res://assets/materials/detail_normal_tex.tres"))
 	m.set_shader_parameter(&"skin_tint", skin_tint)
+	m.set_shader_parameter(&"body_roundness", clampf(0.04 + (body_width - 0.9) * 0.25, 0.02, 0.16))
 	m.set_shader_parameter(&"shirt_color", shirt_color)
 	m.set_shader_parameter(&"pants_color", pants_color)
 	m.set_shader_parameter(&"boots_color", boots_color)
@@ -498,6 +502,7 @@ func _build_tree() -> void:
 		&"sit_enter": "Sitting_Enter", &"sit_idle": "Sitting_Idle", &"sit_exit": "Sitting_Exit",
 		&"ground_sit": "Sitting_Idle", &"interact": "Interact", &"pickup": "PickUp_Table",
 		&"kneel": "Fixing_Kneeling", &"talk": "Idle_Talking",
+		&"attack": "Punch" if _library().has_animation(&"Punch") else "Interact",
 	}
 	for state in clips:
 		sm.add_node(state, _clip(clips[state]))
@@ -515,6 +520,7 @@ func _build_tree() -> void:
 	_link(sm, &"sit_exit", &"loco", true, 0.2)
 	_link(sm, &"interact", &"loco", true, 0.2)
 	_link(sm, &"pickup", &"loco", true, 0.2)
+	_link(sm, &"attack", &"loco", true, 0.15)
 
 	var root := AnimationNodeBlendTree.new()
 	root.add_node(&"sm", sm)
@@ -711,6 +717,9 @@ func play_action(action: StringName) -> float:
 	if _pose != &"" or _airborne:
 		return 0.0
 	match action:
+		&"attack":
+			_playback.travel(&"attack")
+			return 0.8
 		&"pet", &"interact", &"use":
 			_playback.travel(&"interact")
 			return 0.9
